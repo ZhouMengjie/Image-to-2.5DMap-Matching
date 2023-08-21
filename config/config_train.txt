@@ -1,0 +1,20 @@
+# Config for training a multi-modal model with RGB images and point clouds on Streetlearn and Openstreetmap dataset
+[DEFAULT]
+dataset_folder = datasets
+use_cloud = True
+use_rgb = True
+use_tile = True
+use_snap = False
+img_size = 224
+tile_size = 224
+
+[TRAIN]
+normalize_embeddings = True
+weights = 1, 1, 1
+aug_mode = 1
+
+[Val]
+use_val = True
+
+
+

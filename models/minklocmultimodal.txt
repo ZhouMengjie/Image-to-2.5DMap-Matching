@@ -1,0 +1,6 @@
+# MinkLocMultimodal model
+[MODEL]
+model = MinkLocMultimodal
+# mink_quantization_size = 0.01
+img_size = 224
+tile_size = 224

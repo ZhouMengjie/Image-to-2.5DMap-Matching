@@ -1,3 +1,4 @@
+""" This file is used to obtain Top-5 retrieved maps given a query panoramic image """
 import os
 import sys
 sys.path.append(os.getcwd())
@@ -12,7 +13,7 @@ import yaml
 import matplotlib.image as imgplt
 import matplotlib.pyplot as plt
 from PIL import Image
-from data import augmentation
+from data import augmentation_simple
 
 def farthest_point_sample(point, feature, npoint):
     """
@@ -31,7 +32,6 @@ def farthest_point_sample(point, feature, npoint):
     for i in range(npoint):
         centroids[i] = farthest
         centroid = xyz[farthest, :]
-        # dist = np.sum((xyz - centroid) ** 2, -1)
         dist = -2 * np.matmul(xyz, centroid)
         dist += xyz2
         dist +=  np.sum(centroid ** 2, -1)
@@ -44,7 +44,7 @@ def farthest_point_sample(point, feature, npoint):
 
 if __name__ == "__main__":
     # load index - top5
-    area = 'wallstreet5kU'
+    area = 'wallstreet5kU' # change area here
     data_path = os.path.join(os.getcwd(), 'datasets')
     data = pd.read_csv(os.path.join(data_path, 'csv', (area + '_xy.csv')), sep=',', header=None)
     info1 = data.values
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # load labels
     rank = np.load(os.path.join('results',area+'_rank.npy'))
     # idx = random.randint(0, 5000)
-    idx = 4980
+    idx = 4980 # change instance index here
     correspondence = rank[idx]
     print(idx)
     print(correspondence[0])
@@ -66,7 +66,6 @@ if __name__ == "__main__":
     city = info1[idx][4]
     img_path = os.path.join(data_path, ('jpegs_' + city + '_2019'), panoid + '.jpg')
     pano = Image.open(img_path)
-    # pano.show()
     pano.save(os.path.join(file_path,str(idx)+'_pano.png'))
 
     # load all points and semantic labels
@@ -96,8 +95,8 @@ if __name__ == "__main__":
         result = {'heading': heading, 'center':center}
         result['cloud'] = torch.tensor(coords, dtype=torch.float)
         result['cloud_ft'] = torch.tensor(colors, dtype=torch.float)
-        t = [augmentation.RandomRotation(max_theta=0, axis=np.asarray([0,1,0])),
-            augmentation.RandomCenterCrop(radius=76, rnd=0)]
+        t = [augmentation_simple.RandomRotation(max_theta=0, axis=np.asarray([0,1,0])),
+            augmentation_simple.RandomCenterCrop(radius=76, rnd=0)]
         transform = transforms.Compose(t)    
         result = transform(result)
         coords = result['cloud'].numpy()
@@ -125,24 +124,13 @@ if __name__ == "__main__":
         image = image.type(torch.int)
 
         # tile
-        global_idx = info2[corr][1] # for train only
+        global_idx = info2[corr][1]
         city = info2[corr][0]
         tile_pathname = os.path.join('datasets', 'tiles_'+city+'_2019', 'z18', str(global_idx).zfill(5) + '.png')
-        # plt.figure()
-        # tile = imgplt.imread(tile_pathname)
-        # plt.imshow(tile)
-        # point_list = image
-        # for p in range(1024):
-        #     plt.scatter(point_list[p][0],point_list[p][1], s=2, c='r')
-        # plt.axis('off')
-        # plt.savefig(os.path.join('results',str(idx),str(corr)+'_'+str(i)+'.png'),bbox_inches='tight')
-        # plt.show()
         tile = cv2.imread(tile_pathname)
         point_list = image.numpy()
         for point in point_list:
             cv2.circle(tile,point,1,(255,0,0),1)
-        # cv2.imshow('projection',tile)
-        # cv2.waitKey(0)
         cv2.imwrite(os.path.join(file_path,str(corr)+'_'+str(i)+'.png'),tile)
 
 

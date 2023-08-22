@@ -1,3 +1,4 @@
+""" This implementation is modified from https://github.com/NVIDIA/MinkowskiEngine/blob/master/examples/pointnet.py """
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

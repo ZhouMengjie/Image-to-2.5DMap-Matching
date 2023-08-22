@@ -3,8 +3,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class PointNet(nn.Module):
-    def __init__(self, out_channel, in_channel, embedding_channel=2048):
+    def __init__(self, out_channel, in_channel):
         super(PointNet, self).__init__()
+        embedding_channel = out_channel // 2
         self.conv1 = nn.Conv1d(in_channel, 64, kernel_size=1, bias=False)
         self.conv2 = nn.Conv1d(64, 64, kernel_size=1, bias=False)
         self.conv3 = nn.Conv1d(64, 64, kernel_size=1, bias=False)

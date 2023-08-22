@@ -1,7 +1,3 @@
-# Author: Jacek Komorowski
-# Warsaw University of Technology
-
-# Evaluation code adapted from PointNetVlad code: https://github.com/mikacuy/pointnetvlad
 import os
 os.environ["OMP_NUM_THREADS"] = '1'
 import sys
@@ -15,15 +11,13 @@ import random
 import time
 
 from sklearn.neighbors import KDTree
-from config.utils import MinkLocParams, get_datetime
+from config.utils import Params, get_datetime
 from models.model_factory import model_factory
 from torch.utils.data import DataLoader
 from data.augmentation_simple import ValTransform, ValRGBTransform, ValTileTransform 
 from data.streetlearn_no_mc import StreetLearnDataset
 from data.dataset_utils_pickle import make_collate_fn_torch
 from sklearn.decomposition import PCA
-
-DEBUG = False
 
 def seed_all(random_seed):
     torch.manual_seed(random_seed)
@@ -57,7 +51,6 @@ def evaluate(model, device, params, exp_name, pca_dim):
                                                     use_feat=params.use_feat, use_polar=params.use_polar,
                                                     normalize=params.pc_normalize, npoints=params.npoints)
 
-        # datasets[location_name].transform.aug_mode = 0 
         collate_fn = make_collate_fn_torch(datasets[location_name])
         dataloaders[location_name] = DataLoader(datasets[location_name], batch_size=params.val_batch_size, collate_fn=collate_fn,
                                        num_workers=nw, pin_memory=True, shuffle=False, drop_last=False)
@@ -114,6 +107,7 @@ def evaluate(model, device, params, exp_name, pca_dim):
         pca_database_embeddings = estimator.fit_transform(database_embeddings) 
         pca_query_embeddings = estimator.transform(query_embeddings)
         
+        # obtain query and reference embeddings for subsequent localization tasks
         # pred = {}
         # pred['ref'] = pca_database_embeddings
         # pred['qry'] = pca_query_embeddings
@@ -121,7 +115,6 @@ def evaluate(model, device, params, exp_name, pca_dim):
         # model_name = model_name.split('.')[0]
         # sio.savemat(os.path.join('results', location_name+'_'+model_name+'.mat'), pred)
 
-        # recall, similarity, one_percent_recall = get_recall(database_embeddings, query_embeddings)   
         recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)   
         ave_recall = recall
         average_similarity = np.mean(similarity)
@@ -129,6 +122,7 @@ def evaluate(model, device, params, exp_name, pca_dim):
         stats[location_name] = {'ave_one_percent_recall': ave_one_percent_recall, 'ave_recall': ave_recall,
                 'average_similarity': average_similarity} 
         
+        # obtain recall to plot figures
         # res = {}
         # res['recall'] = recall
         # model_name = os.path.split(params.load_weights)[1]
@@ -143,9 +137,6 @@ def get_recall(database_vectors, query_vectors):
     # Original PointNetVLAD code
     database_output = database_vectors
     queries_output = query_vectors
-    # indexes = np.random.choice(len(query_vectors), 5000, replace=False)
-    # queries_output = query_vectors[indexes]
-    # database_output = database_vectors[indexes]
 
     # When embeddings are normalized, using Euclidean distance gives the same
     # nearest neighbour search results as using cosine distance
@@ -172,7 +163,7 @@ def get_recall(database_vectors, query_vectors):
                     top1_similarity_score.append(similarity)
                 recall[j] += 1
                 break
-    # np.save(os.path.join('results', location_name+'_rank.npy'), rank)
+    # np.save(os.path.join('results', location_name+'_rank.npy'), rank) # obtain rank for retrieving visualization
     recall = (np.cumsum(recall)/float(num_evaluated))*100
     one_percent_recall = recall[threshold]
     return recall, top1_similarity_score, one_percent_recall
@@ -209,7 +200,6 @@ def export_eval_stats(file_name, prefix, eval_stats):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train Minkowski Net embeddings using BatchHard negative mining')
     parser.add_argument('--config', type=str, required=False, help='Path to configuration file')
-    parser.add_argument('--model_config', type=str, required=False, help='Path to the model-specific configuration file')    
     parser.add_argument('--use_amp', dest='use_amp', action='store_true')
     parser.add_argument('--batch_size', type=int, default=32, required=False, help='Training batch size')
     parser.add_argument('--val_batch_size', type=int, default=24, required=False, help='Testing batch size')    
@@ -225,7 +215,6 @@ if __name__ == "__main__":
     parser.add_argument('--syncBN', dest='syncBN', action='store_true')
     parser.add_argument('--seed', type=int, default=1, required=False, help='Seed')
     parser.add_argument('--port', type=str, default='12363', required=False, help='Port')  
-    parser.add_argument('--mink_quantization_size', type=float, default=0.01, required=False, help='Quantization size')
     parser.add_argument('--model3d', type=str, required=False, help='Model 3D')  
     parser.add_argument('--model2d_tile', type=str, required=False, help='Model 2D for Tile')  
     parser.add_argument('--model2d_pano', type=str, required=False, help='Model 2D for Pano')     
@@ -243,14 +232,11 @@ if __name__ == "__main__":
     parser.add_argument('--epochs', type=int, default=60, required=False, help='Total training epochs')
     parser.add_argument('--lr', type=float, default=4e-5, required=False, help='Initial learning rate')
     parser.add_argument('--scheduler', type=str, required=False, help='LR Scheduler')
-    parser.add_argument('--use_regu', dest='use_regu', action='store_true')
     parser.add_argument('--device', type=str, required=False, help='Device')  
     parser.add_argument('--exp_name', type=str, required=False, help='Experiment name')  
     parser.add_argument('--pca_dim', type=int, default=128, required=False, help='PCA dimension')  
-    parser.add_argument('--use_mmfusion', dest='use_mmfusion', action='store_true')
 
     parser.set_defaults(config='config/config_train.txt')
-    parser.set_defaults(model_config='models/minklocmultimodal.txt')
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')
     parser.set_defaults(eval_files='hudsonriver5kU,unionsquare5kU,wallstreet5kU')
@@ -258,8 +244,8 @@ if __name__ == "__main__":
     parser.set_defaults(model2d_tile='resnet_safa')
     parser.set_defaults(model2d_pano='resnet_safa')
     parser.set_defaults(loss='MultiInfoNCELoss')
-    parser.set_defaults(fuse='concat')
-    parser.set_defaults(optimizer='Adam')
+    parser.set_defaults(fuse='2to3')
+    parser.set_defaults(optimizer='SAM')
     parser.set_defaults(device='cuda')    
 
     args = parser.parse_args()
@@ -271,7 +257,6 @@ if __name__ == "__main__":
     sys.stdout = print_log
 
     print('Config path: {}'.format(args.config))
-    print('Model config path: {}'.format(args.model_config))
     if args.weights is None:
         w = 'RANDOM WEIGHTS'
     else:
@@ -279,7 +264,7 @@ if __name__ == "__main__":
     print('Weights: {}'.format(w))
     print('')
 
-    params = MinkLocParams(args)
+    params = Params(args)
     params.print()
 
     device = args.device
@@ -305,7 +290,6 @@ if __name__ == "__main__":
             new_k = k.replace('module.', '') if 'module' in k else k
             if new_k == 'cloud_fe.backbone.conv0.kernel' and v.shape[1] != params.feat_size:
                 new_k = 'ignore' 
-            # new_k = new_k.replace('mlps.', 'interp.mlps.') if 'mlps' in new_k else new_k
             state_dict[new_k] = v
         model.load_state_dict(state_dict, strict=True) 
         print('load pretrained {} model!'.format(params.load_weights))

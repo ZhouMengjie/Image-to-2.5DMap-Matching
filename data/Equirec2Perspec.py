@@ -1,4 +1,4 @@
-""" This code was taken from https://github.com/fuenwang/Equirec2Perspec and slighly modified"""
+""" This code was taken from https://github.com/fuenwang/Equirec2Perspec and slighly modified """
 import cv2
 import numpy as np
 

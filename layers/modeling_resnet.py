@@ -1,4 +1,3 @@
-
 """Bottleneck ResNet v2 with GroupNorm and Weight Standardization."""
 import math
 

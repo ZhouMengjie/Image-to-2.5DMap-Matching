@@ -1,4 +1,3 @@
-"This model is the map sub-network used only for testing, not training "
 import os
 import torch
 import torch.nn as nn
@@ -63,7 +62,6 @@ class EmbNet(nn.Module):
 class Tile_SAFA(torch.nn.Module):
     def __init__(self, out_channels, tile_size, use_polar=False, sa_num=8):
         super(Tile_SAFA, self).__init__()
-        # self.resnet = resnet18(pretrained=True)
         self.resnet = resnet18()
         # Load weights
         model_file = 'resnet18-5c106cde.pth'
@@ -78,21 +76,14 @@ class Tile_SAFA(torch.nn.Module):
         else:
             in_dim = (tile_size//32)**2
         self.safa = SAFA(in_dim, sa_num)   
-         
-        # in_channels = 512*sa_num    
-        # self.embnet = EmbNet(in_channels, out_channels)
-        # init_weights(self.embnet)
      
     def forward(self, batch):
         x = batch['tiles']        
         feature = self.resnet(x)
-        # tile_feature_map = feature.cpu().numpy()
-        # np.save(os.path.join('results','feature_maps', ('tile3.npy')), tile_feature_map)               
         B, C, _, _ = feature.shape
         f = feature.view(B, C, -1)
         w = self.safa(f) 
         x = torch.matmul(f, w).view(B, -1)
-        # x = self.embnet(x)
         return x, feature 
 
 

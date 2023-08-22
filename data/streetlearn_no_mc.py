@@ -209,7 +209,6 @@ class StreetLearnDataset(Dataset):
         for i in range(npoint):
             centroids[i] = farthest
             centroid = xyz[farthest, :]
-            # dist = np.sum((xyz - centroid) ** 2, -1)
             dist = -2 * np.matmul(xyz, centroid)
             dist += xyz2
             dist +=  np.sum(centroid ** 2, -1)

@@ -1,3 +1,4 @@
+""" This file generates videos about the single-image based localization """
 import os
 import sys
 sys.path.append(os.getcwd())
@@ -23,7 +24,6 @@ def farthest_point_sample(point, feature, npoint):
     for i in range(npoint):
         centroids[i] = farthest
         centroid = xyz[farthest, :]
-        # dist = np.sum((xyz - centroid) ** 2, -1)
         dist = -2 * np.matmul(xyz, centroid)
         dist += xyz2
         dist +=  np.sum(centroid ** 2, -1)
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # load panorama 
     data_path = 'datasets'
     city = 'manhattan'
-    area = 'unionsquare5kU'    
+    area = 'unionsquare5kU' # change area here
     # key_frame = [57,2110,2654,3478,3904,4016,4155,4207,4809,4980] # ws
     key_frame = [665,1306,1663,1865,3439,3717,3908,4077,4301,4348]  # us
   

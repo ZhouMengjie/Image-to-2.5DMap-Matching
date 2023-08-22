@@ -1,6 +1,5 @@
+""" This is modified from ASAM implementation https://github.com/davda54/sam """
 import torch
-
-# This is a pytorch implementation of ASAM from https://github.com/davda54/sam
 class SAM(torch.optim.Optimizer):
     def __init__(self, params, base_optimizer, scaler, rho=0.05, adaptive=False, **kwargs):
         assert rho >= 0.0, f"Invalid rho, should be non-negative: {rho}"
@@ -34,7 +33,7 @@ class SAM(torch.optim.Optimizer):
                 if p.grad is None: continue
                 p.data = self.state[p]["old_p"]  # get back to "w" from "w + e(w)"
 
-        # self.base_optimizer.step()  # do the actual "sharpness-aware" update
+        # do the actual "sharpness-aware" update
         self.scaler.step(self.base_optimizer)
         if zero_grad: self.zero_grad()
 

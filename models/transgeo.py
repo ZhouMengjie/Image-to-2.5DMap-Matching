@@ -1,3 +1,4 @@
+""" This implementation is modified from https://github.com/Jeff-Zilence/TransGeo2022 """
 import torch.nn as nn
 from layers.deit import deit_small_distilled_patch16_224, deit_tiny_distilled_patch16_224
 

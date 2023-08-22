@@ -1,3 +1,4 @@
+""" This implementation is modified from https://github.com/yanghongji2007/cross_view_localization_L2LTR """
 import torch.nn as nn
 import numpy as np
 import ml_collections

@@ -1,5 +1,3 @@
-# PointNetVLAD datasets: based on Oxford RobotCar and Inhouse
-# Code adapted from PointNetVLAD repo: https://github.com/mikacuy/pointnetvlad
 import os
 import sys
 sys.path.append(os.getcwd())
@@ -9,7 +7,7 @@ import pandas as pd
 from sklearn.neighbors import KDTree
 import pickle
 import argparse
-from data.streetlearn_pickle import TrainingTuple
+from data.streetlearn_no_mc import TrainingTuple
 
 
 def construct_query_dict(query_filepath, output_filepath, ind_nn_r, ind_r_r=50):

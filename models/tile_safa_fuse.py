@@ -1,4 +1,3 @@
-"This model is the map sub-network used only for testing, not training "
 import os
 import torch
 import torch.nn as nn

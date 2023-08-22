@@ -1,3 +1,0 @@
-# MinkLocRGB model
-[MODEL]
-model = MinkLocRGB

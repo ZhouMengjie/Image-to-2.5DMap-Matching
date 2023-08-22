@@ -1,3 +1,4 @@
+""" This file is used to visualize point cloud and semantic class distribution """
 import os
 import yaml
 import numpy as np
@@ -42,9 +43,7 @@ def class_statistic(data, file_name):
 
     plt.rcParams["font.weight"] = "bold"
     plt.rcParams["axes.labelweight"] = "bold"
-    # plt.style.use("ggplot")
     fig, ax = plt.subplots(figsize=(20, 7))
-    # plt.rcParams.update({"font.size":15})
     for i in range(len(height)):
         ax.bar(
         x = str(int(semantic_ids[i])),  
@@ -69,7 +68,6 @@ def class_statistic(data, file_name):
         )
     font={'size':20}
     ax.set_ylim(0,15)
-    # ax.set_title("Semantic Classes", fontdict=font)  
     plt.xticks(font=font)
     plt.yticks(font=font)
     ax.set_xlabel("categories",fontdict=font)
@@ -83,9 +81,9 @@ if __name__ == "__main__":
     data_path = os.path.join(os.getcwd(), 'datasets', city)
     print('Displaying the completed point cloud ...')
     pcd = o3d.io.read_point_cloud(os.path.join(data_path, (city + 'U.pcd')))
-    # visualize_pcd(pcd, None, type='pcd')
+    visualize_pcd(pcd, None, type='pcd')
 
-    print('Displaying the semantic classes statistic ...')
+    print('Displaying the semantic classes distribution ...')
     data = pd.read_csv(os.path.join(data_path, (city + 'U.csv')),sep=',', header=None)
     class_statistic(data, city)
     

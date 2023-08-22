@@ -1,3 +1,4 @@
+""" This file generates videos about the route-based localization """
 import os
 import sys
 sys.path.append(os.getcwd())
@@ -23,7 +24,6 @@ def farthest_point_sample(point, feature, npoint):
     for i in range(npoint):
         centroids[i] = farthest
         centroid = xyz[farthest, :]
-        # dist = np.sum((xyz - centroid) ** 2, -1)
         dist = -2 * np.matmul(xyz, centroid)
         dist += xyz2
         dist +=  np.sum(centroid ** 2, -1)
@@ -39,8 +39,8 @@ if __name__ == "__main__":
     # load panorama 
     data_path = 'datasets'
     city = 'manhattan'
-    area = 'unionsquare5kU'    
-    save_for_vis = sio.loadmat('us_vis.mat')
+    area = 'unionsquare5kU' # change area here
+    save_for_vis = sio.loadmat(area+'_vis.mat')
     gt_frame = save_for_vis['save_for_vis'][0]
     es_frame = save_for_vis['save_for_vis'][1]
     mes_frame = save_for_vis['save_for_vis'][2]
@@ -69,8 +69,6 @@ if __name__ == "__main__":
     tile_array = []
     for idx in gt_frame:
         tile_path = os.path.join('video', area, str(idx)+'_gt.jpg')
-        # global_idx = info2[idx][1] 
-        # tile_path = os.path.join('datasets', 'tiles_'+city+'_2019', 'z18', str(global_idx).zfill(5) + '.png')
         tile = cv2.imread(tile_path)
         tile_array.append(tile)
 
@@ -83,8 +81,6 @@ if __name__ == "__main__":
     tile_array = []
     for idx in es_frame:
         tile_path = os.path.join('video', area, str(idx)+'_es.jpg')
-        # global_idx = info2[idx][1] 
-        # tile_path = os.path.join('datasets', 'tiles_'+city+'_2019', 'z18', str(global_idx).zfill(5) + '.png')
         tile = cv2.imread(tile_path)
         tile_array.append(tile)
 
@@ -97,8 +93,6 @@ if __name__ == "__main__":
     tile_array = []
     for idx in mes_frame:
         tile_path = os.path.join('video', area, str(idx)+'_mes.jpg')
-        # global_idx = info2[idx][1] 
-        # tile_path = os.path.join('datasets', 'tiles_'+city+'_2019', 'z18', str(global_idx).zfill(5) + '.png')
         tile = cv2.imread(tile_path)
         tile_array.append(tile)
 

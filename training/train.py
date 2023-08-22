@@ -1,4 +1,4 @@
-# The main code structure is modified from https://github.com/jac99/MinkLocMultimodal
+""" The main code structure is modified from https://github.com/jac99/MinkLocMultimodal """
 import os
 cpu_num = 1
 os.environ ['OMP_NUM_THREADS'] = str(cpu_num)
@@ -13,10 +13,10 @@ import argparse
 import torch
 import numpy as np
 import random
-from training_pickle.trainer_sam import do_train
+from training.trainer_sam import do_train
 from config.utils import Params, get_datetime
 from data.dataset_utils_pickle import make_dataloaders
-from training_pickle.distributed_utils import init_distributed_mode
+from training.distributed_utils import init_distributed_mode
 
 def seed_all(random_seed):
     torch.manual_seed(random_seed)
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     parser.set_defaults(model2d_pano='resnet_safa')
     parser.set_defaults(loss='MultiInfoNCELoss')
     parser.set_defaults(fuse='2to3')
-    parser.set_defaults(optimizer='ASAM')
+    parser.set_defaults(optimizer='SAM')
 
     args = parser.parse_args()
     seed_all(args.seed)

@@ -4,10 +4,10 @@ import torch
 from torch.utils.data import DataLoader
 
 from data.augmentation_simple import TrainTransform, ValTransform, TrainRGBTransform, ValRGBTransform, TrainTileTransform, ValTileTransform
-from config.utils import MinkLocParams
+from config.utils import Params
 from data.streetlearn_no_mc import StreetLearnDataset
 
-def make_datasets(params: MinkLocParams):
+def make_datasets(params: Params):
     # Create training and validation datasets
     datasets = {}
 
@@ -99,13 +99,7 @@ def make_collate_fn_torch(dataset: StreetLearnDataset):
     return collate_fn
 
 
-def make_dataloaders(params: MinkLocParams):
-    """
-    Create training and validation dataloaders that return groups of k=2 similar elements
-    :param train_params:
-    :param model_params:
-    :return:
-    """
+def make_dataloaders(params: Params):
     datasets = make_datasets(params)
     nw = min([os.cpu_count(), params.batch_size if params.batch_size > 1 else 0, 8])  # number of workers
     # nw = 0 # for cpu debug

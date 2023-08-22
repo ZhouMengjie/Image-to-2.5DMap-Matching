@@ -4,7 +4,6 @@ import time
 
 class ModelParams:
     def __init__(self, img_size, tile_size, args):
-        self.model_params_path = model_params_path
         self.img_size = img_size
         self.tile_size = tile_size
         self.model3d = args.model3d
@@ -26,13 +25,8 @@ def get_datetime():
 
 class Params:
     def __init__(self, args):
-        """
-        Configuration files
-        :param path: General configuration file
-        """
         assert os.path.exists(args.config), 'Cannot find configuration file: {}'.format(args.config)
         self.params_path = args.config
-        # self.model_params_path = args.model_config
         self.distributed = args.distributed
         self.val_distributed = args.val_distributed
         self.syncBN = args.syncBN
@@ -66,7 +60,6 @@ class Params:
 
         params = config['TRAIN']
         self.batch_size = args.batch_size
-        # Validation batch size is fixed and does not grow
         self.val_batch_size = args.val_batch_size
         self.lr = args.lr
         self.optimizer = args.optimizer

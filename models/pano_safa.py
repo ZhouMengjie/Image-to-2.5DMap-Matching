@@ -2,7 +2,7 @@ import os
 import torch
 import torch.nn as nn
 from torch.nn import init
-from layers.resnet_nets import resnet50, resnet18
+from layers.resnet_nets import resnet50
 from layers.safa import SAFA
 import numpy as np
 
@@ -71,25 +71,17 @@ class Pano_SAFA(torch.nn.Module):
         checkpoint = torch.load(model_file, map_location=lambda storage, loc: storage)
         state_dict = {str.replace(k,'module.',''): v for k,v in checkpoint['state_dict'].items()}
         self.resnet.load_state_dict(state_dict, strict=False)
-        # self.resnet = resnet18(pretrained=True)
         
         in_dim = (img_size//32)**2*2
         self.safa = SAFA(in_dim, sa_num)    
-
-        # in_channels = 512*sa_num    
-        # self.embnet = EmbNet(in_channels, out_channels)
-        # init_weights(self.embnet)
 
     def forward(self, batch):
         x = batch['images']
         feature = self.resnet(x)
         B, C, _, _ = feature.shape
-        # image_feature_map = feature.cpu().numpy()
-        # np.save(os.path.join('results','feature_maps', ('pano3.npy')), image_feature_map)
         f = feature.view(B, C, -1)
         w = self.safa(f) 
         x = torch.matmul(f, w).view(B, -1)
-        # x = self.embnet(x)
         return x, feature    
 
 

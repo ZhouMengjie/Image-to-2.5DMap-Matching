@@ -2,7 +2,7 @@ import os
 import torch
 import torch.nn as nn
 from torch.nn import init
-from layers.resnet_nets import resnet50, resnet18
+from layers.resnet_nets import resnet50
 
 
 def init_weights(net, init_type='normal', init_gain=0.02):
@@ -47,10 +47,6 @@ class EmbNet(nn.Module):
         self.fc2 = nn.Linear(1024,embedding_dim)
         self.bn1 = nn.BatchNorm1d(num_features=inSize)
         self.bn2 = nn.BatchNorm1d(num_features=1024)
-        # self.fc1 = nn.Linear(inSize, 512)
-        # self.fc2 = nn.Linear(512,embedding_dim)
-        # self.bn1 = nn.BatchNorm1d(num_features=inSize)
-        # self.bn2 = nn.BatchNorm1d(num_features=512)
 
 
     def forward(self,x):
@@ -74,7 +70,6 @@ class Pano(torch.nn.Module):
         checkpoint = torch.load(model_file, map_location=lambda storage, loc: storage)
         state_dict = {str.replace(k,'module.',''): v for k,v in checkpoint['state_dict'].items()}
         self.resnet.load_state_dict(state_dict, strict=False)
-        # self.resnet = resnet18(pretrained=True)
         
         self.embnet = EmbNet(img_size, out_channels)
         init_weights(self.embnet)

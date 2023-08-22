@@ -1,3 +1,7 @@
+""" This file achieves the performance comparison between single-modal and multi-modal method on the route-based localization task. 
+    First, run culling_plot.m/mes_plot.m/bar.m in https://github.com/ZhouMengjie/you-are-here
+    Then, save the relevant .mat files in the ./exps folder
+"""
 import os
 import sys
 sys.path.append(os.getcwd())
@@ -42,7 +46,7 @@ if __name__ == "__main__":
     plt.ylim(60,101)
     plt.legend(loc=4,fontsize=18)
     plt.grid(linestyle='dashed', linewidth=0.5)
-    plt.savefig(os.path.join('results','MES.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join('results','mes.pdf'),bbox_inches='tight')
     plt.show()
 
 
@@ -78,7 +82,7 @@ if __name__ == "__main__":
     plt.ylim(60,101)
     plt.legend(loc=4,fontsize=18)
     plt.grid(linestyle='dashed', linewidth=0.5)
-    plt.savefig(os.path.join('results','Culling.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join('results','culling.pdf'),bbox_inches='tight')
     plt.show()
 
 

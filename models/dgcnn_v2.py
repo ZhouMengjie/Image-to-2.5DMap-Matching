@@ -42,8 +42,9 @@ def get_graph_feature(x, k=20, idx=None, dim9=False):
 
 
 class DGCNN(nn.Module):
-    def __init__(self, out_channel=256, in_channel=3, embedding_channel=2048, nneighbor=20):
+    def __init__(self, out_channel=256, in_channel=3, nneighbor=20):
         super(DGCNN, self).__init__()
+        embedding_channel = out_channel // 2
         self.k = nneighbor
         if in_channel > 3: # use feature
             in_channel = in_channel - 3
@@ -104,10 +105,6 @@ class DGCNN(nn.Module):
         x = torch.cat((x1, x2, x3, x4), dim=1)  # (batch_size, 64+64+128+256, num_points)
 
         feature = self.conv5(x)                 # (batch_size, 64+64+128+256, num_points) -> (batch_size, emb_dims, num_points)
-        # point_feature_map = feature.cpu().numpy()
-        # np.save(os.path.join('results','feature_maps', ('point3.npy')), point_feature_map)        
-        # xyz_feature_map = xyz.cpu().numpy()
-        # np.save(os.path.join('results','feature_maps', ('xyz3.npy')), xyz_feature_map)                       
         x1 = F.adaptive_max_pool1d(feature, 1).view(batch_size, -1)           # (batch_size, emb_dims, num_points) -> (batch_size, emb_dims)
         x2 = F.adaptive_avg_pool1d(feature, 1).view(batch_size, -1)           # (batch_size, emb_dims, num_points) -> (batch_size, emb_dims)
         x = torch.cat((x1, x2), 1)              # (batch_size, emb_dims*2)

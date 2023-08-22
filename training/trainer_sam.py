@@ -1,8 +1,3 @@
-# Author: Jacek Komorowski
-# Warsaw University of Technology
-
-# Train on Oxford dataset (from PointNetVLAD paper) using BatchHard hard negative mining.
-
 import os
 import sys
 import numpy as np
@@ -11,13 +6,13 @@ import pickle
 import pathlib
 import torch.distributed as dist
 import tempfile
-from training_pickle.distributed_utils import cleanup, reduce_value
+from training.distributed_utils import cleanup, reduce_value
 from eval.evaluate_pickle import get_recall
 
 from torch.utils.tensorboard import SummaryWriter
 
-from config.utils import MinkLocParams, get_datetime
-from models.loss_v2 import make_loss
+from config.utils import Params, get_datetime
+from models.loss import make_loss
 from models.sam import SAM
 from models.model_factory import model_factory
 
@@ -37,17 +32,7 @@ def tensors_to_numbers(stats, device, distributed=False):
     return stats
 
 
-def linear_annealing(init, fin, step, annealing_steps):
-    """Linear annealing of a parameter."""
-    if annealing_steps == 0:
-        return fin
-    assert fin > init
-    delta = fin - init
-    annealed = min(init + delta * step / annealing_steps, fin)
-    return annealed
-
-
-def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
+def do_train(dataloaders, train_sampler, params: Params, use_amp=False):
     # Create model class
     model = model_factory(params)
    
@@ -61,10 +46,9 @@ def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
             model_name = os.path.split(params.load_weights)[1]
             model_name = model_name.split('.')[0] + '_' + s
         else:
-            model_name = 'model_' + params.model_params.model + '_' + s
-        weights_path = create_folder('weights3090')
+            model_name = 'model_' + s
+        weights_path = create_folder('weights')
         model_pathname = os.path.join(weights_path, model_name)
-        # model_pathname = os.path.dirname('/cpfs01/shared/MMG/MMG_hdd/zhoumengjie/weights/'+model_name+'/')        
         print('Model device: {}'.format(device))
         print('Model name: {}'.format(model_name))
         if hasattr(model, 'print_info'):
@@ -76,7 +60,6 @@ def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
         # Initialize TensorBoard writer
         log_path = create_folder('tf_logs')
         logdir = os.path.join(log_path, model_name)
-        # logdir = os.path.dirname('/cpfs01/shared/MMG/MMG_hdd/zhoumengjie/tf_logs/'+model_name+'/')
         writer = SummaryWriter(logdir)
                
     if params.load_weights is not None:
@@ -129,17 +112,6 @@ def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
         model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[params.gpu])
 
     params_l = []
-    # if isinstance(model, MinkLocMultimodal):
-    #     # Different LR for image feature extractor (pretrained ResNet)
-    #     if model.image_fe is not None:
-    #         params_l.append({'params': model.image_fe.parameters(), 'lr': params.image_lr})
-    #     if model.cloud_fe is not None:
-    #         params_l.append({'params': model.cloud_fe.parameters(), 'lr': params.lr})
-    #     if model.final_block is not None:
-    #         params_l.append({'params': model.final_net.parameters(), 'lr': params.lr})
-    # else:
-    #     # All parameters use the same lr
-    #     params_l.append({'params': model.parameters(), 'lr': params.lr})
     params_l.append({'params': model.parameters(), 'initial_lr':params.lr, 'lr': params.lr})
 
     # Training elements
@@ -160,7 +132,7 @@ def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
             optimizer = torch.optim.AdamW(params_l)
         else:
             optimizer = torch.optim.AdamW(params_l, weight_decay=params.weight_decay, amsgrad=False)
-    elif params.optimizer == 'ASAM':
+    elif params.optimizer == 'SAM':
         base_optimizer = torch.optim.AdamW
         optimizer = SAM(params_l, base_optimizer, scaler, weight_decay=params.weight_decay, amsgrad=False, rho=2.5, adaptive=True)
     else:
@@ -192,7 +164,6 @@ def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
     # Training statistics
     stats = {'train': [], 'val': []}
     best_top1 = 0
-    best_top1p = 0
 
     for epoch in range(params.epoch, params.epochs + 1):
         if params.distributed:
@@ -240,11 +211,6 @@ def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
                 epoch_model_path = model_pathname + '_best_top1.pth'
                 state = {'model': model.state_dict(), 'optimizer': optimizer.state_dict(), 'epoch':epoch, 'best_top1':best_top1}
                 torch.save(state, epoch_model_path)
-            # if val_stats['one_percent_recall'] > best_top1p:
-            #     best_top1p = val_stats['one_percent_recall']
-            #     epoch_model_path = model_pathname + '_best_top1p.pth'
-            #     state = {'model': model.state_dict(), 'optimizer': optimizer.state_dict(), 'epoch':epoch, 'best_top1p':best_top1p}
-            #     torch.save(state, epoch_model_path)
 
             loss_metrics = {'train': stats['train'][-1]['loss']}
             writer.add_scalars('Loss', loss_metrics, epoch)
@@ -266,7 +232,7 @@ def do_train(dataloaders, train_sampler, params: MinkLocParams, use_amp=False):
 
     cleanup()
 
-def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params: MinkLocParams, epoch, scaler, use_amp):
+def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params: Params, epoch, scaler, use_amp):
     model.train()
     count_batches = 0
     running_stats = []  # running stats for the current epoch
@@ -280,20 +246,11 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params: MinkL
         labels = batch['labels']
         positives_mask = batch['positives_mask']
         negatives_mask = batch['negatives_mask']
-        n_positives = torch.sum(positives_mask).item()
-        n_negatives = torch.sum(negatives_mask).item()
-        # if n_positives == 32 or n_negatives == 0:
-        #     # Skip a batch without positives or negatives
-        #     # print(negatives_mask)
-        #     # print(negatives_mask.shape)
-        #     print(n_negatives)
-        #     # print('WARNING: Skipping batch without positive or negative examples')
-        #     continue
 
         optimizer.zero_grad()
         # Compute embeddings of all elements
         with torch.cuda.amp.autocast(enabled=use_amp):
-            embeddings, _, _ = model(batch)
+            embeddings = model(batch)
             loss, temp_stats, _ = loss_fn(embeddings, positives_mask, negatives_mask, labels)  
 
         scaler.scale(loss).backward()           
@@ -307,7 +264,7 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params: MinkL
         else:
             optimizer.first_step(zero_grad=True)
             with torch.cuda.amp.autocast(enabled=use_amp):   
-                embeddings, _, _ = model(batch)
+                embeddings = model(batch)
                 loss, temp_stats, _ = loss_fn(embeddings, positives_mask, negatives_mask, labels) 
             # loss.backward()
             scaler.scale(loss).backward()  
@@ -319,44 +276,8 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params: MinkL
         if not torch.isfinite(loss):
             print('WARNING: non-finite loss, ending training ', loss)
             sys.exit(1)
-
-        #----------save train data for visualization check-------------#
-        # if (epoch == 1 and count_batches == 1) or (epoch ==  47 and count_batches == 163):
-        #     if 'coords' in batch:
-        # coords = batch['coords'].cpu().numpy()
-        # features = batch['features'].cpu().numpy()
-        # np.save(os.path.join('train_batch', ('coords.npy')), coords)
-        # np.save(os.path.join('train_batch', ('features.npy')), features)
-        #     if 'images' in batch:   
-        #         images = batch['images'].cpu().numpy()
-        #         np.save(os.path.join('train_batch', ('images_'+str(count_batches)+'_'+str(params.rank)+'.npy')), images)
-        #     if 'tiles' in batch:
-        # tiles = batch['tiles'].cpu().numpy()
-        # np.save(os.path.join('train_batch', ('tiles.npy')), tiles)
-        # np.save(os.path.join('train_batch', ('labels.npy')), labels.cpu().numpy())
-        #----------save train data for visualization check-------------#
         
         if params.log:
-            # cloud = embeddings['cloud_embedding']
-            # image = embeddings['image_embedding']
-            # print('Cloud Data Shape is {}'.format(batch['coords'].shape))
-            # print('Feature Data Shape is {}'.format(batch['features'].shape))
-            # print('Image Data Shape is {}'.format(batch['images'].shape))
-            # print('Embedding is {}'.format(embeddings))
-            # print('Cloud Embedding Statistic is min[{}], max[{}], mean[{}], var[{}]'.format(torch.min(cloud), 
-            #         torch.max(cloud), torch.mean(cloud), torch.var(cloud)))
-            # print('Image Embedding Statistic is min[{}], max[{}], mean[{}], var[{}]'.format(torch.min(image), 
-            #         torch.max(image), torch.mean(image), torch.var(image)))  
-            # print('Epoch[{0}-{1}]\t'
-            #     'loss 1: {img_map_loss:.4f}\t'
-            #     'loss 2: {map_loss:.4f}\t'
-            #     'loss 3: {image_loss:.4f}\t'
-            #     'total loss: {total_loss:.4f}\t'
-            #     'batch: {labels}'.format( # check shuffle
-            #     epoch, count_batches, img_map_loss=batch_stats['img_map_loss'],
-            #     map_loss=batch_stats['map_loss'], image_loss=batch_stats['image_loss'], 
-            #     total_loss=batch_stats['loss'], labels=labels))
-            
             print('Epoch[{0}-{1}]\t'
                 'loss 1: {img_map_loss:.4f}\t'
                 'loss 2: {map_loss:.4f}\t'
@@ -374,7 +295,7 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params: MinkL
     return running_stats 
 
 
-def validate(model, dataloader, device, params:MinkLocParams, epoch):
+def validate(model, dataloader, device, params:Params, epoch):
     model.eval()
     database_embeddings = []
     query_embeddings = []

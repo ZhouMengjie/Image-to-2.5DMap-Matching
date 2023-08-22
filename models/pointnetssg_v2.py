@@ -1,3 +1,4 @@
+""" This implementation is modified from https://github.com/yanx27/Pointnet_Pointnet2_pytorch """
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -5,16 +6,14 @@ from models.pt_utils import sample_and_group, sample_and_group_all
 
 
 class PointNetSSG(nn.Module):
-    def __init__(self,out_channel=256, normal_channel=False, npoint=4096, nneighbor=16):
+    def __init__(self,out_channel, normal_channel=False, npoint=4096, nneighbor=16):
         super(PointNetSSG, self).__init__()
+        embedding_channel = out_channel // 2
         in_channel = 27 if normal_channel else 3
         self.normal_channel = normal_channel
-        # self.sa1 = PointNetSetAbstraction(npoint=npoint // 4, radius=None, nsample=nneighbor, in_channel=in_channel, mlp=[64, 64, 128], group_all=False, knn=True)
-        # self.sa2 = PointNetSetAbstraction(npoint=npoint // 4 ** 2, radius=None, nsample=nneighbor, in_channel=128 + 3, mlp=[128, 128, 256], group_all=False, knn=True)
-        # self.sa3 = PointNetSetAbstraction(npoint=npoint // 4 ** 3, radius=None, nsample=nneighbor, in_channel=256 + 3, mlp=[256, 512, 1024], group_all=False, knn=True)
         self.sa1 = PointNetSetAbstraction(npoint=512, radius=0.2, nsample=32, in_channel=in_channel, mlp=[64, 64, 128], group_all=False, knn=False)
         self.sa2 = PointNetSetAbstraction(npoint=128, radius=0.4, nsample=64, in_channel=128 + 3, mlp=[128, 128, 256], group_all=False, knn=False)
-        self.sa3 = PointNetSetAbstraction(npoint=None, radius=None, nsample=None, in_channel=256 + 3, mlp=[256, 512, 2048], group_all=True, knn=False)
+        self.sa3 = PointNetSetAbstraction(npoint=None, radius=None, nsample=None, in_channel=256 + 3, mlp=[256, 512, embedding_channel], group_all=True, knn=False)
 
     def forward(self, batch):
         xyz = batch['coords']

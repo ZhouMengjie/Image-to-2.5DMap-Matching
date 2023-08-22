@@ -1,9 +1,7 @@
+""" This implementation is modified from https://github.com/qq456cvb/Point-Transformers """
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from einops import rearrange
-from tnn.helpers import get_activation_fn, get_norm_fn
-from tnn.tno import Tno
 import numpy as np
 from models.pt_utils import sample_and_group, sample_and_group_all, square_distance, index_points
 
@@ -41,17 +39,13 @@ class Backbone(nn.Module):
             nn.Linear(32, 32)
         )
         self.transformer1 = TransformerBlock(32, transformer_dim, nneighbor)   
-        # self.transformer1 = GTUBlock(embed_dim=32,num_heads=1,expand_ratio=2,rpe_layers=1)
-        # self.transformer1 = GTUBlock2D(nneighbor,embed_dim=32,num_heads=1,expand_ratio=2,rpe_layers=1)
-
+       
         self.transition_downs = nn.ModuleList()
         self.transformers = nn.ModuleList()
         for i in range(nblocks):
             channel = 32 * 2 ** (i + 1)
             self.transition_downs.append(TransitionDown(npoint // 4 ** (i + 1), nneighbor, [channel // 2 + 3, channel, channel]))
             self.transformers.append(TransformerBlock(channel, transformer_dim, nneighbor))
-            # self.transformers.append(GTUBlock(embed_dim=channel,num_heads=1,expand_ratio=2,rpe_layers=1))
-            # self.transformers.append(GTUBlock2D(nneighbor,embed_dim=channel,num_heads=1,expand_ratio=2,rpe_layers=1))
         self.nblocks = nblocks
     
     def forward(self, x):
@@ -151,7 +145,6 @@ class TransformerBlock(nn.Module):
         pos_enc = self.fc_delta(xyz[:, :, None] - knn_xyz)  # b x n x k x f
         
         # -----------  vector attention -------- # 
-        # 重点在这里，使用vector attention，并且引入postion encoding #
         attn = self.fc_gamma(q[:, :, None] - k + pos_enc) # b x n x k x f
         attn = F.softmax(attn / np.sqrt(k.size(-1)), dim=-2)  # b x n x k x f
         res = torch.einsum('bmnf,bmnf->bmf', attn, v + pos_enc) # b x n x f
@@ -161,138 +154,6 @@ class TransformerBlock(nn.Module):
         return res, attn
 
 
-class GTUBlock(nn.Module):
-    def __init__(self, embed_dim, num_heads, bias=True, act_fun="silu", causal=False, 
-                expand_ratio=3, resi_param=False, use_norm=True, norm_type="simplermsnorm",
-                use_decay=False, use_multi_decay=False, rpe_layers=3, rpe_embedding=512, 
-                rpe_act="relu", normalize=False, par_type=1, residual=False, gamma=0.99, act_type="none"):
-        super().__init__()
-        self.embed_dim = embed_dim
-        self.expand_ratio = expand_ratio
-        self.resi_param = resi_param
-        self.num_heads = num_heads
-        self.normalize = normalize
-        rpe_embedding = int(min(embed_dim / 8, 32))        
-        
-        if self.resi_param:
-            self.d = nn.Parameter(torch.randn(embed_dim))
-
-        d1 = int(self.expand_ratio * embed_dim)
-        d1 = (d1 // self.num_heads) * self.num_heads
-        self.head_dim = d1 // num_heads
-        # linear projection
-        self.v_proj = nn.Linear(embed_dim, d1, bias=bias)
-        self.u_proj = nn.Linear(embed_dim, d1, bias=bias)
-        self.o = nn.Linear(d1, embed_dim, bias=bias)
-        self.act = get_activation_fn(act_fun)
-        # tno
-        self.toep = Tno(h=num_heads, dim=self.head_dim, rpe_dim=rpe_embedding, causal=causal, 
-                        use_decay=use_decay, use_multi_decay=use_multi_decay, residual=residual,
-                        act=rpe_act, par_type=par_type, gamma=gamma, bias=bias, act_type=act_type,
-                        layers=rpe_layers, norm_type=norm_type)
-        # norm
-        self.norm_type = norm_type
-        self.use_norm = use_norm
-        if self.use_norm:
-            self.norm = get_norm_fn(self.norm_type)(d1)
-
-        # 不同点：trans_conv参考pct
-        # self.norm = get_norm_fn(self.norm_type)(d1)        
-        # self.trans_conv = nn.Linear(embed_dim, embed_dim, 1)
-    
-    def forward(self, xyz, x):
-        # b, n, d -> b, n, d
-        # x: b, h, w, d
-        num_heads = self.num_heads
-
-        x, shortcut = self.norm(x), x
-
-        u = self.act(self.u_proj(x)) # b, n, d1
-        v = self.act(self.v_proj(x))
-        # reshape
-        v = rearrange(v, 'b n (h d) -> b h n d', h=num_heads) # b, h, n, d1
-        output = self.toep(v, dim=-2, normalize=self.normalize)
-        output = rearrange(output, 'b h n d -> b n (h d)') # b, n, h*d1
-        output = u * output
-        output = self.o(output) # b, n, d
-
-        x = output + shortcut
-        
-        # 不同点：参考pct, 该操作在pct里被成为offset-attention
-        # 文章说该操作sharpens the attention weights and reduce the influence of noise
-        # pct的norm使用的是batchnorm
-        # x_r = self.act(self.norm(self.trans_conv(x - output))) # offset-attention
-        # x = x + x_r  
-              
-        return x, output
-
-class GTUBlock2D(nn.Module):
-    def __init__(self, nneighbor, embed_dim, num_heads, bias=True, act_fun="silu", causal=False, 
-                expand_ratio=3, resi_param=False, use_norm=True, norm_type="simplermsnorm",
-                use_decay=False, use_multi_decay=False, rpe_layers=3, rpe_embedding=512, 
-                rpe_act="relu", normalize=False, par_type=1, residual=False, gamma=0.99, act_type="none"):
-        super().__init__()
-        self.k = nneighbor
-        self.embed_dim = embed_dim
-        self.expand_ratio = expand_ratio
-        self.resi_param = resi_param
-        self.num_heads = num_heads
-        self.normalize = normalize
-        rpe_embedding = int(min(embed_dim / 8, 32))        
-        
-        if self.resi_param:
-            self.d = nn.Parameter(torch.randn(embed_dim))
-
-        d1 = int(self.expand_ratio * embed_dim)
-        d1 = (d1 // self.num_heads) * self.num_heads
-        self.head_dim = d1 // num_heads
-        # linear projection
-        self.v_proj = nn.Linear(embed_dim, d1, bias=bias)
-        self.u_proj = nn.Linear(embed_dim, d1, bias=bias)
-        self.o = nn.Linear(d1, embed_dim, bias=bias)
-        self.act = get_activation_fn(act_fun)
-        # tno
-        self.toep1 = Tno(h=num_heads, dim=self.head_dim, rpe_dim=rpe_embedding, causal=causal, 
-                        use_decay=use_decay, use_multi_decay=use_multi_decay, residual=residual,
-                        act=rpe_act, par_type=par_type, gamma=gamma, bias=bias, act_type=act_type,
-                        layers=rpe_layers, norm_type=norm_type)
-        self.toep2 = Tno(h=num_heads, dim=self.head_dim, rpe_dim=rpe_embedding, causal=causal, 
-                use_decay=use_decay, use_multi_decay=use_multi_decay, residual=residual,
-                act=rpe_act, par_type=par_type, gamma=gamma, bias=bias, act_type=act_type,
-                layers=rpe_layers, norm_type=norm_type)
-        # norm
-        self.norm_type = norm_type
-        self.use_norm = use_norm
-        if self.use_norm:
-            self.norm = get_norm_fn(self.norm_type)(d1)
-    
-    def forward(self, xyz, x):
-        # xyz -> b, n, 3
-        # x -> b, n, d
-        num_heads = self.num_heads
-
-        dists = square_distance(xyz, xyz)
-        knn_idx = dists.argsort()[:, :, :self.k]  # b, n, k
-        x = index_points(x, knn_idx) # b, n, k, d
-
-        x, shortcut = self.norm(x), x 
-
-        u = self.act(self.u_proj(x)) # b, n, k, d1
-        v = self.act(self.v_proj(x))
-        # reshape
-        v = rearrange(v, 'b n m (h d) -> b h n m d', h=num_heads)
-        output = self.toep2(v, dim=-3, normalize=self.normalize) + self.toep1(v, dim=-2, normalize=self.normalize)
-        # output = self.toep1(v, dim=-2, normalize=self.normalize)
-        output = rearrange(output, 'b h n m d -> b n m (h d)')
-
-        output = u * output
-        output = self.o(output) # b, n, k, d
-        x = output + shortcut
-
-        # max pooling
-        x = torch.max(x, 2)[0] # b, n, d
-                      
-        return x, output
 
 
     

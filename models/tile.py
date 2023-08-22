@@ -1,4 +1,3 @@
-"This model is the map sub-network used only for testing, not training "
 import os
 import torch
 import torch.nn as nn
@@ -65,7 +64,6 @@ class EmbNet(nn.Module):
 class Tile(torch.nn.Module):
     def __init__(self, out_channels, tile_size, use_polar=False):
         super(Tile, self).__init__()
-        # self.resnet = resnet18(pretrained=True)
         self.resnet = resnet18()
         # Load weights
         model_file = 'resnet18-5c106cde.pth'

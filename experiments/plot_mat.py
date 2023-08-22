@@ -1,4 +1,4 @@
-""" This file achieves the performance comparison between single-modal and multi-modal method on the route-based localization task. 
+""" This file achieves the performance comparison between single-modal and multi-modal method on the route-based localization task
     First, run culling_plot.m/mes_plot.m/bar.m in https://github.com/ZhouMengjie/you-are-here
     Then, save the relevant .mat files in the ./exps folder
 """

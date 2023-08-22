@@ -1,7 +1,6 @@
 """ This implementation is modified from https://github.com/qq456cvb/Point-Transformers """
 import torch
 import torch.nn as nn
-from einops import rearrange
 from models.pt_utils import farthest_point_sample, index_points, square_distance
 
 

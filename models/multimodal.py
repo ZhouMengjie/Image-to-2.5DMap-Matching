@@ -1,4 +1,4 @@
-""" Refer to the https://github.com/MCG-NJU/CamLiFlow for the implementation of The Conv2dNormRelu, Conv1dNormRelu and FusionAwareInterp """
+""" Refer to the https://github.com/MCG-NJU/CamLiFlow for the implementation of Conv2dNormRelu, Conv1dNormRelu and FusionAwareInterp """
 import os
 import numpy as np
 import torch

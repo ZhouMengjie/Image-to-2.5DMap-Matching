@@ -1,4 +1,4 @@
-""" This file is used to obtain Top-5 retrieved maps given a query panoramic image """
+""" This file is used to obtain top-5 retrieved maps given a query panoramic image """
 import os
 import sys
 sys.path.append(os.getcwd())

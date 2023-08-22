@@ -1,8 +1,25 @@
-# Image-to-2.5DMap-Matching
+# Image-based Geolocalization by Ground-to-2.5D Map Matching
+
+## Data Preperation
+
+## Environment
+
+## Training
+
+## Evaluation
+
+## Weights
+
+## Results
+
+## Disclaimer
+We make no claims about the stability or usability of the code provided in this repository.
+We provide no warranty of any kind, and accept no liability for damages of any kind that result from the use of this code.
+
+## Citation
 
 
 
-https://github.com/ZhouMengjie/Image-to-2.5DMap-Matching/assets/43503334/66344367-54cc-46b3-86cd-cc439df9ae59
 
 
 

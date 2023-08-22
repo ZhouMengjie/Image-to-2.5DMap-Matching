@@ -3,6 +3,9 @@ This repository is an official implementation of our latest work:
 - [Image-based Geolocalization by Ground-to-2.5D Map Matching](https://arxiv.org/abs/2308.05993 "Image-based Geolocalization by Ground-to-2.5D Map Matching")
 
 The main task of our work involves querying a ground-view image in relation to a large-scale and highly detailed georeferenced map, which consists of 2.5D structural map models and 2D aerial-view map images. An illustration of the work is shown below.
+<video id="video" controls="" preload="none" poster="封面">
+      <source id="mp4" src="mp4格式视频" type="video/mp4">
+</videos>
 
 ## Data Preperation
 We provide a [large-scale ground-to-2.5D map geolocalization dataset](https://github.com/ZhouMengjie/2-5DMap-Dataset):
@@ -51,10 +54,12 @@ sh evals.sh
 
 ### Weights
 - Pretrained weights can be required via this [link](https://drive.google.com/drive/folders/17dWlMpof-ii6eV1KswQdSh5p3SrpIAUm?usp=sharing).
-- The naming convention for each checkpoint is "model2d_model3d_optimizer_fusion.pth".
+- The naming convention of each checkpoint is "model2d_model3d_optimizer_fusion.pth".
 
 ## Results
-Code to plot figures and generate videos can be found in ./experiments.
+- Code to plot figures and generate videos can be found in ./experiments.
+- Here, we show the performance comparison between single-modal and multi-modal methods in the single-image based localization task.
+- 
 
 ## Disclaimer
 We make no claims about the stability or usability of the code provided in this repository.

@@ -56,7 +56,7 @@ sh evals.sh
 ## Results
 - Code to plot figures and generate videos can be found in ./experiments.
 - Here, we show the performance comparison between single-modal and multi-modal methods in the single-image based localization task.
-- 
+- Video shows the dynamic localization procedures can be watched in supplementrary.mp4.
 
 ## Disclaimer
 We make no claims about the stability or usability of the code provided in this repository.

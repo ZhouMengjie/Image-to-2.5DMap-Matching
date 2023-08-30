@@ -33,6 +33,24 @@ Here are the commands to configure your own environment:
 ```
 conda env create -f environment.yml
 ```
+You can also choose to install the necessary packages individually:
+```
+conda create -n env_name python=3.8
+pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+pip3 install colour_demosaicing==0.2.1
+pip3 install pytorch-metric-learning==1.3.0
+pip3 install tensorflow==2.8.0
+pip3 install pyyaml
+pip3 install pandas==1.4.2
+pip3 install opencv-python==4.5.5.64
+pip3 install tqdm==4.64.0
+pip3 install sklearn==0.0
+pip3 install matplotlib==3.4.3
+pip3 install protobuf==3.20.0
+pip3 install timm==0.6.13
+pip3 install open3d==0.15.1
+```
+
 ### Training
 ```
 sh trains.sh

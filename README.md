@@ -2,7 +2,8 @@
 This repository is an official implementation of our latest work: 
 - [Image-based Geolocalization by Ground-to-2.5D Map Matching](https://arxiv.org/abs/2308.05993 "Image-based Geolocalization by Ground-to-2.5D Map Matching")
 
-The main task of our work involves querying a ground-view image in relation to a large-scale and highly detailed georeferenced map, which consists of 2.5D structural map models and 2D aerial-view map images. An illustration of the work is shown in video.mp4.
+The main task of our work involves querying a ground-view image in relation to a large-scale and highly detailed georeferenced map, which consists of 2.5D structural map models and 2D aerial-view map images. An illustration of the task is shown below. Besides, an animation can be viewed in video.mp4.
+![introduction](https://github.com/ZhouMengjie/Image-to-2.5DMap-Matching/assets/43503334/cceba36e-b519-4769-8966-9020178128d2)
 
 
 ## Data Preperation
@@ -27,7 +28,9 @@ We provide a [large-scale ground-to-2.5D map geolocalization dataset](https://gi
 ```
 
 ## Codes
-We offer a Python implementation to learn location embeddings of panoramic images and multi-modal maps.
+We offer a Python implementation to learn location embeddings of panoramic images and multi-modal maps. An illustration of the network architecture is shown below. 
+![model](https://github.com/ZhouMengjie/Image-to-2.5DMap-Matching/assets/43503334/57da7f69-8751-45dc-8d35-bd6bafcdd78a)
+
 
 ### Prerequisite
 Here are the commands to configure your own environment:

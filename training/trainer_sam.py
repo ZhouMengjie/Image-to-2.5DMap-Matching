@@ -304,7 +304,7 @@ def validate(model, dataloader, device, params:Params, epoch):
         count_batches += 1
         with torch.no_grad():
             batch = {e: batch[e].to(device) for e in batch}
-            x, _, _ = model(batch)
+            x = model(batch)
             cloud_embedding = x['embedding']
             image_embedding = x['image_embedding']
             if params.normalize_embeddings:

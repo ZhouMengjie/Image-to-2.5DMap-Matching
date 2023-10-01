@@ -15,7 +15,7 @@ from config.utils import Params, get_datetime
 from models.model_factory import model_factory
 from torch.utils.data import DataLoader
 from data.augmentation_simple import ValTransform, ValRGBTransform, ValTileTransform 
-from data.streetlearn_no_mc import StreetLearnDataset
+from data.streetlearn_pickle import StreetLearnDataset
 from data.dataset_utils_pickle import make_collate_fn_torch
 from sklearn.decomposition import PCA
 
@@ -70,7 +70,7 @@ def evaluate(model, device, params, exp_name, pca_dim):
                 torch.cuda.synchronize()
                 torch.cuda.reset_max_memory_allocated()
                 start = time.time()
-                x, _, _ = model(batch)
+                x = model(batch)
                 torch.cuda.synchronize()
                 end = time.time()
                 memory = torch.cuda.max_memory_allocated(device=device)
@@ -253,6 +253,8 @@ if __name__ == "__main__":
 
     savedStdout = sys.stdout
     s = get_datetime()
+    if not os.path.exists('test_logs'):
+        os.mkdir('test_logs')
     print_log = open(os.path.join('test_logs',s+'.txt'),'w')
     sys.stdout = print_log
 
@@ -298,9 +300,8 @@ if __name__ == "__main__":
     print_eval_stats(stats)
     
     # Append key experimental metrics to experiment summary file
-    model_params_name = os.path.split(params.model_params.model_params_path)[1]
     config_name = os.path.split(params.params_path)[1]
     model_name = os.path.split(params.load_weights)[1]
-    prefix = "{}, {}, {}".format(model_params_name, config_name, model_name)
+    prefix = "{}, {}".format(config_name, model_name)
     export_eval_stats("experiment_results.txt", prefix, stats)
 

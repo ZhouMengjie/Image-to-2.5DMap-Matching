@@ -81,6 +81,8 @@ if __name__ == '__main__':
     
     savedStdout = sys.stdout
     s = get_datetime()
+    if not os.path.exists('arun_log'):
+        os.mkdir('arun_log')
     print_log = open(os.path.join('arun_log',s+'.txt'),'w')
     sys.stdout = print_log
 

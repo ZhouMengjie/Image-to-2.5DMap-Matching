@@ -6,7 +6,7 @@ from models.multimodal import Multimodal
 from config.utils import Params
 from models.pointnet_v2 import PointNet
 from models.pointnetssg_v2 import PointNetSSG
-from models.dgcnn_v2 import DGCNN
+from models.dgcnn_fuse import DGCNN
 from models.pt2_v2 import PT2
 from models.pct_v2 import PCT
 from models.tile import Tile

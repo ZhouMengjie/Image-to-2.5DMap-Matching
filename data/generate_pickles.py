@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn.neighbors import KDTree
 import pickle
 import argparse
-from data.streetlearn_no_mc import TrainingTuple
+from data.streetlearn_pickle import TrainingTuple
 
 
 def construct_query_dict(query_filepath, output_filepath, ind_nn_r, ind_r_r=50):

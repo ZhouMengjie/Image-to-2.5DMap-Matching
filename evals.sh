@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 CUDA_VISIBLE_DEVICES=0 \
-python eval/evaluate_pickle.py --pc_normalize \
+python eval/feature_extract.py --pc_normalize \
 --model3d dgcnn \
 --model2d_pano resnet_safa \
 --model2d_tile resnet_safa \

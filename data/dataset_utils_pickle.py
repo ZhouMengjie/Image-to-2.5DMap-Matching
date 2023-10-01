@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 
 from data.augmentation_simple import TrainTransform, ValTransform, TrainRGBTransform, ValRGBTransform, TrainTileTransform, ValTileTransform
 from config.utils import Params
-from data.streetlearn_no_mc import StreetLearnDataset
+from data.streetlearn_pickle import StreetLearnDataset
 
 def make_datasets(params: Params):
     # Create training and validation datasets

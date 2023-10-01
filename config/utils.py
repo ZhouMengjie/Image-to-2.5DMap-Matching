@@ -109,10 +109,7 @@ class Params:
         self.eval_files = [e for e in eval_files.split(',')]
 
         # Read model parameters
-        if self.model_params_path is not None:
-            self.model_params = ModelParams(self.img_size, self.tile_size, args)
-        else:
-            self.model_params = None
+        self.model_params = ModelParams(self.img_size, self.tile_size, args)
 
         self._check_params()
 

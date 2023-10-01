@@ -161,8 +161,10 @@ cython_debug/
 
 *.pth
 *.pth.tar
+*.npy
 /datasets/manhattan
 /datasets/pittsburgh
 /datasets/*_2019
 /datasets/*_idx
+/dataset/features/*
 /weights

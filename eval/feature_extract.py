@@ -108,13 +108,11 @@ def evaluate(model, device, params, exp_name, pca_dim):
         pca_query_embeddings = estimator.transform(query_embeddings)
         
         # obtain query and reference embeddings for subsequent localization tasks
-        # pred = {}
-        # pred['ref'] = pca_database_embeddings
-        # pred['qry'] = pca_query_embeddings
-        # model_name = os.path.split(params.load_weights)[1]
-        # model_name = model_name.split('.')[0]
-        # sio.savemat(os.path.join('results', location_name+'_'+model_name+'.mat'), pred)
-
+        model_name = os.path.split(params.load_weights)[1]
+        model_name = model_name.split('.')[0]
+        np.save(os.path.join('datasets', 'features', 'map', location_name+'_'+model_name+'.npy'), database_embeddings)
+        np.save(os.path.join('datasets', 'features', 'pano', location_name+'_'+model_name+'.npy'), query_embeddings)
+   
         recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)   
         ave_recall = recall
         average_similarity = np.mean(similarity)
@@ -253,6 +251,8 @@ if __name__ == "__main__":
 
     savedStdout = sys.stdout
     s = get_datetime()
+    if not os.path.exists('test_logs'):
+        os.mkdir('test_logs')
     print_log = open(os.path.join('test_logs',s+'.txt'),'w')
     sys.stdout = print_log
 
@@ -302,4 +302,3 @@ if __name__ == "__main__":
     model_name = os.path.split(params.load_weights)[1]
     prefix = "{}, {}".format(config_name, model_name)
     export_eval_stats("experiment_results.txt", prefix, stats)
-

@@ -30,7 +30,7 @@ class SeqDataset(Dataset):
             map_seq.append(torch.tensor(self.map_descriptors[idx], dtype=torch.float))
         pano_seq = torch.stack(pano_seq, dim=0)
         map_seq = torch.stack(map_seq, dim=0)
-        return {'pano':pano_seq, 'map':map_seq}
+        return {'pano':pano_seq, 'map':map_seq, 'label':torch.tensor(ndx)}
 
 if __name__ == '__main__':
     dataset_path = 'datasets'
@@ -49,6 +49,7 @@ if __name__ == '__main__':
         batch = {e: batch[e].to(device) for e in batch}
         print(batch['pano'].shape)
         print(batch['map'].shape)
+        print(batch['label'].shape)
 
         
 

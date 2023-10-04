@@ -10,10 +10,14 @@ sys.path.append(os.getcwd())
 os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 import argparse
 import torch
+from torch.utils.data import DataLoader
 import numpy as np
 import random
-from config.utils import Params, get_datetime
+from config.utils import get_datetime
+from data.seq_dataset import SeqDataset
 from training_seq.distributed_utils import init_distributed_mode
+from training_seq.trainer import do_train
+
 
 def seed_all(random_seed):
     torch.manual_seed(random_seed)
@@ -28,60 +32,48 @@ def seed_all(random_seed):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train Minkowski Net embeddings using BatchHard negative mining')
-    parser.add_argument('--config', type=str, required=False, help='Path to configuration file')
-    parser.add_argument('--use_amp', dest='use_amp', action='store_true')
+    parser.add_argument('--dataset_folder', type=str, default='datasets', required=False, help='Dataset folder')
     parser.add_argument('--batch_size', type=int, default=32, required=False, help='Training batch size')
     parser.add_argument('--val_batch_size', type=int, default=24, required=False, help='Testing batch size')
     parser.add_argument('--weights', type=str, required=False, help='Trained model weights')
     parser.add_argument('--epoch', type=int, default=1, required=False, help='Initial training epoch')    
-    parser.add_argument('--pc_normalize', dest='pc_normalize', action='store_true')
     parser.add_argument('--train_file', type=str, required=False, help='Train file')
     parser.add_argument('--val_file', type=str, required=False, help='Val file')
-    parser.add_argument('--eval_files', type=str, required=False, help='Eval files')
+    # parser.add_argument('--eval_files', type=str, required=False, help='Eval files')
     parser.add_argument('--distributed', dest='distributed', action='store_true')
     parser.add_argument('--val_distributed', dest='val_distributed', action='store_true')
-    parser.add_argument('--freeze', dest='freeze', action='store_true')
     parser.add_argument('--syncBN', dest='syncBN', action='store_true')
+    parser.add_argument('--use_amp', dest='use_amp', action='store_true')
     parser.add_argument('--seed', type=int, default=1, required=False, help='Seed')
     parser.add_argument('--port', type=str, default='12363', required=False, help='Port')  
-    parser.add_argument('--model3d', type=str, required=False, help='Model 3D')  
-    parser.add_argument('--model2d_tile', type=str, required=False, help='Model 2D for Tile')  
-    parser.add_argument('--model2d_pano', type=str, required=False, help='Model 2D for Pano')     
-    parser.add_argument('--use_feat', dest='use_feat', action='store_true')
-    parser.add_argument('--use_polar', dest='use_polar', action='store_true')
-    parser.add_argument('--feat_dim',type=int, required=False, default=128, help='Feature dimension')
-    parser.add_argument('--loss', type=str, required=False, help='Loss')
-    parser.add_argument('--margin', type=float, default=0.1, required=False, help='Loss margin')
-    parser.add_argument('--npoints', type=int, default=1024, required=False, help='Number of points')
-    parser.add_argument('--nneighbor', type=int, default=8, required=False, help='Number of neighbors')
-    parser.add_argument('--fuse', type=str, required=False, help='Feature fusion method')
-    parser.add_argument('--fc', type=str, required=False, help='Final block')
+    parser.add_argument('--feat_dim',type=int, default=4096, required=False, help='Feature dimension')
+    parser.add_argument('--margin', type=float, default=0.07, required=False, help='Loss margin')
     parser.add_argument('--optimizer', type=str, required=False, help='Optimizer')
-    parser.add_argument('--wd', type=float, default=1e-4, required=False, help='Weight decay')
+    parser.add_argument('--wd', type=float, default=0.03, required=False, help='Weight decay')
     parser.add_argument('--epochs', type=int, default=60, required=False, help='Total training epochs')
-    parser.add_argument('--lr', type=float, default=4e-5, required=False, help='Initial learning rate')
+    parser.add_argument('--lr', type=float, default=1e-4, required=False, help='Initial learning rate')
     parser.add_argument('--scheduler', type=str, required=False, help='LR Scheduler')
+    parser.add_argument('--pre_model_name', type=str, required=False, help='Precomputed model name')
+    parser.add_argument('--num_layers', type=int, default=6, required=False, help='Number of transformer layers')
+    parser.add_argument('--num_heads', type=int, default=8, required=False, help='Number of transformer heads')
+    parser.add_argument('--seq_len', type=int, default=5, required=False, help='Sequence length')
 
-    parser.set_defaults(config='config/config_train.txt')
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')
-    parser.set_defaults(eval_files='unionsquare5kU,wallstreet5kU')
-    parser.set_defaults(model3d='dgcnn')
-    parser.set_defaults(model2d_tile='resnet_safa')
-    parser.set_defaults(model2d_pano='resnet_safa')
-    parser.set_defaults(loss='MultiInfoNCELoss')
-    parser.set_defaults(fuse='2to3')
+    # parser.set_defaults(eval_files='unionsquare5kU,wallstreet5kU')
     parser.set_defaults(optimizer='SAM')
+    parser.set_defaults(scheduler='CosineAnnealingLR')
+    parser.set_defaults(pre_model_name='resnetsafa_asam_simple')
 
-    args = parser.parse_args()
-    seed_all(args.seed)
+    params = parser.parse_args()
+    seed_all(params.seed)
     
     savedStdout = sys.stdout
     s = get_datetime()
+    if not os.path.exists('arun_log'):
+        os.mkdir('arun_log')
     print_log = open(os.path.join('arun_log',s+'.txt'),'w')
     sys.stdout = print_log
-
-    params = Params(args)
 
     if params.distributed:
         init_distributed_mode(params)
@@ -93,9 +85,34 @@ if __name__ == '__main__':
             params.device = torch.device('cpu')
 
     if params.log:
-        print('Config path: {}'.format(args.config))
-        print('Amp mode: {}'.format(args.use_amp))
         params.print()
 
-    dataloaders, train_sampler = make_dataloaders(params)
-    do_train(dataloaders, train_sampler, params, use_amp=args.use_amp)
+    # make dataloaders
+    datasets = {}
+    datasets['train'] = SeqDataset(params.dataset_folder, params.train_file, params.pre_model_name)
+    datasets['val'] = SeqDataset(params.dataset_folder, params.val_file, params.pre_model_name)
+    nw = min([os.cpu_count(), params.batch_size if params.batch_size > 1 else 0, 8])  # number of workers
+    if params.log:
+        print('Using {} dataloader workers every process'.format(nw))
+
+    dataloaders = {}
+    if params.distributed:
+        train_sampler = torch.utils.data.distributed.DistributedSampler(datasets['train'], num_replicas=params.world_size, rank=params.rank, shuffle=True)
+        train_batch_sampler = torch.utils.data.BatchSampler(train_sampler, params.batch_size, drop_last=True)
+        dataloaders['train'] = DataLoader(datasets['train'], batch_sampler=train_batch_sampler, num_workers=nw, pin_memory=True)
+    else:
+        train_sampler = None
+        train_batch_sampler = None
+        dataloaders['train'] = DataLoader(datasets['train'], batch_sampler=train_batch_sampler, batch_size=params.batch_size, num_workers=nw, pin_memory=True, shuffle=True, drop_last=True)
+
+    if params.val_distributed:
+        val_sampler = torch.utils.data.distributed.DistributedSampler(datasets['val'], num_replicas=params.world_size, rank=params.rank, shuffle=False)
+        val_batch_sampler = torch.utils.data.BatchSampler(val_sampler, params.val_batch_size, drop_last=False)
+        dataloaders['val'] = DataLoader(datasets['val'], sampler=val_batch_sampler, num_workers=nw, pin_memory=True)           
+    else:
+        val_batch_sampler = None
+        dataloaders['val'] = DataLoader(datasets['val'], sampler=val_batch_sampler, batch_size=params.val_batch_size, num_workers=nw, pin_memory=True, shuffle=False, drop_last=False)
+
+    do_train(dataloaders, train_sampler, params, use_amp=params.use_amp)
+
+

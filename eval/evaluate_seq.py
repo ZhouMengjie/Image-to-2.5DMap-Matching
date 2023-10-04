@@ -9,6 +9,7 @@ import torch
 import scipy.io as sio
 import random
 import time
+import torch.nn.functional as F
 
 from sklearn.neighbors import KDTree
 from config.utils import get_datetime
@@ -243,7 +244,6 @@ if __name__ == "__main__":
     print_eval_stats(stats)
     
     # Append key experimental metrics to experiment summary file
-    model_name = os.path.split(params.weights)[1]
-    prefix = "{}, {}".format(params.pre_model_name, model_name)
+    prefix = "{}, {}".format(params.pre_model_name, w)
     export_eval_stats("experiment_results.txt", prefix, stats)
 

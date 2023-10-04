@@ -12,11 +12,9 @@ import time
 
 from sklearn.neighbors import KDTree
 from config.utils import get_datetime
-from models.model_factory import model_factory
+from models.seq_model import SeqModel
+from data.seq_dataset import SeqDataset
 from torch.utils.data import DataLoader
-from data.augmentation_simple import ValTransform, ValRGBTransform, ValTileTransform 
-from data.streetlearn_pickle import StreetLearnDataset
-from data.dataset_utils_pickle import make_collate_fn_torch
 from sklearn.decomposition import PCA
 
 def seed_all(random_seed):
@@ -34,65 +32,53 @@ def evaluate(model, device, params, exp_name, pca_dim):
     stats = {}
     datasets = {}
     dataloaders = {}
-    cloud_transform = ValTransform()
-    img_transform = ValRGBTransform()
-    tile_transform = ValTileTransform(params.model_params.tile_size)
-
+   
     nw = min([os.cpu_count(), params.batch_size if params.batch_size > 1 else 0, 8])  # number of workers
     model.eval()
 
-    for location_name in params.eval_files:
+    eval_files = [e for e in params.eval_files.split(',')]
+    for location_name in eval_files:
         # Extract location name from query and database files
-        datasets[location_name] = StreetLearnDataset(params.dataset_folder, location_name,
-                                                    transform=cloud_transform,
-                                                    image_size=params.model_params.img_size, image_transform=img_transform,
-                                                    tile_size=params.model_params.tile_size, tile_transform=tile_transform,
-                                                    use_cloud=params.use_cloud, use_rgb=params.use_rgb, use_tile=params.use_tile, 
-                                                    use_feat=params.use_feat, use_polar=params.use_polar,
-                                                    normalize=params.pc_normalize, npoints=params.npoints)
-
-        collate_fn = make_collate_fn_torch(datasets[location_name])
-        dataloaders[location_name] = DataLoader(datasets[location_name], batch_size=params.val_batch_size, collate_fn=collate_fn,
-                                       num_workers=nw, pin_memory=True, shuffle=False, drop_last=False)
-
+        datasets[location_name] = SeqDataset(params.dataset_folder, location_name, params.pre_model_name)
+        dataloaders[location_name] = DataLoader(datasets[location_name], batch_size=params.val_batch_size, num_workers=nw, pin_memory=True, shuffle=False, drop_last=False)
         count = 0
         similarity = []
         one_percent_recall = []
-
         database_embeddings = []
         query_embeddings = []
-
         summary_time = 0
         summary_memory = 0
         for batch in dataloaders[location_name]:
             with torch.no_grad():
                 batch = {e: batch[e].to(device) for e in batch}
+                pre_pano = batch['pano']
+                pre_map = batch['map']
+
                 torch.cuda.synchronize()
                 torch.cuda.reset_max_memory_allocated()
                 start = time.time()
-                x = model(batch)
+                pano_feat = model(pre_pano).permute(0,2,1)
+                pano_feat = F.avg_pool1d(pano_feat, pano_feat.shape[2]).squeeze(2)
+                map_feat = model(pre_map).permute(0,2,1)
+                map_feat = F.avg_pool1d(map_feat, map_feat.shape[2]).squeeze(2)  
                 torch.cuda.synchronize()
                 end = time.time()
                 memory = torch.cuda.max_memory_allocated(device=device)
                 summary_time += (end-start)
                 summary_memory += memory
 
-                cloud_embedding = x['embedding']
-                image_embedding = x['image_embedding']
-                if params.normalize_embeddings:
-                    cloud_embedding = torch.nn.functional.normalize(cloud_embedding, p=2, dim=1)  # Normalize embeddings, dim=row
-                    image_embedding = torch.nn.functional.normalize(image_embedding, p=2, dim=1)
-
-                cloud_embedding = cloud_embedding.detach().cpu().numpy()
-                image_embedding = image_embedding.detach().cpu().numpy()
+                pano_embedding = torch.nn.functional.normalize(pano_feat, p=2, dim=1)  # Normalize embeddings, dim=row
+                map_embedding = torch.nn.functional.normalize(map_feat, p=2, dim=1)
+                pano_embedding = pano_embedding.detach().cpu().numpy()
+                map_embedding = map_embedding.detach().cpu().numpy()
 
             torch.cuda.empty_cache()
             count = count + 1
             # check data here: batch idx
-            print('Batch[{0}]/Location[{1}]: {2}'.format(count,location_name,batch['labels']))
+            print('Batch[{0}]/Location[{1}]: {2}'.format(count,location_name,batch['label']))
             
-            database_embeddings.append(cloud_embedding)
-            query_embeddings.append(image_embedding)
+            database_embeddings.append(map_embedding)
+            query_embeddings.append(pano_embedding)
 
         avg_time = (summary_time / count) / params.val_batch_size
         avg_memory = (summary_memory / count) / params.val_batch_size
@@ -107,14 +93,6 @@ def evaluate(model, device, params, exp_name, pca_dim):
         pca_database_embeddings = estimator.fit_transform(database_embeddings) 
         pca_query_embeddings = estimator.transform(query_embeddings)
         
-        # obtain query and reference embeddings for subsequent localization tasks
-        # pred = {}
-        # pred['ref'] = pca_database_embeddings
-        # pred['qry'] = pca_query_embeddings
-        # model_name = os.path.split(params.load_weights)[1]
-        # model_name = model_name.split('.')[0]
-        # sio.savemat(os.path.join('results', location_name+'_'+model_name+'.mat'), pred)
-
         recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)   
         ave_recall = recall
         average_similarity = np.mean(similarity)
@@ -125,7 +103,7 @@ def evaluate(model, device, params, exp_name, pca_dim):
         # obtain recall to plot figures
         # res = {}
         # res['recall'] = recall
-        # model_name = os.path.split(params.load_weights)[1]
+        # model_name = os.path.split(params.weights)[1]
         # model_name = model_name.split('.')[0]
         # np.save(os.path.join('results', location_name+'_'+model_name+'_'+exp_name+'.npy'), recall)
 
@@ -205,19 +183,8 @@ if __name__ == "__main__":
     parser.add_argument('--weights', type=str, required=False, help='Trained model weights')
     parser.add_argument('--epoch', type=int, default=1, required=False, help='Initial training epoch')    
     parser.add_argument('--eval_files', type=str, required=False, help='Eval files')
-    # parser.add_argument('--distributed', dest='distributed', action='store_true')
-    parser.add_argument('--val_distributed', dest='val_distributed', action='store_true')
-    # parser.add_argument('--syncBN', dest='syncBN', action='store_true')
-    # parser.add_argument('--use_amp', dest='use_amp', action='store_true')
     parser.add_argument('--seed', type=int, default=1, required=False, help='Seed')
-    # parser.add_argument('--port', type=str, default='12363', required=False, help='Port')  
     parser.add_argument('--feat_dim',type=int, default=4096, required=False, help='Feature dimension')
-    # parser.add_argument('--margin', type=float, default=0.07, required=False, help='Loss margin')
-    # parser.add_argument('--optimizer', type=str, required=False, help='Optimizer')
-    # parser.add_argument('--wd', type=float, default=0.03, required=False, help='Weight decay')
-    # parser.add_argument('--epochs', type=int, default=60, required=False, help='Total training epochs')
-    # parser.add_argument('--lr', type=float, default=1e-4, required=False, help='Initial learning rate')
-    # parser.add_argument('--scheduler', type=str, required=False, help='LR Scheduler')
     parser.add_argument('--pre_model_name', type=str, required=False, help='Precomputed model name')
     parser.add_argument('--num_layers', type=int, default=6, required=False, help='Number of transformer layers')
     parser.add_argument('--num_heads', type=int, default=8, required=False, help='Number of transformer heads')
@@ -240,50 +207,43 @@ if __name__ == "__main__":
     print_log = open(os.path.join('test_logs',s+'.txt'),'w')
     sys.stdout = print_log
 
-    print('Config path: {}'.format(args.config))
-    if args.weights is None:
+    if params.weights is None:
         w = 'RANDOM WEIGHTS'
     else:
-        w = args.weights
+        w = params.weights
     print('Weights: {}'.format(w))
     print('')
 
-    params = Params(args)
-    params.print()
+    print('Parameters:')
+    param_dict = vars(params)
+    for e in param_dict:
+        print('{}: {}'.format(e, param_dict[e]))
+    print('')
 
-    device = args.device
+    device = params.device
     print('Device: {}'.format(device))
-    print('PCA dim:{}'.format(args.pca_dim))
+    print('PCA dim:{}'.format(params.pca_dim))
 
-    model = model_factory(params)
+    model = SeqModel(params.feat_dim, nHead=params.num_heads, numLayers=params.num_layers, max_length=params.seq_len)
     model.to(device)
     model_size = torch.cuda.memory_allocated(device=device)
     print('Model size: ', model_size / 1024**2, 'MB')
 
-    if args.weights is not None:
-        assert os.path.exists(params.load_weights), 'Cannot open network weights: {}'.format(params.load_weights)
-        checkpoint = torch.load(params.load_weights, map_location=device)     
-        state_dict = {}
+    if params.weights is not None:
+        assert os.path.exists(params.weights), 'Cannot open network weights: {}'.format(params.weights)
+        checkpoint = torch.load(params.weights, map_location=device)   
         try:
-            ckp = checkpoint['model']
-            op_ckp = checkpoint['optimizer']
-        except:
-            ckp = checkpoint
-            op_ckp = None
-        for k, v in ckp.items():
-            new_k = k.replace('module.', '') if 'module' in k else k
-            if new_k == 'cloud_fe.backbone.conv0.kernel' and v.shape[1] != params.feat_size:
-                new_k = 'ignore' 
-            state_dict[new_k] = v
-        model.load_state_dict(state_dict, strict=True) 
+            model.load_state_dict(checkpoint['model'], strict=False)
+        except KeyError:
+            # If 'model' key is not found, try loading the checkpoint directly
+            model.load_state_dict(checkpoint, strict=False)  
         print('load pretrained {} model!'.format(params.load_weights))
 
-    stats = evaluate(model, device, params, args.exp_name, args.pca_dim)  
+    stats = evaluate(model, device, params, params.exp_name, params.pca_dim)  
     print_eval_stats(stats)
     
     # Append key experimental metrics to experiment summary file
-    config_name = os.path.split(params.params_path)[1]
-    model_name = os.path.split(params.load_weights)[1]
-    prefix = "{}, {}".format(config_name, model_name)
+    model_name = os.path.split(params.weights)[1]
+    prefix = "{}, {}".format(params.pre_model_name, model_name)
     export_eval_stats("experiment_results.txt", prefix, stats)
 

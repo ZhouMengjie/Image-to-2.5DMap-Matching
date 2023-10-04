@@ -39,7 +39,6 @@ if __name__ == '__main__':
     parser.add_argument('--epoch', type=int, default=1, required=False, help='Initial training epoch')    
     parser.add_argument('--train_file', type=str, required=False, help='Train file')
     parser.add_argument('--val_file', type=str, required=False, help='Val file')
-    # parser.add_argument('--eval_files', type=str, required=False, help='Eval files')
     parser.add_argument('--distributed', dest='distributed', action='store_true')
     parser.add_argument('--val_distributed', dest='val_distributed', action='store_true')
     parser.add_argument('--syncBN', dest='syncBN', action='store_true')
@@ -60,7 +59,6 @@ if __name__ == '__main__':
 
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')
-    # parser.set_defaults(eval_files='unionsquare5kU,wallstreet5kU')
     parser.set_defaults(optimizer='SAM')
     parser.set_defaults(scheduler='CosineAnnealingLR')
     parser.set_defaults(pre_model_name='resnetsafa_asam_simple')
@@ -85,7 +83,11 @@ if __name__ == '__main__':
             params.device = torch.device('cpu')
 
     if params.log:
-        params.print()
+        print('Parameters:')
+        param_dict = vars(params)
+        for e in param_dict:
+            print('{}: {}'.format(e, param_dict[e]))
+        print('')
 
     # make dataloaders
     datasets = {}

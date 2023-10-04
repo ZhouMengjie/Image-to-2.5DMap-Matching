@@ -47,7 +47,7 @@ def do_train(dataloaders, train_sampler, params, use_amp=False):
             model_name = model_name.split('.')[0] + '_' + s
         else:
             model_name = 'model_' + s
-        weights_path = create_folder('weights')
+        weights_path = create_folder('weights3090')
         model_pathname = os.path.join(weights_path, model_name)
         print('Model device: {}'.format(device))
         print('Model name: {}'.format(model_name))
@@ -99,31 +99,32 @@ def do_train(dataloaders, train_sampler, params, use_amp=False):
     # Training elements
     scaler = torch.cuda.amp.GradScaler(enabled=use_amp)
     if params.optimizer == 'Adam':
-        if params.weight_decay is None or params.weight_decay == 0:
+        if params.wd is None or params.wd == 0:
             optimizer = torch.optim.Adam(params_l)
         else:
-            optimizer = torch.optim.Adam(params_l, weight_decay=params.weight_decay)
+            optimizer = torch.optim.Adam(params_l, weight_decay=params.wd)
     elif params.optimizer == 'SGD':
         # SGD with momentum (default momentum = 0.9)
-        if params.weight_decay is None or params.weight_decay == 0:
+        if params.wd is None or params.wd == 0:
             optimizer = torch.optim.SGD(params_l)
         else:
-            optimizer = torch.optim.SGD(params_l, weight_decay=params.weight_decay)
+            optimizer = torch.optim.SGD(params_l, weight_decay=params.wd)
     elif params.optimizer == 'AdamW':
-        if params.weight_decay is None or params.weight_decay == 0:
+        if params.wd is None or params.wd == 0:
             optimizer = torch.optim.AdamW(params_l)
         else:
-            optimizer = torch.optim.AdamW(params_l, weight_decay=params.weight_decay, amsgrad=False)
+            optimizer = torch.optim.AdamW(params_l, weight_decay=params.wd, amsgrad=False)
     elif params.optimizer == 'SAM':
         base_optimizer = torch.optim.AdamW
-        optimizer = SAM(params_l, base_optimizer, scaler, weight_decay=params.weight_decay, amsgrad=False, rho=2.5, adaptive=True)
+        optimizer = SAM(params_l, base_optimizer, scaler, weight_decay=params.wd, amsgrad=False, rho=2.5, adaptive=True)
     else:
         raise NotImplementedError('Unsupported optimizer: {}'.format(params.optimizer))
     
     # Load the optimizer state_dict if available
-    if 'optimizer' in checkpoint:
-        optimizer.load_state_dict(checkpoint['optimizer'])  
-        print('load pretrained {} optimizer!'.format(params.weights))
+    if params.epoch > 1 and params.weights is not None:
+        if 'optimizer' in checkpoint:
+            optimizer.load_state_dict(checkpoint['optimizer'])  
+            print('load pretrained {} optimizer!'.format(params.weights))
 
     if params.scheduler is None:
         scheduler = None

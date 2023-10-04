@@ -167,4 +167,6 @@ cython_debug/
 /datasets/*_2019
 /datasets/*_idx
 /dataset/features/*
-/weights
+/weights/*
+/sequence_images/*
+/sequence_videos/*

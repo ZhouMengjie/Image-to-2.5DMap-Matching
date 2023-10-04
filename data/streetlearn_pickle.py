@@ -35,7 +35,7 @@ class StreetLearnDataset(Dataset):
         assert os.path.exists(self.query_filepath), 'Cannot access query file: {}'.format(self.query_filepath)
         self.queries: Dict[int, TrainingTuple] = pickle.load(open(self.query_filepath, 'rb')) 
         self.set_filepath = os.path.join(dataset_path, 'csv', query_filename+ '_set.csv')
-        self.global_queries= (pd.read_csv(self.set_filepath, sep=',', header=None)).values
+        self.global_queries = (pd.read_csv(self.set_filepath, sep=',', header=None)).values
         self.transform = transform
         self.indexes = np.arange(0, len(self.queries))
         self.image_size = image_size

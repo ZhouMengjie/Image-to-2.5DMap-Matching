@@ -1,0 +1,41 @@
+[CONFIG] distributed init (local rank 2)
+[CONFIG] Let's use 4 GPUs!
+106447 queries in the dataset
+5345 queries in the dataset
+load initial weights!
+None
+epoch: 1
+train_file: trainstreetlearnU_cmu5kU
+val_file: hudsonriver5kU
+distributed: True
+val_distributed: False
+syncBN: False
+use_amp: False
+seed: 1
+port: 12364
+feat_dim: 4096
+margin: 0.07
+optimizer: SAM
+wd: 0.03
+epochs: 60
+lr: 0.0001
+scheduler: CosineAnnealingLR
+pre_model_name: resnetsafa_dgcnn_asam_2to3_up
+num_layers: 6
+num_heads: 8
+seq_len: 5
+rank: 0
+world_size: 4
+gpu: 0
+device: cuda:0
+dist_backend: nccl
+dist_url: env://
+log: True
+
+106447 queries in the dataset
+5345 queries in the dataset
+Using 8 dataloader workers every process
+Model device: cuda:0
+Model name: model_20231005_1116
+Number of model parameters: 503558144
+load initial weights!

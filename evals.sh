@@ -15,7 +15,7 @@
 CUDA_VISIBLE_DEVICES=0 \
 python eval/evaluate_seq.py \
 --feat_dim 4096 \
---pre_model_name 'resnetsafa_asam_simple' \
+--pre_model_name 'resnetsafa_dgcnn_asam_2to3_up' \
 --eval_files 'hudsonriver5kU' \
 --exp_name 'none' \
 --pca_dim 128

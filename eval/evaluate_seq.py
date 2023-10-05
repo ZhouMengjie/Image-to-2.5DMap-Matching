@@ -37,8 +37,7 @@ def evaluate(model, device, params, exp_name, pca_dim):
     nw = min([os.cpu_count(), params.batch_size if params.batch_size > 1 else 0, 8])  # number of workers
     model.eval()
 
-    eval_files = [e for e in params.eval_files.split(',')]
-    for location_name in eval_files:
+    for location_name in params.eval_files:
         # Extract location name from query and database files
         datasets[location_name] = SeqDataset(params.dataset_folder, location_name, params.pre_model_name)
         dataloaders[location_name] = DataLoader(datasets[location_name], batch_size=params.val_batch_size, num_workers=nw, pin_memory=True, shuffle=False, drop_last=False)
@@ -200,6 +199,7 @@ if __name__ == "__main__":
 
     params = parser.parse_args()
     seed_all(params.seed)
+    params.eval_files = [e for e in params.eval_files.split(',')]
 
     savedStdout = sys.stdout
     s = get_datetime()

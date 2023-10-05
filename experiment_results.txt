@@ -4,3 +4,5 @@ config_train.txt, resnetsafa_asam_simple.pth, 94.38, 56.86, 98.52, 65.02, 90.94,
 config_train.txt, resnetsafa_asam_simple.pth, 100.00, 81.55, 100.00, 81.55
 resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, nan, nan
 resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 95.94, 60.77, 95.94, 60.77
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.28, 61.98, 96.28, 61.98
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.50, 62.47, 96.50, 62.47

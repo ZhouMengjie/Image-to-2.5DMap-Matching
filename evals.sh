@@ -18,4 +18,5 @@ python eval/evaluate_seq.py \
 --pre_model_name 'resnetsafa_dgcnn_asam_2to3_up' \
 --eval_files 'hudsonriver5kU' \
 --exp_name 'none' \
+--num_layers 1 --num_heads 8 \
 --pca_dim 128

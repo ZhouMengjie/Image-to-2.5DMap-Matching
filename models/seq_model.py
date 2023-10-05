@@ -22,7 +22,7 @@ class PositionalEncoding(nn.Module):
         x = x + self.pe[:x.size(1)]
         return self.dropout(x)
 
-class SeqModel(nn.Module):
+class TransMixer(nn.Module):
     def __init__(self, transDimension, nHead=8, numLayers=6, max_length = 5):
         '''
         Transformer for mixing street view features
@@ -31,7 +31,7 @@ class SeqModel(nn.Module):
         numLayers: number of encoded layers
         Return => features of the same shape as input
         '''
-        super(SeqModel, self).__init__()
+        super(TransMixer, self).__init__()
         encoderLayer = nn.TransformerEncoderLayer(d_model = transDimension,\
             nhead=nHead, batch_first=True, dropout=0.3, norm_first = True)
 
@@ -48,7 +48,7 @@ class SeqModel(nn.Module):
 
 
 if __name__ == "__main__":
-    model = SeqModel(4096).to('cuda')
+    model = TransMixer(4096).to('cuda')
     print(model)
     x = torch.rand((16, 5, 4096)).to('cuda')
     feat = model(x)

@@ -39,3 +39,1064 @@ Model device: cuda:0
 Model name: model_20231005_1116
 Number of model parameters: 503558144
 load initial weights!
+Epoch[1-1]	loss: 3.4752	total loss: 3.4752
+Epoch[1-2]	loss: 3.4637	total loss: 3.4637
+Epoch[1-3]	loss: 3.4650	total loss: 3.4650
+Epoch[1-4]	loss: 3.4919	total loss: 3.4919
+Epoch[1-5]	loss: 3.4643	total loss: 3.4643
+Epoch[1-6]	loss: 3.4629	total loss: 3.4629
+Epoch[1-7]	loss: 3.4682	total loss: 3.4682
+Epoch[1-8]	loss: 3.4748	total loss: 3.4748
+Epoch[1-9]	loss: 3.4742	total loss: 3.4742
+Epoch[1-10]	loss: 3.4718	total loss: 3.4718
+Epoch[1-11]	loss: 3.4692	total loss: 3.4692
+Epoch[1-12]	loss: 3.4593	total loss: 3.4593
+Epoch[1-13]	loss: 3.4673	total loss: 3.4673
+Epoch[1-14]	loss: 3.4558	total loss: 3.4558
+Epoch[1-15]	loss: 3.4579	total loss: 3.4579
+Epoch[1-16]	loss: 3.4557	total loss: 3.4557
+Epoch[1-17]	loss: 3.4588	total loss: 3.4588
+Epoch[1-18]	loss: 3.4653	total loss: 3.4653
+Epoch[1-19]	loss: 3.4758	total loss: 3.4758
+Epoch[1-20]	loss: 3.4640	total loss: 3.4640
+Epoch[1-21]	loss: 3.4624	total loss: 3.4624
+Epoch[1-22]	loss: 3.4766	total loss: 3.4766
+Epoch[1-23]	loss: 3.4819	total loss: 3.4819
+Epoch[1-24]	loss: 3.4777	total loss: 3.4777
+Epoch[1-25]	loss: 3.4718	total loss: 3.4718
+Epoch[1-26]	loss: 3.4655	total loss: 3.4655
+Epoch[1-27]	loss: 3.4721	total loss: 3.4721
+Epoch[1-28]	loss: 3.4815	total loss: 3.4815
+Epoch[1-29]	loss: 3.4659	total loss: 3.4659
+Epoch[1-30]	loss: 3.4610	total loss: 3.4610
+Epoch[1-31]	loss: 3.4600	total loss: 3.4600
+Epoch[1-32]	loss: 3.4690	total loss: 3.4690
+Epoch[1-33]	loss: 3.4607	total loss: 3.4607
+Epoch[1-34]	loss: 3.4744	total loss: 3.4744
+Epoch[1-35]	loss: 3.4588	total loss: 3.4588
+Epoch[1-36]	loss: 3.4654	total loss: 3.4654
+Epoch[1-37]	loss: 3.4702	total loss: 3.4702
+Epoch[1-38]	loss: 3.4457	total loss: 3.4457
+Epoch[1-39]	loss: 3.4701	total loss: 3.4701
+Epoch[1-40]	loss: 3.4583	total loss: 3.4583
+Epoch[1-41]	loss: 3.4564	total loss: 3.4564
+Epoch[1-42]	loss: 3.4706	total loss: 3.4706
+Epoch[1-43]	loss: 3.4647	total loss: 3.4647
+Epoch[1-44]	loss: 3.4688	total loss: 3.4688
+Epoch[1-45]	loss: 3.4610	total loss: 3.4610
+Epoch[1-46]	loss: 3.4687	total loss: 3.4687
+Epoch[1-47]	loss: 3.4638	total loss: 3.4638
+Epoch[1-48]	loss: 3.4673	total loss: 3.4673
+Epoch[1-49]	loss: 3.4648	total loss: 3.4648
+Epoch[1-50]	loss: 3.4734	total loss: 3.4734
+Epoch[1-51]	loss: 3.4748	total loss: 3.4748
+Epoch[1-52]	loss: 3.4590	total loss: 3.4590
+Epoch[1-53]	loss: 3.4631	total loss: 3.4631
+Epoch[1-54]	loss: 3.4681	total loss: 3.4681
+Epoch[1-55]	loss: 3.4727	total loss: 3.4727
+Epoch[1-56]	loss: 3.4720	total loss: 3.4720
+Epoch[1-57]	loss: 3.4769	total loss: 3.4769
+Epoch[1-58]	loss: 3.4722	total loss: 3.4722
+Epoch[1-59]	loss: 3.4708	total loss: 3.4708
+Epoch[1-60]	loss: 3.4627	total loss: 3.4627
+Epoch[1-61]	loss: 3.4711	total loss: 3.4711
+Epoch[1-62]	loss: 3.4714	total loss: 3.4714
+Epoch[1-63]	loss: 3.4699	total loss: 3.4699
+Epoch[1-64]	loss: 3.4697	total loss: 3.4697
+Epoch[1-65]	loss: 3.4667	total loss: 3.4667
+Epoch[1-66]	loss: 3.4626	total loss: 3.4626
+Epoch[1-67]	loss: 3.4619	total loss: 3.4619
+Epoch[1-68]	loss: 3.4781	total loss: 3.4781
+Epoch[1-69]	loss: 3.4720	total loss: 3.4720
+Epoch[1-70]	loss: 3.4780	total loss: 3.4780
+Epoch[1-71]	loss: 3.4742	total loss: 3.4742
+Epoch[1-72]	loss: 3.4628	total loss: 3.4628
+Epoch[1-73]	loss: 3.4708	total loss: 3.4708
+Epoch[1-74]	loss: 3.4743	total loss: 3.4743
+Epoch[1-75]	loss: 3.4701	total loss: 3.4701
+Epoch[1-76]	loss: 3.4640	total loss: 3.4640
+Epoch[1-77]	loss: 3.4741	total loss: 3.4741
+Epoch[1-78]	loss: 3.4639	total loss: 3.4639
+Epoch[1-79]	loss: 3.4708	total loss: 3.4708
+Epoch[1-80]	loss: 3.4718	total loss: 3.4718
+Epoch[1-81]	loss: 3.4524	total loss: 3.4524
+Epoch[1-82]	loss: 3.4712	total loss: 3.4712
+Epoch[1-83]	loss: 3.4639	total loss: 3.4639
+Epoch[1-84]	loss: 3.4589	total loss: 3.4589
+Epoch[1-85]	loss: 3.4592	total loss: 3.4592
+Epoch[1-86]	loss: 3.4602	total loss: 3.4602
+Epoch[1-87]	loss: 3.4733	total loss: 3.4733
+Epoch[1-88]	loss: 3.4576	total loss: 3.4576
+Epoch[1-89]	loss: 3.4710	total loss: 3.4710
+Epoch[1-90]	loss: 3.4720	total loss: 3.4720
+Epoch[1-91]	loss: 3.4600	total loss: 3.4600
+Epoch[1-92]	loss: 3.4839	total loss: 3.4839
+Epoch[1-93]	loss: 3.4640	total loss: 3.4640
+Epoch[1-94]	loss: 3.4578	total loss: 3.4578
+Epoch[1-95]	loss: 3.4509	total loss: 3.4509
+Epoch[1-96]	loss: 3.4713	total loss: 3.4713
+Epoch[1-97]	loss: 3.4671	total loss: 3.4671
+Epoch[1-98]	loss: 3.4719	total loss: 3.4719
+Epoch[1-99]	loss: 3.4755	total loss: 3.4755
+Epoch[1-100]	loss: 3.4736	total loss: 3.4736
+Epoch[1-101]	loss: 3.4624	total loss: 3.4624
+Epoch[1-102]	loss: 3.4764	total loss: 3.4764
+Epoch[1-103]	loss: 3.4753	total loss: 3.4753
+Epoch[1-104]	loss: 3.4600	total loss: 3.4600
+Epoch[1-105]	loss: 3.4615	total loss: 3.4615
+Epoch[1-106]	loss: 3.4766	total loss: 3.4766
+Epoch[1-107]	loss: 3.4859	total loss: 3.4859
+Epoch[1-108]	loss: 3.4701	total loss: 3.4701
+Epoch[1-109]	loss: 3.4445	total loss: 3.4445
+Epoch[1-110]	loss: 3.4686	total loss: 3.4686
+Epoch[1-111]	loss: 3.4818	total loss: 3.4818
+Epoch[1-112]	loss: 3.4790	total loss: 3.4790
+Epoch[1-113]	loss: 3.4718	total loss: 3.4718
+Epoch[1-114]	loss: 3.4959	total loss: 3.4959
+Epoch[1-115]	loss: 3.4751	total loss: 3.4751
+Epoch[1-116]	loss: 3.4527	total loss: 3.4527
+Epoch[1-117]	loss: 3.4686	total loss: 3.4686
+Epoch[1-118]	loss: 3.4528	total loss: 3.4528
+Epoch[1-119]	loss: 3.4740	total loss: 3.4740
+Epoch[1-120]	loss: 3.4773	total loss: 3.4773
+Epoch[1-121]	loss: 3.4729	total loss: 3.4729
+Epoch[1-122]	loss: 3.4355	total loss: 3.4355
+Epoch[1-123]	loss: 3.4998	total loss: 3.4998
+Epoch[1-124]	loss: 3.4751	total loss: 3.4751
+Epoch[1-125]	loss: 3.4542	total loss: 3.4542
+Epoch[1-126]	loss: 3.4641	total loss: 3.4641
+Epoch[1-127]	loss: 3.4634	total loss: 3.4634
+Epoch[1-128]	loss: 3.4855	total loss: 3.4855
+Epoch[1-129]	loss: 3.4501	total loss: 3.4501
+Epoch[1-130]	loss: 3.4861	total loss: 3.4861
+Epoch[1-131]	loss: 3.4414	total loss: 3.4414
+Epoch[1-132]	loss: 3.4608	total loss: 3.4608
+Epoch[1-133]	loss: 3.4701	total loss: 3.4701
+Epoch[1-134]	loss: 3.4734	total loss: 3.4734
+Epoch[1-135]	loss: 3.4711	total loss: 3.4711
+Epoch[1-136]	loss: 3.4514	total loss: 3.4514
+Epoch[1-137]	loss: 3.4747	total loss: 3.4747
+Epoch[1-138]	loss: 3.4676	total loss: 3.4676
+Epoch[1-139]	loss: 3.4702	total loss: 3.4702
+Epoch[1-140]	loss: 3.4658	total loss: 3.4658
+Epoch[1-141]	loss: 3.4828	total loss: 3.4828
+Epoch[1-142]	loss: 3.4740	total loss: 3.4740
+Epoch[1-143]	loss: 3.4794	total loss: 3.4794
+Epoch[1-144]	loss: 3.4423	total loss: 3.4423
+Epoch[1-145]	loss: 3.4650	total loss: 3.4650
+Epoch[1-146]	loss: 3.4753	total loss: 3.4753
+Epoch[1-147]	loss: 3.4724	total loss: 3.4724
+Epoch[1-148]	loss: 3.4764	total loss: 3.4764
+Epoch[1-149]	loss: 3.4456	total loss: 3.4456
+Epoch[1-150]	loss: 3.4738	total loss: 3.4738
+Epoch[1-151]	loss: 3.4739	total loss: 3.4739
+Epoch[1-152]	loss: 3.4758	total loss: 3.4758
+Epoch[1-153]	loss: 3.4719	total loss: 3.4719
+Epoch[1-154]	loss: 3.4746	total loss: 3.4746
+Epoch[1-155]	loss: 3.4738	total loss: 3.4738
+Epoch[1-156]	loss: 3.5053	total loss: 3.5053
+Epoch[1-157]	loss: 3.4831	total loss: 3.4831
+Epoch[1-158]	loss: 3.4527	total loss: 3.4527
+Epoch[1-159]	loss: 3.4875	total loss: 3.4875
+Epoch[1-160]	loss: 3.4878	total loss: 3.4878
+Epoch[1-161]	loss: 3.5036	total loss: 3.5036
+Epoch[1-162]	loss: 3.4796	total loss: 3.4796
+Epoch[1-163]	loss: 3.4826	total loss: 3.4826
+Epoch[1-164]	loss: 3.4796	total loss: 3.4796
+Epoch[1-165]	loss: 3.4594	total loss: 3.4594
+Epoch[1-166]	loss: 3.4579	total loss: 3.4579
+Epoch[1-167]	loss: 3.4723	total loss: 3.4723
+Epoch[1-168]	loss: 3.4569	total loss: 3.4569
+Epoch[1-169]	loss: 3.4629	total loss: 3.4629
+Epoch[1-170]	loss: 3.4830	total loss: 3.4830
+Epoch[1-171]	loss: 3.4633	total loss: 3.4633
+Epoch[1-172]	loss: 3.4870	total loss: 3.4870
+Epoch[1-173]	loss: 3.4627	total loss: 3.4627
+Epoch[1-174]	loss: 3.4681	total loss: 3.4681
+Epoch[1-175]	loss: 3.4825	total loss: 3.4825
+Epoch[1-176]	loss: 3.4618	total loss: 3.4618
+Epoch[1-177]	loss: 3.4737	total loss: 3.4737
+Epoch[1-178]	loss: 3.4713	total loss: 3.4713
+Epoch[1-179]	loss: 3.4779	total loss: 3.4779
+Epoch[1-180]	loss: 3.4664	total loss: 3.4664
+Epoch[1-181]	loss: 3.4685	total loss: 3.4685
+Epoch[1-182]	loss: 3.4668	total loss: 3.4668
+Epoch[1-183]	loss: 3.4332	total loss: 3.4332
+Epoch[1-184]	loss: 3.4698	total loss: 3.4698
+Epoch[1-185]	loss: 3.4600	total loss: 3.4600
+Epoch[1-186]	loss: 3.4537	total loss: 3.4537
+Epoch[1-187]	loss: 3.4591	total loss: 3.4591
+Epoch[1-188]	loss: 3.4975	total loss: 3.4975
+Epoch[1-189]	loss: 3.4720	total loss: 3.4720
+Epoch[1-190]	loss: 3.4626	total loss: 3.4626
+Epoch[1-191]	loss: 3.4653	total loss: 3.4653
+Epoch[1-192]	loss: 3.4694	total loss: 3.4694
+Epoch[1-193]	loss: 3.4464	total loss: 3.4464
+Epoch[1-194]	loss: 3.4738	total loss: 3.4738
+Epoch[1-195]	loss: 3.4767	total loss: 3.4767
+Epoch[1-196]	loss: 3.4572	total loss: 3.4572
+Epoch[1-197]	loss: 3.4525	total loss: 3.4525
+Epoch[1-198]	loss: 3.4767	total loss: 3.4767
+Epoch[1-199]	loss: 3.4524	total loss: 3.4524
+Epoch[1-200]	loss: 3.4389	total loss: 3.4389
+Epoch[1-201]	loss: 3.4791	total loss: 3.4791
+Epoch[1-202]	loss: 3.4826	total loss: 3.4826
+Epoch[1-203]	loss: 3.4800	total loss: 3.4800
+Epoch[1-204]	loss: 3.4729	total loss: 3.4729
+Epoch[1-205]	loss: 3.4829	total loss: 3.4829
+Epoch[1-206]	loss: 3.4624	total loss: 3.4624
+Epoch[1-207]	loss: 3.4647	total loss: 3.4647
+Epoch[1-208]	loss: 3.4614	total loss: 3.4614
+Epoch[1-209]	loss: 3.4618	total loss: 3.4618
+Epoch[1-210]	loss: 3.4582	total loss: 3.4582
+Epoch[1-211]	loss: 3.4613	total loss: 3.4613
+Epoch[1-212]	loss: 3.4782	total loss: 3.4782
+Epoch[1-213]	loss: 3.4461	total loss: 3.4461
+Epoch[1-214]	loss: 3.4695	total loss: 3.4695
+Epoch[1-215]	loss: 3.4545	total loss: 3.4545
+Epoch[1-216]	loss: 3.4736	total loss: 3.4736
+Epoch[1-217]	loss: 3.4852	total loss: 3.4852
+Epoch[1-218]	loss: 3.4619	total loss: 3.4619
+Epoch[1-219]	loss: 3.4791	total loss: 3.4791
+Epoch[1-220]	loss: 3.4724	total loss: 3.4724
+Epoch[1-221]	loss: 3.4460	total loss: 3.4460
+Epoch[1-222]	loss: 3.4589	total loss: 3.4589
+Epoch[1-223]	loss: 3.4540	total loss: 3.4540
+Epoch[1-224]	loss: 3.4597	total loss: 3.4597
+Epoch[1-225]	loss: 3.4725	total loss: 3.4725
+Epoch[1-226]	loss: 3.4717	total loss: 3.4717
+Epoch[1-227]	loss: 3.4692	total loss: 3.4692
+Epoch[1-228]	loss: 3.4550	total loss: 3.4550
+Epoch[1-229]	loss: 3.4664	total loss: 3.4664
+Epoch[1-230]	loss: 3.4823	total loss: 3.4823
+Epoch[1-231]	loss: 3.4588	total loss: 3.4588
+Epoch[1-232]	loss: 3.4807	total loss: 3.4807
+Epoch[1-233]	loss: 3.4550	total loss: 3.4550
+Epoch[1-234]	loss: 3.4588	total loss: 3.4588
+Epoch[1-235]	loss: 3.4516	total loss: 3.4516
+Epoch[1-236]	loss: 3.4771	total loss: 3.4771
+Epoch[1-237]	loss: 3.4754	total loss: 3.4754
+Epoch[1-238]	loss: 3.4668	total loss: 3.4668
+Epoch[1-239]	loss: 3.4582	total loss: 3.4582
+Epoch[1-240]	loss: 3.4526	total loss: 3.4526
+Epoch[1-241]	loss: 3.4858	total loss: 3.4858
+Epoch[1-242]	loss: 3.4748	total loss: 3.4748
+Epoch[1-243]	loss: 3.4750	total loss: 3.4750
+Epoch[1-244]	loss: 3.4457	total loss: 3.4457
+Epoch[1-245]	loss: 3.4789	total loss: 3.4789
+Epoch[1-246]	loss: 3.4610	total loss: 3.4610
+Epoch[1-247]	loss: 3.4738	total loss: 3.4738
+Epoch[1-248]	loss: 3.4667	total loss: 3.4667
+Epoch[1-249]	loss: 3.4928	total loss: 3.4928
+Epoch[1-250]	loss: 3.4433	total loss: 3.4433
+Epoch[1-251]	loss: 3.4511	total loss: 3.4511
+Epoch[1-252]	loss: 3.4800	total loss: 3.4800
+Epoch[1-253]	loss: 3.4733	total loss: 3.4733
+Epoch[1-254]	loss: 3.4547	total loss: 3.4547
+Epoch[1-255]	loss: 3.4821	total loss: 3.4821
+Epoch[1-256]	loss: 3.4388	total loss: 3.4388
+Epoch[1-257]	loss: 3.4823	total loss: 3.4823
+Epoch[1-258]	loss: 3.4618	total loss: 3.4618
+Epoch[1-259]	loss: 3.5095	total loss: 3.5095
+Epoch[1-260]	loss: 3.4717	total loss: 3.4717
+Epoch[1-261]	loss: 3.4829	total loss: 3.4829
+Epoch[1-262]	loss: 3.4510	total loss: 3.4510
+Epoch[1-263]	loss: 3.4884	total loss: 3.4884
+Epoch[1-264]	loss: 3.4769	total loss: 3.4769
+Epoch[1-265]	loss: 3.4687	total loss: 3.4687
+Epoch[1-266]	loss: 3.4739	total loss: 3.4739
+Epoch[1-267]	loss: 3.4630	total loss: 3.4630
+Epoch[1-268]	loss: 3.4894	total loss: 3.4894
+Epoch[1-269]	loss: 3.4890	total loss: 3.4890
+Epoch[1-270]	loss: 3.4695	total loss: 3.4695
+Epoch[1-271]	loss: 3.4682	total loss: 3.4682
+Epoch[1-272]	loss: 3.5055	total loss: 3.5055
+Epoch[1-273]	loss: 3.4802	total loss: 3.4802
+Epoch[1-274]	loss: 3.4960	total loss: 3.4960
+Epoch[1-275]	loss: 3.4606	total loss: 3.4606
+Epoch[1-276]	loss: 3.4701	total loss: 3.4701
+Epoch[1-277]	loss: 3.4688	total loss: 3.4688
+Epoch[1-278]	loss: 3.4642	total loss: 3.4642
+Epoch[1-279]	loss: 3.4738	total loss: 3.4738
+Epoch[1-280]	loss: 3.4738	total loss: 3.4738
+Epoch[1-281]	loss: 3.4601	total loss: 3.4601
+Epoch[1-282]	loss: 3.4671	total loss: 3.4671
+Epoch[1-283]	loss: 3.4597	total loss: 3.4597
+Epoch[1-284]	loss: 3.4547	total loss: 3.4547
+Epoch[1-285]	loss: 3.4801	total loss: 3.4801
+Epoch[1-286]	loss: 3.4753	total loss: 3.4753
+Epoch[1-287]	loss: 3.4866	total loss: 3.4866
+Epoch[1-288]	loss: 3.4557	total loss: 3.4557
+Epoch[1-289]	loss: 3.4732	total loss: 3.4732
+Epoch[1-290]	loss: 3.4675	total loss: 3.4675
+Epoch[1-291]	loss: 3.4746	total loss: 3.4746
+Epoch[1-292]	loss: 3.4734	total loss: 3.4734
+Epoch[1-293]	loss: 3.4749	total loss: 3.4749
+Epoch[1-294]	loss: 3.4701	total loss: 3.4701
+Epoch[1-295]	loss: 3.4735	total loss: 3.4735
+Epoch[1-296]	loss: 3.4657	total loss: 3.4657
+Epoch[1-297]	loss: 3.4648	total loss: 3.4648
+Epoch[1-298]	loss: 3.4566	total loss: 3.4566
+Epoch[1-299]	loss: 3.4707	total loss: 3.4707
+Epoch[1-300]	loss: 3.4681	total loss: 3.4681
+Epoch[1-301]	loss: 3.4670	total loss: 3.4670
+Epoch[1-302]	loss: 3.4748	total loss: 3.4748
+Epoch[1-303]	loss: 3.4772	total loss: 3.4772
+Epoch[1-304]	loss: 3.4596	total loss: 3.4596
+Epoch[1-305]	loss: 3.4650	total loss: 3.4650
+Epoch[1-306]	loss: 3.4715	total loss: 3.4715
+Epoch[1-307]	loss: 3.4776	total loss: 3.4776
+Epoch[1-308]	loss: 3.4803	total loss: 3.4803
+Epoch[1-309]	loss: 3.4583	total loss: 3.4583
+Epoch[1-310]	loss: 3.4631	total loss: 3.4631
+Epoch[1-311]	loss: 3.4728	total loss: 3.4728
+Epoch[1-312]	loss: 3.4690	total loss: 3.4690
+Epoch[1-313]	loss: 3.4617	total loss: 3.4617
+Epoch[1-314]	loss: 3.4739	total loss: 3.4739
+Epoch[1-315]	loss: 3.4809	total loss: 3.4809
+Epoch[1-316]	loss: 3.4834	total loss: 3.4834
+Epoch[1-317]	loss: 3.4686	total loss: 3.4686
+Epoch[1-318]	loss: 3.4666	total loss: 3.4666
+Epoch[1-319]	loss: 3.4810	total loss: 3.4810
+Epoch[1-320]	loss: 3.4748	total loss: 3.4748
+Epoch[1-321]	loss: 3.4719	total loss: 3.4719
+Epoch[1-322]	loss: 3.4699	total loss: 3.4699
+Epoch[1-323]	loss: 3.4887	total loss: 3.4887
+Epoch[1-324]	loss: 3.4807	total loss: 3.4807
+Epoch[1-325]	loss: 3.4604	total loss: 3.4604
+Epoch[1-326]	loss: 3.4805	total loss: 3.4805
+Epoch[1-327]	loss: 3.4616	total loss: 3.4616
+Epoch[1-328]	loss: 3.4736	total loss: 3.4736
+Epoch[1-329]	loss: 3.4835	total loss: 3.4835
+Epoch[1-330]	loss: 3.4896	total loss: 3.4896
+Epoch[1-331]	loss: 3.4574	total loss: 3.4574
+Epoch[1-332]	loss: 3.4515	total loss: 3.4515
+Epoch[1-333]	loss: 3.4635	total loss: 3.4635
+Epoch[1-334]	loss: 3.4636	total loss: 3.4636
+Epoch[1-335]	loss: 3.4840	total loss: 3.4840
+Epoch[1-336]	loss: 3.4824	total loss: 3.4824
+Epoch[1-337]	loss: 3.4832	total loss: 3.4832
+Epoch[1-338]	loss: 3.4818	total loss: 3.4818
+Epoch[1-339]	loss: 3.4471	total loss: 3.4471
+Epoch[1-340]	loss: 3.4874	total loss: 3.4874
+Epoch[1-341]	loss: 3.4725	total loss: 3.4725
+Epoch[1-342]	loss: 3.4861	total loss: 3.4861
+Epoch[1-343]	loss: 3.4586	total loss: 3.4586
+Epoch[1-344]	loss: 3.4619	total loss: 3.4619
+Epoch[1-345]	loss: 3.4649	total loss: 3.4649
+Epoch[1-346]	loss: 3.4709	total loss: 3.4709
+Epoch[1-347]	loss: 3.4591	total loss: 3.4591
+Epoch[1-348]	loss: 3.4746	total loss: 3.4746
+Epoch[1-349]	loss: 3.4567	total loss: 3.4567
+Epoch[1-350]	loss: 3.4663	total loss: 3.4663
+Epoch[1-351]	loss: 3.4656	total loss: 3.4656
+Epoch[1-352]	loss: 3.4766	total loss: 3.4766
+Epoch[1-353]	loss: 3.4536	total loss: 3.4536
+Epoch[1-354]	loss: 3.4600	total loss: 3.4600
+Epoch[1-355]	loss: 3.4511	total loss: 3.4511
+Epoch[1-356]	loss: 3.4537	total loss: 3.4537
+Epoch[1-357]	loss: 3.4698	total loss: 3.4698
+Epoch[1-358]	loss: 3.4559	total loss: 3.4559
+Epoch[1-359]	loss: 3.4624	total loss: 3.4624
+Epoch[1-360]	loss: 3.4648	total loss: 3.4648
+Epoch[1-361]	loss: 3.4623	total loss: 3.4623
+Epoch[1-362]	loss: 3.4651	total loss: 3.4651
+Epoch[1-363]	loss: 3.4409	total loss: 3.4409
+Epoch[1-364]	loss: 3.4667	total loss: 3.4667
+Epoch[1-365]	loss: 3.4541	total loss: 3.4541
+Epoch[1-366]	loss: 3.4662	total loss: 3.4662
+Epoch[1-367]	loss: 3.4869	total loss: 3.4869
+Epoch[1-368]	loss: 3.4639	total loss: 3.4639
+Epoch[1-369]	loss: 3.4554	total loss: 3.4554
+Epoch[1-370]	loss: 3.4718	total loss: 3.4718
+Epoch[1-371]	loss: 3.4656	total loss: 3.4656
+Epoch[1-372]	loss: 3.4548	total loss: 3.4548
+Epoch[1-373]	loss: 3.4559	total loss: 3.4559
+Epoch[1-374]	loss: 3.4616	total loss: 3.4616
+Epoch[1-375]	loss: 3.4682	total loss: 3.4682
+Epoch[1-376]	loss: 3.4789	total loss: 3.4789
+Epoch[1-377]	loss: 3.4944	total loss: 3.4944
+Epoch[1-378]	loss: 3.4750	total loss: 3.4750
+Epoch[1-379]	loss: 3.4738	total loss: 3.4738
+Epoch[1-380]	loss: 3.4495	total loss: 3.4495
+Epoch[1-381]	loss: 3.4614	total loss: 3.4614
+Epoch[1-382]	loss: 3.4581	total loss: 3.4581
+Epoch[1-383]	loss: 3.4642	total loss: 3.4642
+Epoch[1-384]	loss: 3.4848	total loss: 3.4848
+Epoch[1-385]	loss: 3.4615	total loss: 3.4615
+Epoch[1-386]	loss: 3.4792	total loss: 3.4792
+Epoch[1-387]	loss: 3.4707	total loss: 3.4707
+Epoch[1-388]	loss: 3.4642	total loss: 3.4642
+Epoch[1-389]	loss: 3.4717	total loss: 3.4717
+Epoch[1-390]	loss: 3.4907	total loss: 3.4907
+Epoch[1-391]	loss: 3.4713	total loss: 3.4713
+Epoch[1-392]	loss: 3.4614	total loss: 3.4614
+Epoch[1-393]	loss: 3.4676	total loss: 3.4676
+Epoch[1-394]	loss: 3.4487	total loss: 3.4487
+Epoch[1-395]	loss: 3.4787	total loss: 3.4787
+Epoch[1-396]	loss: 3.4723	total loss: 3.4723
+Epoch[1-397]	loss: 3.4844	total loss: 3.4844
+Epoch[1-398]	loss: 3.4963	total loss: 3.4963
+Epoch[1-399]	loss: 3.4488	total loss: 3.4488
+Epoch[1-400]	loss: 3.4642	total loss: 3.4642
+Epoch[1-401]	loss: 3.4622	total loss: 3.4622
+Epoch[1-402]	loss: 3.4727	total loss: 3.4727
+Epoch[1-403]	loss: 3.4742	total loss: 3.4742
+Epoch[1-404]	loss: 3.4779	total loss: 3.4779
+Epoch[1-405]	loss: 3.4623	total loss: 3.4623
+Epoch[1-406]	loss: 3.4722	total loss: 3.4722
+Epoch[1-407]	loss: 3.4679	total loss: 3.4679
+Epoch[1-408]	loss: 3.4747	total loss: 3.4747
+Epoch[1-409]	loss: 3.4678	total loss: 3.4678
+Epoch[1-410]	loss: 3.4766	total loss: 3.4766
+Epoch[1-411]	loss: 3.4584	total loss: 3.4584
+Epoch[1-412]	loss: 3.4575	total loss: 3.4575
+Epoch[1-413]	loss: 3.4665	total loss: 3.4665
+Epoch[1-414]	loss: 3.4733	total loss: 3.4733
+Epoch[1-415]	loss: 3.4725	total loss: 3.4725
+Epoch[1-416]	loss: 3.4470	total loss: 3.4470
+Epoch[1-417]	loss: 3.4749	total loss: 3.4749
+Epoch[1-418]	loss: 3.4692	total loss: 3.4692
+Epoch[1-419]	loss: 3.4711	total loss: 3.4711
+Epoch[1-420]	loss: 3.4608	total loss: 3.4608
+Epoch[1-421]	loss: 3.4568	total loss: 3.4568
+Epoch[1-422]	loss: 3.4701	total loss: 3.4701
+Epoch[1-423]	loss: 3.4602	total loss: 3.4602
+Epoch[1-424]	loss: 3.4652	total loss: 3.4652
+Epoch[1-425]	loss: 3.4673	total loss: 3.4673
+Epoch[1-426]	loss: 3.4847	total loss: 3.4847
+Epoch[1-427]	loss: 3.4812	total loss: 3.4812
+Epoch[1-428]	loss: 3.4788	total loss: 3.4788
+Epoch[1-429]	loss: 3.4701	total loss: 3.4701
+Epoch[1-430]	loss: 3.4693	total loss: 3.4693
+Epoch[1-431]	loss: 3.4719	total loss: 3.4719
+Epoch[1-432]	loss: 3.4544	total loss: 3.4544
+Epoch[1-433]	loss: 3.4754	total loss: 3.4754
+Epoch[1-434]	loss: 3.4612	total loss: 3.4612
+Epoch[1-435]	loss: 3.4542	total loss: 3.4542
+Epoch[1-436]	loss: 3.4594	total loss: 3.4594
+Epoch[1-437]	loss: 3.4651	total loss: 3.4651
+Epoch[1-438]	loss: 3.4596	total loss: 3.4596
+Epoch[1-439]	loss: 3.4674	total loss: 3.4674
+Epoch[1-440]	loss: 3.4571	total loss: 3.4571
+Epoch[1-441]	loss: 3.4637	total loss: 3.4637
+Epoch[1-442]	loss: 3.4667	total loss: 3.4667
+Epoch[1-443]	loss: 3.4834	total loss: 3.4834
+Epoch[1-444]	loss: 3.4544	total loss: 3.4544
+Epoch[1-445]	loss: 3.4779	total loss: 3.4779
+Epoch[1-446]	loss: 3.4611	total loss: 3.4611
+Epoch[1-447]	loss: 3.4832	total loss: 3.4832
+Epoch[1-448]	loss: 3.4603	total loss: 3.4603
+Epoch[1-449]	loss: 3.4775	total loss: 3.4775
+Epoch[1-450]	loss: 3.4620	total loss: 3.4620
+Epoch[1-451]	loss: 3.4799	total loss: 3.4799
+Epoch[1-452]	loss: 3.4792	total loss: 3.4792
+Epoch[1-453]	loss: 3.4699	total loss: 3.4699
+Epoch[1-454]	loss: 3.4609	total loss: 3.4609
+Epoch[1-455]	loss: 3.4612	total loss: 3.4612
+Epoch[1-456]	loss: 3.4826	total loss: 3.4826
+Epoch[1-457]	loss: 3.4642	total loss: 3.4642
+Epoch[1-458]	loss: 3.4741	total loss: 3.4741
+Epoch[1-459]	loss: 3.4708	total loss: 3.4708
+Epoch[1-460]	loss: 3.4621	total loss: 3.4621
+Epoch[1-461]	loss: 3.4767	total loss: 3.4767
+Epoch[1-462]	loss: 3.4697	total loss: 3.4697
+Epoch[1-463]	loss: 3.4619	total loss: 3.4619
+Epoch[1-464]	loss: 3.4697	total loss: 3.4697
+Epoch[1-465]	loss: 3.4646	total loss: 3.4646
+Epoch[1-466]	loss: 3.4763	total loss: 3.4763
+Epoch[1-467]	loss: 3.4575	total loss: 3.4575
+Epoch[1-468]	loss: 3.4662	total loss: 3.4662
+Epoch[1-469]	loss: 3.4699	total loss: 3.4699
+Epoch[1-470]	loss: 3.4588	total loss: 3.4588
+Epoch[1-471]	loss: 3.4542	total loss: 3.4542
+Epoch[1-472]	loss: 3.4509	total loss: 3.4509
+Epoch[1-473]	loss: 3.4751	total loss: 3.4751
+Epoch[1-474]	loss: 3.4568	total loss: 3.4568
+Epoch[1-475]	loss: 3.4693	total loss: 3.4693
+Epoch[1-476]	loss: 3.4637	total loss: 3.4637
+Epoch[1-477]	loss: 3.4764	total loss: 3.4764
+Epoch[1-478]	loss: 3.4733	total loss: 3.4733
+Epoch[1-479]	loss: 3.4727	total loss: 3.4727
+Epoch[1-480]	loss: 3.4586	total loss: 3.4586
+Epoch[1-481]	loss: 3.4797	total loss: 3.4797
+Epoch[1-482]	loss: 3.4669	total loss: 3.4669
+Epoch[1-483]	loss: 3.4646	total loss: 3.4646
+Epoch[1-484]	loss: 3.4780	total loss: 3.4780
+Epoch[1-485]	loss: 3.4782	total loss: 3.4782
+Epoch[1-486]	loss: 3.4602	total loss: 3.4602
+Epoch[1-487]	loss: 3.4614	total loss: 3.4614
+Epoch[1-488]	loss: 3.4766	total loss: 3.4766
+Epoch[1-489]	loss: 3.4665	total loss: 3.4665
+Epoch[1-490]	loss: 3.4675	total loss: 3.4675
+Epoch[1-491]	loss: 3.4544	total loss: 3.4544
+Epoch[1-492]	loss: 3.4731	total loss: 3.4731
+Epoch[1-493]	loss: 3.4620	total loss: 3.4620
+Epoch[1-494]	loss: 3.4598	total loss: 3.4598
+Epoch[1-495]	loss: 3.4622	total loss: 3.4622
+Epoch[1-496]	loss: 3.4661	total loss: 3.4661
+Epoch[1-497]	loss: 3.4669	total loss: 3.4669
+Epoch[1-498]	loss: 3.4721	total loss: 3.4721
+Epoch[1-499]	loss: 3.4625	total loss: 3.4625
+Epoch[1-500]	loss: 3.4696	total loss: 3.4696
+Epoch[1-501]	loss: 3.4540	total loss: 3.4540
+Epoch[1-502]	loss: 3.4712	total loss: 3.4712
+Epoch[1-503]	loss: 3.4727	total loss: 3.4727
+Epoch[1-504]	loss: 3.4645	total loss: 3.4645
+Epoch[1-505]	loss: 3.4720	total loss: 3.4720
+Epoch[1-506]	loss: 3.4642	total loss: 3.4642
+Epoch[1-507]	loss: 3.4732	total loss: 3.4732
+Epoch[1-508]	loss: 3.4697	total loss: 3.4697
+Epoch[1-509]	loss: 3.4605	total loss: 3.4605
+Epoch[1-510]	loss: 3.4777	total loss: 3.4777
+Epoch[1-511]	loss: 3.4663	total loss: 3.4663
+Epoch[1-512]	loss: 3.4615	total loss: 3.4615
+Epoch[1-513]	loss: 3.4714	total loss: 3.4714
+Epoch[1-514]	loss: 3.4633	total loss: 3.4633
+Epoch[1-515]	loss: 3.4602	total loss: 3.4602
+Epoch[1-516]	loss: 3.4672	total loss: 3.4672
+Epoch[1-517]	loss: 3.4713	total loss: 3.4713
+Epoch[1-518]	loss: 3.4658	total loss: 3.4658
+Epoch[1-519]	loss: 3.4653	total loss: 3.4653
+Epoch[1-520]	loss: 3.4582	total loss: 3.4582
+Epoch[1-521]	loss: 3.4724	total loss: 3.4724
+Epoch[1-522]	loss: 3.4527	total loss: 3.4527
+Epoch[1-523]	loss: 3.4661	total loss: 3.4661
+Epoch[1-524]	loss: 3.4609	total loss: 3.4609
+Epoch[1-525]	loss: 3.4680	total loss: 3.4680
+Epoch[1-526]	loss: 3.4666	total loss: 3.4666
+Epoch[1-527]	loss: 3.4658	total loss: 3.4658
+Epoch[1-528]	loss: 3.4760	total loss: 3.4760
+Epoch[1-529]	loss: 3.4646	total loss: 3.4646
+Epoch[1-530]	loss: 3.4881	total loss: 3.4881
+Epoch[1-531]	loss: 3.4688	total loss: 3.4688
+Epoch[1-532]	loss: 3.4698	total loss: 3.4698
+Epoch[1-533]	loss: 3.4775	total loss: 3.4775
+Epoch[1-534]	loss: 3.4696	total loss: 3.4696
+Epoch[1-535]	loss: 3.4673	total loss: 3.4673
+Epoch[1-536]	loss: 3.4801	total loss: 3.4801
+Epoch[1-537]	loss: 3.4682	total loss: 3.4682
+Epoch[1-538]	loss: 3.4650	total loss: 3.4650
+Epoch[1-539]	loss: 3.4696	total loss: 3.4696
+Epoch[1-540]	loss: 3.4568	total loss: 3.4568
+Epoch[1-541]	loss: 3.4660	total loss: 3.4660
+Epoch[1-542]	loss: 3.4660	total loss: 3.4660
+Epoch[1-543]	loss: 3.4635	total loss: 3.4635
+Epoch[1-544]	loss: 3.4587	total loss: 3.4587
+Epoch[1-545]	loss: 3.4757	total loss: 3.4757
+Epoch[1-546]	loss: 3.4731	total loss: 3.4731
+Epoch[1-547]	loss: 3.4625	total loss: 3.4625
+Epoch[1-548]	loss: 3.4736	total loss: 3.4736
+Epoch[1-549]	loss: 3.4634	total loss: 3.4634
+Epoch[1-550]	loss: 3.4570	total loss: 3.4570
+Epoch[1-551]	loss: 3.4707	total loss: 3.4707
+Epoch[1-552]	loss: 3.4713	total loss: 3.4713
+Epoch[1-553]	loss: 3.4647	total loss: 3.4647
+Epoch[1-554]	loss: 3.4540	total loss: 3.4540
+Epoch[1-555]	loss: 3.4638	total loss: 3.4638
+Epoch[1-556]	loss: 3.4801	total loss: 3.4801
+Epoch[1-557]	loss: 3.4714	total loss: 3.4714
+Epoch[1-558]	loss: 3.4634	total loss: 3.4634
+Epoch[1-559]	loss: 3.4553	total loss: 3.4553
+Epoch[1-560]	loss: 3.4751	total loss: 3.4751
+Epoch[1-561]	loss: 3.4702	total loss: 3.4702
+Epoch[1-562]	loss: 3.4730	total loss: 3.4730
+Epoch[1-563]	loss: 3.4683	total loss: 3.4683
+Epoch[1-564]	loss: 3.4683	total loss: 3.4683
+Epoch[1-565]	loss: 3.4722	total loss: 3.4722
+Epoch[1-566]	loss: 3.4584	total loss: 3.4584
+Epoch[1-567]	loss: 3.4752	total loss: 3.4752
+Epoch[1-568]	loss: 3.4672	total loss: 3.4672
+Epoch[1-569]	loss: 3.4585	total loss: 3.4585
+Epoch[1-570]	loss: 3.4607	total loss: 3.4607
+Epoch[1-571]	loss: 3.4726	total loss: 3.4726
+Epoch[1-572]	loss: 3.4613	total loss: 3.4613
+Epoch[1-573]	loss: 3.4563	total loss: 3.4563
+Epoch[1-574]	loss: 3.4648	total loss: 3.4648
+Epoch[1-575]	loss: 3.4646	total loss: 3.4646
+Epoch[1-576]	loss: 3.4658	total loss: 3.4658
+Epoch[1-577]	loss: 3.4668	total loss: 3.4668
+Epoch[1-578]	loss: 3.4660	total loss: 3.4660
+Epoch[1-579]	loss: 3.4649	total loss: 3.4649
+Epoch[1-580]	loss: 3.4742	total loss: 3.4742
+Epoch[1-581]	loss: 3.4674	total loss: 3.4674
+Epoch[1-582]	loss: 3.4580	total loss: 3.4580
+Epoch[1-583]	loss: 3.4749	total loss: 3.4749
+Epoch[1-584]	loss: 3.4626	total loss: 3.4626
+Epoch[1-585]	loss: 3.4727	total loss: 3.4727
+Epoch[1-586]	loss: 3.4651	total loss: 3.4651
+Epoch[1-587]	loss: 3.4700	total loss: 3.4700
+Epoch[1-588]	loss: 3.4651	total loss: 3.4651
+Epoch[1-589]	loss: 3.4637	total loss: 3.4637
+Epoch[1-590]	loss: 3.4827	total loss: 3.4827
+Epoch[1-591]	loss: 3.4532	total loss: 3.4532
+Epoch[1-592]	loss: 3.4685	total loss: 3.4685
+Epoch[1-593]	loss: 3.4776	total loss: 3.4776
+Epoch[1-594]	loss: 3.4682	total loss: 3.4682
+Epoch[1-595]	loss: 3.4702	total loss: 3.4702
+Epoch[1-596]	loss: 3.4616	total loss: 3.4616
+Epoch[1-597]	loss: 3.4670	total loss: 3.4670
+Epoch[1-598]	loss: 3.4699	total loss: 3.4699
+Epoch[1-599]	loss: 3.4742	total loss: 3.4742
+Epoch[1-600]	loss: 3.4600	total loss: 3.4600
+Epoch[1-601]	loss: 3.4618	total loss: 3.4618
+Epoch[1-602]	loss: 3.4498	total loss: 3.4498
+Epoch[1-603]	loss: 3.4619	total loss: 3.4619
+Epoch[1-604]	loss: 3.4675	total loss: 3.4675
+Epoch[1-605]	loss: 3.4608	total loss: 3.4608
+Epoch[1-606]	loss: 3.4736	total loss: 3.4736
+Epoch[1-607]	loss: 3.4619	total loss: 3.4619
+Epoch[1-608]	loss: 3.4604	total loss: 3.4604
+Epoch[1-609]	loss: 3.4684	total loss: 3.4684
+Epoch[1-610]	loss: 3.4770	total loss: 3.4770
+Epoch[1-611]	loss: 3.4589	total loss: 3.4589
+Epoch[1-612]	loss: 3.4731	total loss: 3.4731
+Epoch[1-613]	loss: 3.4588	total loss: 3.4588
+Epoch[1-614]	loss: 3.4656	total loss: 3.4656
+Epoch[1-615]	loss: 3.4699	total loss: 3.4699
+Epoch[1-616]	loss: 3.4673	total loss: 3.4673
+Epoch[1-617]	loss: 3.4740	total loss: 3.4740
+Epoch[1-618]	loss: 3.4712	total loss: 3.4712
+Epoch[1-619]	loss: 3.4708	total loss: 3.4708
+Epoch[1-620]	loss: 3.4766	total loss: 3.4766
+Epoch[1-621]	loss: 3.4718	total loss: 3.4718
+Epoch[1-622]	loss: 3.4689	total loss: 3.4689
+Epoch[1-623]	loss: 3.4653	total loss: 3.4653
+Epoch[1-624]	loss: 3.4686	total loss: 3.4686
+Epoch[1-625]	loss: 3.4655	total loss: 3.4655
+Epoch[1-626]	loss: 3.4717	total loss: 3.4717
+Epoch[1-627]	loss: 3.4643	total loss: 3.4643
+Epoch[1-628]	loss: 3.4678	total loss: 3.4678
+Epoch[1-629]	loss: 3.4721	total loss: 3.4721
+Epoch[1-630]	loss: 3.4721	total loss: 3.4721
+Epoch[1-631]	loss: 3.4711	total loss: 3.4711
+Epoch[1-632]	loss: 3.4704	total loss: 3.4704
+Epoch[1-633]	loss: 3.4558	total loss: 3.4558
+Epoch[1-634]	loss: 3.4717	total loss: 3.4717
+Epoch[1-635]	loss: 3.4738	total loss: 3.4738
+Epoch[1-636]	loss: 3.4661	total loss: 3.4661
+Epoch[1-637]	loss: 3.4509	total loss: 3.4509
+Epoch[1-638]	loss: 3.4629	total loss: 3.4629
+Epoch[1-639]	loss: 3.4798	total loss: 3.4798
+Epoch[1-640]	loss: 3.4638	total loss: 3.4638
+Epoch[1-641]	loss: 3.4695	total loss: 3.4695
+Epoch[1-642]	loss: 3.4638	total loss: 3.4638
+Epoch[1-643]	loss: 3.4679	total loss: 3.4679
+Epoch[1-644]	loss: 3.4581	total loss: 3.4581
+Epoch[1-645]	loss: 3.4633	total loss: 3.4633
+Epoch[1-646]	loss: 3.4670	total loss: 3.4670
+Epoch[1-647]	loss: 3.4643	total loss: 3.4643
+Epoch[1-648]	loss: 3.4680	total loss: 3.4680
+Epoch[1-649]	loss: 3.4713	total loss: 3.4713
+Epoch[1-650]	loss: 3.4707	total loss: 3.4707
+Epoch[1-651]	loss: 3.4671	total loss: 3.4671
+Epoch[1-652]	loss: 3.4613	total loss: 3.4613
+Epoch[1-653]	loss: 3.4718	total loss: 3.4718
+Epoch[1-654]	loss: 3.4852	total loss: 3.4852
+Epoch[1-655]	loss: 3.4779	total loss: 3.4779
+Epoch[1-656]	loss: 3.4698	total loss: 3.4698
+Epoch[1-657]	loss: 3.4733	total loss: 3.4733
+Epoch[1-658]	loss: 3.4489	total loss: 3.4489
+Epoch[1-659]	loss: 3.4676	total loss: 3.4676
+Epoch[1-660]	loss: 3.4723	total loss: 3.4723
+Epoch[1-661]	loss: 3.4730	total loss: 3.4730
+Epoch[1-662]	loss: 3.4666	total loss: 3.4666
+Epoch[1-663]	loss: 3.4694	total loss: 3.4694
+Epoch[1-664]	loss: 3.4654	total loss: 3.4654
+Epoch[1-665]	loss: 3.4640	total loss: 3.4640
+Epoch[1-666]	loss: 3.4662	total loss: 3.4662
+Epoch[1-667]	loss: 3.4762	total loss: 3.4762
+Epoch[1-668]	loss: 3.4759	total loss: 3.4759
+Epoch[1-669]	loss: 3.4710	total loss: 3.4710
+Epoch[1-670]	loss: 3.4756	total loss: 3.4756
+Epoch[1-671]	loss: 3.4340	total loss: 3.4340
+Epoch[1-672]	loss: 3.4727	total loss: 3.4727
+Epoch[1-673]	loss: 3.4692	total loss: 3.4692
+Epoch[1-674]	loss: 3.4719	total loss: 3.4719
+Epoch[1-675]	loss: 3.4804	total loss: 3.4804
+Epoch[1-676]	loss: 3.4636	total loss: 3.4636
+Epoch[1-677]	loss: 3.4711	total loss: 3.4711
+Epoch[1-678]	loss: 3.4811	total loss: 3.4811
+Epoch[1-679]	loss: 3.4766	total loss: 3.4766
+Epoch[1-680]	loss: 3.4774	total loss: 3.4774
+Epoch[1-681]	loss: 3.4892	total loss: 3.4892
+Epoch[1-682]	loss: 3.4734	total loss: 3.4734
+Epoch[1-683]	loss: 3.4513	total loss: 3.4513
+Epoch[1-684]	loss: 3.4914	total loss: 3.4914
+Epoch[1-685]	loss: 3.4690	total loss: 3.4690
+Epoch[1-686]	loss: 3.4467	total loss: 3.4467
+Epoch[1-687]	loss: 3.4553	total loss: 3.4553
+Epoch[1-688]	loss: 3.4821	total loss: 3.4821
+Epoch[1-689]	loss: 3.4691	total loss: 3.4691
+Epoch[1-690]	loss: 3.4835	total loss: 3.4835
+Epoch[1-691]	loss: 3.4599	total loss: 3.4599
+Epoch[1-692]	loss: 3.4702	total loss: 3.4702
+Epoch[1-693]	loss: 3.4586	total loss: 3.4586
+Epoch[1-694]	loss: 3.4543	total loss: 3.4543
+Epoch[1-695]	loss: 3.4722	total loss: 3.4722
+Epoch[1-696]	loss: 3.4690	total loss: 3.4690
+Epoch[1-697]	loss: 3.4682	total loss: 3.4682
+Epoch[1-698]	loss: 3.4605	total loss: 3.4605
+Epoch[1-699]	loss: 3.4691	total loss: 3.4691
+Epoch[1-700]	loss: 3.4695	total loss: 3.4695
+Epoch[1-701]	loss: 3.4733	total loss: 3.4733
+Epoch[1-702]	loss: 3.4753	total loss: 3.4753
+Epoch[1-703]	loss: 3.4652	total loss: 3.4652
+Epoch[1-704]	loss: 3.4672	total loss: 3.4672
+Epoch[1-705]	loss: 3.4721	total loss: 3.4721
+Epoch[1-706]	loss: 3.4687	total loss: 3.4687
+Epoch[1-707]	loss: 3.4722	total loss: 3.4722
+Epoch[1-708]	loss: 3.4546	total loss: 3.4546
+Epoch[1-709]	loss: 3.4708	total loss: 3.4708
+Epoch[1-710]	loss: 3.4704	total loss: 3.4704
+Epoch[1-711]	loss: 3.4651	total loss: 3.4651
+Epoch[1-712]	loss: 3.4849	total loss: 3.4849
+Epoch[1-713]	loss: 3.4802	total loss: 3.4802
+Epoch[1-714]	loss: 3.4653	total loss: 3.4653
+Epoch[1-715]	loss: 3.4728	total loss: 3.4728
+Epoch[1-716]	loss: 3.4716	total loss: 3.4716
+Epoch[1-717]	loss: 3.4586	total loss: 3.4586
+Epoch[1-718]	loss: 3.4791	total loss: 3.4791
+Epoch[1-719]	loss: 3.4674	total loss: 3.4674
+Epoch[1-720]	loss: 3.4512	total loss: 3.4512
+Epoch[1-721]	loss: 3.4702	total loss: 3.4702
+Epoch[1-722]	loss: 3.4678	total loss: 3.4678
+Epoch[1-723]	loss: 3.4717	total loss: 3.4717
+Epoch[1-724]	loss: 3.4702	total loss: 3.4702
+Epoch[1-725]	loss: 3.4863	total loss: 3.4863
+Epoch[1-726]	loss: 3.4641	total loss: 3.4641
+Epoch[1-727]	loss: 3.4743	total loss: 3.4743
+Epoch[1-728]	loss: 3.4735	total loss: 3.4735
+Epoch[1-729]	loss: 3.4687	total loss: 3.4687
+Epoch[1-730]	loss: 3.4617	total loss: 3.4617
+Epoch[1-731]	loss: 3.4747	total loss: 3.4747
+Epoch[1-732]	loss: 3.4616	total loss: 3.4616
+Epoch[1-733]	loss: 3.4705	total loss: 3.4705
+Epoch[1-734]	loss: 3.4669	total loss: 3.4669
+Epoch[1-735]	loss: 3.4679	total loss: 3.4679
+Epoch[1-736]	loss: 3.4653	total loss: 3.4653
+Epoch[1-737]	loss: 3.4648	total loss: 3.4648
+Epoch[1-738]	loss: 3.4640	total loss: 3.4640
+Epoch[1-739]	loss: 3.4610	total loss: 3.4610
+Epoch[1-740]	loss: 3.4643	total loss: 3.4643
+Epoch[1-741]	loss: 3.4563	total loss: 3.4563
+Epoch[1-742]	loss: 3.4655	total loss: 3.4655
+Epoch[1-743]	loss: 3.4711	total loss: 3.4711
+Epoch[1-744]	loss: 3.4686	total loss: 3.4686
+Epoch[1-745]	loss: 3.4709	total loss: 3.4709
+Epoch[1-746]	loss: 3.4697	total loss: 3.4697
+Epoch[1-747]	loss: 3.4739	total loss: 3.4739
+Epoch[1-748]	loss: 3.4682	total loss: 3.4682
+Epoch[1-749]	loss: 3.4634	total loss: 3.4634
+Epoch[1-750]	loss: 3.4634	total loss: 3.4634
+Epoch[1-751]	loss: 3.4589	total loss: 3.4589
+Epoch[1-752]	loss: 3.4662	total loss: 3.4662
+Epoch[1-753]	loss: 3.4769	total loss: 3.4769
+Epoch[1-754]	loss: 3.4623	total loss: 3.4623
+Epoch[1-755]	loss: 3.4745	total loss: 3.4745
+Epoch[1-756]	loss: 3.4714	total loss: 3.4714
+Epoch[1-757]	loss: 3.4630	total loss: 3.4630
+Epoch[1-758]	loss: 3.4745	total loss: 3.4745
+Epoch[1-759]	loss: 3.4631	total loss: 3.4631
+Epoch[1-760]	loss: 3.4569	total loss: 3.4569
+Epoch[1-761]	loss: 3.4681	total loss: 3.4681
+Epoch[1-762]	loss: 3.4627	total loss: 3.4627
+Epoch[1-763]	loss: 3.4738	total loss: 3.4738
+Epoch[1-764]	loss: 3.4661	total loss: 3.4661
+Epoch[1-765]	loss: 3.4680	total loss: 3.4680
+Epoch[1-766]	loss: 3.4678	total loss: 3.4678
+Epoch[1-767]	loss: 3.4649	total loss: 3.4649
+Epoch[1-768]	loss: 3.4596	total loss: 3.4596
+Epoch[1-769]	loss: 3.4626	total loss: 3.4626
+Epoch[1-770]	loss: 3.4776	total loss: 3.4776
+Epoch[1-771]	loss: 3.4743	total loss: 3.4743
+Epoch[1-772]	loss: 3.4666	total loss: 3.4666
+Epoch[1-773]	loss: 3.4677	total loss: 3.4677
+Epoch[1-774]	loss: 3.4723	total loss: 3.4723
+Epoch[1-775]	loss: 3.4568	total loss: 3.4568
+Epoch[1-776]	loss: 3.4622	total loss: 3.4622
+Epoch[1-777]	loss: 3.4705	total loss: 3.4705
+Epoch[1-778]	loss: 3.4686	total loss: 3.4686
+Epoch[1-779]	loss: 3.4653	total loss: 3.4653
+Epoch[1-780]	loss: 3.4747	total loss: 3.4747
+Epoch[1-781]	loss: 3.4670	total loss: 3.4670
+Epoch[1-782]	loss: 3.4714	total loss: 3.4714
+Epoch[1-783]	loss: 3.4622	total loss: 3.4622
+Epoch[1-784]	loss: 3.4810	total loss: 3.4810
+Epoch[1-785]	loss: 3.4632	total loss: 3.4632
+Epoch[1-786]	loss: 3.4712	total loss: 3.4712
+Epoch[1-787]	loss: 3.4661	total loss: 3.4661
+Epoch[1-788]	loss: 3.4785	total loss: 3.4785
+Epoch[1-789]	loss: 3.4644	total loss: 3.4644
+Epoch[1-790]	loss: 3.4626	total loss: 3.4626
+Epoch[1-791]	loss: 3.4633	total loss: 3.4633
+Epoch[1-792]	loss: 3.4571	total loss: 3.4571
+Epoch[1-793]	loss: 3.4653	total loss: 3.4653
+Epoch[1-794]	loss: 3.4650	total loss: 3.4650
+Epoch[1-795]	loss: 3.4639	total loss: 3.4639
+Epoch[1-796]	loss: 3.4622	total loss: 3.4622
+Epoch[1-797]	loss: 3.4667	total loss: 3.4667
+Epoch[1-798]	loss: 3.4692	total loss: 3.4692
+Epoch[1-799]	loss: 3.4798	total loss: 3.4798
+Epoch[1-800]	loss: 3.4646	total loss: 3.4646
+Epoch[1-801]	loss: 3.4584	total loss: 3.4584
+Epoch[1-802]	loss: 3.4660	total loss: 3.4660
+Epoch[1-803]	loss: 3.4714	total loss: 3.4714
+Epoch[1-804]	loss: 3.4753	total loss: 3.4753
+Epoch[1-805]	loss: 3.4742	total loss: 3.4742
+Epoch[1-806]	loss: 3.4833	total loss: 3.4833
+Epoch[1-807]	loss: 3.4612	total loss: 3.4612
+Epoch[1-808]	loss: 3.4781	total loss: 3.4781
+Epoch[1-809]	loss: 3.4783	total loss: 3.4783
+Epoch[1-810]	loss: 3.4647	total loss: 3.4647
+Epoch[1-811]	loss: 3.4660	total loss: 3.4660
+Epoch[1-812]	loss: 3.4665	total loss: 3.4665
+Epoch[1-813]	loss: 3.4720	total loss: 3.4720
+Epoch[1-814]	loss: 3.4638	total loss: 3.4638
+Epoch[1-815]	loss: 3.4638	total loss: 3.4638
+Epoch[1-816]	loss: 3.4703	total loss: 3.4703
+Epoch[1-817]	loss: 3.4663	total loss: 3.4663
+Epoch[1-818]	loss: 3.4640	total loss: 3.4640
+Epoch[1-819]	loss: 3.4681	total loss: 3.4681
+Epoch[1-820]	loss: 3.4577	total loss: 3.4577
+Epoch[1-821]	loss: 3.4700	total loss: 3.4700
+Epoch[1-822]	loss: 3.4648	total loss: 3.4648
+Epoch[1-823]	loss: 3.4611	total loss: 3.4611
+Epoch[1-824]	loss: 3.4627	total loss: 3.4627
+Epoch[1-825]	loss: 3.4680	total loss: 3.4680
+Epoch[1-826]	loss: 3.4641	total loss: 3.4641
+Epoch[1-827]	loss: 3.4649	total loss: 3.4649
+Epoch[1-828]	loss: 3.4577	total loss: 3.4577
+Epoch[1-829]	loss: 3.4633	total loss: 3.4633
+Epoch[1-830]	loss: 3.4695	total loss: 3.4695
+Epoch[1-831]	loss: 3.4632	total loss: 3.4632
+Epoch[1]/Phase[train]
+mean_img_map_loss: 3.4681771338774983
+mean_img_map_avg_embedding_norm: 1.0
+mean_img_map_num_triplets: 992.0
+mean_loss: 3.4681771338774983
+Epoch[1]/Batch[1]
+Epoch[1]/Batch[2]
+Epoch[1]/Batch[3]
+Epoch[1]/Batch[4]
+Epoch[1]/Batch[5]
+Epoch[1]/Batch[6]
+Epoch[1]/Batch[7]
+Epoch[1]/Batch[8]
+Epoch[1]/Batch[9]
+Epoch[1]/Batch[10]
+Epoch[1]/Batch[11]
+Epoch[1]/Batch[12]
+Epoch[1]/Batch[13]
+Epoch[1]/Batch[14]
+Epoch[1]/Batch[15]
+Epoch[1]/Batch[16]
+Epoch[1]/Batch[17]
+Epoch[1]/Batch[18]
+Epoch[1]/Batch[19]
+Epoch[1]/Batch[20]
+Epoch[1]/Batch[21]
+Epoch[1]/Batch[22]
+Epoch[1]/Batch[23]
+Epoch[1]/Batch[24]
+Epoch[1]/Batch[25]
+Epoch[1]/Batch[26]
+Epoch[1]/Batch[27]
+Epoch[1]/Batch[28]
+Epoch[1]/Batch[29]
+Epoch[1]/Batch[30]
+Epoch[1]/Batch[31]
+Epoch[1]/Batch[32]
+Epoch[1]/Batch[33]
+Epoch[1]/Batch[34]
+Epoch[1]/Batch[35]
+Epoch[1]/Batch[36]
+Epoch[1]/Batch[37]
+Epoch[1]/Batch[38]
+Epoch[1]/Batch[39]
+Epoch[1]/Batch[40]
+Epoch[1]/Batch[41]
+Epoch[1]/Batch[42]
+Epoch[1]/Batch[43]
+Epoch[1]/Batch[44]
+Epoch[1]/Batch[45]
+Epoch[1]/Batch[46]
+Epoch[1]/Batch[47]
+Epoch[1]/Batch[48]
+Epoch[1]/Batch[49]
+Epoch[1]/Batch[50]
+Epoch[1]/Batch[51]
+Epoch[1]/Batch[52]
+Epoch[1]/Batch[53]
+Epoch[1]/Batch[54]
+Epoch[1]/Batch[55]
+Epoch[1]/Batch[56]
+Epoch[1]/Batch[57]
+Epoch[1]/Batch[58]
+Epoch[1]/Batch[59]
+Epoch[1]/Batch[60]
+Epoch[1]/Batch[61]
+Epoch[1]/Batch[62]
+Epoch[1]/Batch[63]
+Epoch[1]/Batch[64]
+Epoch[1]/Batch[65]
+Epoch[1]/Batch[66]
+Epoch[1]/Batch[67]
+Epoch[1]/Batch[68]
+Epoch[1]/Batch[69]
+Epoch[1]/Batch[70]
+Epoch[1]/Batch[71]
+Epoch[1]/Batch[72]
+Epoch[1]/Batch[73]
+Epoch[1]/Batch[74]
+Epoch[1]/Batch[75]
+Epoch[1]/Batch[76]
+Epoch[1]/Batch[77]
+Epoch[1]/Batch[78]
+Epoch[1]/Batch[79]
+Epoch[1]/Batch[80]
+Epoch[1]/Batch[81]
+Epoch[1]/Batch[82]
+Epoch[1]/Batch[83]
+Epoch[1]/Batch[84]
+Epoch[1]/Batch[85]
+Epoch[1]/Batch[86]
+Epoch[1]/Batch[87]
+Epoch[1]/Batch[88]
+Epoch[1]/Batch[89]
+Epoch[1]/Batch[90]
+Epoch[1]/Batch[91]
+Epoch[1]/Batch[92]
+Epoch[1]/Batch[93]
+Epoch[1]/Batch[94]
+Epoch[1]/Batch[95]
+Epoch[1]/Batch[96]
+Epoch[1]/Batch[97]
+Epoch[1]/Batch[98]
+Epoch[1]/Batch[99]
+Epoch[1]/Batch[100]
+Epoch[1]/Batch[101]
+Epoch[1]/Batch[102]
+Epoch[1]/Batch[103]
+Epoch[1]/Batch[104]
+Epoch[1]/Batch[105]
+Epoch[1]/Batch[106]
+Epoch[1]/Batch[107]
+Epoch[1]/Batch[108]
+Epoch[1]/Batch[109]
+Epoch[1]/Batch[110]
+Epoch[1]/Batch[111]
+Epoch[1]/Batch[112]
+Epoch[1]/Batch[113]
+Epoch[1]/Batch[114]
+Epoch[1]/Batch[115]
+Epoch[1]/Batch[116]
+Epoch[1]/Batch[117]
+Epoch[1]/Batch[118]
+Epoch[1]/Batch[119]
+Epoch[1]/Batch[120]
+Epoch[1]/Batch[121]
+Epoch[1]/Batch[122]
+Epoch[1]/Batch[123]
+Epoch[1]/Batch[124]
+Epoch[1]/Batch[125]
+Epoch[1]/Batch[126]
+Epoch[1]/Batch[127]
+Epoch[1]/Batch[128]
+Epoch[1]/Batch[129]
+Epoch[1]/Batch[130]
+Epoch[1]/Batch[131]
+Epoch[1]/Batch[132]
+Epoch[1]/Batch[133]
+Epoch[1]/Batch[134]
+Epoch[1]/Batch[135]
+Epoch[1]/Batch[136]
+Epoch[1]/Batch[137]
+Epoch[1]/Batch[138]
+Epoch[1]/Batch[139]
+Epoch[1]/Batch[140]
+Epoch[1]/Batch[141]
+Epoch[1]/Batch[142]
+Epoch[1]/Batch[143]
+Epoch[1]/Batch[144]
+Epoch[1]/Batch[145]
+Epoch[1]/Batch[146]
+Epoch[1]/Batch[147]
+Epoch[1]/Batch[148]
+Epoch[1]/Batch[149]
+Epoch[1]/Batch[150]
+Epoch[1]/Batch[151]
+Epoch[1]/Batch[152]
+Epoch[1]/Batch[153]
+Epoch[1]/Batch[154]
+Epoch[1]/Batch[155]
+Epoch[1]/Batch[156]
+Epoch[1]/Batch[157]
+Epoch[1]/Batch[158]
+Epoch[1]/Batch[159]
+Epoch[1]/Batch[160]
+Epoch[1]/Batch[161]
+Epoch[1]/Batch[162]
+Epoch[1]/Batch[163]
+Epoch[1]/Batch[164]
+Epoch[1]/Batch[165]
+Epoch[1]/Batch[166]
+Epoch[1]/Batch[167]
+Epoch[1]/Batch[168]
+Epoch[1]/Batch[169]
+Epoch[1]/Batch[170]
+Epoch[1]/Batch[171]
+Epoch[1]/Batch[172]
+Epoch[1]/Batch[173]
+Epoch[1]/Batch[174]
+Epoch[1]/Batch[175]
+Epoch[1]/Batch[176]
+Epoch[1]/Batch[177]
+Epoch[1]/Batch[178]
+Epoch[1]/Batch[179]
+Epoch[1]/Batch[180]
+Epoch[1]/Batch[181]
+Epoch[1]/Batch[182]
+Epoch[1]/Batch[183]
+Epoch[1]/Batch[184]
+Epoch[1]/Batch[185]
+Epoch[1]/Batch[186]
+Epoch[1]/Batch[187]
+Epoch[1]/Batch[188]
+Epoch[1]/Batch[189]
+Epoch[1]/Batch[190]
+Epoch[1]/Batch[191]
+Epoch[1]/Batch[192]
+Epoch[1]/Batch[193]
+Epoch[1]/Batch[194]
+Epoch[1]/Batch[195]
+Epoch[1]/Batch[196]
+Epoch[1]/Batch[197]
+Epoch[1]/Batch[198]
+Epoch[1]/Batch[199]
+Epoch[1]/Batch[200]
+Epoch[1]/Batch[201]
+Epoch[1]/Batch[202]
+Epoch[1]/Batch[203]
+Epoch[1]/Batch[204]
+Epoch[1]/Batch[205]
+Epoch[1]/Batch[206]
+Epoch[1]/Batch[207]
+Epoch[1]/Batch[208]
+Epoch[1]/Batch[209]
+Epoch[1]/Batch[210]
+Epoch[1]/Batch[211]
+Epoch[1]/Batch[212]
+Epoch[1]/Batch[213]
+Epoch[1]/Batch[214]
+Epoch[1]/Batch[215]
+Epoch[1]/Batch[216]
+Epoch[1]/Batch[217]
+Epoch[1]/Batch[218]
+Epoch[1]/Batch[219]
+Epoch[1]/Batch[220]
+Epoch[1]/Batch[221]
+Epoch[1]/Batch[222]
+Epoch[1]/Batch[223]
+Epoch[1]/Phase[val]	top 1 recall: 7.8204	top 1p recall: 35.2292	similarity: 1.0000
+Epoch[2-1]	loss: 3.4660	total loss: 3.4660

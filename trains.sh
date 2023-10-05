@@ -11,9 +11,9 @@
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 \
 python -m torch.distributed.launch --nproc_per_node=4 --use_env \
-training/train.py --distributed --port 12364 \
+training_seq/train.py --distributed --port 12364 \
 --feat_dim 4096 \
---pre_model_name 'resnetsafa_asam_simple' \ 
+--pre_model_name 'resnetsafa_asam_simple' \
 --margin 0.07 --lr 1e-4 \
 --optimizer SAM --wd 0.03 --epochs 60 \
 --scheduler 'CosineAnnealingLR' \

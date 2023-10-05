@@ -7,6 +7,7 @@ import pathlib
 import torch.distributed as dist
 import torch.nn.functional as F
 import tempfile
+from models.get_model import get_model
 from training_seq.distributed_utils import cleanup, reduce_value
 from eval.evaluate_seq import get_recall
 
@@ -15,7 +16,6 @@ from torch.utils.tensorboard import SummaryWriter
 from config.utils import get_datetime
 # from models.loss import make_loss
 from models.sam import SAM
-from models.seq_model import SeqModel
 from models.seq_loss import MultiInfoNCELoss
 
 
@@ -34,8 +34,8 @@ def tensors_to_numbers(stats, device, distributed=False):
 
 def do_train(dataloaders, train_sampler, params, use_amp=False):
     # Create model class
-    model = SeqModel(params.feat_dim, nHead=params.num_heads, numLayers=params.num_layers, max_length=params.seq_len)
-   
+    model = get_model(params)
+
     # Move and initialize the model to the proper device before configuring the optimizer
     device  = params.device
     model.to(device)
@@ -224,10 +224,8 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         optimizer.zero_grad()
         # Compute embeddings of all elements
         with torch.cuda.amp.autocast(enabled=use_amp):
-            pano_feat = model(pre_pano).permute(0,2,1)
-            pano_feat = F.avg_pool1d(pano_feat, pano_feat.shape[2]).squeeze(2)
-            map_feat = model(pre_map).permute(0,2,1)
-            map_feat = F.avg_pool1d(map_feat, map_feat.shape[2]).squeeze(2)           
+            pano_feat = model(pre_pano)
+            map_feat = model(pre_map)
             loss, temp_stats, _ = loss_fn(pano_feat, map_feat)  
 
         scaler.scale(loss).backward()           
@@ -241,10 +239,8 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         else:
             optimizer.first_step(zero_grad=True)
             with torch.cuda.amp.autocast(enabled=use_amp):   
-                pano_feat = model(pre_pano).permute(0,2,1)
-                pano_feat = F.avg_pool1d(pano_feat, pano_feat.shape[2]).squeeze(2)
-                map_feat = model(pre_map).permute(0,2,1)
-                map_feat = F.avg_pool1d(map_feat, map_feat.shape[2]).squeeze(2)
+                pano_feat = model(pre_pano)
+                map_feat = model(pre_map)
                 loss, temp_stats, _ = loss_fn(pano_feat, map_feat) 
             # loss.backward()
             scaler.scale(loss).backward()  
@@ -284,10 +280,8 @@ def validate(model, dataloader, device, params, epoch):
             pre_pano = batch['pano']
             pre_map = batch['map']
 
-            pano_feat = model(pre_pano).permute(0,2,1)
-            pano_feat = F.avg_pool1d(pano_feat, pano_feat.shape[2]).squeeze(2)
-            map_feat = model(pre_map).permute(0,2,1)
-            map_feat = F.avg_pool1d(map_feat, map_feat.shape[2]).squeeze(2)  
+            pano_feat = model(pre_pano)
+            map_feat = model(pre_map)
 
             pano_embedding = torch.nn.functional.normalize(pano_feat, p=2, dim=1)  # Normalize embeddings
             map_embedding = torch.nn.functional.normalize(map_feat, p=2, dim=1)

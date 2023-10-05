@@ -1,4 +1,6 @@
 import os
+
+from models.get_model import get_model
 os.environ["OMP_NUM_THREADS"] = '1'
 import sys
 sys.path.append(os.getcwd())
@@ -13,7 +15,7 @@ import torch.nn.functional as F
 
 from sklearn.neighbors import KDTree
 from config.utils import get_datetime
-from models.seq_model import SeqModel
+from models.get_model import get_model
 from data.seq_dataset import SeqDataset
 from torch.utils.data import DataLoader
 from sklearn.decomposition import PCA
@@ -57,10 +59,8 @@ def evaluate(model, device, params, exp_name, pca_dim):
                 torch.cuda.synchronize()
                 torch.cuda.reset_max_memory_allocated()
                 start = time.time()
-                pano_feat = model(pre_pano).permute(0,2,1)
-                pano_feat = F.avg_pool1d(pano_feat, pano_feat.shape[2]).squeeze(2)
-                map_feat = model(pre_map).permute(0,2,1)
-                map_feat = F.avg_pool1d(map_feat, map_feat.shape[2]).squeeze(2)  
+                pano_feat = model(pre_pano)
+                map_feat = model(pre_map)
                 torch.cuda.synchronize()
                 end = time.time()
                 memory = torch.cuda.max_memory_allocated(device=device)
@@ -192,10 +192,12 @@ if __name__ == "__main__":
     parser.add_argument('--device', type=str, required=False, help='Device')  
     parser.add_argument('--exp_name', type=str, required=False, help='Experiment name')  
     parser.add_argument('--pca_dim', type=int, default=128, required=False, help='PCA dimension')  
+    parser.add_argument('--model_type', type=str, required=False, help='Model type')
 
     parser.set_defaults(eval_files='hudsonriver5kU,unionsquare5kU,wallstreet5kU')
     parser.set_defaults(pre_model_name='resnetsafa_asam_simple')
-    parser.set_defaults(device='cuda')    
+    parser.set_defaults(device='cuda')  
+    parser.set_defaults(model_type='transmixer') 
 
     params = parser.parse_args()
     seed_all(params.seed)
@@ -225,7 +227,7 @@ if __name__ == "__main__":
     print('Device: {}'.format(device))
     print('PCA dim:{}'.format(params.pca_dim))
 
-    model = SeqModel(params.feat_dim, nHead=params.num_heads, numLayers=params.num_layers, max_length=params.seq_len)
+    model = get_model(params)
     model.to(device)
     model_size = torch.cuda.memory_allocated(device=device)
     print('Model size: ', model_size / 1024**2, 'MB')

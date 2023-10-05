@@ -56,12 +56,14 @@ if __name__ == '__main__':
     parser.add_argument('--num_layers', type=int, default=6, required=False, help='Number of transformer layers')
     parser.add_argument('--num_heads', type=int, default=8, required=False, help='Number of transformer heads')
     parser.add_argument('--seq_len', type=int, default=5, required=False, help='Sequence length')
+    parser.add_argument('--model_type', type=str, required=False, help='Model type')
 
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')
     parser.set_defaults(optimizer='SAM')
     parser.set_defaults(scheduler='CosineAnnealingLR')
     parser.set_defaults(pre_model_name='resnetsafa_asam_simple')
+    parser.set_defaults(model_type='transmixer')
 
     params = parser.parse_args()
     seed_all(params.seed)

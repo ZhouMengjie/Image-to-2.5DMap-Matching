@@ -168,5 +168,6 @@ cython_debug/
 /datasets/*_idx
 /dataset/features/*
 /weights/*
+/weights3090/*
 /sequence_images/*
 /sequence_videos/*

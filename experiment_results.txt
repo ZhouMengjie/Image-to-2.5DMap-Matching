@@ -6,3 +6,22 @@ resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, nan, nan
 resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 95.94, 60.77, 95.94, 60.77
 resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.28, 61.98, 96.28, 61.98
 resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.50, 62.47, 96.50, 62.47
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.31, 65.69, 96.31, 65.69
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 95.88, 76.97, 95.88, 76.97
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.61, 70.85, 96.61, 70.85
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.69, 65.46, 96.69, 65.46
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 95.51, 75.19, 95.51, 75.19
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231005_2140_best_top1.pth, 96.69, 65.46, 94.64, 58.22, 99.83, 81.61, 97.06, 68.43
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231005_2140_best_top1.pth, 96.59, 74.41, 95.10, 69.50, 99.89, 87.80, 97.19, 77.24
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.59, 74.41, 95.10, 69.50, 99.89, 87.80, 97.19, 77.24
+resnetsafa_asam_simple, RANDOM WEIGHTS, 94.56, 53.64, 97.91, 58.66, 90.85, 43.55, 94.44, 51.95
+resnetsafa_asam_simple, RANDOM WEIGHTS, 92.42, 65.87, 91.36, 60.73, 98.30, 75.37, 94.03, 67.33
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 95.88, 76.09, 94.12, 70.90, 99.69, 89.46, 96.56, 78.82
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.35, 63.84, 94.95, 55.41, 99.74, 79.23, 97.01, 66.16
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231005_2140_best_top1.pth, 97.47, 78.95, 95.23, 74.75, 99.91, 91.61, 97.54, 81.77
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231005_2140_best_top1.pth, 97.47, 78.95, 95.23, 74.75, 99.91, 91.61, 97.54, 81.77
+resnetsafa_asam_simple, weights3090/model_20231005_2143_best_top1.pth, 95.90, 71.82, 94.64, 68.24, 99.80, 83.04, 96.78, 74.37
+config_train.txt, resnetsafa_asam_simple.pth, 88.16, 34.18, 82.16, 28.12, 93.88, 38.82, 88.07, 33.71
+config_train.txt, resnetsafa_dgcnn_asam_2to3_up.pth, 92.76, 47.34, 88.24, 41.68, 98.30, 64.38, 93.10, 51.13
+resnetsafa_asam_simple_16, RANDOM WEIGHTS, 93.38, 64.45, 92.08, 60.81, 98.65, 74.32, 94.70, 66.53
+resnetsafa_dgcnn_asam_2to3_up_16, RANDOM WEIGHTS, 95.27, 72.31, 93.81, 70.37, 99.76, 87.82, 96.28, 76.83

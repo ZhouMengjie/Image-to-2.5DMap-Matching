@@ -62,11 +62,15 @@ def do_train(dataloaders, train_sampler, params, use_amp=False):
     if params.weights is not None:
         assert os.path.exists(params.weights), 'Cannot open network weights: {}'.format(params.weights)
         checkpoint = torch.load(params.weights, map_location=device)  
-        try:
-            model.load_state_dict(checkpoint['model'], strict=False)
-        except KeyError:
-            # If 'model' key is not found, try loading the checkpoint directly
-            model.load_state_dict(checkpoint, strict=False)
+        if 'model' in checkpoint:
+            ckp = checkpoint['model']
+        else:
+            ckp = checkpoint
+        state_dict = {}
+        for k, v in ckp.items():
+            new_k = k.replace('module.', '') if 'module' in k else k
+            state_dict[new_k] = v
+        model.load_state_dict(state_dict, strict=False)
         print('load pretrained {} model!'.format(params.weights))    
     else:
         if params.distributed:

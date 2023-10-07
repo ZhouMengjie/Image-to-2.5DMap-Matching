@@ -24,7 +24,7 @@ class PositionalEncoding(nn.Module):
         return self.dropout(x)
 
 class TransMixer(nn.Module):
-    def __init__(self, transDimension, nHead=8, numLayers=6, max_length = 5):
+    def __init__(self, transDimension, nHead=8, numLayers=6, max_length=5):
         '''
         Transformer for mixing street view features
         transDimension: transformer embedded dimension
@@ -45,26 +45,23 @@ class TransMixer(nn.Module):
     def forward(self, x):
         x = self.positionalEncoding(x)
         x = self.Transformer(x)
-        x = x.mean(dim=2)
+        x = x.mean(dim=1)
         return x
 
 
-class Flatten(nn.Module):
-    def forward(self, input):
-        return input.view(input.size(0), -1)
-
 class Smooth(nn.Module):
     def __init__(self):
-        super(Smooth).__init__()
-        self.smooth = nn.Sequential(nn.AdaptiveAvgPool2d((1,None)), Flatten())
+        super(Smooth, self).__init__()
+        self.pool = nn.AdaptiveAvgPool2d((1,None))
     
     def forward(self, x):
-        x = self.smooth(x)
+        x = self.pool(x)
+        x = x.view(x.size(0), -1)
         return x
 
 
 class SeqNet(nn.Module):
-    def __init__(self, inDims, outDims, seqL, w=3):
+    def __init__(self, inDims, outDims, seqL=5, w=3):
         super(SeqNet, self).__init__()
         self.inDims = inDims
         self.outDims = outDims
@@ -81,7 +78,7 @@ class SeqNet(nn.Module):
 
 
 class Delta(nn.Module):
-    def __init__(self, inDims, seqL):
+    def __init__(self, inDims, seqL=5):
         super(Delta, self).__init__()
         self.inDims = inDims
         self.weight = (np.ones(seqL,np.float32))/(seqL/2.0)
@@ -94,12 +91,18 @@ class Delta(nn.Module):
         delta = torch.matmul(x,self.weight)
         return delta
 
+class Baseline(nn.Module):
+    def forward(self, x):
+        x = x.view(x.size(0), -1)
+        return x 
+
   
 if __name__ == "__main__":
-    model = TransMixer(4096).to('cuda')
+    # model = TransMixer(4096).to('cuda')
+    model = SeqNet(4096,4096).to('cuda')
     print(model)
     x = torch.rand((16, 5, 4096)).to('cuda')
     feat = model(x)
-    print(sq_descriptor.shape)
+    print(feat.shape)
 
 

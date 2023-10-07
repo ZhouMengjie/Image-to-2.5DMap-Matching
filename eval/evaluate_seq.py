@@ -1,6 +1,4 @@
 import os
-
-from models.get_model import get_model
 os.environ["OMP_NUM_THREADS"] = '1'
 import sys
 sys.path.append(os.getcwd())
@@ -191,13 +189,13 @@ if __name__ == "__main__":
     parser.add_argument('--seq_len', type=int, default=5, required=False, help='Sequence length')      
     parser.add_argument('--device', type=str, required=False, help='Device')  
     parser.add_argument('--exp_name', type=str, required=False, help='Experiment name')  
-    parser.add_argument('--pca_dim', type=int, default=128, required=False, help='PCA dimension')  
+    parser.add_argument('--pca_dim', type=int, default=80, required=False, help='PCA dimension')  
     parser.add_argument('--model_type', type=str, required=False, help='Model type')
 
     parser.set_defaults(eval_files='hudsonriver5kU,unionsquare5kU,wallstreet5kU')
-    parser.set_defaults(pre_model_name='resnetsafa_asam_simple')
+    parser.set_defaults(pre_model_name='resnetsafa_dgcnn_asam_2to3_up')
     parser.set_defaults(device='cuda')  
-    parser.set_defaults(model_type='transmixer') 
+    parser.set_defaults(model_type='seqnet') 
 
     params = parser.parse_args()
     seed_all(params.seed)
@@ -234,13 +232,17 @@ if __name__ == "__main__":
 
     if params.weights is not None:
         assert os.path.exists(params.weights), 'Cannot open network weights: {}'.format(params.weights)
-        checkpoint = torch.load(params.weights, map_location=device)   
-        try:
-            model.load_state_dict(checkpoint['model'], strict=False)
-        except KeyError:
-            # If 'model' key is not found, try loading the checkpoint directly
-            model.load_state_dict(checkpoint, strict=False)  
-        print('load pretrained {} model!'.format(params.load_weights))
+        checkpoint = torch.load(params.weights, map_location=device) 
+        if 'model' in checkpoint:
+            ckp = checkpoint['model']
+        else:
+            ckp = checkpoint
+        state_dict = {}
+        for k, v in ckp.items():
+            new_k = k.replace('module.', '') if 'module' in k else k
+            state_dict[new_k] = v
+        model.load_state_dict(state_dict, strict=True) 
+        print('load pretrained {} model!'.format(params.weights))
 
     stats = evaluate(model, device, params, params.exp_name, params.pca_dim)  
     print_eval_stats(stats)

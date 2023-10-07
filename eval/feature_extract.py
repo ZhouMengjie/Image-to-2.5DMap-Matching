@@ -110,8 +110,8 @@ def evaluate(model, device, params, exp_name, pca_dim):
         # obtain query and reference embeddings for subsequent localization tasks
         model_name = os.path.split(params.load_weights)[1]
         model_name = model_name.split('.')[0]
-        np.save(os.path.join('datasets', 'features', 'map', location_name+'_'+model_name+'.npy'), database_embeddings)
-        np.save(os.path.join('datasets', 'features', 'pano', location_name+'_'+model_name+'.npy'), query_embeddings)
+        np.save(os.path.join('datasets', 'features', 'map', location_name+'_'+model_name+'_16.npy'), pca_database_embeddings)
+        np.save(os.path.join('datasets', 'features', 'pano', location_name+'_'+model_name+'_16.npy'),pca_query_embeddings)
    
         recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)   
         ave_recall = recall

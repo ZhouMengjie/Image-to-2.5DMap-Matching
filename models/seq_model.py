@@ -77,6 +77,26 @@ class SeqNet(nn.Module):
         return x
 
 
+class SeqNet_v2(nn.Module):
+    def __init__(self, inDims, outDims, seqL=5, w=3):
+        super(SeqNet_v2, self).__init__()
+        self.inDims = inDims
+        self.outDims = outDims
+        self.w = w
+        self.conv1 = nn.Conv1d(inDims, outDims, kernel_size=self.w)
+        self.conv2 = nn.Conv1d(inDims, outDims, kernel_size=self.w)
+
+    def forward(self, x, y):       
+        x = x.permute(0,2,1) # from [B,T,C] to [B,C,T]
+        x = self.conv1(x)
+        x = torch.mean(x,-1)
+        
+        y = y.permute(0,2,1) # from [B,T,C] to [B,C,T]
+        y = self.conv2(y)
+        y = torch.mean(y,-1)
+        return x, y
+
+
 class Delta(nn.Module):
     def __init__(self, inDims, seqL=5):
         super(Delta, self).__init__()

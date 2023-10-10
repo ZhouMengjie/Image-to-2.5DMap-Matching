@@ -43,6 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_distributed', dest='val_distributed', action='store_true')
     parser.add_argument('--syncBN', dest='syncBN', action='store_true')
     parser.add_argument('--use_amp', dest='use_amp', action='store_true')
+    parser.add_argument('--share', dest='share', action='store_true')
     parser.add_argument('--seed', type=int, default=1, required=False, help='Seed')
     parser.add_argument('--port', type=str, default='12363', required=False, help='Port')  
     parser.add_argument('--feat_dim',type=int, default=4096, required=False, help='Feature dimension')

@@ -228,8 +228,11 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         optimizer.zero_grad()
         # Compute embeddings of all elements
         with torch.cuda.amp.autocast(enabled=use_amp):
-            pano_feat = model(pre_pano)
-            map_feat = model(pre_map)
+            if params.share:
+                pano_feat = model(pre_pano)
+                map_feat = model(pre_map)
+            else:
+                pano_feat, map_feat = model(pre_pano, pre_map)
             loss, temp_stats, _ = loss_fn(pano_feat, map_feat)  
 
         scaler.scale(loss).backward()           
@@ -243,8 +246,11 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         else:
             optimizer.first_step(zero_grad=True)
             with torch.cuda.amp.autocast(enabled=use_amp):   
-                pano_feat = model(pre_pano)
-                map_feat = model(pre_map)
+                if params.share:
+                    pano_feat = model(pre_pano)
+                    map_feat = model(pre_map)
+                else:
+                    pano_feat, map_feat = model(pre_pano, pre_map)
                 loss, temp_stats, _ = loss_fn(pano_feat, map_feat) 
             # loss.backward()
             scaler.scale(loss).backward()  
@@ -284,8 +290,11 @@ def validate(model, dataloader, device, params, epoch):
             pre_pano = batch['pano']
             pre_map = batch['map']
 
-            pano_feat = model(pre_pano)
-            map_feat = model(pre_map)
+            if params.share:
+                pano_feat = model(pre_pano)
+                map_feat = model(pre_map)
+            else:
+                pano_feat, map_feat = model(pre_pano, pre_map)
 
             pano_embedding = torch.nn.functional.normalize(pano_feat, p=2, dim=1)  # Normalize embeddings
             map_embedding = torch.nn.functional.normalize(map_feat, p=2, dim=1)

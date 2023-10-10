@@ -25,3 +25,9 @@ config_train.txt, resnetsafa_asam_simple.pth, 88.16, 34.18, 82.16, 28.12, 93.88,
 config_train.txt, resnetsafa_dgcnn_asam_2to3_up.pth, 92.76, 47.34, 88.24, 41.68, 98.30, 64.38, 93.10, 51.13
 resnetsafa_asam_simple_16, RANDOM WEIGHTS, 93.38, 64.45, 92.08, 60.81, 98.65, 74.32, 94.70, 66.53
 resnetsafa_dgcnn_asam_2to3_up_16, RANDOM WEIGHTS, 95.27, 72.31, 93.81, 70.37, 99.76, 87.82, 96.28, 76.83
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231007_1313_best_top1.pth, 97.57, 78.84, 95.27, 74.84, 99.91, 92.00, 97.58, 81.89
+resnetsafa_asam_simple, weights3090/model_20231007_2028_best_top1.pth, 95.55, 72.27, 94.98, 68.03, 99.74, 83.17, 96.76, 74.49
+resnetsafa_asam_simple, weights3090/model_20231007_2028_best_top1.pth, 95.55, 72.27, 94.98, 68.03, 99.74, 83.17, 96.76, 74.49
+resnetsafa_asam_simple, weights3090/model_20231009_1548_best_top1.pth, 95.36, 70.12, 94.72, 66.41, 99.69, 81.50, 96.59, 72.68
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231009_1108_best_top1.pth, 97.25, 77.72, 95.32, 72.82, 99.89, 91.08, 97.49, 80.54
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231009_1242_best_top1.pth, 96.80, 72.76, 95.12, 66.90, 99.87, 88.22, 97.26, 75.96

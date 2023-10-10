@@ -57,8 +57,11 @@ def evaluate(model, device, params, exp_name, pca_dim):
                 torch.cuda.synchronize()
                 torch.cuda.reset_max_memory_allocated()
                 start = time.time()
-                pano_feat = model(pre_pano)
-                map_feat = model(pre_map)
+                if params.share:
+                    pano_feat = model(pre_pano)
+                    map_feat = model(pre_map)
+                else:
+                    pano_feat, map_feat = model(pre_pano, pre_map)
                 torch.cuda.synchronize()
                 end = time.time()
                 memory = torch.cuda.max_memory_allocated(device=device)
@@ -191,6 +194,7 @@ if __name__ == "__main__":
     parser.add_argument('--exp_name', type=str, required=False, help='Experiment name')  
     parser.add_argument('--pca_dim', type=int, default=80, required=False, help='PCA dimension')  
     parser.add_argument('--model_type', type=str, required=False, help='Model type')
+    parser.add_argument('--share', dest='share', action='store_true')
 
     parser.set_defaults(eval_files='hudsonriver5kU,unionsquare5kU,wallstreet5kU')
     parser.set_defaults(pre_model_name='resnetsafa_dgcnn_asam_2to3_up')

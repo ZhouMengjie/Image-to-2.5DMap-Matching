@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import math
 import numpy as np
+import hiddenlayer as h
+from torch.utils.tensorboard import SummaryWriter
 
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model, dropout = 0.1, max_len = 5):
@@ -24,7 +26,7 @@ class PositionalEncoding(nn.Module):
         return self.dropout(x)
 
 class TransMixer(nn.Module):
-    def __init__(self, transDimension, nHead=8, numLayers=6, max_length=5):
+    def __init__(self, transDimension, hidden_dim=512, nHead=8, numLayers=1, max_length=5):
         '''
         Transformer for mixing street view features
         transDimension: transformer embedded dimension
@@ -33,16 +35,18 @@ class TransMixer(nn.Module):
         Return => features of the same shape as input
         '''
         super(TransMixer, self).__init__()
-        encoderLayer = nn.TransformerEncoderLayer(d_model = transDimension,\
+        encoderLayer = nn.TransformerEncoderLayer(d_model=hidden_dim,\
             nhead=nHead, batch_first=True, dropout=0.3, norm_first = True)
 
         self.Transformer = nn.TransformerEncoder(encoderLayer, \
             num_layers=numLayers, \
-            norm=nn.LayerNorm(normalized_shape=transDimension, eps=1e-6))
+            norm=nn.LayerNorm(normalized_shape=hidden_dim, eps=1e-6))
 
-        self.positionalEncoding = PositionalEncoding(d_model = transDimension, max_len=max_length)
+        self.embedding = nn.Linear(transDimension, hidden_dim)
+        self.positionalEncoding = PositionalEncoding(d_model=hidden_dim, max_len=max_length)
     
     def forward(self, x):
+        x = self.embedding(x)
         x = self.positionalEncoding(x)
         x = self.Transformer(x)
         x = x.mean(dim=1)
@@ -61,16 +65,16 @@ class Smooth(nn.Module):
 
 
 class SeqNet(nn.Module):
-    def __init__(self, inDims, outDims, seqL=5, w=3):
+    def __init__(self, inDims, outDims=512, seqL=5, w=3):
         super(SeqNet, self).__init__()
         self.inDims = inDims
         self.outDims = outDims
         self.w = w
-        self.conv = nn.Conv1d(inDims, outDims, kernel_size=self.w)
+        self.conv = nn.Conv1d(outDims, outDims, kernel_size=self.w)
+        self.embedding = nn.Linear(inDims, outDims)
 
     def forward(self, x):       
-        if len(x.shape) < 3:
-            x = x.unsqueeze(1) # convert [B,C] to [B,1,C]
+        x = self.embedding(x)
         x = x.permute(0,2,1) # from [B,T,C] to [B,C,T]
         x = self.conv(x)
         x = torch.mean(x,-1)
@@ -78,19 +82,23 @@ class SeqNet(nn.Module):
 
 
 class SeqNet_v2(nn.Module):
-    def __init__(self, inDims, outDims, seqL=5, w=3):
+    def __init__(self, inDims, outDims=512, seqL=5, w=3):
         super(SeqNet_v2, self).__init__()
         self.inDims = inDims
         self.outDims = outDims
         self.w = w
-        self.conv1 = nn.Conv1d(inDims, outDims, kernel_size=self.w)
-        self.conv2 = nn.Conv1d(inDims, outDims, kernel_size=self.w)
+        self.embedding1 = nn.Linear(inDims, outDims)
+        self.embedding2 = nn.Linear(inDims, outDims)
+        self.conv1 = nn.Conv1d(outDims, outDims, kernel_size=self.w)
+        self.conv2 = nn.Conv1d(outDims, outDims, kernel_size=self.w)
 
-    def forward(self, x, y):       
+    def forward(self, x, y):  
+        x = self.embedding1(x)   
         x = x.permute(0,2,1) # from [B,T,C] to [B,C,T]
         x = self.conv1(x)
         x = torch.mean(x,-1)
         
+        y = self.embedding2(y)
         y = y.permute(0,2,1) # from [B,T,C] to [B,C,T]
         y = self.conv2(y)
         y = torch.mean(y,-1)
@@ -118,10 +126,16 @@ class Baseline(nn.Module):
 
   
 if __name__ == "__main__":
-    # model = TransMixer(4096).to('cuda')
-    model = SeqNet(4096,4096).to('cuda')
+    model = TransMixer(4096,512).to('cuda')
+    # model = SeqNet(4096).to('cuda')
     print(model)
     x = torch.rand((16, 5, 4096)).to('cuda')
+    # vis_graph = h.build_graph(model, x)
+    # vis_graph.theme = h.graph.THEMES["blue"].copy() 
+    # vis_graph.save('model.png') 
+    writer = SummaryWriter("model_logs/")
+    writer.add_graph(model, x)
+    writer.close()
     feat = model(x)
     print(feat.shape)
 

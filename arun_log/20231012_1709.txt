@@ -1,0 +1,2493 @@
+[CONFIG] distributed init (local rank 2)
+[CONFIG] Let's use 4 GPUs!
+106447 queries in the dataset
+5345 queries in the dataset
+load initial weights!
+None
+epoch: 1
+train_file: trainstreetlearnU_cmu5kU
+val_file: hudsonriver5kU
+distributed: True
+val_distributed: False
+syncBN: False
+use_amp: False
+share: True
+seed: 1
+port: 12364
+feat_dim: 4096
+margin: 0.07
+optimizer: SAM
+wd: 0.03
+epochs: 60
+lr: 0.0001
+scheduler: CosineAnnealingLR
+pre_model_name: resnetsafa_dgcnn_asam_2to3_up
+num_layers: 1
+num_heads: 8
+seq_len: 5
+model_type: transmixer
+rank: 0
+world_size: 4
+gpu: 0
+device: cuda:0
+dist_backend: nccl
+dist_url: env://
+log: True
+
+106447 queries in the dataset
+5345 queries in the dataset
+Using 8 dataloader workers every process
+Model device: cuda:0
+Model name: model_20231012_1709
+Number of model parameters: 5251072
+load initial weights!
+Epoch[1-1]	loss: 3.1899	total loss: 3.1899
+Epoch[1-2]	loss: 3.1668	total loss: 3.1668
+Epoch[1-3]	loss: 3.1872	total loss: 3.1872
+Epoch[1-4]	loss: 3.2085	total loss: 3.2085
+Epoch[1-5]	loss: 3.1969	total loss: 3.1969
+Epoch[1-6]	loss: 3.1746	total loss: 3.1746
+Epoch[1-7]	loss: 3.1546	total loss: 3.1546
+Epoch[1-8]	loss: 3.1684	total loss: 3.1684
+Epoch[1-9]	loss: 3.1627	total loss: 3.1627
+Epoch[1-10]	loss: 3.1751	total loss: 3.1751
+Epoch[1-11]	loss: 3.2070	total loss: 3.2070
+Epoch[1-12]	loss: 3.1960	total loss: 3.1960
+Epoch[1-13]	loss: 3.1806	total loss: 3.1806
+Epoch[1-14]	loss: 3.1526	total loss: 3.1526
+Epoch[1-15]	loss: 3.1832	total loss: 3.1832
+Epoch[1-16]	loss: 3.1629	total loss: 3.1629
+Epoch[1-17]	loss: 3.1947	total loss: 3.1947
+Epoch[1-18]	loss: 3.1768	total loss: 3.1768
+Epoch[1-19]	loss: 3.1971	total loss: 3.1971
+Epoch[1-20]	loss: 3.1471	total loss: 3.1471
+Epoch[1-21]	loss: 3.1605	total loss: 3.1605
+Epoch[1-22]	loss: 3.1537	total loss: 3.1537
+Epoch[1-23]	loss: 3.1674	total loss: 3.1674
+Epoch[1-24]	loss: 3.1897	total loss: 3.1897
+Epoch[1-25]	loss: 3.1995	total loss: 3.1995
+Epoch[1-26]	loss: 3.2097	total loss: 3.2097
+Epoch[1-27]	loss: 3.1742	total loss: 3.1742
+Epoch[1-28]	loss: 3.1844	total loss: 3.1844
+Epoch[1-29]	loss: 3.1420	total loss: 3.1420
+Epoch[1-30]	loss: 3.2161	total loss: 3.2161
+Epoch[1-31]	loss: 3.1634	total loss: 3.1634
+Epoch[1-32]	loss: 3.1591	total loss: 3.1591
+Epoch[1-33]	loss: 3.1669	total loss: 3.1669
+Epoch[1-34]	loss: 3.1934	total loss: 3.1934
+Epoch[1-35]	loss: 3.1665	total loss: 3.1665
+Epoch[1-36]	loss: 3.1723	total loss: 3.1723
+Epoch[1-37]	loss: 3.1918	total loss: 3.1918
+Epoch[1-38]	loss: 3.1740	total loss: 3.1740
+Epoch[1-39]	loss: 3.2216	total loss: 3.2216
+Epoch[1-40]	loss: 3.1885	total loss: 3.1885
+Epoch[1-41]	loss: 3.2093	total loss: 3.2093
+Epoch[1-42]	loss: 3.1877	total loss: 3.1877
+Epoch[1-43]	loss: 3.1631	total loss: 3.1631
+Epoch[1-44]	loss: 3.1758	total loss: 3.1758
+Epoch[1-45]	loss: 3.1829	total loss: 3.1829
+Epoch[1-46]	loss: 3.1486	total loss: 3.1486
+Epoch[1-47]	loss: 3.2038	total loss: 3.2038
+Epoch[1-48]	loss: 3.1559	total loss: 3.1559
+Epoch[1-49]	loss: 3.1645	total loss: 3.1645
+Epoch[1-50]	loss: 3.1932	total loss: 3.1932
+Epoch[1-51]	loss: 3.1937	total loss: 3.1937
+Epoch[1-52]	loss: 3.1905	total loss: 3.1905
+Epoch[1-53]	loss: 3.1714	total loss: 3.1714
+Epoch[1-54]	loss: 3.1543	total loss: 3.1543
+Epoch[1-55]	loss: 3.1886	total loss: 3.1886
+Epoch[1-56]	loss: 3.1519	total loss: 3.1519
+Epoch[1-57]	loss: 3.1806	total loss: 3.1806
+Epoch[1-58]	loss: 3.1760	total loss: 3.1760
+Epoch[1-59]	loss: 3.1539	total loss: 3.1539
+Epoch[1-60]	loss: 3.1720	total loss: 3.1720
+Epoch[1-61]	loss: 3.1758	total loss: 3.1758
+Epoch[1-62]	loss: 3.1550	total loss: 3.1550
+Epoch[1-63]	loss: 3.1692	total loss: 3.1692
+Epoch[1-64]	loss: 3.1850	total loss: 3.1850
+Epoch[1-65]	loss: 3.1475	total loss: 3.1475
+Epoch[1-66]	loss: 3.1886	total loss: 3.1886
+Epoch[1-67]	loss: 3.1634	total loss: 3.1634
+Epoch[1-68]	loss: 3.1615	total loss: 3.1615
+Epoch[1-69]	loss: 3.1561	total loss: 3.1561
+Epoch[1-70]	loss: 3.1755	total loss: 3.1755
+Epoch[1-71]	loss: 3.1536	total loss: 3.1536
+Epoch[1-72]	loss: 3.1509	total loss: 3.1509
+Epoch[1-73]	loss: 3.1353	total loss: 3.1353
+Epoch[1-74]	loss: 3.1503	total loss: 3.1503
+Epoch[1-75]	loss: 3.1688	total loss: 3.1688
+Epoch[1-76]	loss: 3.1557	total loss: 3.1557
+Epoch[1-77]	loss: 3.1637	total loss: 3.1637
+Epoch[1-78]	loss: 3.1460	total loss: 3.1460
+Epoch[1-79]	loss: 3.1473	total loss: 3.1473
+Epoch[1-80]	loss: 3.1424	total loss: 3.1424
+Epoch[1-81]	loss: 3.1290	total loss: 3.1290
+Epoch[1-82]	loss: 3.1615	total loss: 3.1615
+Epoch[1-83]	loss: 3.1209	total loss: 3.1209
+Epoch[1-84]	loss: 3.0737	total loss: 3.0737
+Epoch[1-85]	loss: 3.0250	total loss: 3.0250
+Epoch[1-86]	loss: 3.0437	total loss: 3.0437
+Epoch[1-87]	loss: 2.9981	total loss: 2.9981
+Epoch[1-88]	loss: 2.9348	total loss: 2.9348
+Epoch[1-89]	loss: 2.7064	total loss: 2.7064
+Epoch[1-90]	loss: 2.3758	total loss: 2.3758
+Epoch[1-91]	loss: 2.3344	total loss: 2.3344
+Epoch[1-92]	loss: 2.4416	total loss: 2.4416
+Epoch[1-93]	loss: 2.0384	total loss: 2.0384
+Epoch[1-94]	loss: 2.1841	total loss: 2.1841
+Epoch[1-95]	loss: 1.9606	total loss: 1.9606
+Epoch[1-96]	loss: 1.4668	total loss: 1.4668
+Epoch[1-97]	loss: 1.9066	total loss: 1.9066
+Epoch[1-98]	loss: 1.3628	total loss: 1.3628
+Epoch[1-99]	loss: 1.2480	total loss: 1.2480
+Epoch[1-100]	loss: 1.2290	total loss: 1.2290
+Epoch[1-101]	loss: 1.2471	total loss: 1.2471
+Epoch[1-102]	loss: 0.8012	total loss: 0.8012
+Epoch[1-103]	loss: 1.1200	total loss: 1.1200
+Epoch[1-104]	loss: 0.8424	total loss: 0.8424
+Epoch[1-105]	loss: 0.9821	total loss: 0.9821
+Epoch[1-106]	loss: 1.0149	total loss: 1.0149
+Epoch[1-107]	loss: 0.7968	total loss: 0.7968
+Epoch[1-108]	loss: 0.9009	total loss: 0.9009
+Epoch[1-109]	loss: 0.9786	total loss: 0.9786
+Epoch[1-110]	loss: 0.8580	total loss: 0.8580
+Epoch[1-111]	loss: 0.7533	total loss: 0.7533
+Epoch[1-112]	loss: 0.7113	total loss: 0.7113
+Epoch[1-113]	loss: 0.5853	total loss: 0.5853
+Epoch[1-114]	loss: 0.5700	total loss: 0.5700
+Epoch[1-115]	loss: 0.5163	total loss: 0.5163
+Epoch[1-116]	loss: 0.5346	total loss: 0.5346
+Epoch[1-117]	loss: 0.4408	total loss: 0.4408
+Epoch[1-118]	loss: 0.4329	total loss: 0.4329
+Epoch[1-119]	loss: 0.5295	total loss: 0.5295
+Epoch[1-120]	loss: 0.5132	total loss: 0.5132
+Epoch[1-121]	loss: 0.3658	total loss: 0.3658
+Epoch[1-122]	loss: 0.7002	total loss: 0.7002
+Epoch[1-123]	loss: 0.4710	total loss: 0.4710
+Epoch[1-124]	loss: 0.4818	total loss: 0.4818
+Epoch[1-125]	loss: 0.5218	total loss: 0.5218
+Epoch[1-126]	loss: 0.4310	total loss: 0.4310
+Epoch[1-127]	loss: 0.4133	total loss: 0.4133
+Epoch[1-128]	loss: 0.3528	total loss: 0.3528
+Epoch[1-129]	loss: 0.4833	total loss: 0.4833
+Epoch[1-130]	loss: 0.4260	total loss: 0.4260
+Epoch[1-131]	loss: 0.4234	total loss: 0.4234
+Epoch[1-132]	loss: 0.3637	total loss: 0.3637
+Epoch[1-133]	loss: 0.4158	total loss: 0.4158
+Epoch[1-134]	loss: 0.3660	total loss: 0.3660
+Epoch[1-135]	loss: 0.3544	total loss: 0.3544
+Epoch[1-136]	loss: 0.3043	total loss: 0.3043
+Epoch[1-137]	loss: 0.3918	total loss: 0.3918
+Epoch[1-138]	loss: 0.3674	total loss: 0.3674
+Epoch[1-139]	loss: 0.3008	total loss: 0.3008
+Epoch[1-140]	loss: 0.4176	total loss: 0.4176
+Epoch[1-141]	loss: 0.2590	total loss: 0.2590
+Epoch[1-142]	loss: 0.3435	total loss: 0.3435
+Epoch[1-143]	loss: 0.3208	total loss: 0.3208
+Epoch[1-144]	loss: 0.4193	total loss: 0.4193
+Epoch[1-145]	loss: 0.3104	total loss: 0.3104
+Epoch[1-146]	loss: 0.3869	total loss: 0.3869
+Epoch[1-147]	loss: 0.2955	total loss: 0.2955
+Epoch[1-148]	loss: 0.3214	total loss: 0.3214
+Epoch[1-149]	loss: 0.2713	total loss: 0.2713
+Epoch[1-150]	loss: 0.2688	total loss: 0.2688
+Epoch[1-151]	loss: 0.2641	total loss: 0.2641
+Epoch[1-152]	loss: 0.2802	total loss: 0.2802
+Epoch[1-153]	loss: 0.3273	total loss: 0.3273
+Epoch[1-154]	loss: 0.3252	total loss: 0.3252
+Epoch[1-155]	loss: 0.2360	total loss: 0.2360
+Epoch[1-156]	loss: 0.3434	total loss: 0.3434
+Epoch[1-157]	loss: 0.2386	total loss: 0.2386
+Epoch[1-158]	loss: 0.2773	total loss: 0.2773
+Epoch[1-159]	loss: 0.2290	total loss: 0.2290
+Epoch[1-160]	loss: 0.2500	total loss: 0.2500
+Epoch[1-161]	loss: 0.3084	total loss: 0.3084
+Epoch[1-162]	loss: 0.2783	total loss: 0.2783
+Epoch[1-163]	loss: 0.1702	total loss: 0.1702
+Epoch[1-164]	loss: 0.2752	total loss: 0.2752
+Epoch[1-165]	loss: 0.2133	total loss: 0.2133
+Epoch[1-166]	loss: 0.2159	total loss: 0.2159
+Epoch[1-167]	loss: 0.2008	total loss: 0.2008
+Epoch[1-168]	loss: 0.2010	total loss: 0.2010
+Epoch[1-169]	loss: 0.1978	total loss: 0.1978
+Epoch[1-170]	loss: 0.2516	total loss: 0.2516
+Epoch[1-171]	loss: 0.2096	total loss: 0.2096
+Epoch[1-172]	loss: 0.2098	total loss: 0.2098
+Epoch[1-173]	loss: 0.1900	total loss: 0.1900
+Epoch[1-174]	loss: 0.1995	total loss: 0.1995
+Epoch[1-175]	loss: 0.2613	total loss: 0.2613
+Epoch[1-176]	loss: 0.2770	total loss: 0.2770
+Epoch[1-177]	loss: 0.2551	total loss: 0.2551
+Epoch[1-178]	loss: 0.2216	total loss: 0.2216
+Epoch[1-179]	loss: 0.2344	total loss: 0.2344
+Epoch[1-180]	loss: 0.2261	total loss: 0.2261
+Epoch[1-181]	loss: 0.1607	total loss: 0.1607
+Epoch[1-182]	loss: 0.1668	total loss: 0.1668
+Epoch[1-183]	loss: 0.1949	total loss: 0.1949
+Epoch[1-184]	loss: 0.2373	total loss: 0.2373
+Epoch[1-185]	loss: 0.2241	total loss: 0.2241
+Epoch[1-186]	loss: 0.2114	total loss: 0.2114
+Epoch[1-187]	loss: 0.1811	total loss: 0.1811
+Epoch[1-188]	loss: 0.1880	total loss: 0.1880
+Epoch[1-189]	loss: 0.2422	total loss: 0.2422
+Epoch[1-190]	loss: 0.2255	total loss: 0.2255
+Epoch[1-191]	loss: 0.1968	total loss: 0.1968
+Epoch[1-192]	loss: 0.1676	total loss: 0.1676
+Epoch[1-193]	loss: 0.1944	total loss: 0.1944
+Epoch[1-194]	loss: 0.1877	total loss: 0.1877
+Epoch[1-195]	loss: 0.1781	total loss: 0.1781
+Epoch[1-196]	loss: 0.1922	total loss: 0.1922
+Epoch[1-197]	loss: 0.2036	total loss: 0.2036
+Epoch[1-198]	loss: 0.1601	total loss: 0.1601
+Epoch[1-199]	loss: 0.1550	total loss: 0.1550
+Epoch[1-200]	loss: 0.2169	total loss: 0.2169
+Epoch[1-201]	loss: 0.2116	total loss: 0.2116
+Epoch[1-202]	loss: 0.1976	total loss: 0.1976
+Epoch[1-203]	loss: 0.1524	total loss: 0.1524
+Epoch[1-204]	loss: 0.2271	total loss: 0.2271
+Epoch[1-205]	loss: 0.1633	total loss: 0.1633
+Epoch[1-206]	loss: 0.1764	total loss: 0.1764
+Epoch[1-207]	loss: 0.1980	total loss: 0.1980
+Epoch[1-208]	loss: 0.1768	total loss: 0.1768
+Epoch[1-209]	loss: 0.1474	total loss: 0.1474
+Epoch[1-210]	loss: 0.1173	total loss: 0.1173
+Epoch[1-211]	loss: 0.1766	total loss: 0.1766
+Epoch[1-212]	loss: 0.1639	total loss: 0.1639
+Epoch[1-213]	loss: 0.1770	total loss: 0.1770
+Epoch[1-214]	loss: 0.1999	total loss: 0.1999
+Epoch[1-215]	loss: 0.1896	total loss: 0.1896
+Epoch[1-216]	loss: 0.2066	total loss: 0.2066
+Epoch[1-217]	loss: 0.1903	total loss: 0.1903
+Epoch[1-218]	loss: 0.1901	total loss: 0.1901
+Epoch[1-219]	loss: 0.1855	total loss: 0.1855
+Epoch[1-220]	loss: 0.1946	total loss: 0.1946
+Epoch[1-221]	loss: 0.1461	total loss: 0.1461
+Epoch[1-222]	loss: 0.1398	total loss: 0.1398
+Epoch[1-223]	loss: 0.1787	total loss: 0.1787
+Epoch[1-224]	loss: 0.1372	total loss: 0.1372
+Epoch[1-225]	loss: 0.1453	total loss: 0.1453
+Epoch[1-226]	loss: 0.1481	total loss: 0.1481
+Epoch[1-227]	loss: 0.1794	total loss: 0.1794
+Epoch[1-228]	loss: 0.1746	total loss: 0.1746
+Epoch[1-229]	loss: 0.1958	total loss: 0.1958
+Epoch[1-230]	loss: 0.1436	total loss: 0.1436
+Epoch[1-231]	loss: 0.1904	total loss: 0.1904
+Epoch[1-232]	loss: 0.1497	total loss: 0.1497
+Epoch[1-233]	loss: 0.1270	total loss: 0.1270
+Epoch[1-234]	loss: 0.1738	total loss: 0.1738
+Epoch[1-235]	loss: 0.1695	total loss: 0.1695
+Epoch[1-236]	loss: 0.1372	total loss: 0.1372
+Epoch[1-237]	loss: 0.1352	total loss: 0.1352
+Epoch[1-238]	loss: 0.1380	total loss: 0.1380
+Epoch[1-239]	loss: 0.1309	total loss: 0.1309
+Epoch[1-240]	loss: 0.1447	total loss: 0.1447
+Epoch[1-241]	loss: 0.1199	total loss: 0.1199
+Epoch[1-242]	loss: 0.1233	total loss: 0.1233
+Epoch[1-243]	loss: 0.1674	total loss: 0.1674
+Epoch[1-244]	loss: 0.1194	total loss: 0.1194
+Epoch[1-245]	loss: 0.1222	total loss: 0.1222
+Epoch[1-246]	loss: 0.1152	total loss: 0.1152
+Epoch[1-247]	loss: 0.1559	total loss: 0.1559
+Epoch[1-248]	loss: 0.1258	total loss: 0.1258
+Epoch[1-249]	loss: 0.1505	total loss: 0.1505
+Epoch[1-250]	loss: 0.1074	total loss: 0.1074
+Epoch[1-251]	loss: 0.1214	total loss: 0.1214
+Epoch[1-252]	loss: 0.1225	total loss: 0.1225
+Epoch[1-253]	loss: 0.1521	total loss: 0.1521
+Epoch[1-254]	loss: 0.1285	total loss: 0.1285
+Epoch[1-255]	loss: 0.1768	total loss: 0.1768
+Epoch[1-256]	loss: 0.1228	total loss: 0.1228
+Epoch[1-257]	loss: 0.1232	total loss: 0.1232
+Epoch[1-258]	loss: 0.1003	total loss: 0.1003
+Epoch[1-259]	loss: 0.1803	total loss: 0.1803
+Epoch[1-260]	loss: 0.1195	total loss: 0.1195
+Epoch[1-261]	loss: 0.1290	total loss: 0.1290
+Epoch[1-262]	loss: 0.0838	total loss: 0.0838
+Epoch[1-263]	loss: 0.1233	total loss: 0.1233
+Epoch[1-264]	loss: 0.1266	total loss: 0.1266
+Epoch[1-265]	loss: 0.1018	total loss: 0.1018
+Epoch[1-266]	loss: 0.0997	total loss: 0.0997
+Epoch[1-267]	loss: 0.1457	total loss: 0.1457
+Epoch[1-268]	loss: 0.1197	total loss: 0.1197
+Epoch[1-269]	loss: 0.1232	total loss: 0.1232
+Epoch[1-270]	loss: 0.2088	total loss: 0.2088
+Epoch[1-271]	loss: 0.1050	total loss: 0.1050
+Epoch[1-272]	loss: 0.1007	total loss: 0.1007
+Epoch[1-273]	loss: 0.1132	total loss: 0.1132
+Epoch[1-274]	loss: 0.1217	total loss: 0.1217
+Epoch[1-275]	loss: 0.0829	total loss: 0.0829
+Epoch[1-276]	loss: 0.0965	total loss: 0.0965
+Epoch[1-277]	loss: 0.1241	total loss: 0.1241
+Epoch[1-278]	loss: 0.1099	total loss: 0.1099
+Epoch[1-279]	loss: 0.1082	total loss: 0.1082
+Epoch[1-280]	loss: 0.1024	total loss: 0.1024
+Epoch[1-281]	loss: 0.1793	total loss: 0.1793
+Epoch[1-282]	loss: 0.0967	total loss: 0.0967
+Epoch[1-283]	loss: 0.1297	total loss: 0.1297
+Epoch[1-284]	loss: 0.1049	total loss: 0.1049
+Epoch[1-285]	loss: 0.0917	total loss: 0.0917
+Epoch[1-286]	loss: 0.1331	total loss: 0.1331
+Epoch[1-287]	loss: 0.1573	total loss: 0.1573
+Epoch[1-288]	loss: 0.0725	total loss: 0.0725
+Epoch[1-289]	loss: 0.0840	total loss: 0.0840
+Epoch[1-290]	loss: 0.1431	total loss: 0.1431
+Epoch[1-291]	loss: 0.1274	total loss: 0.1274
+Epoch[1-292]	loss: 0.1255	total loss: 0.1255
+Epoch[1-293]	loss: 0.1098	total loss: 0.1098
+Epoch[1-294]	loss: 0.1023	total loss: 0.1023
+Epoch[1-295]	loss: 0.1651	total loss: 0.1651
+Epoch[1-296]	loss: 0.0812	total loss: 0.0812
+Epoch[1-297]	loss: 0.1132	total loss: 0.1132
+Epoch[1-298]	loss: 0.0832	total loss: 0.0832
+Epoch[1-299]	loss: 0.1143	total loss: 0.1143
+Epoch[1-300]	loss: 0.1266	total loss: 0.1266
+Epoch[1-301]	loss: 0.1240	total loss: 0.1240
+Epoch[1-302]	loss: 0.1092	total loss: 0.1092
+Epoch[1-303]	loss: 0.0912	total loss: 0.0912
+Epoch[1-304]	loss: 0.1519	total loss: 0.1519
+Epoch[1-305]	loss: 0.0949	total loss: 0.0949
+Epoch[1-306]	loss: 0.1316	total loss: 0.1316
+Epoch[1-307]	loss: 0.0979	total loss: 0.0979
+Epoch[1-308]	loss: 0.1262	total loss: 0.1262
+Epoch[1-309]	loss: 0.1146	total loss: 0.1146
+Epoch[1-310]	loss: 0.1004	total loss: 0.1004
+Epoch[1-311]	loss: 0.1274	total loss: 0.1274
+Epoch[1-312]	loss: 0.1059	total loss: 0.1059
+Epoch[1-313]	loss: 0.0908	total loss: 0.0908
+Epoch[1-314]	loss: 0.0747	total loss: 0.0747
+Epoch[1-315]	loss: 0.0929	total loss: 0.0929
+Epoch[1-316]	loss: 0.1187	total loss: 0.1187
+Epoch[1-317]	loss: 0.0832	total loss: 0.0832
+Epoch[1-318]	loss: 0.0643	total loss: 0.0643
+Epoch[1-319]	loss: 0.0927	total loss: 0.0927
+Epoch[1-320]	loss: 0.0915	total loss: 0.0915
+Epoch[1-321]	loss: 0.0924	total loss: 0.0924
+Epoch[1-322]	loss: 0.0955	total loss: 0.0955
+Epoch[1-323]	loss: 0.0927	total loss: 0.0927
+Epoch[1-324]	loss: 0.1218	total loss: 0.1218
+Epoch[1-325]	loss: 0.0779	total loss: 0.0779
+Epoch[1-326]	loss: 0.1280	total loss: 0.1280
+Epoch[1-327]	loss: 0.0865	total loss: 0.0865
+Epoch[1-328]	loss: 0.1024	total loss: 0.1024
+Epoch[1-329]	loss: 0.1060	total loss: 0.1060
+Epoch[1-330]	loss: 0.0973	total loss: 0.0973
+Epoch[1-331]	loss: 0.0775	total loss: 0.0775
+Epoch[1-332]	loss: 0.0864	total loss: 0.0864
+Epoch[1-333]	loss: 0.1106	total loss: 0.1106
+Epoch[1-334]	loss: 0.0734	total loss: 0.0734
+Epoch[1-335]	loss: 0.0946	total loss: 0.0946
+Epoch[1-336]	loss: 0.1058	total loss: 0.1058
+Epoch[1-337]	loss: 0.1265	total loss: 0.1265
+Epoch[1-338]	loss: 0.0926	total loss: 0.0926
+Epoch[1-339]	loss: 0.0834	total loss: 0.0834
+Epoch[1-340]	loss: 0.1180	total loss: 0.1180
+Epoch[1-341]	loss: 0.1152	total loss: 0.1152
+Epoch[1-342]	loss: 0.1037	total loss: 0.1037
+Epoch[1-343]	loss: 0.0960	total loss: 0.0960
+Epoch[1-344]	loss: 0.0826	total loss: 0.0826
+Epoch[1-345]	loss: 0.1122	total loss: 0.1122
+Epoch[1-346]	loss: 0.0472	total loss: 0.0472
+Epoch[1-347]	loss: 0.0717	total loss: 0.0717
+Epoch[1-348]	loss: 0.0668	total loss: 0.0668
+Epoch[1-349]	loss: 0.0705	total loss: 0.0705
+Epoch[1-350]	loss: 0.0846	total loss: 0.0846
+Epoch[1-351]	loss: 0.0688	total loss: 0.0688
+Epoch[1-352]	loss: 0.0821	total loss: 0.0821
+Epoch[1-353]	loss: 0.0864	total loss: 0.0864
+Epoch[1-354]	loss: 0.0683	total loss: 0.0683
+Epoch[1-355]	loss: 0.0763	total loss: 0.0763
+Epoch[1-356]	loss: 0.0965	total loss: 0.0965
+Epoch[1-357]	loss: 0.0731	total loss: 0.0731
+Epoch[1-358]	loss: 0.0763	total loss: 0.0763
+Epoch[1-359]	loss: 0.0753	total loss: 0.0753
+Epoch[1-360]	loss: 0.1170	total loss: 0.1170
+Epoch[1-361]	loss: 0.0737	total loss: 0.0737
+Epoch[1-362]	loss: 0.0862	total loss: 0.0862
+Epoch[1-363]	loss: 0.0660	total loss: 0.0660
+Epoch[1-364]	loss: 0.1034	total loss: 0.1034
+Epoch[1-365]	loss: 0.1034	total loss: 0.1034
+Epoch[1-366]	loss: 0.0611	total loss: 0.0611
+Epoch[1-367]	loss: 0.0690	total loss: 0.0690
+Epoch[1-368]	loss: 0.0984	total loss: 0.0984
+Epoch[1-369]	loss: 0.0912	total loss: 0.0912
+Epoch[1-370]	loss: 0.0774	total loss: 0.0774
+Epoch[1-371]	loss: 0.0934	total loss: 0.0934
+Epoch[1-372]	loss: 0.0878	total loss: 0.0878
+Epoch[1-373]	loss: 0.0953	total loss: 0.0953
+Epoch[1-374]	loss: 0.0830	total loss: 0.0830
+Epoch[1-375]	loss: 0.1052	total loss: 0.1052
+Epoch[1-376]	loss: 0.0773	total loss: 0.0773
+Epoch[1-377]	loss: 0.1190	total loss: 0.1190
+Epoch[1-378]	loss: 0.0691	total loss: 0.0691
+Epoch[1-379]	loss: 0.0664	total loss: 0.0664
+Epoch[1-380]	loss: 0.0929	total loss: 0.0929
+Epoch[1-381]	loss: 0.0511	total loss: 0.0511
+Epoch[1-382]	loss: 0.0666	total loss: 0.0666
+Epoch[1-383]	loss: 0.0613	total loss: 0.0613
+Epoch[1-384]	loss: 0.0810	total loss: 0.0810
+Epoch[1-385]	loss: 0.0619	total loss: 0.0619
+Epoch[1-386]	loss: 0.0743	total loss: 0.0743
+Epoch[1-387]	loss: 0.0886	total loss: 0.0886
+Epoch[1-388]	loss: 0.0782	total loss: 0.0782
+Epoch[1-389]	loss: 0.0634	total loss: 0.0634
+Epoch[1-390]	loss: 0.0978	total loss: 0.0978
+Epoch[1-391]	loss: 0.0942	total loss: 0.0942
+Epoch[1-392]	loss: 0.0783	total loss: 0.0783
+Epoch[1-393]	loss: 0.0586	total loss: 0.0586
+Epoch[1-394]	loss: 0.0665	total loss: 0.0665
+Epoch[1-395]	loss: 0.0726	total loss: 0.0726
+Epoch[1-396]	loss: 0.0888	total loss: 0.0888
+Epoch[1-397]	loss: 0.0650	total loss: 0.0650
+Epoch[1-398]	loss: 0.0618	total loss: 0.0618
+Epoch[1-399]	loss: 0.0796	total loss: 0.0796
+Epoch[1-400]	loss: 0.0798	total loss: 0.0798
+Epoch[1-401]	loss: 0.0597	total loss: 0.0597
+Epoch[1-402]	loss: 0.0527	total loss: 0.0527
+Epoch[1-403]	loss: 0.0736	total loss: 0.0736
+Epoch[1-404]	loss: 0.1102	total loss: 0.1102
+Epoch[1-405]	loss: 0.0769	total loss: 0.0769
+Epoch[1-406]	loss: 0.0927	total loss: 0.0927
+Epoch[1-407]	loss: 0.0611	total loss: 0.0611
+Epoch[1-408]	loss: 0.0730	total loss: 0.0730
+Epoch[1-409]	loss: 0.0778	total loss: 0.0778
+Epoch[1-410]	loss: 0.0745	total loss: 0.0745
+Epoch[1-411]	loss: 0.0832	total loss: 0.0832
+Epoch[1-412]	loss: 0.0728	total loss: 0.0728
+Epoch[1-413]	loss: 0.1062	total loss: 0.1062
+Epoch[1-414]	loss: 0.0574	total loss: 0.0574
+Epoch[1-415]	loss: 0.0591	total loss: 0.0591
+Epoch[1-416]	loss: 0.0791	total loss: 0.0791
+Epoch[1-417]	loss: 0.0838	total loss: 0.0838
+Epoch[1-418]	loss: 0.0882	total loss: 0.0882
+Epoch[1-419]	loss: 0.0854	total loss: 0.0854
+Epoch[1-420]	loss: 0.0571	total loss: 0.0571
+Epoch[1-421]	loss: 0.0872	total loss: 0.0872
+Epoch[1-422]	loss: 0.0660	total loss: 0.0660
+Epoch[1-423]	loss: 0.1021	total loss: 0.1021
+Epoch[1-424]	loss: 0.0725	total loss: 0.0725
+Epoch[1-425]	loss: 0.0869	total loss: 0.0869
+Epoch[1-426]	loss: 0.0727	total loss: 0.0727
+Epoch[1-427]	loss: 0.0677	total loss: 0.0677
+Epoch[1-428]	loss: 0.0745	total loss: 0.0745
+Epoch[1-429]	loss: 0.0495	total loss: 0.0495
+Epoch[1-430]	loss: 0.1202	total loss: 0.1202
+Epoch[1-431]	loss: 0.0785	total loss: 0.0785
+Epoch[1-432]	loss: 0.0681	total loss: 0.0681
+Epoch[1-433]	loss: 0.0957	total loss: 0.0957
+Epoch[1-434]	loss: 0.0779	total loss: 0.0779
+Epoch[1-435]	loss: 0.0762	total loss: 0.0762
+Epoch[1-436]	loss: 0.1107	total loss: 0.1107
+Epoch[1-437]	loss: 0.0798	total loss: 0.0798
+Epoch[1-438]	loss: 0.0914	total loss: 0.0914
+Epoch[1-439]	loss: 0.0543	total loss: 0.0543
+Epoch[1-440]	loss: 0.0539	total loss: 0.0539
+Epoch[1-441]	loss: 0.0443	total loss: 0.0443
+Epoch[1-442]	loss: 0.0498	total loss: 0.0498
+Epoch[1-443]	loss: 0.0372	total loss: 0.0372
+Epoch[1-444]	loss: 0.0763	total loss: 0.0763
+Epoch[1-445]	loss: 0.0986	total loss: 0.0986
+Epoch[1-446]	loss: 0.0955	total loss: 0.0955
+Epoch[1-447]	loss: 0.0716	total loss: 0.0716
+Epoch[1-448]	loss: 0.0778	total loss: 0.0778
+Epoch[1-449]	loss: 0.0781	total loss: 0.0781
+Epoch[1-450]	loss: 0.0746	total loss: 0.0746
+Epoch[1-451]	loss: 0.0722	total loss: 0.0722
+Epoch[1-452]	loss: 0.0698	total loss: 0.0698
+Epoch[1-453]	loss: 0.0605	total loss: 0.0605
+Epoch[1-454]	loss: 0.0788	total loss: 0.0788
+Epoch[1-455]	loss: 0.0817	total loss: 0.0817
+Epoch[1-456]	loss: 0.0833	total loss: 0.0833
+Epoch[1-457]	loss: 0.0682	total loss: 0.0682
+Epoch[1-458]	loss: 0.0700	total loss: 0.0700
+Epoch[1-459]	loss: 0.0363	total loss: 0.0363
+Epoch[1-460]	loss: 0.0777	total loss: 0.0777
+Epoch[1-461]	loss: 0.0555	total loss: 0.0555
+Epoch[1-462]	loss: 0.0823	total loss: 0.0823
+Epoch[1-463]	loss: 0.0820	total loss: 0.0820
+Epoch[1-464]	loss: 0.0478	total loss: 0.0478
+Epoch[1-465]	loss: 0.0710	total loss: 0.0710
+Epoch[1-466]	loss: 0.0508	total loss: 0.0508
+Epoch[1-467]	loss: 0.0597	total loss: 0.0597
+Epoch[1-468]	loss: 0.0791	total loss: 0.0791
+Epoch[1-469]	loss: 0.0784	total loss: 0.0784
+Epoch[1-470]	loss: 0.0976	total loss: 0.0976
+Epoch[1-471]	loss: 0.0497	total loss: 0.0497
+Epoch[1-472]	loss: 0.0461	total loss: 0.0461
+Epoch[1-473]	loss: 0.0463	total loss: 0.0463
+Epoch[1-474]	loss: 0.0644	total loss: 0.0644
+Epoch[1-475]	loss: 0.0858	total loss: 0.0858
+Epoch[1-476]	loss: 0.0538	total loss: 0.0538
+Epoch[1-477]	loss: 0.0755	total loss: 0.0755
+Epoch[1-478]	loss: 0.0845	total loss: 0.0845
+Epoch[1-479]	loss: 0.0453	total loss: 0.0453
+Epoch[1-480]	loss: 0.0535	total loss: 0.0535
+Epoch[1-481]	loss: 0.0572	total loss: 0.0572
+Epoch[1-482]	loss: 0.0872	total loss: 0.0872
+Epoch[1-483]	loss: 0.0514	total loss: 0.0514
+Epoch[1-484]	loss: 0.0907	total loss: 0.0907
+Epoch[1-485]	loss: 0.0686	total loss: 0.0686
+Epoch[1-486]	loss: 0.0460	total loss: 0.0460
+Epoch[1-487]	loss: 0.0502	total loss: 0.0502
+Epoch[1-488]	loss: 0.0719	total loss: 0.0719
+Epoch[1-489]	loss: 0.0603	total loss: 0.0603
+Epoch[1-490]	loss: 0.0921	total loss: 0.0921
+Epoch[1-491]	loss: 0.0709	total loss: 0.0709
+Epoch[1-492]	loss: 0.0823	total loss: 0.0823
+Epoch[1-493]	loss: 0.0743	total loss: 0.0743
+Epoch[1-494]	loss: 0.0642	total loss: 0.0642
+Epoch[1-495]	loss: 0.0558	total loss: 0.0558
+Epoch[1-496]	loss: 0.0462	total loss: 0.0462
+Epoch[1-497]	loss: 0.0696	total loss: 0.0696
+Epoch[1-498]	loss: 0.0491	total loss: 0.0491
+Epoch[1-499]	loss: 0.0702	total loss: 0.0702
+Epoch[1-500]	loss: 0.0508	total loss: 0.0508
+Epoch[1-501]	loss: 0.0438	total loss: 0.0438
+Epoch[1-502]	loss: 0.0781	total loss: 0.0781
+Epoch[1-503]	loss: 0.0698	total loss: 0.0698
+Epoch[1-504]	loss: 0.0636	total loss: 0.0636
+Epoch[1-505]	loss: 0.0594	total loss: 0.0594
+Epoch[1-506]	loss: 0.0878	total loss: 0.0878
+Epoch[1-507]	loss: 0.0534	total loss: 0.0534
+Epoch[1-508]	loss: 0.0412	total loss: 0.0412
+Epoch[1-509]	loss: 0.0443	total loss: 0.0443
+Epoch[1-510]	loss: 0.0607	total loss: 0.0607
+Epoch[1-511]	loss: 0.0560	total loss: 0.0560
+Epoch[1-512]	loss: 0.0460	total loss: 0.0460
+Epoch[1-513]	loss: 0.0452	total loss: 0.0452
+Epoch[1-514]	loss: 0.0598	total loss: 0.0598
+Epoch[1-515]	loss: 0.0570	total loss: 0.0570
+Epoch[1-516]	loss: 0.0525	total loss: 0.0525
+Epoch[1-517]	loss: 0.0527	total loss: 0.0527
+Epoch[1-518]	loss: 0.0619	total loss: 0.0619
+Epoch[1-519]	loss: 0.0628	total loss: 0.0628
+Epoch[1-520]	loss: 0.0695	total loss: 0.0695
+Epoch[1-521]	loss: 0.0601	total loss: 0.0601
+Epoch[1-522]	loss: 0.0554	total loss: 0.0554
+Epoch[1-523]	loss: 0.0538	total loss: 0.0538
+Epoch[1-524]	loss: 0.0582	total loss: 0.0582
+Epoch[1-525]	loss: 0.0794	total loss: 0.0794
+Epoch[1-526]	loss: 0.0537	total loss: 0.0537
+Epoch[1-527]	loss: 0.0471	total loss: 0.0471
+Epoch[1-528]	loss: 0.0376	total loss: 0.0376
+Epoch[1-529]	loss: 0.0720	total loss: 0.0720
+Epoch[1-530]	loss: 0.0502	total loss: 0.0502
+Epoch[1-531]	loss: 0.0566	total loss: 0.0566
+Epoch[1-532]	loss: 0.0565	total loss: 0.0565
+Epoch[1-533]	loss: 0.0548	total loss: 0.0548
+Epoch[1-534]	loss: 0.0650	total loss: 0.0650
+Epoch[1-535]	loss: 0.0475	total loss: 0.0475
+Epoch[1-536]	loss: 0.0418	total loss: 0.0418
+Epoch[1-537]	loss: 0.0735	total loss: 0.0735
+Epoch[1-538]	loss: 0.1065	total loss: 0.1065
+Epoch[1-539]	loss: 0.0738	total loss: 0.0738
+Epoch[1-540]	loss: 0.0603	total loss: 0.0603
+Epoch[1-541]	loss: 0.0680	total loss: 0.0680
+Epoch[1-542]	loss: 0.0614	total loss: 0.0614
+Epoch[1-543]	loss: 0.0674	total loss: 0.0674
+Epoch[1-544]	loss: 0.0542	total loss: 0.0542
+Epoch[1-545]	loss: 0.0608	total loss: 0.0608
+Epoch[1-546]	loss: 0.0607	total loss: 0.0607
+Epoch[1-547]	loss: 0.0736	total loss: 0.0736
+Epoch[1-548]	loss: 0.0618	total loss: 0.0618
+Epoch[1-549]	loss: 0.0517	total loss: 0.0517
+Epoch[1-550]	loss: 0.0441	total loss: 0.0441
+Epoch[1-551]	loss: 0.0930	total loss: 0.0930
+Epoch[1-552]	loss: 0.0336	total loss: 0.0336
+Epoch[1-553]	loss: 0.0766	total loss: 0.0766
+Epoch[1-554]	loss: 0.0433	total loss: 0.0433
+Epoch[1-555]	loss: 0.0314	total loss: 0.0314
+Epoch[1-556]	loss: 0.0608	total loss: 0.0608
+Epoch[1-557]	loss: 0.0688	total loss: 0.0688
+Epoch[1-558]	loss: 0.0426	total loss: 0.0426
+Epoch[1-559]	loss: 0.0296	total loss: 0.0296
+Epoch[1-560]	loss: 0.0615	total loss: 0.0615
+Epoch[1-561]	loss: 0.0564	total loss: 0.0564
+Epoch[1-562]	loss: 0.0422	total loss: 0.0422
+Epoch[1-563]	loss: 0.0807	total loss: 0.0807
+Epoch[1-564]	loss: 0.0605	total loss: 0.0605
+Epoch[1-565]	loss: 0.0589	total loss: 0.0589
+Epoch[1-566]	loss: 0.0577	total loss: 0.0577
+Epoch[1-567]	loss: 0.0500	total loss: 0.0500
+Epoch[1-568]	loss: 0.0452	total loss: 0.0452
+Epoch[1-569]	loss: 0.0494	total loss: 0.0494
+Epoch[1-570]	loss: 0.0365	total loss: 0.0365
+Epoch[1-571]	loss: 0.0769	total loss: 0.0769
+Epoch[1-572]	loss: 0.0403	total loss: 0.0403
+Epoch[1-573]	loss: 0.0502	total loss: 0.0502
+Epoch[1-574]	loss: 0.0596	total loss: 0.0596
+Epoch[1-575]	loss: 0.0565	total loss: 0.0565
+Epoch[1-576]	loss: 0.0518	total loss: 0.0518
+Epoch[1-577]	loss: 0.0604	total loss: 0.0604
+Epoch[1-578]	loss: 0.0506	total loss: 0.0506
+Epoch[1-579]	loss: 0.0778	total loss: 0.0778
+Epoch[1-580]	loss: 0.0427	total loss: 0.0427
+Epoch[1-581]	loss: 0.0532	total loss: 0.0532
+Epoch[1-582]	loss: 0.0497	total loss: 0.0497
+Epoch[1-583]	loss: 0.0452	total loss: 0.0452
+Epoch[1-584]	loss: 0.0461	total loss: 0.0461
+Epoch[1-585]	loss: 0.0417	total loss: 0.0417
+Epoch[1-586]	loss: 0.0441	total loss: 0.0441
+Epoch[1-587]	loss: 0.0476	total loss: 0.0476
+Epoch[1-588]	loss: 0.0519	total loss: 0.0519
+Epoch[1-589]	loss: 0.0528	total loss: 0.0528
+Epoch[1-590]	loss: 0.0478	total loss: 0.0478
+Epoch[1-591]	loss: 0.0634	total loss: 0.0634
+Epoch[1-592]	loss: 0.0521	total loss: 0.0521
+Epoch[1-593]	loss: 0.0533	total loss: 0.0533
+Epoch[1-594]	loss: 0.0489	total loss: 0.0489
+Epoch[1-595]	loss: 0.0407	total loss: 0.0407
+Epoch[1-596]	loss: 0.0671	total loss: 0.0671
+Epoch[1-597]	loss: 0.0745	total loss: 0.0745
+Epoch[1-598]	loss: 0.0434	total loss: 0.0434
+Epoch[1-599]	loss: 0.0449	total loss: 0.0449
+Epoch[1-600]	loss: 0.0614	total loss: 0.0614
+Epoch[1-601]	loss: 0.0548	total loss: 0.0548
+Epoch[1-602]	loss: 0.0567	total loss: 0.0567
+Epoch[1-603]	loss: 0.0751	total loss: 0.0751
+Epoch[1-604]	loss: 0.0436	total loss: 0.0436
+Epoch[1-605]	loss: 0.0560	total loss: 0.0560
+Epoch[1-606]	loss: 0.0605	total loss: 0.0605
+Epoch[1-607]	loss: 0.0376	total loss: 0.0376
+Epoch[1-608]	loss: 0.0511	total loss: 0.0511
+Epoch[1-609]	loss: 0.0572	total loss: 0.0572
+Epoch[1-610]	loss: 0.0489	total loss: 0.0489
+Epoch[1-611]	loss: 0.0340	total loss: 0.0340
+Epoch[1-612]	loss: 0.0427	total loss: 0.0427
+Epoch[1-613]	loss: 0.0670	total loss: 0.0670
+Epoch[1-614]	loss: 0.0583	total loss: 0.0583
+Epoch[1-615]	loss: 0.0839	total loss: 0.0839
+Epoch[1-616]	loss: 0.0396	total loss: 0.0396
+Epoch[1-617]	loss: 0.0741	total loss: 0.0741
+Epoch[1-618]	loss: 0.0462	total loss: 0.0462
+Epoch[1-619]	loss: 0.0301	total loss: 0.0301
+Epoch[1-620]	loss: 0.0546	total loss: 0.0546
+Epoch[1-621]	loss: 0.0504	total loss: 0.0504
+Epoch[1-622]	loss: 0.0574	total loss: 0.0574
+Epoch[1-623]	loss: 0.0595	total loss: 0.0595
+Epoch[1-624]	loss: 0.0544	total loss: 0.0544
+Epoch[1-625]	loss: 0.0339	total loss: 0.0339
+Epoch[1-626]	loss: 0.0614	total loss: 0.0614
+Epoch[1-627]	loss: 0.0544	total loss: 0.0544
+Epoch[1-628]	loss: 0.0559	total loss: 0.0559
+Epoch[1-629]	loss: 0.0324	total loss: 0.0324
+Epoch[1-630]	loss: 0.0410	total loss: 0.0410
+Epoch[1-631]	loss: 0.0565	total loss: 0.0565
+Epoch[1-632]	loss: 0.0486	total loss: 0.0486
+Epoch[1-633]	loss: 0.0624	total loss: 0.0624
+Epoch[1-634]	loss: 0.0460	total loss: 0.0460
+Epoch[1-635]	loss: 0.0628	total loss: 0.0628
+Epoch[1-636]	loss: 0.0553	total loss: 0.0553
+Epoch[1-637]	loss: 0.0419	total loss: 0.0419
+Epoch[1-638]	loss: 0.0510	total loss: 0.0510
+Epoch[1-639]	loss: 0.0520	total loss: 0.0520
+Epoch[1-640]	loss: 0.0348	total loss: 0.0348
+Epoch[1-641]	loss: 0.0331	total loss: 0.0331
+Epoch[1-642]	loss: 0.0388	total loss: 0.0388
+Epoch[1-643]	loss: 0.0443	total loss: 0.0443
+Epoch[1-644]	loss: 0.0431	total loss: 0.0431
+Epoch[1-645]	loss: 0.0599	total loss: 0.0599
+Epoch[1-646]	loss: 0.0255	total loss: 0.0255
+Epoch[1-647]	loss: 0.0574	total loss: 0.0574
+Epoch[1-648]	loss: 0.0512	total loss: 0.0512
+Epoch[1-649]	loss: 0.0490	total loss: 0.0490
+Epoch[1-650]	loss: 0.0572	total loss: 0.0572
+Epoch[1-651]	loss: 0.0346	total loss: 0.0346
+Epoch[1-652]	loss: 0.0622	total loss: 0.0622
+Epoch[1-653]	loss: 0.0538	total loss: 0.0538
+Epoch[1-654]	loss: 0.0356	total loss: 0.0356
+Epoch[1-655]	loss: 0.0435	total loss: 0.0435
+Epoch[1-656]	loss: 0.0629	total loss: 0.0629
+Epoch[1-657]	loss: 0.0452	total loss: 0.0452
+Epoch[1-658]	loss: 0.0301	total loss: 0.0301
+Epoch[1-659]	loss: 0.0519	total loss: 0.0519
+Epoch[1-660]	loss: 0.0389	total loss: 0.0389
+Epoch[1-661]	loss: 0.0456	total loss: 0.0456
+Epoch[1-662]	loss: 0.0523	total loss: 0.0523
+Epoch[1-663]	loss: 0.0431	total loss: 0.0431
+Epoch[1-664]	loss: 0.0390	total loss: 0.0390
+Epoch[1-665]	loss: 0.0573	total loss: 0.0573
+Epoch[1-666]	loss: 0.0346	total loss: 0.0346
+Epoch[1-667]	loss: 0.0519	total loss: 0.0519
+Epoch[1-668]	loss: 0.0612	total loss: 0.0612
+Epoch[1-669]	loss: 0.0541	total loss: 0.0541
+Epoch[1-670]	loss: 0.0381	total loss: 0.0381
+Epoch[1-671]	loss: 0.0466	total loss: 0.0466
+Epoch[1-672]	loss: 0.0446	total loss: 0.0446
+Epoch[1-673]	loss: 0.0457	total loss: 0.0457
+Epoch[1-674]	loss: 0.0695	total loss: 0.0695
+Epoch[1-675]	loss: 0.0438	total loss: 0.0438
+Epoch[1-676]	loss: 0.0599	total loss: 0.0599
+Epoch[1-677]	loss: 0.0484	total loss: 0.0484
+Epoch[1-678]	loss: 0.0264	total loss: 0.0264
+Epoch[1-679]	loss: 0.0368	total loss: 0.0368
+Epoch[1-680]	loss: 0.0343	total loss: 0.0343
+Epoch[1-681]	loss: 0.0498	total loss: 0.0498
+Epoch[1-682]	loss: 0.0589	total loss: 0.0589
+Epoch[1-683]	loss: 0.0444	total loss: 0.0444
+Epoch[1-684]	loss: 0.0603	total loss: 0.0603
+Epoch[1-685]	loss: 0.0555	total loss: 0.0555
+Epoch[1-686]	loss: 0.0398	total loss: 0.0398
+Epoch[1-687]	loss: 0.0537	total loss: 0.0537
+Epoch[1-688]	loss: 0.0410	total loss: 0.0410
+Epoch[1-689]	loss: 0.0370	total loss: 0.0370
+Epoch[1-690]	loss: 0.0317	total loss: 0.0317
+Epoch[1-691]	loss: 0.0504	total loss: 0.0504
+Epoch[1-692]	loss: 0.0363	total loss: 0.0363
+Epoch[1-693]	loss: 0.0571	total loss: 0.0571
+Epoch[1-694]	loss: 0.0516	total loss: 0.0516
+Epoch[1-695]	loss: 0.0378	total loss: 0.0378
+Epoch[1-696]	loss: 0.0383	total loss: 0.0383
+Epoch[1-697]	loss: 0.0589	total loss: 0.0589
+Epoch[1-698]	loss: 0.0331	total loss: 0.0331
+Epoch[1-699]	loss: 0.0326	total loss: 0.0326
+Epoch[1-700]	loss: 0.0496	total loss: 0.0496
+Epoch[1-701]	loss: 0.0642	total loss: 0.0642
+Epoch[1-702]	loss: 0.0397	total loss: 0.0397
+Epoch[1-703]	loss: 0.0392	total loss: 0.0392
+Epoch[1-704]	loss: 0.0442	total loss: 0.0442
+Epoch[1-705]	loss: 0.0293	total loss: 0.0293
+Epoch[1-706]	loss: 0.0453	total loss: 0.0453
+Epoch[1-707]	loss: 0.0399	total loss: 0.0399
+Epoch[1-708]	loss: 0.0498	total loss: 0.0498
+Epoch[1-709]	loss: 0.0394	total loss: 0.0394
+Epoch[1-710]	loss: 0.0475	total loss: 0.0475
+Epoch[1-711]	loss: 0.0378	total loss: 0.0378
+Epoch[1-712]	loss: 0.0233	total loss: 0.0233
+Epoch[1-713]	loss: 0.0364	total loss: 0.0364
+Epoch[1-714]	loss: 0.0444	total loss: 0.0444
+Epoch[1-715]	loss: 0.0585	total loss: 0.0585
+Epoch[1-716]	loss: 0.0218	total loss: 0.0218
+Epoch[1-717]	loss: 0.0386	total loss: 0.0386
+Epoch[1-718]	loss: 0.0430	total loss: 0.0430
+Epoch[1-719]	loss: 0.0447	total loss: 0.0447
+Epoch[1-720]	loss: 0.0297	total loss: 0.0297
+Epoch[1-721]	loss: 0.0511	total loss: 0.0511
+Epoch[1-722]	loss: 0.0452	total loss: 0.0452
+Epoch[1-723]	loss: 0.0296	total loss: 0.0296
+Epoch[1-724]	loss: 0.0292	total loss: 0.0292
+Epoch[1-725]	loss: 0.0377	total loss: 0.0377
+Epoch[1-726]	loss: 0.0436	total loss: 0.0436
+Epoch[1-727]	loss: 0.0326	total loss: 0.0326
+Epoch[1-728]	loss: 0.0411	total loss: 0.0411
+Epoch[1-729]	loss: 0.0563	total loss: 0.0563
+Epoch[1-730]	loss: 0.0369	total loss: 0.0369
+Epoch[1-731]	loss: 0.0477	total loss: 0.0477
+Epoch[1-732]	loss: 0.0525	total loss: 0.0525
+Epoch[1-733]	loss: 0.0332	total loss: 0.0332
+Epoch[1-734]	loss: 0.0416	total loss: 0.0416
+Epoch[1-735]	loss: 0.0472	total loss: 0.0472
+Epoch[1-736]	loss: 0.0349	total loss: 0.0349
+Epoch[1-737]	loss: 0.0346	total loss: 0.0346
+Epoch[1-738]	loss: 0.0491	total loss: 0.0491
+Epoch[1-739]	loss: 0.0266	total loss: 0.0266
+Epoch[1-740]	loss: 0.0365	total loss: 0.0365
+Epoch[1-741]	loss: 0.0485	total loss: 0.0485
+Epoch[1-742]	loss: 0.0345	total loss: 0.0345
+Epoch[1-743]	loss: 0.0379	total loss: 0.0379
+Epoch[1-744]	loss: 0.0544	total loss: 0.0544
+Epoch[1-745]	loss: 0.0277	total loss: 0.0277
+Epoch[1-746]	loss: 0.0372	total loss: 0.0372
+Epoch[1-747]	loss: 0.0301	total loss: 0.0301
+Epoch[1-748]	loss: 0.0469	total loss: 0.0469
+Epoch[1-749]	loss: 0.0379	total loss: 0.0379
+Epoch[1-750]	loss: 0.0368	total loss: 0.0368
+Epoch[1-751]	loss: 0.0609	total loss: 0.0609
+Epoch[1-752]	loss: 0.0502	total loss: 0.0502
+Epoch[1-753]	loss: 0.0346	total loss: 0.0346
+Epoch[1-754]	loss: 0.0435	total loss: 0.0435
+Epoch[1-755]	loss: 0.0356	total loss: 0.0356
+Epoch[1-756]	loss: 0.0477	total loss: 0.0477
+Epoch[1-757]	loss: 0.0531	total loss: 0.0531
+Epoch[1-758]	loss: 0.0529	total loss: 0.0529
+Epoch[1-759]	loss: 0.0299	total loss: 0.0299
+Epoch[1-760]	loss: 0.0344	total loss: 0.0344
+Epoch[1-761]	loss: 0.0542	total loss: 0.0542
+Epoch[1-762]	loss: 0.0393	total loss: 0.0393
+Epoch[1-763]	loss: 0.0484	total loss: 0.0484
+Epoch[1-764]	loss: 0.0419	total loss: 0.0419
+Epoch[1-765]	loss: 0.0489	total loss: 0.0489
+Epoch[1-766]	loss: 0.0364	total loss: 0.0364
+Epoch[1-767]	loss: 0.0428	total loss: 0.0428
+Epoch[1-768]	loss: 0.0245	total loss: 0.0245
+Epoch[1-769]	loss: 0.0562	total loss: 0.0562
+Epoch[1-770]	loss: 0.0349	total loss: 0.0349
+Epoch[1-771]	loss: 0.0377	total loss: 0.0377
+Epoch[1-772]	loss: 0.0506	total loss: 0.0506
+Epoch[1-773]	loss: 0.0380	total loss: 0.0380
+Epoch[1-774]	loss: 0.0526	total loss: 0.0526
+Epoch[1-775]	loss: 0.0294	total loss: 0.0294
+Epoch[1-776]	loss: 0.0526	total loss: 0.0526
+Epoch[1-777]	loss: 0.0362	total loss: 0.0362
+Epoch[1-778]	loss: 0.0344	total loss: 0.0344
+Epoch[1-779]	loss: 0.0601	total loss: 0.0601
+Epoch[1-780]	loss: 0.0622	total loss: 0.0622
+Epoch[1-781]	loss: 0.0388	total loss: 0.0388
+Epoch[1-782]	loss: 0.0251	total loss: 0.0251
+Epoch[1-783]	loss: 0.0318	total loss: 0.0318
+Epoch[1-784]	loss: 0.0373	total loss: 0.0373
+Epoch[1-785]	loss: 0.0344	total loss: 0.0344
+Epoch[1-786]	loss: 0.0347	total loss: 0.0347
+Epoch[1-787]	loss: 0.0354	total loss: 0.0354
+Epoch[1-788]	loss: 0.0411	total loss: 0.0411
+Epoch[1-789]	loss: 0.0514	total loss: 0.0514
+Epoch[1-790]	loss: 0.0342	total loss: 0.0342
+Epoch[1-791]	loss: 0.0473	total loss: 0.0473
+Epoch[1-792]	loss: 0.0347	total loss: 0.0347
+Epoch[1-793]	loss: 0.0429	total loss: 0.0429
+Epoch[1-794]	loss: 0.0434	total loss: 0.0434
+Epoch[1-795]	loss: 0.0290	total loss: 0.0290
+Epoch[1-796]	loss: 0.0244	total loss: 0.0244
+Epoch[1-797]	loss: 0.0520	total loss: 0.0520
+Epoch[1-798]	loss: 0.0512	total loss: 0.0512
+Epoch[1-799]	loss: 0.0260	total loss: 0.0260
+Epoch[1-800]	loss: 0.0611	total loss: 0.0611
+Epoch[1-801]	loss: 0.0703	total loss: 0.0703
+Epoch[1-802]	loss: 0.0332	total loss: 0.0332
+Epoch[1-803]	loss: 0.0532	total loss: 0.0532
+Epoch[1-804]	loss: 0.0304	total loss: 0.0304
+Epoch[1-805]	loss: 0.0529	total loss: 0.0529
+Epoch[1-806]	loss: 0.0349	total loss: 0.0349
+Epoch[1-807]	loss: 0.0302	total loss: 0.0302
+Epoch[1-808]	loss: 0.0390	total loss: 0.0390
+Epoch[1-809]	loss: 0.0330	total loss: 0.0330
+Epoch[1-810]	loss: 0.0486	total loss: 0.0486
+Epoch[1-811]	loss: 0.0446	total loss: 0.0446
+Epoch[1-812]	loss: 0.0444	total loss: 0.0444
+Epoch[1-813]	loss: 0.0570	total loss: 0.0570
+Epoch[1-814]	loss: 0.0397	total loss: 0.0397
+Epoch[1-815]	loss: 0.0441	total loss: 0.0441
+Epoch[1-816]	loss: 0.0402	total loss: 0.0402
+Epoch[1-817]	loss: 0.0445	total loss: 0.0445
+Epoch[1-818]	loss: 0.0369	total loss: 0.0369
+Epoch[1-819]	loss: 0.0479	total loss: 0.0479
+Epoch[1-820]	loss: 0.0298	total loss: 0.0298
+Epoch[1-821]	loss: 0.0381	total loss: 0.0381
+Epoch[1-822]	loss: 0.0443	total loss: 0.0443
+Epoch[1-823]	loss: 0.0470	total loss: 0.0470
+Epoch[1-824]	loss: 0.0344	total loss: 0.0344
+Epoch[1-825]	loss: 0.0270	total loss: 0.0270
+Epoch[1-826]	loss: 0.0290	total loss: 0.0290
+Epoch[1-827]	loss: 0.0421	total loss: 0.0421
+Epoch[1-828]	loss: 0.0433	total loss: 0.0433
+Epoch[1-829]	loss: 0.0268	total loss: 0.0268
+Epoch[1-830]	loss: 0.0411	total loss: 0.0411
+Epoch[1-831]	loss: 0.0543	total loss: 0.0543
+Epoch[1-832]	loss: 0.0362	total loss: 0.0362
+Epoch[1-833]	loss: 0.0514	total loss: 0.0514
+Epoch[1-834]	loss: 0.0248	total loss: 0.0248
+Epoch[1-835]	loss: 0.0392	total loss: 0.0392
+Epoch[1-836]	loss: 0.0246	total loss: 0.0246
+Epoch[1-837]	loss: 0.0390	total loss: 0.0390
+Epoch[1-838]	loss: 0.0330	total loss: 0.0330
+Epoch[1-839]	loss: 0.0509	total loss: 0.0509
+Epoch[1-840]	loss: 0.0229	total loss: 0.0229
+Epoch[1-841]	loss: 0.0377	total loss: 0.0377
+Epoch[1-842]	loss: 0.0397	total loss: 0.0397
+Epoch[1-843]	loss: 0.0313	total loss: 0.0313
+Epoch[1-844]	loss: 0.0617	total loss: 0.0617
+Epoch[1-845]	loss: 0.0365	total loss: 0.0365
+Epoch[1-846]	loss: 0.0411	total loss: 0.0411
+Epoch[1-847]	loss: 0.0396	total loss: 0.0396
+Epoch[1-848]	loss: 0.0502	total loss: 0.0502
+Epoch[1-849]	loss: 0.0388	total loss: 0.0388
+Epoch[1-850]	loss: 0.0508	total loss: 0.0508
+Epoch[1-851]	loss: 0.0420	total loss: 0.0420
+Epoch[1-852]	loss: 0.0487	total loss: 0.0487
+Epoch[1-853]	loss: 0.0414	total loss: 0.0414
+Epoch[1-854]	loss: 0.0430	total loss: 0.0430
+Epoch[1-855]	loss: 0.0302	total loss: 0.0302
+Epoch[1-856]	loss: 0.0288	total loss: 0.0288
+Epoch[1-857]	loss: 0.0408	total loss: 0.0408
+Epoch[1-858]	loss: 0.0505	total loss: 0.0505
+Epoch[1-859]	loss: 0.0375	total loss: 0.0375
+Epoch[1-860]	loss: 0.0311	total loss: 0.0311
+Epoch[1-861]	loss: 0.0474	total loss: 0.0474
+Epoch[1-862]	loss: 0.0415	total loss: 0.0415
+Epoch[1-863]	loss: 0.0290	total loss: 0.0290
+Epoch[1-864]	loss: 0.0429	total loss: 0.0429
+Epoch[1-865]	loss: 0.0371	total loss: 0.0371
+Epoch[1-866]	loss: 0.0302	total loss: 0.0302
+Epoch[1-867]	loss: 0.0506	total loss: 0.0506
+Epoch[1-868]	loss: 0.0344	total loss: 0.0344
+Epoch[1-869]	loss: 0.0201	total loss: 0.0201
+Epoch[1-870]	loss: 0.0531	total loss: 0.0531
+Epoch[1-871]	loss: 0.0262	total loss: 0.0262
+Epoch[1-872]	loss: 0.0310	total loss: 0.0310
+Epoch[1-873]	loss: 0.0295	total loss: 0.0295
+Epoch[1-874]	loss: 0.0415	total loss: 0.0415
+Epoch[1-875]	loss: 0.0401	total loss: 0.0401
+Epoch[1-876]	loss: 0.0344	total loss: 0.0344
+Epoch[1-877]	loss: 0.0454	total loss: 0.0454
+Epoch[1-878]	loss: 0.0368	total loss: 0.0368
+Epoch[1-879]	loss: 0.0295	total loss: 0.0295
+Epoch[1-880]	loss: 0.0211	total loss: 0.0211
+Epoch[1-881]	loss: 0.0425	total loss: 0.0425
+Epoch[1-882]	loss: 0.0431	total loss: 0.0431
+Epoch[1-883]	loss: 0.0330	total loss: 0.0330
+Epoch[1-884]	loss: 0.0467	total loss: 0.0467
+Epoch[1-885]	loss: 0.0279	total loss: 0.0279
+Epoch[1-886]	loss: 0.0420	total loss: 0.0420
+Epoch[1-887]	loss: 0.0411	total loss: 0.0411
+Epoch[1-888]	loss: 0.0410	total loss: 0.0410
+Epoch[1-889]	loss: 0.0371	total loss: 0.0371
+Epoch[1-890]	loss: 0.0272	total loss: 0.0272
+Epoch[1-891]	loss: 0.0489	total loss: 0.0489
+Epoch[1-892]	loss: 0.0297	total loss: 0.0297
+Epoch[1-893]	loss: 0.0384	total loss: 0.0384
+Epoch[1-894]	loss: 0.0375	total loss: 0.0375
+Epoch[1-895]	loss: 0.0335	total loss: 0.0335
+Epoch[1-896]	loss: 0.0280	total loss: 0.0280
+Epoch[1-897]	loss: 0.0330	total loss: 0.0330
+Epoch[1-898]	loss: 0.0456	total loss: 0.0456
+Epoch[1-899]	loss: 0.0356	total loss: 0.0356
+Epoch[1-900]	loss: 0.0412	total loss: 0.0412
+Epoch[1-901]	loss: 0.0309	total loss: 0.0309
+Epoch[1-902]	loss: 0.0348	total loss: 0.0348
+Epoch[1-903]	loss: 0.0489	total loss: 0.0489
+Epoch[1-904]	loss: 0.0368	total loss: 0.0368
+Epoch[1-905]	loss: 0.0286	total loss: 0.0286
+Epoch[1-906]	loss: 0.0432	total loss: 0.0432
+Epoch[1-907]	loss: 0.0299	total loss: 0.0299
+Epoch[1-908]	loss: 0.0462	total loss: 0.0462
+Epoch[1-909]	loss: 0.0299	total loss: 0.0299
+Epoch[1-910]	loss: 0.0329	total loss: 0.0329
+Epoch[1-911]	loss: 0.0387	total loss: 0.0387
+Epoch[1-912]	loss: 0.0359	total loss: 0.0359
+Epoch[1-913]	loss: 0.0538	total loss: 0.0538
+Epoch[1-914]	loss: 0.0261	total loss: 0.0261
+Epoch[1-915]	loss: 0.0269	total loss: 0.0269
+Epoch[1-916]	loss: 0.0431	total loss: 0.0431
+Epoch[1-917]	loss: 0.0303	total loss: 0.0303
+Epoch[1-918]	loss: 0.0344	total loss: 0.0344
+Epoch[1-919]	loss: 0.0412	total loss: 0.0412
+Epoch[1-920]	loss: 0.0345	total loss: 0.0345
+Epoch[1-921]	loss: 0.0445	total loss: 0.0445
+Epoch[1-922]	loss: 0.0527	total loss: 0.0527
+Epoch[1-923]	loss: 0.0257	total loss: 0.0257
+Epoch[1-924]	loss: 0.0345	total loss: 0.0345
+Epoch[1-925]	loss: 0.0394	total loss: 0.0394
+Epoch[1-926]	loss: 0.0216	total loss: 0.0216
+Epoch[1-927]	loss: 0.0376	total loss: 0.0376
+Epoch[1-928]	loss: 0.0269	total loss: 0.0269
+Epoch[1-929]	loss: 0.0308	total loss: 0.0308
+Epoch[1-930]	loss: 0.0306	total loss: 0.0306
+Epoch[1-931]	loss: 0.0280	total loss: 0.0280
+Epoch[1-932]	loss: 0.0279	total loss: 0.0279
+Epoch[1-933]	loss: 0.0358	total loss: 0.0358
+Epoch[1-934]	loss: 0.0354	total loss: 0.0354
+Epoch[1-935]	loss: 0.0247	total loss: 0.0247
+Epoch[1-936]	loss: 0.0402	total loss: 0.0402
+Epoch[1-937]	loss: 0.0347	total loss: 0.0347
+Epoch[1-938]	loss: 0.0334	total loss: 0.0334
+Epoch[1-939]	loss: 0.0326	total loss: 0.0326
+Epoch[1-940]	loss: 0.0260	total loss: 0.0260
+Epoch[1-941]	loss: 0.0276	total loss: 0.0276
+Epoch[1-942]	loss: 0.0487	total loss: 0.0487
+Epoch[1-943]	loss: 0.0263	total loss: 0.0263
+Epoch[1-944]	loss: 0.0287	total loss: 0.0287
+Epoch[1-945]	loss: 0.0559	total loss: 0.0559
+Epoch[1-946]	loss: 0.0312	total loss: 0.0312
+Epoch[1-947]	loss: 0.0500	total loss: 0.0500
+Epoch[1-948]	loss: 0.0356	total loss: 0.0356
+Epoch[1-949]	loss: 0.0302	total loss: 0.0302
+Epoch[1-950]	loss: 0.0350	total loss: 0.0350
+Epoch[1-951]	loss: 0.0307	total loss: 0.0307
+Epoch[1-952]	loss: 0.0267	total loss: 0.0267
+Epoch[1-953]	loss: 0.0252	total loss: 0.0252
+Epoch[1-954]	loss: 0.0351	total loss: 0.0351
+Epoch[1-955]	loss: 0.0328	total loss: 0.0328
+Epoch[1-956]	loss: 0.0355	total loss: 0.0355
+Epoch[1-957]	loss: 0.0353	total loss: 0.0353
+Epoch[1-958]	loss: 0.0351	total loss: 0.0351
+Epoch[1-959]	loss: 0.0404	total loss: 0.0404
+Epoch[1-960]	loss: 0.0225	total loss: 0.0225
+Epoch[1-961]	loss: 0.0298	total loss: 0.0298
+Epoch[1-962]	loss: 0.0491	total loss: 0.0491
+Epoch[1-963]	loss: 0.0411	total loss: 0.0411
+Epoch[1-964]	loss: 0.0370	total loss: 0.0370
+Epoch[1-965]	loss: 0.0239	total loss: 0.0239
+Epoch[1-966]	loss: 0.0246	total loss: 0.0246
+Epoch[1-967]	loss: 0.0261	total loss: 0.0261
+Epoch[1-968]	loss: 0.0208	total loss: 0.0208
+Epoch[1-969]	loss: 0.0421	total loss: 0.0421
+Epoch[1-970]	loss: 0.0506	total loss: 0.0506
+Epoch[1-971]	loss: 0.0559	total loss: 0.0559
+Epoch[1-972]	loss: 0.0480	total loss: 0.0480
+Epoch[1-973]	loss: 0.0283	total loss: 0.0283
+Epoch[1-974]	loss: 0.0219	total loss: 0.0219
+Epoch[1-975]	loss: 0.0257	total loss: 0.0257
+Epoch[1-976]	loss: 0.0300	total loss: 0.0300
+Epoch[1-977]	loss: 0.0386	total loss: 0.0386
+Epoch[1-978]	loss: 0.0446	total loss: 0.0446
+Epoch[1-979]	loss: 0.0362	total loss: 0.0362
+Epoch[1-980]	loss: 0.0244	total loss: 0.0244
+Epoch[1-981]	loss: 0.0204	total loss: 0.0204
+Epoch[1-982]	loss: 0.0388	total loss: 0.0388
+Epoch[1-983]	loss: 0.0366	total loss: 0.0366
+Epoch[1-984]	loss: 0.0391	total loss: 0.0391
+Epoch[1-985]	loss: 0.0227	total loss: 0.0227
+Epoch[1-986]	loss: 0.0258	total loss: 0.0258
+Epoch[1-987]	loss: 0.0520	total loss: 0.0520
+Epoch[1-988]	loss: 0.0332	total loss: 0.0332
+Epoch[1-989]	loss: 0.0336	total loss: 0.0336
+Epoch[1-990]	loss: 0.0404	total loss: 0.0404
+Epoch[1-991]	loss: 0.0356	total loss: 0.0356
+Epoch[1-992]	loss: 0.0289	total loss: 0.0289
+Epoch[1-993]	loss: 0.0335	total loss: 0.0335
+Epoch[1-994]	loss: 0.0277	total loss: 0.0277
+Epoch[1-995]	loss: 0.0426	total loss: 0.0426
+Epoch[1-996]	loss: 0.0454	total loss: 0.0454
+Epoch[1-997]	loss: 0.0317	total loss: 0.0317
+Epoch[1-998]	loss: 0.0341	total loss: 0.0341
+Epoch[1-999]	loss: 0.0446	total loss: 0.0446
+Epoch[1-1000]	loss: 0.0316	total loss: 0.0316
+Epoch[1-1001]	loss: 0.0510	total loss: 0.0510
+Epoch[1-1002]	loss: 0.0371	total loss: 0.0371
+Epoch[1-1003]	loss: 0.0345	total loss: 0.0345
+Epoch[1-1004]	loss: 0.0170	total loss: 0.0170
+Epoch[1-1005]	loss: 0.0192	total loss: 0.0192
+Epoch[1-1006]	loss: 0.0289	total loss: 0.0289
+Epoch[1-1007]	loss: 0.0320	total loss: 0.0320
+Epoch[1-1008]	loss: 0.0218	total loss: 0.0218
+Epoch[1-1009]	loss: 0.0320	total loss: 0.0320
+Epoch[1-1010]	loss: 0.0271	total loss: 0.0271
+Epoch[1-1011]	loss: 0.0457	total loss: 0.0457
+Epoch[1-1012]	loss: 0.0304	total loss: 0.0304
+Epoch[1-1013]	loss: 0.0429	total loss: 0.0429
+Epoch[1-1014]	loss: 0.0220	total loss: 0.0220
+Epoch[1-1015]	loss: 0.0331	total loss: 0.0331
+Epoch[1-1016]	loss: 0.0283	total loss: 0.0283
+Epoch[1-1017]	loss: 0.0358	total loss: 0.0358
+Epoch[1-1018]	loss: 0.0276	total loss: 0.0276
+Epoch[1-1019]	loss: 0.0551	total loss: 0.0551
+Epoch[1-1020]	loss: 0.0356	total loss: 0.0356
+Epoch[1-1021]	loss: 0.0440	total loss: 0.0440
+Epoch[1-1022]	loss: 0.0463	total loss: 0.0463
+Epoch[1-1023]	loss: 0.0333	total loss: 0.0333
+Epoch[1-1024]	loss: 0.0379	total loss: 0.0379
+Epoch[1-1025]	loss: 0.0343	total loss: 0.0343
+Epoch[1-1026]	loss: 0.0348	total loss: 0.0348
+Epoch[1-1027]	loss: 0.0393	total loss: 0.0393
+Epoch[1-1028]	loss: 0.0259	total loss: 0.0259
+Epoch[1-1029]	loss: 0.0290	total loss: 0.0290
+Epoch[1-1030]	loss: 0.0300	total loss: 0.0300
+Epoch[1-1031]	loss: 0.0204	total loss: 0.0204
+Epoch[1-1032]	loss: 0.0323	total loss: 0.0323
+Epoch[1-1033]	loss: 0.0463	total loss: 0.0463
+Epoch[1-1034]	loss: 0.0352	total loss: 0.0352
+Epoch[1-1035]	loss: 0.0363	total loss: 0.0363
+Epoch[1-1036]	loss: 0.0329	total loss: 0.0329
+Epoch[1-1037]	loss: 0.0317	total loss: 0.0317
+Epoch[1-1038]	loss: 0.0281	total loss: 0.0281
+Epoch[1-1039]	loss: 0.0218	total loss: 0.0218
+Epoch[1-1040]	loss: 0.0376	total loss: 0.0376
+Epoch[1-1041]	loss: 0.0520	total loss: 0.0520
+Epoch[1-1042]	loss: 0.0311	total loss: 0.0311
+Epoch[1-1043]	loss: 0.0321	total loss: 0.0321
+Epoch[1-1044]	loss: 0.0348	total loss: 0.0348
+Epoch[1-1045]	loss: 0.0345	total loss: 0.0345
+Epoch[1-1046]	loss: 0.0289	total loss: 0.0289
+Epoch[1-1047]	loss: 0.0605	total loss: 0.0605
+Epoch[1-1048]	loss: 0.0348	total loss: 0.0348
+Epoch[1-1049]	loss: 0.0257	total loss: 0.0257
+Epoch[1-1050]	loss: 0.0298	total loss: 0.0298
+Epoch[1-1051]	loss: 0.0227	total loss: 0.0227
+Epoch[1-1052]	loss: 0.0297	total loss: 0.0297
+Epoch[1-1053]	loss: 0.0435	total loss: 0.0435
+Epoch[1-1054]	loss: 0.0230	total loss: 0.0230
+Epoch[1-1055]	loss: 0.0544	total loss: 0.0544
+Epoch[1-1056]	loss: 0.0191	total loss: 0.0191
+Epoch[1-1057]	loss: 0.0369	total loss: 0.0369
+Epoch[1-1058]	loss: 0.0345	total loss: 0.0345
+Epoch[1-1059]	loss: 0.0318	total loss: 0.0318
+Epoch[1-1060]	loss: 0.0438	total loss: 0.0438
+Epoch[1-1061]	loss: 0.0365	total loss: 0.0365
+Epoch[1-1062]	loss: 0.0359	total loss: 0.0359
+Epoch[1-1063]	loss: 0.0285	total loss: 0.0285
+Epoch[1-1064]	loss: 0.0307	total loss: 0.0307
+Epoch[1-1065]	loss: 0.0241	total loss: 0.0241
+Epoch[1-1066]	loss: 0.0256	total loss: 0.0256
+Epoch[1-1067]	loss: 0.0415	total loss: 0.0415
+Epoch[1-1068]	loss: 0.0242	total loss: 0.0242
+Epoch[1-1069]	loss: 0.0314	total loss: 0.0314
+Epoch[1-1070]	loss: 0.0289	total loss: 0.0289
+Epoch[1-1071]	loss: 0.0275	total loss: 0.0275
+Epoch[1-1072]	loss: 0.0525	total loss: 0.0525
+Epoch[1-1073]	loss: 0.0341	total loss: 0.0341
+Epoch[1-1074]	loss: 0.0479	total loss: 0.0479
+Epoch[1-1075]	loss: 0.0340	total loss: 0.0340
+Epoch[1-1076]	loss: 0.0219	total loss: 0.0219
+Epoch[1-1077]	loss: 0.0367	total loss: 0.0367
+Epoch[1-1078]	loss: 0.0501	total loss: 0.0501
+Epoch[1-1079]	loss: 0.0362	total loss: 0.0362
+Epoch[1-1080]	loss: 0.0254	total loss: 0.0254
+Epoch[1-1081]	loss: 0.0516	total loss: 0.0516
+Epoch[1-1082]	loss: 0.0441	total loss: 0.0441
+Epoch[1-1083]	loss: 0.0452	total loss: 0.0452
+Epoch[1-1084]	loss: 0.0276	total loss: 0.0276
+Epoch[1-1085]	loss: 0.0319	total loss: 0.0319
+Epoch[1-1086]	loss: 0.0271	total loss: 0.0271
+Epoch[1-1087]	loss: 0.0301	total loss: 0.0301
+Epoch[1-1088]	loss: 0.0285	total loss: 0.0285
+Epoch[1-1089]	loss: 0.0373	total loss: 0.0373
+Epoch[1-1090]	loss: 0.0652	total loss: 0.0652
+Epoch[1-1091]	loss: 0.0286	total loss: 0.0286
+Epoch[1-1092]	loss: 0.0421	total loss: 0.0421
+Epoch[1-1093]	loss: 0.0332	total loss: 0.0332
+Epoch[1-1094]	loss: 0.0582	total loss: 0.0582
+Epoch[1-1095]	loss: 0.0242	total loss: 0.0242
+Epoch[1-1096]	loss: 0.0366	total loss: 0.0366
+Epoch[1-1097]	loss: 0.0441	total loss: 0.0441
+Epoch[1-1098]	loss: 0.0399	total loss: 0.0399
+Epoch[1-1099]	loss: 0.0255	total loss: 0.0255
+Epoch[1-1100]	loss: 0.0413	total loss: 0.0413
+Epoch[1-1101]	loss: 0.0503	total loss: 0.0503
+Epoch[1-1102]	loss: 0.0315	total loss: 0.0315
+Epoch[1-1103]	loss: 0.0348	total loss: 0.0348
+Epoch[1-1104]	loss: 0.0242	total loss: 0.0242
+Epoch[1-1105]	loss: 0.0184	total loss: 0.0184
+Epoch[1-1106]	loss: 0.0234	total loss: 0.0234
+Epoch[1-1107]	loss: 0.0360	total loss: 0.0360
+Epoch[1-1108]	loss: 0.0244	total loss: 0.0244
+Epoch[1]/Phase[train]
+mean_img_map_loss: 0.35682418319850145
+mean_img_map_avg_embedding_norm: 1.0
+mean_img_map_num_triplets: 552.0
+mean_loss: 0.35682418319850145
+Epoch[1]/Batch[1]
+Epoch[1]/Batch[2]
+Epoch[1]/Batch[3]
+Epoch[1]/Batch[4]
+Epoch[1]/Batch[5]
+Epoch[1]/Batch[6]
+Epoch[1]/Batch[7]
+Epoch[1]/Batch[8]
+Epoch[1]/Batch[9]
+Epoch[1]/Batch[10]
+Epoch[1]/Batch[11]
+Epoch[1]/Batch[12]
+Epoch[1]/Batch[13]
+Epoch[1]/Batch[14]
+Epoch[1]/Batch[15]
+Epoch[1]/Batch[16]
+Epoch[1]/Batch[17]
+Epoch[1]/Batch[18]
+Epoch[1]/Batch[19]
+Epoch[1]/Batch[20]
+Epoch[1]/Batch[21]
+Epoch[1]/Batch[22]
+Epoch[1]/Batch[23]
+Epoch[1]/Batch[24]
+Epoch[1]/Batch[25]
+Epoch[1]/Batch[26]
+Epoch[1]/Batch[27]
+Epoch[1]/Batch[28]
+Epoch[1]/Batch[29]
+Epoch[1]/Batch[30]
+Epoch[1]/Batch[31]
+Epoch[1]/Batch[32]
+Epoch[1]/Batch[33]
+Epoch[1]/Batch[34]
+Epoch[1]/Batch[35]
+Epoch[1]/Batch[36]
+Epoch[1]/Batch[37]
+Epoch[1]/Batch[38]
+Epoch[1]/Batch[39]
+Epoch[1]/Batch[40]
+Epoch[1]/Batch[41]
+Epoch[1]/Batch[42]
+Epoch[1]/Batch[43]
+Epoch[1]/Batch[44]
+Epoch[1]/Batch[45]
+Epoch[1]/Batch[46]
+Epoch[1]/Batch[47]
+Epoch[1]/Batch[48]
+Epoch[1]/Batch[49]
+Epoch[1]/Batch[50]
+Epoch[1]/Batch[51]
+Epoch[1]/Batch[52]
+Epoch[1]/Batch[53]
+Epoch[1]/Batch[54]
+Epoch[1]/Batch[55]
+Epoch[1]/Batch[56]
+Epoch[1]/Batch[57]
+Epoch[1]/Batch[58]
+Epoch[1]/Batch[59]
+Epoch[1]/Batch[60]
+Epoch[1]/Batch[61]
+Epoch[1]/Batch[62]
+Epoch[1]/Batch[63]
+Epoch[1]/Batch[64]
+Epoch[1]/Batch[65]
+Epoch[1]/Batch[66]
+Epoch[1]/Batch[67]
+Epoch[1]/Batch[68]
+Epoch[1]/Batch[69]
+Epoch[1]/Batch[70]
+Epoch[1]/Batch[71]
+Epoch[1]/Batch[72]
+Epoch[1]/Batch[73]
+Epoch[1]/Batch[74]
+Epoch[1]/Batch[75]
+Epoch[1]/Batch[76]
+Epoch[1]/Batch[77]
+Epoch[1]/Batch[78]
+Epoch[1]/Batch[79]
+Epoch[1]/Batch[80]
+Epoch[1]/Batch[81]
+Epoch[1]/Batch[82]
+Epoch[1]/Batch[83]
+Epoch[1]/Batch[84]
+Epoch[1]/Batch[85]
+Epoch[1]/Batch[86]
+Epoch[1]/Batch[87]
+Epoch[1]/Batch[88]
+Epoch[1]/Batch[89]
+Epoch[1]/Batch[90]
+Epoch[1]/Batch[91]
+Epoch[1]/Batch[92]
+Epoch[1]/Batch[93]
+Epoch[1]/Batch[94]
+Epoch[1]/Batch[95]
+Epoch[1]/Batch[96]
+Epoch[1]/Batch[97]
+Epoch[1]/Batch[98]
+Epoch[1]/Batch[99]
+Epoch[1]/Batch[100]
+Epoch[1]/Batch[101]
+Epoch[1]/Batch[102]
+Epoch[1]/Batch[103]
+Epoch[1]/Batch[104]
+Epoch[1]/Batch[105]
+Epoch[1]/Batch[106]
+Epoch[1]/Batch[107]
+Epoch[1]/Batch[108]
+Epoch[1]/Batch[109]
+Epoch[1]/Batch[110]
+Epoch[1]/Batch[111]
+Epoch[1]/Batch[112]
+Epoch[1]/Batch[113]
+Epoch[1]/Batch[114]
+Epoch[1]/Batch[115]
+Epoch[1]/Batch[116]
+Epoch[1]/Batch[117]
+Epoch[1]/Batch[118]
+Epoch[1]/Batch[119]
+Epoch[1]/Batch[120]
+Epoch[1]/Batch[121]
+Epoch[1]/Batch[122]
+Epoch[1]/Batch[123]
+Epoch[1]/Batch[124]
+Epoch[1]/Batch[125]
+Epoch[1]/Batch[126]
+Epoch[1]/Batch[127]
+Epoch[1]/Batch[128]
+Epoch[1]/Batch[129]
+Epoch[1]/Batch[130]
+Epoch[1]/Batch[131]
+Epoch[1]/Batch[132]
+Epoch[1]/Batch[133]
+Epoch[1]/Batch[134]
+Epoch[1]/Batch[135]
+Epoch[1]/Batch[136]
+Epoch[1]/Batch[137]
+Epoch[1]/Batch[138]
+Epoch[1]/Batch[139]
+Epoch[1]/Batch[140]
+Epoch[1]/Batch[141]
+Epoch[1]/Batch[142]
+Epoch[1]/Batch[143]
+Epoch[1]/Batch[144]
+Epoch[1]/Batch[145]
+Epoch[1]/Batch[146]
+Epoch[1]/Batch[147]
+Epoch[1]/Batch[148]
+Epoch[1]/Batch[149]
+Epoch[1]/Batch[150]
+Epoch[1]/Batch[151]
+Epoch[1]/Batch[152]
+Epoch[1]/Batch[153]
+Epoch[1]/Batch[154]
+Epoch[1]/Batch[155]
+Epoch[1]/Batch[156]
+Epoch[1]/Batch[157]
+Epoch[1]/Batch[158]
+Epoch[1]/Batch[159]
+Epoch[1]/Batch[160]
+Epoch[1]/Batch[161]
+Epoch[1]/Batch[162]
+Epoch[1]/Batch[163]
+Epoch[1]/Batch[164]
+Epoch[1]/Batch[165]
+Epoch[1]/Batch[166]
+Epoch[1]/Batch[167]
+Epoch[1]/Batch[168]
+Epoch[1]/Batch[169]
+Epoch[1]/Batch[170]
+Epoch[1]/Batch[171]
+Epoch[1]/Batch[172]
+Epoch[1]/Batch[173]
+Epoch[1]/Batch[174]
+Epoch[1]/Batch[175]
+Epoch[1]/Batch[176]
+Epoch[1]/Batch[177]
+Epoch[1]/Batch[178]
+Epoch[1]/Batch[179]
+Epoch[1]/Batch[180]
+Epoch[1]/Batch[181]
+Epoch[1]/Batch[182]
+Epoch[1]/Batch[183]
+Epoch[1]/Batch[184]
+Epoch[1]/Batch[185]
+Epoch[1]/Batch[186]
+Epoch[1]/Batch[187]
+Epoch[1]/Batch[188]
+Epoch[1]/Batch[189]
+Epoch[1]/Batch[190]
+Epoch[1]/Batch[191]
+Epoch[1]/Batch[192]
+Epoch[1]/Batch[193]
+Epoch[1]/Batch[194]
+Epoch[1]/Batch[195]
+Epoch[1]/Batch[196]
+Epoch[1]/Batch[197]
+Epoch[1]/Batch[198]
+Epoch[1]/Batch[199]
+Epoch[1]/Batch[200]
+Epoch[1]/Batch[201]
+Epoch[1]/Batch[202]
+Epoch[1]/Batch[203]
+Epoch[1]/Batch[204]
+Epoch[1]/Batch[205]
+Epoch[1]/Batch[206]
+Epoch[1]/Batch[207]
+Epoch[1]/Batch[208]
+Epoch[1]/Batch[209]
+Epoch[1]/Batch[210]
+Epoch[1]/Batch[211]
+Epoch[1]/Batch[212]
+Epoch[1]/Batch[213]
+Epoch[1]/Batch[214]
+Epoch[1]/Batch[215]
+Epoch[1]/Batch[216]
+Epoch[1]/Batch[217]
+Epoch[1]/Batch[218]
+Epoch[1]/Batch[219]
+Epoch[1]/Batch[220]
+Epoch[1]/Batch[221]
+Epoch[1]/Batch[222]
+Epoch[1]/Batch[223]
+Epoch[1]/Phase[val]	top 1 recall: 40.6548	top 1p recall: 91.8241	similarity: 0.9263
+Epoch[2-1]	loss: 0.0310	total loss: 0.0310
+Epoch[2-2]	loss: 0.0326	total loss: 0.0326
+Epoch[2-3]	loss: 0.0325	total loss: 0.0325
+Epoch[2-4]	loss: 0.0355	total loss: 0.0355
+Epoch[2-5]	loss: 0.0323	total loss: 0.0323
+Epoch[2-6]	loss: 0.0229	total loss: 0.0229
+Epoch[2-7]	loss: 0.0306	total loss: 0.0306
+Epoch[2-8]	loss: 0.0300	total loss: 0.0300
+Epoch[2-9]	loss: 0.0417	total loss: 0.0417
+Epoch[2-10]	loss: 0.0518	total loss: 0.0518
+Epoch[2-11]	loss: 0.0515	total loss: 0.0515
+Epoch[2-12]	loss: 0.0405	total loss: 0.0405
+Epoch[2-13]	loss: 0.0343	total loss: 0.0343
+Epoch[2-14]	loss: 0.0382	total loss: 0.0382
+Epoch[2-15]	loss: 0.0273	total loss: 0.0273
+Epoch[2-16]	loss: 0.0292	total loss: 0.0292
+Epoch[2-17]	loss: 0.0352	total loss: 0.0352
+Epoch[2-18]	loss: 0.0471	total loss: 0.0471
+Epoch[2-19]	loss: 0.0424	total loss: 0.0424
+Epoch[2-20]	loss: 0.0311	total loss: 0.0311
+Epoch[2-21]	loss: 0.0301	total loss: 0.0301
+Epoch[2-22]	loss: 0.0325	total loss: 0.0325
+Epoch[2-23]	loss: 0.0399	total loss: 0.0399
+Epoch[2-24]	loss: 0.0338	total loss: 0.0338
+Epoch[2-25]	loss: 0.0374	total loss: 0.0374
+Epoch[2-26]	loss: 0.0266	total loss: 0.0266
+Epoch[2-27]	loss: 0.0409	total loss: 0.0409
+Epoch[2-28]	loss: 0.0258	total loss: 0.0258
+Epoch[2-29]	loss: 0.0384	total loss: 0.0384
+Epoch[2-30]	loss: 0.0448	total loss: 0.0448
+Epoch[2-31]	loss: 0.0234	total loss: 0.0234
+Epoch[2-32]	loss: 0.0201	total loss: 0.0201
+Epoch[2-33]	loss: 0.0471	total loss: 0.0471
+Epoch[2-34]	loss: 0.0267	total loss: 0.0267
+Epoch[2-35]	loss: 0.0356	total loss: 0.0356
+Epoch[2-36]	loss: 0.0339	total loss: 0.0339
+Epoch[2-37]	loss: 0.0191	total loss: 0.0191
+Epoch[2-38]	loss: 0.0257	total loss: 0.0257
+Epoch[2-39]	loss: 0.0356	total loss: 0.0356
+Epoch[2-40]	loss: 0.0322	total loss: 0.0322
+Epoch[2-41]	loss: 0.0393	total loss: 0.0393
+Epoch[2-42]	loss: 0.0567	total loss: 0.0567
+Epoch[2-43]	loss: 0.0321	total loss: 0.0321
+Epoch[2-44]	loss: 0.0276	total loss: 0.0276
+Epoch[2-45]	loss: 0.0310	total loss: 0.0310
+Epoch[2-46]	loss: 0.0264	total loss: 0.0264
+Epoch[2-47]	loss: 0.0368	total loss: 0.0368
+Epoch[2-48]	loss: 0.0218	total loss: 0.0218
+Epoch[2-49]	loss: 0.0631	total loss: 0.0631
+Epoch[2-50]	loss: 0.0368	total loss: 0.0368
+Epoch[2-51]	loss: 0.0175	total loss: 0.0175
+Epoch[2-52]	loss: 0.0233	total loss: 0.0233
+Epoch[2-53]	loss: 0.0296	total loss: 0.0296
+Epoch[2-54]	loss: 0.0258	total loss: 0.0258
+Epoch[2-55]	loss: 0.0338	total loss: 0.0338
+Epoch[2-56]	loss: 0.0282	total loss: 0.0282
+Epoch[2-57]	loss: 0.0363	total loss: 0.0363
+Epoch[2-58]	loss: 0.0336	total loss: 0.0336
+Epoch[2-59]	loss: 0.0413	total loss: 0.0413
+Epoch[2-60]	loss: 0.0286	total loss: 0.0286
+Epoch[2-61]	loss: 0.0286	total loss: 0.0286
+Epoch[2-62]	loss: 0.0307	total loss: 0.0307
+Epoch[2-63]	loss: 0.0306	total loss: 0.0306
+Epoch[2-64]	loss: 0.0217	total loss: 0.0217
+Epoch[2-65]	loss: 0.0256	total loss: 0.0256
+Epoch[2-66]	loss: 0.0292	total loss: 0.0292
+Epoch[2-67]	loss: 0.0244	total loss: 0.0244
+Epoch[2-68]	loss: 0.0348	total loss: 0.0348
+Epoch[2-69]	loss: 0.0189	total loss: 0.0189
+Epoch[2-70]	loss: 0.0174	total loss: 0.0174
+Epoch[2-71]	loss: 0.0254	total loss: 0.0254
+Epoch[2-72]	loss: 0.0179	total loss: 0.0179
+Epoch[2-73]	loss: 0.0277	total loss: 0.0277
+Epoch[2-74]	loss: 0.0350	total loss: 0.0350
+Epoch[2-75]	loss: 0.0272	total loss: 0.0272
+Epoch[2-76]	loss: 0.0299	total loss: 0.0299
+Epoch[2-77]	loss: 0.0327	total loss: 0.0327
+Epoch[2-78]	loss: 0.0233	total loss: 0.0233
+Epoch[2-79]	loss: 0.0575	total loss: 0.0575
+Epoch[2-80]	loss: 0.0385	total loss: 0.0385
+Epoch[2-81]	loss: 0.0371	total loss: 0.0371
+Epoch[2-82]	loss: 0.0306	total loss: 0.0306
+Epoch[2-83]	loss: 0.0170	total loss: 0.0170
+Epoch[2-84]	loss: 0.0440	total loss: 0.0440
+Epoch[2-85]	loss: 0.0243	total loss: 0.0243
+Epoch[2-86]	loss: 0.0245	total loss: 0.0245
+Epoch[2-87]	loss: 0.0362	total loss: 0.0362
+Epoch[2-88]	loss: 0.0327	total loss: 0.0327
+Epoch[2-89]	loss: 0.0370	total loss: 0.0370
+Epoch[2-90]	loss: 0.0360	total loss: 0.0360
+Epoch[2-91]	loss: 0.0326	total loss: 0.0326
+Epoch[2-92]	loss: 0.0416	total loss: 0.0416
+Epoch[2-93]	loss: 0.0256	total loss: 0.0256
+Epoch[2-94]	loss: 0.0262	total loss: 0.0262
+Epoch[2-95]	loss: 0.0309	total loss: 0.0309
+Epoch[2-96]	loss: 0.0293	total loss: 0.0293
+Epoch[2-97]	loss: 0.0155	total loss: 0.0155
+Epoch[2-98]	loss: 0.0317	total loss: 0.0317
+Epoch[2-99]	loss: 0.0277	total loss: 0.0277
+Epoch[2-100]	loss: 0.0305	total loss: 0.0305
+Epoch[2-101]	loss: 0.0363	total loss: 0.0363
+Epoch[2-102]	loss: 0.0288	total loss: 0.0288
+Epoch[2-103]	loss: 0.0440	total loss: 0.0440
+Epoch[2-104]	loss: 0.0314	total loss: 0.0314
+Epoch[2-105]	loss: 0.0230	total loss: 0.0230
+Epoch[2-106]	loss: 0.0291	total loss: 0.0291
+Epoch[2-107]	loss: 0.0302	total loss: 0.0302
+Epoch[2-108]	loss: 0.0304	total loss: 0.0304
+Epoch[2-109]	loss: 0.0272	total loss: 0.0272
+Epoch[2-110]	loss: 0.0372	total loss: 0.0372
+Epoch[2-111]	loss: 0.0245	total loss: 0.0245
+Epoch[2-112]	loss: 0.0210	total loss: 0.0210
+Epoch[2-113]	loss: 0.0379	total loss: 0.0379
+Epoch[2-114]	loss: 0.0322	total loss: 0.0322
+Epoch[2-115]	loss: 0.0244	total loss: 0.0244
+Epoch[2-116]	loss: 0.0388	total loss: 0.0388
+Epoch[2-117]	loss: 0.0346	total loss: 0.0346
+Epoch[2-118]	loss: 0.0201	total loss: 0.0201
+Epoch[2-119]	loss: 0.0233	total loss: 0.0233
+Epoch[2-120]	loss: 0.0263	total loss: 0.0263
+Epoch[2-121]	loss: 0.0278	total loss: 0.0278
+Epoch[2-122]	loss: 0.0366	total loss: 0.0366
+Epoch[2-123]	loss: 0.0296	total loss: 0.0296
+Epoch[2-124]	loss: 0.0417	total loss: 0.0417
+Epoch[2-125]	loss: 0.0279	total loss: 0.0279
+Epoch[2-126]	loss: 0.0245	total loss: 0.0245
+Epoch[2-127]	loss: 0.0230	total loss: 0.0230
+Epoch[2-128]	loss: 0.0344	total loss: 0.0344
+Epoch[2-129]	loss: 0.0262	total loss: 0.0262
+Epoch[2-130]	loss: 0.0340	total loss: 0.0340
+Epoch[2-131]	loss: 0.0387	total loss: 0.0387
+Epoch[2-132]	loss: 0.0274	total loss: 0.0274
+Epoch[2-133]	loss: 0.0320	total loss: 0.0320
+Epoch[2-134]	loss: 0.0384	total loss: 0.0384
+Epoch[2-135]	loss: 0.0320	total loss: 0.0320
+Epoch[2-136]	loss: 0.0292	total loss: 0.0292
+Epoch[2-137]	loss: 0.0329	total loss: 0.0329
+Epoch[2-138]	loss: 0.0248	total loss: 0.0248
+Epoch[2-139]	loss: 0.0201	total loss: 0.0201
+Epoch[2-140]	loss: 0.0326	total loss: 0.0326
+Epoch[2-141]	loss: 0.0294	total loss: 0.0294
+Epoch[2-142]	loss: 0.0297	total loss: 0.0297
+Epoch[2-143]	loss: 0.0320	total loss: 0.0320
+Epoch[2-144]	loss: 0.0337	total loss: 0.0337
+Epoch[2-145]	loss: 0.0364	total loss: 0.0364
+Epoch[2-146]	loss: 0.0364	total loss: 0.0364
+Epoch[2-147]	loss: 0.0217	total loss: 0.0217
+Epoch[2-148]	loss: 0.0269	total loss: 0.0269
+Epoch[2-149]	loss: 0.0287	total loss: 0.0287
+Epoch[2-150]	loss: 0.0217	total loss: 0.0217
+Epoch[2-151]	loss: 0.0283	total loss: 0.0283
+Epoch[2-152]	loss: 0.0312	total loss: 0.0312
+Epoch[2-153]	loss: 0.0271	total loss: 0.0271
+Epoch[2-154]	loss: 0.0417	total loss: 0.0417
+Epoch[2-155]	loss: 0.0196	total loss: 0.0196
+Epoch[2-156]	loss: 0.0343	total loss: 0.0343
+Epoch[2-157]	loss: 0.0139	total loss: 0.0139
+Epoch[2-158]	loss: 0.0365	total loss: 0.0365
+Epoch[2-159]	loss: 0.0409	total loss: 0.0409
+Epoch[2-160]	loss: 0.0295	total loss: 0.0295
+Epoch[2-161]	loss: 0.0243	total loss: 0.0243
+Epoch[2-162]	loss: 0.0245	total loss: 0.0245
+Epoch[2-163]	loss: 0.0200	total loss: 0.0200
+Epoch[2-164]	loss: 0.0515	total loss: 0.0515
+Epoch[2-165]	loss: 0.0254	total loss: 0.0254
+Epoch[2-166]	loss: 0.0417	total loss: 0.0417
+Epoch[2-167]	loss: 0.0231	total loss: 0.0231
+Epoch[2-168]	loss: 0.0343	total loss: 0.0343
+Epoch[2-169]	loss: 0.0287	total loss: 0.0287
+Epoch[2-170]	loss: 0.0479	total loss: 0.0479
+Epoch[2-171]	loss: 0.0175	total loss: 0.0175
+Epoch[2-172]	loss: 0.0297	total loss: 0.0297
+Epoch[2-173]	loss: 0.0342	total loss: 0.0342
+Epoch[2-174]	loss: 0.0392	total loss: 0.0392
+Epoch[2-175]	loss: 0.0446	total loss: 0.0446
+Epoch[2-176]	loss: 0.0207	total loss: 0.0207
+Epoch[2-177]	loss: 0.0326	total loss: 0.0326
+Epoch[2-178]	loss: 0.0249	total loss: 0.0249
+Epoch[2-179]	loss: 0.0282	total loss: 0.0282
+Epoch[2-180]	loss: 0.0349	total loss: 0.0349
+Epoch[2-181]	loss: 0.0229	total loss: 0.0229
+Epoch[2-182]	loss: 0.0243	total loss: 0.0243
+Epoch[2-183]	loss: 0.0298	total loss: 0.0298
+Epoch[2-184]	loss: 0.0362	total loss: 0.0362
+Epoch[2-185]	loss: 0.0386	total loss: 0.0386
+Epoch[2-186]	loss: 0.0226	total loss: 0.0226
+Epoch[2-187]	loss: 0.0436	total loss: 0.0436
+Epoch[2-188]	loss: 0.0284	total loss: 0.0284
+Epoch[2-189]	loss: 0.0244	total loss: 0.0244
+Epoch[2-190]	loss: 0.0341	total loss: 0.0341
+Epoch[2-191]	loss: 0.0265	total loss: 0.0265
+Epoch[2-192]	loss: 0.0402	total loss: 0.0402
+Epoch[2-193]	loss: 0.0301	total loss: 0.0301
+Epoch[2-194]	loss: 0.0331	total loss: 0.0331
+Epoch[2-195]	loss: 0.0231	total loss: 0.0231
+Epoch[2-196]	loss: 0.0190	total loss: 0.0190
+Epoch[2-197]	loss: 0.0373	total loss: 0.0373
+Epoch[2-198]	loss: 0.0346	total loss: 0.0346
+Epoch[2-199]	loss: 0.0225	total loss: 0.0225
+Epoch[2-200]	loss: 0.0245	total loss: 0.0245
+Epoch[2-201]	loss: 0.0297	total loss: 0.0297
+Epoch[2-202]	loss: 0.0233	total loss: 0.0233
+Epoch[2-203]	loss: 0.0220	total loss: 0.0220
+Epoch[2-204]	loss: 0.0192	total loss: 0.0192
+Epoch[2-205]	loss: 0.0259	total loss: 0.0259
+Epoch[2-206]	loss: 0.0179	total loss: 0.0179
+Epoch[2-207]	loss: 0.0185	total loss: 0.0185
+Epoch[2-208]	loss: 0.0273	total loss: 0.0273
+Epoch[2-209]	loss: 0.0277	total loss: 0.0277
+Epoch[2-210]	loss: 0.0198	total loss: 0.0198
+Epoch[2-211]	loss: 0.0174	total loss: 0.0174
+Epoch[2-212]	loss: 0.0217	total loss: 0.0217
+Epoch[2-213]	loss: 0.0328	total loss: 0.0328
+Epoch[2-214]	loss: 0.0249	total loss: 0.0249
+Epoch[2-215]	loss: 0.0285	total loss: 0.0285
+Epoch[2-216]	loss: 0.0139	total loss: 0.0139
+Epoch[2-217]	loss: 0.0300	total loss: 0.0300
+Epoch[2-218]	loss: 0.0298	total loss: 0.0298
+Epoch[2-219]	loss: 0.0184	total loss: 0.0184
+Epoch[2-220]	loss: 0.0288	total loss: 0.0288
+Epoch[2-221]	loss: 0.0255	total loss: 0.0255
+Epoch[2-222]	loss: 0.0237	total loss: 0.0237
+Epoch[2-223]	loss: 0.0300	total loss: 0.0300
+Epoch[2-224]	loss: 0.0205	total loss: 0.0205
+Epoch[2-225]	loss: 0.0236	total loss: 0.0236
+Epoch[2-226]	loss: 0.0284	total loss: 0.0284
+Epoch[2-227]	loss: 0.0436	total loss: 0.0436
+Epoch[2-228]	loss: 0.0304	total loss: 0.0304
+Epoch[2-229]	loss: 0.0252	total loss: 0.0252
+Epoch[2-230]	loss: 0.0257	total loss: 0.0257
+Epoch[2-231]	loss: 0.0188	total loss: 0.0188
+Epoch[2-232]	loss: 0.0230	total loss: 0.0230
+Epoch[2-233]	loss: 0.0195	total loss: 0.0195
+Epoch[2-234]	loss: 0.0194	total loss: 0.0194
+Epoch[2-235]	loss: 0.0195	total loss: 0.0195
+Epoch[2-236]	loss: 0.0343	total loss: 0.0343
+Epoch[2-237]	loss: 0.0395	total loss: 0.0395
+Epoch[2-238]	loss: 0.0248	total loss: 0.0248
+Epoch[2-239]	loss: 0.0117	total loss: 0.0117
+Epoch[2-240]	loss: 0.0236	total loss: 0.0236
+Epoch[2-241]	loss: 0.0289	total loss: 0.0289
+Epoch[2-242]	loss: 0.0252	total loss: 0.0252
+Epoch[2-243]	loss: 0.0407	total loss: 0.0407
+Epoch[2-244]	loss: 0.0347	total loss: 0.0347
+Epoch[2-245]	loss: 0.0354	total loss: 0.0354
+Epoch[2-246]	loss: 0.0285	total loss: 0.0285
+Epoch[2-247]	loss: 0.0392	total loss: 0.0392
+Epoch[2-248]	loss: 0.0241	total loss: 0.0241
+Epoch[2-249]	loss: 0.0305	total loss: 0.0305
+Epoch[2-250]	loss: 0.0297	total loss: 0.0297
+Epoch[2-251]	loss: 0.0245	total loss: 0.0245
+Epoch[2-252]	loss: 0.0351	total loss: 0.0351
+Epoch[2-253]	loss: 0.0270	total loss: 0.0270
+Epoch[2-254]	loss: 0.0312	total loss: 0.0312
+Epoch[2-255]	loss: 0.0273	total loss: 0.0273
+Epoch[2-256]	loss: 0.0222	total loss: 0.0222
+Epoch[2-257]	loss: 0.0263	total loss: 0.0263
+Epoch[2-258]	loss: 0.0315	total loss: 0.0315
+Epoch[2-259]	loss: 0.0339	total loss: 0.0339
+Epoch[2-260]	loss: 0.0396	total loss: 0.0396
+Epoch[2-261]	loss: 0.0232	total loss: 0.0232
+Epoch[2-262]	loss: 0.0208	total loss: 0.0208
+Epoch[2-263]	loss: 0.0183	total loss: 0.0183
+Epoch[2-264]	loss: 0.0194	total loss: 0.0194
+Epoch[2-265]	loss: 0.0239	total loss: 0.0239
+Epoch[2-266]	loss: 0.0445	total loss: 0.0445
+Epoch[2-267]	loss: 0.0182	total loss: 0.0182
+Epoch[2-268]	loss: 0.0338	total loss: 0.0338
+Epoch[2-269]	loss: 0.0207	total loss: 0.0207
+Epoch[2-270]	loss: 0.0419	total loss: 0.0419
+Epoch[2-271]	loss: 0.0391	total loss: 0.0391
+Epoch[2-272]	loss: 0.0274	total loss: 0.0274
+Epoch[2-273]	loss: 0.0348	total loss: 0.0348
+Epoch[2-274]	loss: 0.0306	total loss: 0.0306
+Epoch[2-275]	loss: 0.0232	total loss: 0.0232
+Epoch[2-276]	loss: 0.0182	total loss: 0.0182
+Epoch[2-277]	loss: 0.0321	total loss: 0.0321
+Epoch[2-278]	loss: 0.0217	total loss: 0.0217
+Epoch[2-279]	loss: 0.0240	total loss: 0.0240
+Epoch[2-280]	loss: 0.0305	total loss: 0.0305
+Epoch[2-281]	loss: 0.0289	total loss: 0.0289
+Epoch[2-282]	loss: 0.0285	total loss: 0.0285
+Epoch[2-283]	loss: 0.0356	total loss: 0.0356
+Epoch[2-284]	loss: 0.0323	total loss: 0.0323
+Epoch[2-285]	loss: 0.0256	total loss: 0.0256
+Epoch[2-286]	loss: 0.0385	total loss: 0.0385
+Epoch[2-287]	loss: 0.0237	total loss: 0.0237
+Epoch[2-288]	loss: 0.0172	total loss: 0.0172
+Epoch[2-289]	loss: 0.0248	total loss: 0.0248
+Epoch[2-290]	loss: 0.0231	total loss: 0.0231
+Epoch[2-291]	loss: 0.0391	total loss: 0.0391
+Epoch[2-292]	loss: 0.0217	total loss: 0.0217
+Epoch[2-293]	loss: 0.0217	total loss: 0.0217
+Epoch[2-294]	loss: 0.0171	total loss: 0.0171
+Epoch[2-295]	loss: 0.0255	total loss: 0.0255
+Epoch[2-296]	loss: 0.0239	total loss: 0.0239
+Epoch[2-297]	loss: 0.0311	total loss: 0.0311
+Epoch[2-298]	loss: 0.0334	total loss: 0.0334
+Epoch[2-299]	loss: 0.0247	total loss: 0.0247
+Epoch[2-300]	loss: 0.0198	total loss: 0.0198
+Epoch[2-301]	loss: 0.0258	total loss: 0.0258
+Epoch[2-302]	loss: 0.0209	total loss: 0.0209
+Epoch[2-303]	loss: 0.0405	total loss: 0.0405
+Epoch[2-304]	loss: 0.0212	total loss: 0.0212
+Epoch[2-305]	loss: 0.0363	total loss: 0.0363
+Epoch[2-306]	loss: 0.0214	total loss: 0.0214
+Epoch[2-307]	loss: 0.0225	total loss: 0.0225
+Epoch[2-308]	loss: 0.0302	total loss: 0.0302
+Epoch[2-309]	loss: 0.0285	total loss: 0.0285
+Epoch[2-310]	loss: 0.0225	total loss: 0.0225
+Epoch[2-311]	loss: 0.0192	total loss: 0.0192
+Epoch[2-312]	loss: 0.0224	total loss: 0.0224
+Epoch[2-313]	loss: 0.0216	total loss: 0.0216
+Epoch[2-314]	loss: 0.0265	total loss: 0.0265
+Epoch[2-315]	loss: 0.0219	total loss: 0.0219
+Epoch[2-316]	loss: 0.0141	total loss: 0.0141
+Epoch[2-317]	loss: 0.0238	total loss: 0.0238
+Epoch[2-318]	loss: 0.0245	total loss: 0.0245
+Epoch[2-319]	loss: 0.0135	total loss: 0.0135
+Epoch[2-320]	loss: 0.0233	total loss: 0.0233
+Epoch[2-321]	loss: 0.0256	total loss: 0.0256
+Epoch[2-322]	loss: 0.0239	total loss: 0.0239
+Epoch[2-323]	loss: 0.0285	total loss: 0.0285
+Epoch[2-324]	loss: 0.0236	total loss: 0.0236
+Epoch[2-325]	loss: 0.0424	total loss: 0.0424
+Epoch[2-326]	loss: 0.0221	total loss: 0.0221
+Epoch[2-327]	loss: 0.0304	total loss: 0.0304
+Epoch[2-328]	loss: 0.0372	total loss: 0.0372
+Epoch[2-329]	loss: 0.0208	total loss: 0.0208
+Epoch[2-330]	loss: 0.0528	total loss: 0.0528
+Epoch[2-331]	loss: 0.0346	total loss: 0.0346
+Epoch[2-332]	loss: 0.0199	total loss: 0.0199
+Epoch[2-333]	loss: 0.0319	total loss: 0.0319
+Epoch[2-334]	loss: 0.0145	total loss: 0.0145
+Epoch[2-335]	loss: 0.0263	total loss: 0.0263
+Epoch[2-336]	loss: 0.0355	total loss: 0.0355
+Epoch[2-337]	loss: 0.0363	total loss: 0.0363
+Epoch[2-338]	loss: 0.0286	total loss: 0.0286
+Epoch[2-339]	loss: 0.0203	total loss: 0.0203
+Epoch[2-340]	loss: 0.0321	total loss: 0.0321
+Epoch[2-341]	loss: 0.0272	total loss: 0.0272
+Epoch[2-342]	loss: 0.0155	total loss: 0.0155
+Epoch[2-343]	loss: 0.0233	total loss: 0.0233
+Epoch[2-344]	loss: 0.0404	total loss: 0.0404
+Epoch[2-345]	loss: 0.0291	total loss: 0.0291
+Epoch[2-346]	loss: 0.0265	total loss: 0.0265
+Epoch[2-347]	loss: 0.0141	total loss: 0.0141
+Epoch[2-348]	loss: 0.0315	total loss: 0.0315
+Epoch[2-349]	loss: 0.0274	total loss: 0.0274
+Epoch[2-350]	loss: 0.0185	total loss: 0.0185
+Epoch[2-351]	loss: 0.0245	total loss: 0.0245
+Epoch[2-352]	loss: 0.0253	total loss: 0.0253
+Epoch[2-353]	loss: 0.0262	total loss: 0.0262
+Epoch[2-354]	loss: 0.0174	total loss: 0.0174
+Epoch[2-355]	loss: 0.0174	total loss: 0.0174
+Epoch[2-356]	loss: 0.0330	total loss: 0.0330
+Epoch[2-357]	loss: 0.0290	total loss: 0.0290
+Epoch[2-358]	loss: 0.0222	total loss: 0.0222
+Epoch[2-359]	loss: 0.0202	total loss: 0.0202
+Epoch[2-360]	loss: 0.0255	total loss: 0.0255
+Epoch[2-361]	loss: 0.0313	total loss: 0.0313
+Epoch[2-362]	loss: 0.0225	total loss: 0.0225
+Epoch[2-363]	loss: 0.0240	total loss: 0.0240
+Epoch[2-364]	loss: 0.0327	total loss: 0.0327
+Epoch[2-365]	loss: 0.0227	total loss: 0.0227
+Epoch[2-366]	loss: 0.0241	total loss: 0.0241
+Epoch[2-367]	loss: 0.0280	total loss: 0.0280
+Epoch[2-368]	loss: 0.0397	total loss: 0.0397
+Epoch[2-369]	loss: 0.0264	total loss: 0.0264
+Epoch[2-370]	loss: 0.0435	total loss: 0.0435
+Epoch[2-371]	loss: 0.0218	total loss: 0.0218
+Epoch[2-372]	loss: 0.0289	total loss: 0.0289
+Epoch[2-373]	loss: 0.0231	total loss: 0.0231
+Epoch[2-374]	loss: 0.0226	total loss: 0.0226
+Epoch[2-375]	loss: 0.0283	total loss: 0.0283
+Epoch[2-376]	loss: 0.0237	total loss: 0.0237
+Epoch[2-377]	loss: 0.0330	total loss: 0.0330
+Epoch[2-378]	loss: 0.0200	total loss: 0.0200
+Epoch[2-379]	loss: 0.0222	total loss: 0.0222
+Epoch[2-380]	loss: 0.0177	total loss: 0.0177
+Epoch[2-381]	loss: 0.0256	total loss: 0.0256
+Epoch[2-382]	loss: 0.0209	total loss: 0.0209
+Epoch[2-383]	loss: 0.0252	total loss: 0.0252
+Epoch[2-384]	loss: 0.0242	total loss: 0.0242
+Epoch[2-385]	loss: 0.0366	total loss: 0.0366
+Epoch[2-386]	loss: 0.0208	total loss: 0.0208
+Epoch[2-387]	loss: 0.0190	total loss: 0.0190
+Epoch[2-388]	loss: 0.0277	total loss: 0.0277
+Epoch[2-389]	loss: 0.0227	total loss: 0.0227
+Epoch[2-390]	loss: 0.0192	total loss: 0.0192
+Epoch[2-391]	loss: 0.0399	total loss: 0.0399
+Epoch[2-392]	loss: 0.0236	total loss: 0.0236
+Epoch[2-393]	loss: 0.0317	total loss: 0.0317
+Epoch[2-394]	loss: 0.0329	total loss: 0.0329
+Epoch[2-395]	loss: 0.0268	total loss: 0.0268
+Epoch[2-396]	loss: 0.0589	total loss: 0.0589
+Epoch[2-397]	loss: 0.0175	total loss: 0.0175
+Epoch[2-398]	loss: 0.0232	total loss: 0.0232
+Epoch[2-399]	loss: 0.0228	total loss: 0.0228
+Epoch[2-400]	loss: 0.0335	total loss: 0.0335
+Epoch[2-401]	loss: 0.0173	total loss: 0.0173
+Epoch[2-402]	loss: 0.0373	total loss: 0.0373
+Epoch[2-403]	loss: 0.0326	total loss: 0.0326
+Epoch[2-404]	loss: 0.0317	total loss: 0.0317
+Epoch[2-405]	loss: 0.0212	total loss: 0.0212
+Epoch[2-406]	loss: 0.0223	total loss: 0.0223
+Epoch[2-407]	loss: 0.0284	total loss: 0.0284
+Epoch[2-408]	loss: 0.0368	total loss: 0.0368
+Epoch[2-409]	loss: 0.0308	total loss: 0.0308
+Epoch[2-410]	loss: 0.0207	total loss: 0.0207
+Epoch[2-411]	loss: 0.0283	total loss: 0.0283
+Epoch[2-412]	loss: 0.0168	total loss: 0.0168
+Epoch[2-413]	loss: 0.0188	total loss: 0.0188
+Epoch[2-414]	loss: 0.0214	total loss: 0.0214
+Epoch[2-415]	loss: 0.0242	total loss: 0.0242
+Epoch[2-416]	loss: 0.0281	total loss: 0.0281
+Epoch[2-417]	loss: 0.0209	total loss: 0.0209
+Epoch[2-418]	loss: 0.0226	total loss: 0.0226
+Epoch[2-419]	loss: 0.0310	total loss: 0.0310
+Epoch[2-420]	loss: 0.0216	total loss: 0.0216
+Epoch[2-421]	loss: 0.0256	total loss: 0.0256
+Epoch[2-422]	loss: 0.0202	total loss: 0.0202
+Epoch[2-423]	loss: 0.0246	total loss: 0.0246
+Epoch[2-424]	loss: 0.0287	total loss: 0.0287
+Epoch[2-425]	loss: 0.0288	total loss: 0.0288
+Epoch[2-426]	loss: 0.0185	total loss: 0.0185
+Epoch[2-427]	loss: 0.0116	total loss: 0.0116
+Epoch[2-428]	loss: 0.0190	total loss: 0.0190
+Epoch[2-429]	loss: 0.0248	total loss: 0.0248
+Epoch[2-430]	loss: 0.0198	total loss: 0.0198
+Epoch[2-431]	loss: 0.0171	total loss: 0.0171
+Epoch[2-432]	loss: 0.0178	total loss: 0.0178
+Epoch[2-433]	loss: 0.0193	total loss: 0.0193
+Epoch[2-434]	loss: 0.0311	total loss: 0.0311
+Epoch[2-435]	loss: 0.0351	total loss: 0.0351
+Epoch[2-436]	loss: 0.0161	total loss: 0.0161
+Epoch[2-437]	loss: 0.0380	total loss: 0.0380
+Epoch[2-438]	loss: 0.0335	total loss: 0.0335
+Epoch[2-439]	loss: 0.0331	total loss: 0.0331
+Epoch[2-440]	loss: 0.0134	total loss: 0.0134
+Epoch[2-441]	loss: 0.0200	total loss: 0.0200
+Epoch[2-442]	loss: 0.0319	total loss: 0.0319
+Epoch[2-443]	loss: 0.0201	total loss: 0.0201
+Epoch[2-444]	loss: 0.0289	total loss: 0.0289
+Epoch[2-445]	loss: 0.0434	total loss: 0.0434
+Epoch[2-446]	loss: 0.0285	total loss: 0.0285
+Epoch[2-447]	loss: 0.0383	total loss: 0.0383
+Epoch[2-448]	loss: 0.0224	total loss: 0.0224
+Epoch[2-449]	loss: 0.0301	total loss: 0.0301
+Epoch[2-450]	loss: 0.0288	total loss: 0.0288
+Epoch[2-451]	loss: 0.0325	total loss: 0.0325
+Epoch[2-452]	loss: 0.0230	total loss: 0.0230
+Epoch[2-453]	loss: 0.0232	total loss: 0.0232
+Epoch[2-454]	loss: 0.0173	total loss: 0.0173
+Epoch[2-455]	loss: 0.0248	total loss: 0.0248
+Epoch[2-456]	loss: 0.0294	total loss: 0.0294
+Epoch[2-457]	loss: 0.0206	total loss: 0.0206
+Epoch[2-458]	loss: 0.0320	total loss: 0.0320
+Epoch[2-459]	loss: 0.0182	total loss: 0.0182
+Epoch[2-460]	loss: 0.0240	total loss: 0.0240
+Epoch[2-461]	loss: 0.0258	total loss: 0.0258
+Epoch[2-462]	loss: 0.0192	total loss: 0.0192
+Epoch[2-463]	loss: 0.0126	total loss: 0.0126
+Epoch[2-464]	loss: 0.0192	total loss: 0.0192
+Epoch[2-465]	loss: 0.0206	total loss: 0.0206
+Epoch[2-466]	loss: 0.0155	total loss: 0.0155
+Epoch[2-467]	loss: 0.0132	total loss: 0.0132
+Epoch[2-468]	loss: 0.0193	total loss: 0.0193
+Epoch[2-469]	loss: 0.0303	total loss: 0.0303
+Epoch[2-470]	loss: 0.0247	total loss: 0.0247
+Epoch[2-471]	loss: 0.0241	total loss: 0.0241
+Epoch[2-472]	loss: 0.0244	total loss: 0.0244
+Epoch[2-473]	loss: 0.0218	total loss: 0.0218
+Epoch[2-474]	loss: 0.0240	total loss: 0.0240
+Epoch[2-475]	loss: 0.0284	total loss: 0.0284
+Epoch[2-476]	loss: 0.0259	total loss: 0.0259
+Epoch[2-477]	loss: 0.0313	total loss: 0.0313
+Epoch[2-478]	loss: 0.0189	total loss: 0.0189
+Epoch[2-479]	loss: 0.0173	total loss: 0.0173
+Epoch[2-480]	loss: 0.0251	total loss: 0.0251
+Epoch[2-481]	loss: 0.0193	total loss: 0.0193
+Epoch[2-482]	loss: 0.0254	total loss: 0.0254
+Epoch[2-483]	loss: 0.0300	total loss: 0.0300
+Epoch[2-484]	loss: 0.0154	total loss: 0.0154
+Epoch[2-485]	loss: 0.0361	total loss: 0.0361
+Epoch[2-486]	loss: 0.0358	total loss: 0.0358
+Epoch[2-487]	loss: 0.0199	total loss: 0.0199
+Epoch[2-488]	loss: 0.0299	total loss: 0.0299
+Epoch[2-489]	loss: 0.0304	total loss: 0.0304
+Epoch[2-490]	loss: 0.0251	total loss: 0.0251
+Epoch[2-491]	loss: 0.0229	total loss: 0.0229
+Epoch[2-492]	loss: 0.0262	total loss: 0.0262
+Epoch[2-493]	loss: 0.0227	total loss: 0.0227
+Epoch[2-494]	loss: 0.0418	total loss: 0.0418
+Epoch[2-495]	loss: 0.0216	total loss: 0.0216
+Epoch[2-496]	loss: 0.0186	total loss: 0.0186
+Epoch[2-497]	loss: 0.0211	total loss: 0.0211
+Epoch[2-498]	loss: 0.0267	total loss: 0.0267
+Epoch[2-499]	loss: 0.0363	total loss: 0.0363
+Epoch[2-500]	loss: 0.0306	total loss: 0.0306
+Epoch[2-501]	loss: 0.0172	total loss: 0.0172
+Epoch[2-502]	loss: 0.0244	total loss: 0.0244
+Epoch[2-503]	loss: 0.0278	total loss: 0.0278
+Epoch[2-504]	loss: 0.0268	total loss: 0.0268
+Epoch[2-505]	loss: 0.0191	total loss: 0.0191
+Epoch[2-506]	loss: 0.0295	total loss: 0.0295
+Epoch[2-507]	loss: 0.0209	total loss: 0.0209
+Epoch[2-508]	loss: 0.0275	total loss: 0.0275
+Epoch[2-509]	loss: 0.0282	total loss: 0.0282
+Epoch[2-510]	loss: 0.0200	total loss: 0.0200
+Epoch[2-511]	loss: 0.0303	total loss: 0.0303
+Epoch[2-512]	loss: 0.0383	total loss: 0.0383
+Epoch[2-513]	loss: 0.0270	total loss: 0.0270
+Epoch[2-514]	loss: 0.0222	total loss: 0.0222
+Epoch[2-515]	loss: 0.0221	total loss: 0.0221
+Epoch[2-516]	loss: 0.0246	total loss: 0.0246
+Epoch[2-517]	loss: 0.0228	total loss: 0.0228
+Epoch[2-518]	loss: 0.0130	total loss: 0.0130
+Epoch[2-519]	loss: 0.0220	total loss: 0.0220
+Epoch[2-520]	loss: 0.0262	total loss: 0.0262
+Epoch[2-521]	loss: 0.0189	total loss: 0.0189
+Epoch[2-522]	loss: 0.0209	total loss: 0.0209
+Epoch[2-523]	loss: 0.0287	total loss: 0.0287
+Epoch[2-524]	loss: 0.0197	total loss: 0.0197
+Epoch[2-525]	loss: 0.0250	total loss: 0.0250
+Epoch[2-526]	loss: 0.0168	total loss: 0.0168
+Epoch[2-527]	loss: 0.0251	total loss: 0.0251
+Epoch[2-528]	loss: 0.0384	total loss: 0.0384
+Epoch[2-529]	loss: 0.0268	total loss: 0.0268
+Epoch[2-530]	loss: 0.0219	total loss: 0.0219
+Epoch[2-531]	loss: 0.0307	total loss: 0.0307
+Epoch[2-532]	loss: 0.0198	total loss: 0.0198
+Epoch[2-533]	loss: 0.0293	total loss: 0.0293
+Epoch[2-534]	loss: 0.0344	total loss: 0.0344
+Epoch[2-535]	loss: 0.0255	total loss: 0.0255
+Epoch[2-536]	loss: 0.0246	total loss: 0.0246
+Epoch[2-537]	loss: 0.0175	total loss: 0.0175
+Epoch[2-538]	loss: 0.0155	total loss: 0.0155
+Epoch[2-539]	loss: 0.0357	total loss: 0.0357
+Epoch[2-540]	loss: 0.0253	total loss: 0.0253
+Epoch[2-541]	loss: 0.0192	total loss: 0.0192
+Epoch[2-542]	loss: 0.0262	total loss: 0.0262
+Epoch[2-543]	loss: 0.0258	total loss: 0.0258
+Epoch[2-544]	loss: 0.0371	total loss: 0.0371
+Epoch[2-545]	loss: 0.0282	total loss: 0.0282
+Epoch[2-546]	loss: 0.0216	total loss: 0.0216
+Epoch[2-547]	loss: 0.0239	total loss: 0.0239
+Epoch[2-548]	loss: 0.0179	total loss: 0.0179
+Epoch[2-549]	loss: 0.0230	total loss: 0.0230
+Epoch[2-550]	loss: 0.0341	total loss: 0.0341
+Epoch[2-551]	loss: 0.0181	total loss: 0.0181
+Epoch[2-552]	loss: 0.0222	total loss: 0.0222
+Epoch[2-553]	loss: 0.0211	total loss: 0.0211
+Epoch[2-554]	loss: 0.0280	total loss: 0.0280
+Epoch[2-555]	loss: 0.0260	total loss: 0.0260
+Epoch[2-556]	loss: 0.0197	total loss: 0.0197
+Epoch[2-557]	loss: 0.0274	total loss: 0.0274
+Epoch[2-558]	loss: 0.0398	total loss: 0.0398
+Epoch[2-559]	loss: 0.0195	total loss: 0.0195
+Epoch[2-560]	loss: 0.0189	total loss: 0.0189
+Epoch[2-561]	loss: 0.0386	total loss: 0.0386
+Epoch[2-562]	loss: 0.0234	total loss: 0.0234
+Epoch[2-563]	loss: 0.0280	total loss: 0.0280
+Epoch[2-564]	loss: 0.0274	total loss: 0.0274
+Epoch[2-565]	loss: 0.0197	total loss: 0.0197
+Epoch[2-566]	loss: 0.0171	total loss: 0.0171
+Epoch[2-567]	loss: 0.0160	total loss: 0.0160
+Epoch[2-568]	loss: 0.0307	total loss: 0.0307
+Epoch[2-569]	loss: 0.0343	total loss: 0.0343
+Epoch[2-570]	loss: 0.0207	total loss: 0.0207
+Epoch[2-571]	loss: 0.0255	total loss: 0.0255
+Epoch[2-572]	loss: 0.0202	total loss: 0.0202
+Epoch[2-573]	loss: 0.0213	total loss: 0.0213
+Epoch[2-574]	loss: 0.0239	total loss: 0.0239
+Epoch[2-575]	loss: 0.0219	total loss: 0.0219
+Epoch[2-576]	loss: 0.0147	total loss: 0.0147
+Epoch[2-577]	loss: 0.0328	total loss: 0.0328
+Epoch[2-578]	loss: 0.0183	total loss: 0.0183
+Epoch[2-579]	loss: 0.0230	total loss: 0.0230
+Epoch[2-580]	loss: 0.0282	total loss: 0.0282
+Epoch[2-581]	loss: 0.0144	total loss: 0.0144
+Epoch[2-582]	loss: 0.0234	total loss: 0.0234
+Epoch[2-583]	loss: 0.0226	total loss: 0.0226
+Epoch[2-584]	loss: 0.0308	total loss: 0.0308
+Epoch[2-585]	loss: 0.0202	total loss: 0.0202
+Epoch[2-586]	loss: 0.0299	total loss: 0.0299
+Epoch[2-587]	loss: 0.0347	total loss: 0.0347
+Epoch[2-588]	loss: 0.0336	total loss: 0.0336
+Epoch[2-589]	loss: 0.0236	total loss: 0.0236
+Epoch[2-590]	loss: 0.0262	total loss: 0.0262
+Epoch[2-591]	loss: 0.0329	total loss: 0.0329
+Epoch[2-592]	loss: 0.0168	total loss: 0.0168
+Epoch[2-593]	loss: 0.0313	total loss: 0.0313
+Epoch[2-594]	loss: 0.0172	total loss: 0.0172
+Epoch[2-595]	loss: 0.0136	total loss: 0.0136
+Epoch[2-596]	loss: 0.0174	total loss: 0.0174
+Epoch[2-597]	loss: 0.0130	total loss: 0.0130
+Epoch[2-598]	loss: 0.0206	total loss: 0.0206
+Epoch[2-599]	loss: 0.0220	total loss: 0.0220
+Epoch[2-600]	loss: 0.0280	total loss: 0.0280
+Epoch[2-601]	loss: 0.0228	total loss: 0.0228
+Epoch[2-602]	loss: 0.0268	total loss: 0.0268
+Epoch[2-603]	loss: 0.0211	total loss: 0.0211
+Epoch[2-604]	loss: 0.0204	total loss: 0.0204
+Epoch[2-605]	loss: 0.0185	total loss: 0.0185
+Epoch[2-606]	loss: 0.0379	total loss: 0.0379
+Epoch[2-607]	loss: 0.0245	total loss: 0.0245
+Epoch[2-608]	loss: 0.0287	total loss: 0.0287
+Epoch[2-609]	loss: 0.0263	total loss: 0.0263
+Epoch[2-610]	loss: 0.0171	total loss: 0.0171
+Epoch[2-611]	loss: 0.0196	total loss: 0.0196
+Epoch[2-612]	loss: 0.0242	total loss: 0.0242
+Epoch[2-613]	loss: 0.0253	total loss: 0.0253
+Epoch[2-614]	loss: 0.0220	total loss: 0.0220
+Epoch[2-615]	loss: 0.0190	total loss: 0.0190
+Epoch[2-616]	loss: 0.0113	total loss: 0.0113
+Epoch[2-617]	loss: 0.0233	total loss: 0.0233
+Epoch[2-618]	loss: 0.0215	total loss: 0.0215
+Epoch[2-619]	loss: 0.0289	total loss: 0.0289
+Epoch[2-620]	loss: 0.0150	total loss: 0.0150
+Epoch[2-621]	loss: 0.0161	total loss: 0.0161
+Epoch[2-622]	loss: 0.0258	total loss: 0.0258
+Epoch[2-623]	loss: 0.0245	total loss: 0.0245
+Epoch[2-624]	loss: 0.0239	total loss: 0.0239
+Epoch[2-625]	loss: 0.0327	total loss: 0.0327
+Epoch[2-626]	loss: 0.0279	total loss: 0.0279
+Epoch[2-627]	loss: 0.0171	total loss: 0.0171
+Epoch[2-628]	loss: 0.0207	total loss: 0.0207
+Epoch[2-629]	loss: 0.0248	total loss: 0.0248
+Epoch[2-630]	loss: 0.0146	total loss: 0.0146
+Epoch[2-631]	loss: 0.0186	total loss: 0.0186
+Epoch[2-632]	loss: 0.0283	total loss: 0.0283
+Epoch[2-633]	loss: 0.0247	total loss: 0.0247
+Epoch[2-634]	loss: 0.0244	total loss: 0.0244
+Epoch[2-635]	loss: 0.0252	total loss: 0.0252
+Epoch[2-636]	loss: 0.0275	total loss: 0.0275
+Epoch[2-637]	loss: 0.0177	total loss: 0.0177
+Epoch[2-638]	loss: 0.0295	total loss: 0.0295
+Epoch[2-639]	loss: 0.0196	total loss: 0.0196
+Epoch[2-640]	loss: 0.0242	total loss: 0.0242
+Epoch[2-641]	loss: 0.0237	total loss: 0.0237
+Epoch[2-642]	loss: 0.0242	total loss: 0.0242
+Epoch[2-643]	loss: 0.0165	total loss: 0.0165
+Epoch[2-644]	loss: 0.0282	total loss: 0.0282
+Epoch[2-645]	loss: 0.0192	total loss: 0.0192
+Epoch[2-646]	loss: 0.0210	total loss: 0.0210
+Epoch[2-647]	loss: 0.0211	total loss: 0.0211
+Epoch[2-648]	loss: 0.0149	total loss: 0.0149
+Epoch[2-649]	loss: 0.0293	total loss: 0.0293
+Epoch[2-650]	loss: 0.0177	total loss: 0.0177
+Epoch[2-651]	loss: 0.0195	total loss: 0.0195
+Epoch[2-652]	loss: 0.0150	total loss: 0.0150
+Epoch[2-653]	loss: 0.0155	total loss: 0.0155
+Epoch[2-654]	loss: 0.0150	total loss: 0.0150
+Epoch[2-655]	loss: 0.0253	total loss: 0.0253
+Epoch[2-656]	loss: 0.0187	total loss: 0.0187
+Epoch[2-657]	loss: 0.0219	total loss: 0.0219
+Epoch[2-658]	loss: 0.0191	total loss: 0.0191
+Epoch[2-659]	loss: 0.0221	total loss: 0.0221
+Epoch[2-660]	loss: 0.0158	total loss: 0.0158
+Epoch[2-661]	loss: 0.0114	total loss: 0.0114
+Epoch[2-662]	loss: 0.0178	total loss: 0.0178
+Epoch[2-663]	loss: 0.0197	total loss: 0.0197
+Epoch[2-664]	loss: 0.0335	total loss: 0.0335
+Epoch[2-665]	loss: 0.0200	total loss: 0.0200
+Epoch[2-666]	loss: 0.0294	total loss: 0.0294
+Epoch[2-667]	loss: 0.0214	total loss: 0.0214
+Epoch[2-668]	loss: 0.0260	total loss: 0.0260
+Epoch[2-669]	loss: 0.0161	total loss: 0.0161
+Epoch[2-670]	loss: 0.0173	total loss: 0.0173
+Epoch[2-671]	loss: 0.0232	total loss: 0.0232
+Epoch[2-672]	loss: 0.0222	total loss: 0.0222
+Epoch[2-673]	loss: 0.0300	total loss: 0.0300
+Epoch[2-674]	loss: 0.0175	total loss: 0.0175
+Epoch[2-675]	loss: 0.0305	total loss: 0.0305
+Epoch[2-676]	loss: 0.0253	total loss: 0.0253
+Epoch[2-677]	loss: 0.0168	total loss: 0.0168
+Epoch[2-678]	loss: 0.0225	total loss: 0.0225
+Epoch[2-679]	loss: 0.0196	total loss: 0.0196
+Epoch[2-680]	loss: 0.0255	total loss: 0.0255
+Epoch[2-681]	loss: 0.0130	total loss: 0.0130
+Epoch[2-682]	loss: 0.0311	total loss: 0.0311
+Epoch[2-683]	loss: 0.0250	total loss: 0.0250
+Epoch[2-684]	loss: 0.0133	total loss: 0.0133
+Epoch[2-685]	loss: 0.0343	total loss: 0.0343
+Epoch[2-686]	loss: 0.0155	total loss: 0.0155
+Epoch[2-687]	loss: 0.0218	total loss: 0.0218
+Epoch[2-688]	loss: 0.0163	total loss: 0.0163
+Epoch[2-689]	loss: 0.0278	total loss: 0.0278
+Epoch[2-690]	loss: 0.0291	total loss: 0.0291
+Epoch[2-691]	loss: 0.0274	total loss: 0.0274
+Epoch[2-692]	loss: 0.0162	total loss: 0.0162
+Epoch[2-693]	loss: 0.0237	total loss: 0.0237
+Epoch[2-694]	loss: 0.0232	total loss: 0.0232
+Epoch[2-695]	loss: 0.0142	total loss: 0.0142
+Epoch[2-696]	loss: 0.0214	total loss: 0.0214
+Epoch[2-697]	loss: 0.0236	total loss: 0.0236
+Epoch[2-698]	loss: 0.0171	total loss: 0.0171
+Epoch[2-699]	loss: 0.0230	total loss: 0.0230
+Epoch[2-700]	loss: 0.0188	total loss: 0.0188
+Epoch[2-701]	loss: 0.0215	total loss: 0.0215
+Epoch[2-702]	loss: 0.0182	total loss: 0.0182
+Epoch[2-703]	loss: 0.0155	total loss: 0.0155
+Epoch[2-704]	loss: 0.0196	total loss: 0.0196
+Epoch[2-705]	loss: 0.0161	total loss: 0.0161
+Epoch[2-706]	loss: 0.0212	total loss: 0.0212
+Epoch[2-707]	loss: 0.0272	total loss: 0.0272
+Epoch[2-708]	loss: 0.0254	total loss: 0.0254
+Epoch[2-709]	loss: 0.0246	total loss: 0.0246
+Epoch[2-710]	loss: 0.0219	total loss: 0.0219
+Epoch[2-711]	loss: 0.0366	total loss: 0.0366
+Epoch[2-712]	loss: 0.0216	total loss: 0.0216
+Epoch[2-713]	loss: 0.0348	total loss: 0.0348
+Epoch[2-714]	loss: 0.0248	total loss: 0.0248
+Epoch[2-715]	loss: 0.0157	total loss: 0.0157
+Epoch[2-716]	loss: 0.0344	total loss: 0.0344
+Epoch[2-717]	loss: 0.0207	total loss: 0.0207
+Epoch[2-718]	loss: 0.0215	total loss: 0.0215
+Epoch[2-719]	loss: 0.0146	total loss: 0.0146
+Epoch[2-720]	loss: 0.0260	total loss: 0.0260
+Epoch[2-721]	loss: 0.0217	total loss: 0.0217
+Epoch[2-722]	loss: 0.0212	total loss: 0.0212
+Epoch[2-723]	loss: 0.0231	total loss: 0.0231
+Epoch[2-724]	loss: 0.0127	total loss: 0.0127
+Epoch[2-725]	loss: 0.0161	total loss: 0.0161
+Epoch[2-726]	loss: 0.0193	total loss: 0.0193
+Epoch[2-727]	loss: 0.0277	total loss: 0.0277
+Epoch[2-728]	loss: 0.0178	total loss: 0.0178
+Epoch[2-729]	loss: 0.0176	total loss: 0.0176
+Epoch[2-730]	loss: 0.0211	total loss: 0.0211
+Epoch[2-731]	loss: 0.0163	total loss: 0.0163
+Epoch[2-732]	loss: 0.0163	total loss: 0.0163
+Epoch[2-733]	loss: 0.0127	total loss: 0.0127
+Epoch[2-734]	loss: 0.0238	total loss: 0.0238
+Epoch[2-735]	loss: 0.0165	total loss: 0.0165
+Epoch[2-736]	loss: 0.0184	total loss: 0.0184
+Epoch[2-737]	loss: 0.0150	total loss: 0.0150
+Epoch[2-738]	loss: 0.0253	total loss: 0.0253
+Epoch[2-739]	loss: 0.0224	total loss: 0.0224
+Epoch[2-740]	loss: 0.0240	total loss: 0.0240
+Epoch[2-741]	loss: 0.0195	total loss: 0.0195
+Epoch[2-742]	loss: 0.0180	total loss: 0.0180
+Epoch[2-743]	loss: 0.0180	total loss: 0.0180
+Epoch[2-744]	loss: 0.0259	total loss: 0.0259
+Epoch[2-745]	loss: 0.0229	total loss: 0.0229
+Epoch[2-746]	loss: 0.0278	total loss: 0.0278
+Epoch[2-747]	loss: 0.0174	total loss: 0.0174
+Epoch[2-748]	loss: 0.0171	total loss: 0.0171
+Epoch[2-749]	loss: 0.0199	total loss: 0.0199
+Epoch[2-750]	loss: 0.0144	total loss: 0.0144
+Epoch[2-751]	loss: 0.0244	total loss: 0.0244
+Epoch[2-752]	loss: 0.0191	total loss: 0.0191
+Epoch[2-753]	loss: 0.0180	total loss: 0.0180
+Epoch[2-754]	loss: 0.0176	total loss: 0.0176
+Epoch[2-755]	loss: 0.0251	total loss: 0.0251
+Epoch[2-756]	loss: 0.0183	total loss: 0.0183
+Epoch[2-757]	loss: 0.0244	total loss: 0.0244
+Epoch[2-758]	loss: 0.0312	total loss: 0.0312
+Epoch[2-759]	loss: 0.0251	total loss: 0.0251
+Epoch[2-760]	loss: 0.0256	total loss: 0.0256
+Epoch[2-761]	loss: 0.0121	total loss: 0.0121
+Epoch[2-762]	loss: 0.0209	total loss: 0.0209
+Epoch[2-763]	loss: 0.0234	total loss: 0.0234
+Epoch[2-764]	loss: 0.0254	total loss: 0.0254
+Epoch[2-765]	loss: 0.0231	total loss: 0.0231
+Epoch[2-766]	loss: 0.0168	total loss: 0.0168
+Epoch[2-767]	loss: 0.0130	total loss: 0.0130
+Epoch[2-768]	loss: 0.0216	total loss: 0.0216
+Epoch[2-769]	loss: 0.0263	total loss: 0.0263
+Epoch[2-770]	loss: 0.0236	total loss: 0.0236
+Epoch[2-771]	loss: 0.0156	total loss: 0.0156
+Epoch[2-772]	loss: 0.0272	total loss: 0.0272
+Epoch[2-773]	loss: 0.0373	total loss: 0.0373
+Epoch[2-774]	loss: 0.0167	total loss: 0.0167
+Epoch[2-775]	loss: 0.0232	total loss: 0.0232
+Epoch[2-776]	loss: 0.0204	total loss: 0.0204
+Epoch[2-777]	loss: 0.0153	total loss: 0.0153
+Epoch[2-778]	loss: 0.0316	total loss: 0.0316
+Epoch[2-779]	loss: 0.0192	total loss: 0.0192
+Epoch[2-780]	loss: 0.0174	total loss: 0.0174
+Epoch[2-781]	loss: 0.0136	total loss: 0.0136
+Epoch[2-782]	loss: 0.0189	total loss: 0.0189
+Epoch[2-783]	loss: 0.0280	total loss: 0.0280
+Epoch[2-784]	loss: 0.0196	total loss: 0.0196
+Epoch[2-785]	loss: 0.0110	total loss: 0.0110
+Epoch[2-786]	loss: 0.0160	total loss: 0.0160
+Epoch[2-787]	loss: 0.0230	total loss: 0.0230
+Epoch[2-788]	loss: 0.0198	total loss: 0.0198
+Epoch[2-789]	loss: 0.0164	total loss: 0.0164
+Epoch[2-790]	loss: 0.0261	total loss: 0.0261
+Epoch[2-791]	loss: 0.0259	total loss: 0.0259
+Epoch[2-792]	loss: 0.0170	total loss: 0.0170
+Epoch[2-793]	loss: 0.0195	total loss: 0.0195
+Epoch[2-794]	loss: 0.0208	total loss: 0.0208
+Epoch[2-795]	loss: 0.0165	total loss: 0.0165
+Epoch[2-796]	loss: 0.0154	total loss: 0.0154
+Epoch[2-797]	loss: 0.0251	total loss: 0.0251
+Epoch[2-798]	loss: 0.0223	total loss: 0.0223
+Epoch[2-799]	loss: 0.0192	total loss: 0.0192
+Epoch[2-800]	loss: 0.0265	total loss: 0.0265
+Epoch[2-801]	loss: 0.0272	total loss: 0.0272
+Epoch[2-802]	loss: 0.0166	total loss: 0.0166
+Epoch[2-803]	loss: 0.0263	total loss: 0.0263
+Epoch[2-804]	loss: 0.0216	total loss: 0.0216
+Epoch[2-805]	loss: 0.0141	total loss: 0.0141
+Epoch[2-806]	loss: 0.0199	total loss: 0.0199
+Epoch[2-807]	loss: 0.0244	total loss: 0.0244
+Epoch[2-808]	loss: 0.0305	total loss: 0.0305
+Epoch[2-809]	loss: 0.0266	total loss: 0.0266
+Epoch[2-810]	loss: 0.0152	total loss: 0.0152
+Epoch[2-811]	loss: 0.0165	total loss: 0.0165
+Epoch[2-812]	loss: 0.0245	total loss: 0.0245
+Epoch[2-813]	loss: 0.0124	total loss: 0.0124
+Epoch[2-814]	loss: 0.0167	total loss: 0.0167
+Epoch[2-815]	loss: 0.0250	total loss: 0.0250
+Epoch[2-816]	loss: 0.0176	total loss: 0.0176
+Epoch[2-817]	loss: 0.0268	total loss: 0.0268
+Epoch[2-818]	loss: 0.0297	total loss: 0.0297
+Epoch[2-819]	loss: 0.0156	total loss: 0.0156
+Epoch[2-820]	loss: 0.0260	total loss: 0.0260
+Epoch[2-821]	loss: 0.0119	total loss: 0.0119
+Epoch[2-822]	loss: 0.0149	total loss: 0.0149
+Epoch[2-823]	loss: 0.0194	total loss: 0.0194
+Epoch[2-824]	loss: 0.0204	total loss: 0.0204
+Epoch[2-825]	loss: 0.0194	total loss: 0.0194
+Epoch[2-826]	loss: 0.0177	total loss: 0.0177
+Epoch[2-827]	loss: 0.0179	total loss: 0.0179
+Epoch[2-828]	loss: 0.0156	total loss: 0.0156
+Epoch[2-829]	loss: 0.0233	total loss: 0.0233
+Epoch[2-830]	loss: 0.0272	total loss: 0.0272
+Epoch[2-831]	loss: 0.0213	total loss: 0.0213
+Epoch[2-832]	loss: 0.0175	total loss: 0.0175
+Epoch[2-833]	loss: 0.0145	total loss: 0.0145
+Epoch[2-834]	loss: 0.0376	total loss: 0.0376
+Epoch[2-835]	loss: 0.0152	total loss: 0.0152
+Epoch[2-836]	loss: 0.0213	total loss: 0.0213
+Epoch[2-837]	loss: 0.0201	total loss: 0.0201
+Epoch[2-838]	loss: 0.0139	total loss: 0.0139
+Epoch[2-839]	loss: 0.0171	total loss: 0.0171
+Epoch[2-840]	loss: 0.0189	total loss: 0.0189
+Epoch[2-841]	loss: 0.0293	total loss: 0.0293
+Epoch[2-842]	loss: 0.0152	total loss: 0.0152
+Epoch[2-843]	loss: 0.0169	total loss: 0.0169
+Epoch[2-844]	loss: 0.0140	total loss: 0.0140
+Epoch[2-845]	loss: 0.0134	total loss: 0.0134
+Epoch[2-846]	loss: 0.0202	total loss: 0.0202
+Epoch[2-847]	loss: 0.0231	total loss: 0.0231
+Epoch[2-848]	loss: 0.0174	total loss: 0.0174
+Epoch[2-849]	loss: 0.0276	total loss: 0.0276
+Epoch[2-850]	loss: 0.0247	total loss: 0.0247
+Epoch[2-851]	loss: 0.0158	total loss: 0.0158
+Epoch[2-852]	loss: 0.0206	total loss: 0.0206
+Epoch[2-853]	loss: 0.0320	total loss: 0.0320
+Epoch[2-854]	loss: 0.0232	total loss: 0.0232
+Epoch[2-855]	loss: 0.0128	total loss: 0.0128
+Epoch[2-856]	loss: 0.0247	total loss: 0.0247
+Epoch[2-857]	loss: 0.0232	total loss: 0.0232
+Epoch[2-858]	loss: 0.0258	total loss: 0.0258
+Epoch[2-859]	loss: 0.0088	total loss: 0.0088
+Epoch[2-860]	loss: 0.0156	total loss: 0.0156
+Epoch[2-861]	loss: 0.0378	total loss: 0.0378
+Epoch[2-862]	loss: 0.0249	total loss: 0.0249
+Epoch[2-863]	loss: 0.0373	total loss: 0.0373
+Epoch[2-864]	loss: 0.0239	total loss: 0.0239
+Epoch[2-865]	loss: 0.0116	total loss: 0.0116
+Epoch[2-866]	loss: 0.0150	total loss: 0.0150
+Epoch[2-867]	loss: 0.0116	total loss: 0.0116
+Epoch[2-868]	loss: 0.0161	total loss: 0.0161
+Epoch[2-869]	loss: 0.0171	total loss: 0.0171
+Epoch[2-870]	loss: 0.0163	total loss: 0.0163
+Epoch[2-871]	loss: 0.0229	total loss: 0.0229
+Epoch[2-872]	loss: 0.0199	total loss: 0.0199
+Epoch[2-873]	loss: 0.0309	total loss: 0.0309
+Epoch[2-874]	loss: 0.0152	total loss: 0.0152
+Epoch[2-875]	loss: 0.0189	total loss: 0.0189
+Epoch[2-876]	loss: 0.0132	total loss: 0.0132
+Epoch[2-877]	loss: 0.0211	total loss: 0.0211
+Epoch[2-878]	loss: 0.0226	total loss: 0.0226
+Epoch[2-879]	loss: 0.0188	total loss: 0.0188
+Epoch[2-880]	loss: 0.0145	total loss: 0.0145
+Epoch[2-881]	loss: 0.0354	total loss: 0.0354
+Epoch[2-882]	loss: 0.0148	total loss: 0.0148
+Epoch[2-883]	loss: 0.0194	total loss: 0.0194
+Epoch[2-884]	loss: 0.0281	total loss: 0.0281
+Epoch[2-885]	loss: 0.0192	total loss: 0.0192
+Epoch[2-886]	loss: 0.0274	total loss: 0.0274
+Epoch[2-887]	loss: 0.0192	total loss: 0.0192
+Epoch[2-888]	loss: 0.0162	total loss: 0.0162
+Epoch[2-889]	loss: 0.0158	total loss: 0.0158
+Epoch[2-890]	loss: 0.0224	total loss: 0.0224
+Epoch[2-891]	loss: 0.0147	total loss: 0.0147
+Epoch[2-892]	loss: 0.0142	total loss: 0.0142
+Epoch[2-893]	loss: 0.0198	total loss: 0.0198
+Epoch[2-894]	loss: 0.0152	total loss: 0.0152
+Epoch[2-895]	loss: 0.0237	total loss: 0.0237
+Epoch[2-896]	loss: 0.0180	total loss: 0.0180
+Epoch[2-897]	loss: 0.0230	total loss: 0.0230
+Epoch[2-898]	loss: 0.0329	total loss: 0.0329
+Epoch[2-899]	loss: 0.0123	total loss: 0.0123
+Epoch[2-900]	loss: 0.0169	total loss: 0.0169
+Epoch[2-901]	loss: 0.0231	total loss: 0.0231
+Epoch[2-902]	loss: 0.0166	total loss: 0.0166
+Epoch[2-903]	loss: 0.0140	total loss: 0.0140
+Epoch[2-904]	loss: 0.0319	total loss: 0.0319
+Epoch[2-905]	loss: 0.0232	total loss: 0.0232
+Epoch[2-906]	loss: 0.0146	total loss: 0.0146
+Epoch[2-907]	loss: 0.0300	total loss: 0.0300
+Epoch[2-908]	loss: 0.0126	total loss: 0.0126
+Epoch[2-909]	loss: 0.0222	total loss: 0.0222
+Epoch[2-910]	loss: 0.0168	total loss: 0.0168
+Epoch[2-911]	loss: 0.0234	total loss: 0.0234
+Epoch[2-912]	loss: 0.0243	total loss: 0.0243
+Epoch[2-913]	loss: 0.0224	total loss: 0.0224
+Epoch[2-914]	loss: 0.0166	total loss: 0.0166
+Epoch[2-915]	loss: 0.0136	total loss: 0.0136
+Epoch[2-916]	loss: 0.0307	total loss: 0.0307
+Epoch[2-917]	loss: 0.0144	total loss: 0.0144
+Epoch[2-918]	loss: 0.0131	total loss: 0.0131
+Epoch[2-919]	loss: 0.0226	total loss: 0.0226
+Epoch[2-920]	loss: 0.0147	total loss: 0.0147
+Epoch[2-921]	loss: 0.0268	total loss: 0.0268
+Epoch[2-922]	loss: 0.0232	total loss: 0.0232
+Epoch[2-923]	loss: 0.0216	total loss: 0.0216
+Epoch[2-924]	loss: 0.0191	total loss: 0.0191
+Epoch[2-925]	loss: 0.0109	total loss: 0.0109
+Epoch[2-926]	loss: 0.0184	total loss: 0.0184
+Epoch[2-927]	loss: 0.0164	total loss: 0.0164
+Epoch[2-928]	loss: 0.0177	total loss: 0.0177
+Epoch[2-929]	loss: 0.0264	total loss: 0.0264
+Epoch[2-930]	loss: 0.0101	total loss: 0.0101
+Epoch[2-931]	loss: 0.0155	total loss: 0.0155
+Epoch[2-932]	loss: 0.0273	total loss: 0.0273
+Epoch[2-933]	loss: 0.0116	total loss: 0.0116
+Epoch[2-934]	loss: 0.0154	total loss: 0.0154
+Epoch[2-935]	loss: 0.0124	total loss: 0.0124
+Epoch[2-936]	loss: 0.0209	total loss: 0.0209
+Epoch[2-937]	loss: 0.0181	total loss: 0.0181
+Epoch[2-938]	loss: 0.0201	total loss: 0.0201
+Epoch[2-939]	loss: 0.0183	total loss: 0.0183
+Epoch[2-940]	loss: 0.0169	total loss: 0.0169
+Epoch[2-941]	loss: 0.0112	total loss: 0.0112
+Epoch[2-942]	loss: 0.0150	total loss: 0.0150
+Epoch[2-943]	loss: 0.0121	total loss: 0.0121
+Epoch[2-944]	loss: 0.0215	total loss: 0.0215
+Epoch[2-945]	loss: 0.0169	total loss: 0.0169
+Epoch[2-946]	loss: 0.0117	total loss: 0.0117
+Epoch[2-947]	loss: 0.0128	total loss: 0.0128
+Epoch[2-948]	loss: 0.0184	total loss: 0.0184
+Epoch[2-949]	loss: 0.0201	total loss: 0.0201
+Epoch[2-950]	loss: 0.0353	total loss: 0.0353
+Epoch[2-951]	loss: 0.0155	total loss: 0.0155
+Epoch[2-952]	loss: 0.0164	total loss: 0.0164
+Epoch[2-953]	loss: 0.0168	total loss: 0.0168
+Epoch[2-954]	loss: 0.0217	total loss: 0.0217
+Epoch[2-955]	loss: 0.0223	total loss: 0.0223
+Epoch[2-956]	loss: 0.0352	total loss: 0.0352
+Epoch[2-957]	loss: 0.0204	total loss: 0.0204
+Epoch[2-958]	loss: 0.0212	total loss: 0.0212
+Epoch[2-959]	loss: 0.0164	total loss: 0.0164
+Epoch[2-960]	loss: 0.0137	total loss: 0.0137
+Epoch[2-961]	loss: 0.0188	total loss: 0.0188
+Epoch[2-962]	loss: 0.0132	total loss: 0.0132
+Epoch[2-963]	loss: 0.0190	total loss: 0.0190
+Epoch[2-964]	loss: 0.0148	total loss: 0.0148
+Epoch[2-965]	loss: 0.0184	total loss: 0.0184
+Epoch[2-966]	loss: 0.0177	total loss: 0.0177
+Epoch[2-967]	loss: 0.0141	total loss: 0.0141
+Epoch[2-968]	loss: 0.0124	total loss: 0.0124
+Epoch[2-969]	loss: 0.0265	total loss: 0.0265
+Epoch[2-970]	loss: 0.0185	total loss: 0.0185
+Epoch[2-971]	loss: 0.0151	total loss: 0.0151
+Epoch[2-972]	loss: 0.0236	total loss: 0.0236
+Epoch[2-973]	loss: 0.0255	total loss: 0.0255
+Epoch[2-974]	loss: 0.0245	total loss: 0.0245
+Epoch[2-975]	loss: 0.0100	total loss: 0.0100
+Epoch[2-976]	loss: 0.0179	total loss: 0.0179
+Epoch[2-977]	loss: 0.0123	total loss: 0.0123
+Epoch[2-978]	loss: 0.0148	total loss: 0.0148
+Epoch[2-979]	loss: 0.0217	total loss: 0.0217
+Epoch[2-980]	loss: 0.0074	total loss: 0.0074
+Epoch[2-981]	loss: 0.0192	total loss: 0.0192
+Epoch[2-982]	loss: 0.0140	total loss: 0.0140
+Epoch[2-983]	loss: 0.0216	total loss: 0.0216
+Epoch[2-984]	loss: 0.0090	total loss: 0.0090
+Epoch[2-985]	loss: 0.0143	total loss: 0.0143
+Epoch[2-986]	loss: 0.0128	total loss: 0.0128
+Epoch[2-987]	loss: 0.0086	total loss: 0.0086
+Epoch[2-988]	loss: 0.0324	total loss: 0.0324
+Epoch[2-989]	loss: 0.0111	total loss: 0.0111
+Epoch[2-990]	loss: 0.0115	total loss: 0.0115
+Epoch[2-991]	loss: 0.0157	total loss: 0.0157
+Epoch[2-992]	loss: 0.0108	total loss: 0.0108
+Epoch[2-993]	loss: 0.0140	total loss: 0.0140
+Epoch[2-994]	loss: 0.0211	total loss: 0.0211
+Epoch[2-995]	loss: 0.0173	total loss: 0.0173
+Epoch[2-996]	loss: 0.0155	total loss: 0.0155
+Epoch[2-997]	loss: 0.0198	total loss: 0.0198
+Epoch[2-998]	loss: 0.0213	total loss: 0.0213
+Epoch[2-999]	loss: 0.0276	total loss: 0.0276
+Epoch[2-1000]	loss: 0.0213	total loss: 0.0213
+Epoch[2-1001]	loss: 0.0229	total loss: 0.0229
+Epoch[2-1002]	loss: 0.0193	total loss: 0.0193
+Epoch[2-1003]	loss: 0.0115	total loss: 0.0115
+Epoch[2-1004]	loss: 0.0151	total loss: 0.0151
+Epoch[2-1005]	loss: 0.0212	total loss: 0.0212
+Epoch[2-1006]	loss: 0.0169	total loss: 0.0169
+Epoch[2-1007]	loss: 0.0171	total loss: 0.0171
+Epoch[2-1008]	loss: 0.0161	total loss: 0.0161
+Epoch[2-1009]	loss: 0.0101	total loss: 0.0101
+Epoch[2-1010]	loss: 0.0142	total loss: 0.0142
+Epoch[2-1011]	loss: 0.0211	total loss: 0.0211
+Epoch[2-1012]	loss: 0.0113	total loss: 0.0113
+Epoch[2-1013]	loss: 0.0121	total loss: 0.0121
+Epoch[2-1014]	loss: 0.0269	total loss: 0.0269
+Epoch[2-1015]	loss: 0.0180	total loss: 0.0180
+Epoch[2-1016]	loss: 0.0130	total loss: 0.0130
+Epoch[2-1017]	loss: 0.0186	total loss: 0.0186
+Epoch[2-1018]	loss: 0.0121	total loss: 0.0121
+Epoch[2-1019]	loss: 0.0169	total loss: 0.0169
+Epoch[2-1020]	loss: 0.0271	total loss: 0.0271
+Epoch[2-1021]	loss: 0.0151	total loss: 0.0151
+Epoch[2-1022]	loss: 0.0274	total loss: 0.0274
+Epoch[2-1023]	loss: 0.0275	total loss: 0.0275
+Epoch[2-1024]	loss: 0.0156	total loss: 0.0156
+Epoch[2-1025]	loss: 0.0158	total loss: 0.0158
+Epoch[2-1026]	loss: 0.0124	total loss: 0.0124
+Epoch[2-1027]	loss: 0.0146	total loss: 0.0146
+Epoch[2-1028]	loss: 0.0204	total loss: 0.0204
+Epoch[2-1029]	loss: 0.0276	total loss: 0.0276
+Epoch[2-1030]	loss: 0.0221	total loss: 0.0221
+Epoch[2-1031]	loss: 0.0106	total loss: 0.0106
+Epoch[2-1032]	loss: 0.0126	total loss: 0.0126
+Epoch[2-1033]	loss: 0.0202	total loss: 0.0202
+Epoch[2-1034]	loss: 0.0224	total loss: 0.0224
+Epoch[2-1035]	loss: 0.0153	total loss: 0.0153
+Epoch[2-1036]	loss: 0.0222	total loss: 0.0222
+Epoch[2-1037]	loss: 0.0185	total loss: 0.0185
+Epoch[2-1038]	loss: 0.0210	total loss: 0.0210
+Epoch[2-1039]	loss: 0.0125	total loss: 0.0125
+Epoch[2-1040]	loss: 0.0169	total loss: 0.0169
+Epoch[2-1041]	loss: 0.0176	total loss: 0.0176
+Epoch[2-1042]	loss: 0.0121	total loss: 0.0121
+Epoch[2-1043]	loss: 0.0333	total loss: 0.0333
+Epoch[2-1044]	loss: 0.0213	total loss: 0.0213
+Epoch[2-1045]	loss: 0.0193	total loss: 0.0193
+Epoch[2-1046]	loss: 0.0129	total loss: 0.0129
+Epoch[2-1047]	loss: 0.0168	total loss: 0.0168
+Epoch[2-1048]	loss: 0.0139	total loss: 0.0139
+Epoch[2-1049]	loss: 0.0167	total loss: 0.0167
+Epoch[2-1050]	loss: 0.0163	total loss: 0.0163
+Epoch[2-1051]	loss: 0.0149	total loss: 0.0149
+Epoch[2-1052]	loss: 0.0156	total loss: 0.0156
+Epoch[2-1053]	loss: 0.0260	total loss: 0.0260
+Epoch[2-1054]	loss: 0.0193	total loss: 0.0193
+Epoch[2-1055]	loss: 0.0178	total loss: 0.0178
+Epoch[2-1056]	loss: 0.0138	total loss: 0.0138
+Epoch[2-1057]	loss: 0.0233	total loss: 0.0233
+Epoch[2-1058]	loss: 0.0110	total loss: 0.0110
+Epoch[2-1059]	loss: 0.0119	total loss: 0.0119
+Epoch[2-1060]	loss: 0.0139	total loss: 0.0139
+Epoch[2-1061]	loss: 0.0275	total loss: 0.0275
+Epoch[2-1062]	loss: 0.0178	total loss: 0.0178
+Epoch[2-1063]	loss: 0.0150	total loss: 0.0150
+Epoch[2-1064]	loss: 0.0168	total loss: 0.0168
+Epoch[2-1065]	loss: 0.0179	total loss: 0.0179
+Epoch[2-1066]	loss: 0.0119	total loss: 0.0119
+Epoch[2-1067]	loss: 0.0192	total loss: 0.0192
+Epoch[2-1068]	loss: 0.0232	total loss: 0.0232
+Epoch[2-1069]	loss: 0.0133	total loss: 0.0133
+Epoch[2-1070]	loss: 0.0192	total loss: 0.0192
+Epoch[2-1071]	loss: 0.0097	total loss: 0.0097
+Epoch[2-1072]	loss: 0.0123	total loss: 0.0123
+Epoch[2-1073]	loss: 0.0186	total loss: 0.0186
+Epoch[2-1074]	loss: 0.0167	total loss: 0.0167
+Epoch[2-1075]	loss: 0.0232	total loss: 0.0232
+Epoch[2-1076]	loss: 0.0136	total loss: 0.0136
+Epoch[2-1077]	loss: 0.0268	total loss: 0.0268
+Epoch[2-1078]	loss: 0.0154	total loss: 0.0154
+Epoch[2-1079]	loss: 0.0128	total loss: 0.0128
+Epoch[2-1080]	loss: 0.0159	total loss: 0.0159
+Epoch[2-1081]	loss: 0.0155	total loss: 0.0155
+Epoch[2-1082]	loss: 0.0204	total loss: 0.0204
+Epoch[2-1083]	loss: 0.0144	total loss: 0.0144
+Epoch[2-1084]	loss: 0.0179	total loss: 0.0179
+Epoch[2-1085]	loss: 0.0174	total loss: 0.0174
+Epoch[2-1086]	loss: 0.0177	total loss: 0.0177
+Epoch[2-1087]	loss: 0.0151	total loss: 0.0151
+Epoch[2-1088]	loss: 0.0306	total loss: 0.0306
+Epoch[2-1089]	loss: 0.0183	total loss: 0.0183
+Epoch[2-1090]	loss: 0.0133	total loss: 0.0133
+Epoch[2-1091]	loss: 0.0188	total loss: 0.0188
+Epoch[2-1092]	loss: 0.0165	total loss: 0.0165
+Epoch[2-1093]	loss: 0.0165	total loss: 0.0165
+Epoch[2-1094]	loss: 0.0155	total loss: 0.0155
+Epoch[2-1095]	loss: 0.0165	total loss: 0.0165
+Epoch[2-1096]	loss: 0.0108	total loss: 0.0108
+Epoch[2-1097]	loss: 0.0121	total loss: 0.0121
+Epoch[2-1098]	loss: 0.0194	total loss: 0.0194
+Epoch[2-1099]	loss: 0.0265	total loss: 0.0265
+Epoch[2-1100]	loss: 0.0227	total loss: 0.0227
+Epoch[2-1101]	loss: 0.0133	total loss: 0.0133
+Epoch[2-1102]	loss: 0.0181	total loss: 0.0181
+Epoch[2-1103]	loss: 0.0111	total loss: 0.0111
+Epoch[2-1104]	loss: 0.0211	total loss: 0.0211
+Epoch[2-1105]	loss: 0.0176	total loss: 0.0176
+Epoch[2-1106]	loss: 0.0177	total loss: 0.0177
+Epoch[2-1107]	loss: 0.0122	total loss: 0.0122
+Epoch[2-1108]	loss: 0.0125	total loss: 0.0125
+Epoch[2]/Phase[train]
+mean_img_map_loss: 0.0240278367300069
+mean_img_map_avg_embedding_norm: 1.0
+mean_img_map_num_triplets: 552.0
+mean_loss: 0.0240278367300069

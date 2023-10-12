@@ -15,11 +15,11 @@ def get_model(params):
     elif params.model_type == 'smoothing':
         model = Smooth()
     elif params.model_type == 'seqnet' and params.share:
-        model = SeqNet(params.feat_dim, params.feat_dim, params.seq_len)
+        model = SeqNet(params.feat_dim, seqL=params.seq_len)
     elif params.model_type == 'seqnet' and not params.share:
-        model = SeqNet_v2(params.feat_dim, params.feat_dim, params.seq_len)
+        model = SeqNet_v2(params.feat_dim, seqL=params.seq_len)
     elif params.model_type == 'delta':
-        model = Delta(params.feat_dim, params.seq_len)
+        model = Delta(params.feat_dim, seqL=params.seq_len)
     elif params.model_type == 'baseline':
         model = Baseline()
     else:

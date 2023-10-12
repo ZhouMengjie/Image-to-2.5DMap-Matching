@@ -31,3 +31,12 @@ resnetsafa_asam_simple, weights3090/model_20231007_2028_best_top1.pth, 95.55, 72
 resnetsafa_asam_simple, weights3090/model_20231009_1548_best_top1.pth, 95.36, 70.12, 94.72, 66.41, 99.69, 81.50, 96.59, 72.68
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231009_1108_best_top1.pth, 97.25, 77.72, 95.32, 72.82, 99.89, 91.08, 97.49, 80.54
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231009_1242_best_top1.pth, 96.80, 72.76, 95.12, 66.90, 99.87, 88.22, 97.26, 75.96
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231010_1344_best_top1.pth, 97.42, 79.59, 95.25, 76.41, 99.83, 92.63, 97.50, 82.87
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231010_1224_best_top1.pth, 94.78, 59.44, 92.17, 53.41, 98.82, 72.86, 95.26, 61.90
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231010_1253_best_top1.pth, 93.58, 50.05, 89.65, 41.31, 98.24, 62.82, 93.82, 51.39
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231010_1621_best_top1.pth, 97.27, 79.79, 95.15, 77.46, 99.81, 92.67, 97.41, 83.31
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231010_1613_best_top1.pth, 96.16, 75.12, 94.40, 71.03, 99.74, 87.71, 96.77, 77.95
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231012_1142_best_top1.pth, 96.50, 77.23, 94.93, 74.01, 99.83, 90.39, 97.09, 80.54
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231012_1148_best_top1.pth, 95.92, 72.31, 93.79, 66.82, 99.69, 84.97, 96.47, 74.70
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231012_1439_best_top1.pth, 96.03, 74.16, 93.85, 69.01, 99.69, 86.84, 96.52, 76.67
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231012_1347_best_top1.pth, 95.19, 67.43, 92.83, 60.73, 99.26, 80.93, 95.76, 69.70

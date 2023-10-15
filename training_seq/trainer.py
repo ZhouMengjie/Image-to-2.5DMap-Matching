@@ -95,7 +95,7 @@ def do_train(dataloaders, train_sampler, params, use_amp=False):
 
     # convert to DDP model
     if params.distributed:
-        model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[params.gpu])
+        model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[params.gpu],broadcast_buffers=False)
 
     params_l = []
     params_l.append({'params': model.parameters(), 'initial_lr':params.lr, 'lr': params.lr})

@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.init as init
 import torch.nn.functional as F
 import math
 import numpy as np
@@ -36,13 +37,21 @@ class TransMixer(nn.Module):
         '''
         super(TransMixer, self).__init__()
         encoderLayer = nn.TransformerEncoderLayer(d_model=hidden_dim,\
-            nhead=nHead, batch_first=True, dropout=0.3, norm_first = True)
+            nhead=nHead, batch_first=True, dropout=0.1, norm_first = True, activation='relu')
+
+        # for param in encoderLayer.parameters():
+        #     if len(param.shape) > 1:
+        #         init.xavier_uniform_(param)
 
         self.Transformer = nn.TransformerEncoder(encoderLayer, \
             num_layers=numLayers, \
             norm=nn.LayerNorm(normalized_shape=hidden_dim, eps=1e-6))
 
         self.embedding = nn.Linear(transDimension, hidden_dim)
+        init.kaiming_normal_(self.embedding.weight)
+        if self.embedding.bias is not None:
+            init.constant_(self.embedding.bias, 0)
+
         self.positionalEncoding = PositionalEncoding(d_model=hidden_dim, max_len=max_length)
     
     def forward(self, x):
@@ -72,8 +81,21 @@ class SeqNet(nn.Module):
         self.w = w
         self.conv = nn.Conv1d(outDims, outDims, kernel_size=self.w)
         self.embedding = nn.Linear(inDims, outDims)
+        # self.batch_norm = nn.BatchNorm1d(outDims)
+        # self.relu = nn.ReLU(inplace=False)
+        self.initialize_weights()
 
-    def forward(self, x):       
+    def initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, (nn.Conv1d, nn.Linear)):
+                init.kaiming_normal_(m.weight)
+                if m.bias is not None:
+                    init.constant_(m.bias, 0)
+            elif isinstance(m, nn.BatchNorm1d):
+                init.constant_(m.weight, 1)
+                init.constant_(m.bias, 0)
+
+    def forward(self, x):    
         x = self.embedding(x)
         x = x.permute(0,2,1) # from [B,T,C] to [B,C,T]
         x = self.conv(x)
@@ -128,14 +150,15 @@ class Baseline(nn.Module):
 if __name__ == "__main__":
     model = TransMixer(4096,512).to('cuda')
     # model = SeqNet(4096).to('cuda')
+    # model = Delta(4096).to('cuda')
     print(model)
     x = torch.rand((16, 5, 4096)).to('cuda')
     # vis_graph = h.build_graph(model, x)
     # vis_graph.theme = h.graph.THEMES["blue"].copy() 
     # vis_graph.save('model.png') 
-    writer = SummaryWriter("model_logs/")
-    writer.add_graph(model, x)
-    writer.close()
+    # writer = SummaryWriter("model_logs/")
+    # writer.add_graph(model, x)
+    # writer.close()
     feat = model(x)
     print(feat.shape)
 

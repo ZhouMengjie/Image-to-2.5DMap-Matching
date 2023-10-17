@@ -27,9 +27,9 @@ python -m torch.distributed.launch --use_env \
 --nnodes=${WORLD_SIZE} \
 --node_rank=${RANK} \
 training_seq/train.py --distributed --port 12364 \
---feat_dim 4096 --batch_size 24 --share \
+--feat_dim 4096 --batch_size 24 \
 --pre_model_name 'resnetsafa_dgcnn_asam_2to3_up' \
---margin 0.07 --lr 1e-3 \
+--margin 0.07 --lr 1e-4 \
 --optimizer SAM --wd 0.03 --epochs 60 \
 --scheduler 'CosineAnnealingLR' \
 --num_layers 1 --num_heads 8 --seq_len 5 \

@@ -14,10 +14,10 @@
 
 CUDA_VISIBLE_DEVICES=0 \
 python eval/evaluate_seq.py \
---feat_dim 4096 --share \
+--feat_dim 4096 \
 --pre_model_name 'resnetsafa_dgcnn_asam_2to3_up' \
 --eval_files 'hudsonriver5kU,wallstreet5kU,unionsquare5kU' \
 --exp_name 'none' \
 --num_layers 1 --num_heads 8 --seq_len 5 \
 --pca_dim 80 --model_type 'transmixer' \
---weights 'weights3090/model_20231016_2124_best_top1.pth'
+--weights 'weights3090/model_20231017_1524_best_top1.pth'

@@ -43,10 +43,6 @@ class TransMixer(nn.Module):
         super(TransMixer, self).__init__()
         encoderLayer = nn.TransformerEncoderLayer(d_model=hidden_dim,\
             nhead=nHead, batch_first=True, dropout=0.1, norm_first = True, activation='relu')
-
-        # self.Transformer = nn.TransformerEncoder(encoderLayer, \
-        #     num_layers=numLayers, \
-        #     norm=nn.LayerNorm(normalized_shape=hidden_dim, eps=1e-6))
         
         self.Transformer = nn.TransformerEncoder(encoderLayer, num_layers=numLayers)
 
@@ -63,6 +59,46 @@ class TransMixer(nn.Module):
         x = self.Transformer(x)
         x = x.mean(dim=1)
         return x
+
+class TransMixer_v2(nn.Module):
+    def __init__(self, transDimension, hidden_dim=512, nHead=8, numLayers=1, max_length=5):
+        '''
+        Transformer for mixing street view features
+        transDimension: transformer embedded dimension
+        nHead: number of heads
+        numLayers: number of encoded layers
+        Return => features of the same shape as input
+        '''
+        super(TransMixer_v2, self).__init__()
+        encoderLayer1 = nn.TransformerEncoderLayer(d_model=hidden_dim,\
+            nhead=nHead, batch_first=True, dropout=0.1, norm_first = True, activation='relu')       
+        self.Transformer1 = nn.TransformerEncoder(encoderLayer1, num_layers=numLayers)
+        self.embedding1 = nn.Linear(transDimension, hidden_dim)
+        init.kaiming_normal_(self.embedding1.weight)
+        if self.embedding1.bias is not None:
+            init.constant_(self.embedding1.bias, 0)
+        self.positionalEncoding1 = PositionalEncoding(d_model=hidden_dim, max_len=max_length)
+
+        encoderLayer2 = nn.TransformerEncoderLayer(d_model=hidden_dim,\
+            nhead=nHead, batch_first=True, dropout=0.1, norm_first = True, activation='relu')       
+        self.Transformer2 = nn.TransformerEncoder(encoderLayer2, num_layers=numLayers)
+        self.embedding2 = nn.Linear(transDimension, hidden_dim)
+        init.kaiming_normal_(self.embedding2.weight)
+        if self.embedding2.bias is not None:
+            init.constant_(self.embedding2.bias, 0)
+        self.positionalEncoding2 = PositionalEncoding(d_model=hidden_dim, max_len=max_length)
+    
+    def forward(self, x, y):
+        x = self.embedding1(x)
+        x = self.positionalEncoding1(x)
+        x = self.Transformer1(x)
+        x = x.mean(dim=1)
+
+        y = self.embedding2(y)
+        y = self.positionalEncoding2(y)
+        y = self.Transformer2(y)
+        y = y.mean(dim=1)
+        return x, y
 
 
 class Smooth(nn.Module):
@@ -84,8 +120,6 @@ class SeqNet(nn.Module):
         self.w = w
         self.conv = nn.Conv1d(outDims, outDims, kernel_size=self.w)
         self.embedding = nn.Linear(inDims, outDims)
-        # self.batch_norm = nn.BatchNorm1d(outDims)
-        # self.relu = nn.ReLU(inplace=False)
         self.initialize_weights()
 
     def initialize_weights(self):
@@ -116,6 +150,17 @@ class SeqNet_v2(nn.Module):
         self.embedding2 = nn.Linear(inDims, outDims)
         self.conv1 = nn.Conv1d(outDims, outDims, kernel_size=self.w)
         self.conv2 = nn.Conv1d(outDims, outDims, kernel_size=self.w)
+        self.initialize_weights()
+
+    def initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, (nn.Conv1d, nn.Linear)):
+                init.kaiming_normal_(m.weight)
+                if m.bias is not None:
+                    init.constant_(m.bias, 0)
+            elif isinstance(m, nn.BatchNorm1d):
+                init.constant_(m.weight, 1)
+                init.constant_(m.bias, 0)
 
     def forward(self, x, y):  
         x = self.embedding1(x)   

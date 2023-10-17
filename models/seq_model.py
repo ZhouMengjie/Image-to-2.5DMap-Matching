@@ -5,25 +5,30 @@ import torch.nn.functional as F
 import math
 import numpy as np
 import hiddenlayer as h
+from timm.models.layers import trunc_normal_
 from torch.utils.tensorboard import SummaryWriter
 
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model, dropout = 0.1, max_len = 5):
         super().__init__()
         self.dropout = nn.Dropout(p=dropout)
-        position = torch.arange(max_len).unsqueeze(1)
-        div_term = torch.exp(torch.arange(0, d_model, 2) * (-math.log(10000.0) / d_model))
-        pe = torch.zeros(1, max_len, d_model)
-        pe[0, :, 0::2] = torch.sin(position * div_term)
-        pe[0, :, 1::2] = torch.cos(position * div_term)
-        self.register_buffer('pe', pe)
+        # position = torch.arange(max_len).unsqueeze(1)
+        # div_term = torch.exp(torch.arange(0, d_model, 2) * (-math.log(10000.0) / d_model))
+        # pe = torch.zeros(1, max_len, d_model)
+        # pe[0, :, 0::2] = torch.sin(position * div_term)
+        # pe[0, :, 1::2] = torch.cos(position * div_term)
+        # self.register_buffer('pe', pe)
+
+        self.pe = nn.Parameter(torch.zeros(1, max_len, d_model))
+        trunc_normal_(self.pe, std=.02)
 
     def forward(self, x):
         """
         Args:
             x: Tensor, shape [batch_size, seq_len, embedding_dim]
         """
-        x = x + self.pe[:x.size(1)]
+        # x = x + self.pe[:x.size(1)]
+        x = x + self.pe
         return self.dropout(x)
 
 class TransMixer(nn.Module):
@@ -39,13 +44,11 @@ class TransMixer(nn.Module):
         encoderLayer = nn.TransformerEncoderLayer(d_model=hidden_dim,\
             nhead=nHead, batch_first=True, dropout=0.1, norm_first = True, activation='relu')
 
-        # for param in encoderLayer.parameters():
-        #     if len(param.shape) > 1:
-        #         init.xavier_uniform_(param)
-
-        self.Transformer = nn.TransformerEncoder(encoderLayer, \
-            num_layers=numLayers, \
-            norm=nn.LayerNorm(normalized_shape=hidden_dim, eps=1e-6))
+        # self.Transformer = nn.TransformerEncoder(encoderLayer, \
+        #     num_layers=numLayers, \
+        #     norm=nn.LayerNorm(normalized_shape=hidden_dim, eps=1e-6))
+        
+        self.Transformer = nn.TransformerEncoder(encoderLayer, num_layers=numLayers)
 
         self.embedding = nn.Linear(transDimension, hidden_dim)
         init.kaiming_normal_(self.embedding.weight)
@@ -148,7 +151,7 @@ class Baseline(nn.Module):
 
   
 if __name__ == "__main__":
-    model = TransMixer(4096,512).to('cuda')
+    model = TransMixer_v2(4096,512).to('cuda')
     # model = SeqNet(4096).to('cuda')
     # model = Delta(4096).to('cuda')
     print(model)

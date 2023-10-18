@@ -54,7 +54,7 @@ if __name__ == '__main__':
     parser.add_argument('--lr', type=float, default=1e-4, required=False, help='Initial learning rate')
     parser.add_argument('--scheduler', type=str, required=False, help='LR Scheduler')
     parser.add_argument('--pre_model_name', type=str, required=False, help='Precomputed model name')
-    parser.add_argument('--num_layers', type=int, default=6, required=False, help='Number of transformer layers')
+    parser.add_argument('--num_layers', type=int, default=1, required=False, help='Number of transformer layers')
     parser.add_argument('--num_heads', type=int, default=8, required=False, help='Number of transformer heads')
     parser.add_argument('--seq_len', type=int, default=5, required=False, help='Sequence length')
     parser.add_argument('--model_type', type=str, required=False, help='Model type')
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     parser.set_defaults(val_file='hudsonriver5kU')
     parser.set_defaults(optimizer='SAM')
     parser.set_defaults(scheduler='CosineAnnealingLR')
-    parser.set_defaults(pre_model_name='resnetsafa_asam_simple')
+    parser.set_defaults(pre_model_name='resnetsafa_dgcnn_asam_2to3_up')
     parser.set_defaults(model_type='transmixer')
 
     params = parser.parse_args()

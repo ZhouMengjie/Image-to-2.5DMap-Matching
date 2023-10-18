@@ -15,7 +15,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 from config.utils import get_datetime
 from models.sam import SAM
-from models.seq_loss import MultiInfoNCELoss
+from models.seq_loss_v2 import MultiInfoNCELoss
 
 
 def tensors_to_numbers(stats, device, distributed=False):   
@@ -228,11 +228,11 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         # Compute embeddings of all elements
         with torch.cuda.amp.autocast(enabled=use_amp):
             if params.share:
-                pano_feat = model(pre_pano)
-                map_feat = model(pre_map)
+                pano_feat, pano_feat_sq = model(pre_pano)
+                map_feat, map_feat_sq = model(pre_map)
             else:
                 pano_feat, map_feat = model(pre_pano, pre_map)
-            loss, temp_stats, _ = loss_fn(pano_feat, map_feat)  
+            loss, temp_stats, _ = loss_fn(pano_feat, map_feat, pano_feat_sq, map_feat_sq)  
 
         scaler.scale(loss).backward()           
         # loss.backward()
@@ -246,11 +246,11 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
             optimizer.first_step(zero_grad=True)
             with torch.cuda.amp.autocast(enabled=use_amp):   
                 if params.share:
-                    pano_feat = model(pre_pano)
-                    map_feat = model(pre_map)
+                    pano_feat, pano_feat_sq = model(pre_pano)
+                    map_feat, map_feat_sq = model(pre_map)
                 else:
                     pano_feat, map_feat = model(pre_pano, pre_map)
-                loss, temp_stats, _ = loss_fn(pano_feat, map_feat) 
+                loss, temp_stats, _ = loss_fn(pano_feat, map_feat, pano_feat_sq, map_feat_sq) 
             # loss.backward()
             scaler.scale(loss).backward()  
             optimizer.second_step(zero_grad=True)
@@ -264,9 +264,10 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         
         if params.log:
             print('Epoch[{0}-{1}]\t'
-                'loss: {img_map_loss:.4f}\t'
+                'loss1: {img_map_loss:.4f}\t'
+                'loss2: {auxilary_loss:.4f}\t'
                 'total loss: {total_loss:.4f}'.format( # check shuffle
-                epoch, count_batches, img_map_loss=batch_stats['img_map_loss'],
+                epoch, count_batches, img_map_loss=batch_stats['img_map_loss'],auxilary_loss=batch_stats['auxilary_loss'],
                 total_loss=batch_stats['loss']))
 
         running_stats.append(batch_stats)

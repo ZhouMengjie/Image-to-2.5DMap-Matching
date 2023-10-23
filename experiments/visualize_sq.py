@@ -2,12 +2,13 @@ import os
 import cv2
 import random
 import pandas as pd
+import numpy as np
 from PIL import Image
 
 
 if __name__ == '__main__':
     dataset_path = 'datasets'
-    query_filename = 'unionsquare5kU'
+    query_filename = 'wallstreet5kU'
     # sequences
     seq_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sq.csv')
     sequences = (pd.read_csv(seq_filepath, sep=',', header=None)).values
@@ -18,21 +19,22 @@ if __name__ == '__main__':
     set_filepath = os.path.join(dataset_path, 'csv', query_filename+ '_set.csv')
     map_meta = (pd.read_csv(set_filepath, sep=',', header=None)).values
            
-    # Define the folder where to save the images
-    output_folder = 'sequence_images'
-    os.makedirs(output_folder, exist_ok=True)
-
     # Define the folder where to save the videos
-    video_folder = 'sequence_videos'
-    os.makedirs(video_folder, exist_ok=True)
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    # video_folder = 'sequence_videos'
+    # os.makedirs(video_folder, exist_ok=True)
+    # fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
     # Random choose a sequence to visualize
     # ndx = random.randint(1, len(sequences))
-    ndx = 4104
+    ndx = 1168
+
+    # Define the folder where to save the images
+    output_folder = os.path.join('sequence_images',query_filename, str(ndx))
+    os.makedirs(output_folder, exist_ok=True)
+
     seq_indices = sequences[ndx]
-    videowrite_pano = cv2.VideoWriter(os.path.join(video_folder,str(ndx)+'pano.avi'),fourcc,1,(1664,832))
-    videowrite_map = cv2.VideoWriter(os.path.join(video_folder,str(ndx)+'map.avi'),fourcc,1,(256,256))
+    # videowrite_pano = cv2.VideoWriter(os.path.join(video_folder,str(ndx)+'pano.avi'),fourcc,1,(1664,832))
+    # videowrite_map = cv2.VideoWriter(os.path.join(video_folder,str(ndx)+'map.avi'),fourcc,1,(256,256))
     for i, idx in enumerate(seq_indices):
         panoid = pano_meta[idx][0]
         yaw = float(pano_meta[idx][3])
@@ -54,13 +56,13 @@ if __name__ == '__main__':
         tile_image.close()
 
         # Make videos
-        frame_pano = cv2.imread(pano_pathname)
-        videowrite_pano.write(frame_pano)
-        frame_tile = cv2.imread(tile_pathname)
-        videowrite_map.write(frame_tile)
+        # frame_pano = cv2.imread(pano_pathname)
+        # videowrite_pano.write(frame_pano)
+        # frame_tile = cv2.imread(tile_pathname)
+        # videowrite_map.write(frame_tile)
     
-    videowrite_pano.release()
-    videowrite_map.release()
+    # videowrite_pano.release()
+    # videowrite_map.release()
 
 
 

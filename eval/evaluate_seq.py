@@ -94,7 +94,8 @@ def evaluate(model, device, params, exp_name, pca_dim):
         pca_database_embeddings = estimator.fit_transform(database_embeddings) 
         pca_query_embeddings = estimator.transform(query_embeddings)
         
-        recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)   
+        recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)  
+        # recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings, location_name)    
         ave_recall = recall
         average_similarity = np.mean(similarity)
         ave_one_percent_recall = one_percent_recall
@@ -142,7 +143,10 @@ def get_recall(database_vectors, query_vectors):
                     top1_similarity_score.append(similarity)
                 recall[j] += 1
                 break
-    # np.save(os.path.join('results', location_name+'_rank.npy'), rank) # obtain rank for retrieving visualization
+    
+    # output_folder = os.path.join('results',params.pre_model_name)
+    # os.makedirs(output_folder, exist_ok=True)
+    # np.save(os.path.join(output_folder, location_name+'_'+params.model_type+'_rank.npy'), rank) # obtain rank for retrieving visualization
     recall = (np.cumsum(recall)/float(num_evaluated))*100
     one_percent_recall = recall[threshold]
     return recall, top1_similarity_score, one_percent_recall

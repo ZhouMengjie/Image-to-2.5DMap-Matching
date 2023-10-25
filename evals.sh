@@ -20,4 +20,4 @@ python eval/evaluate_seq.py \
 --exp_name 'none' \
 --num_layers 1 --num_heads 8 --seq_len 5 \
 --pca_dim 80 --model_type 'transmixer' \
---weights 'weights3090/model_20231017_1134_best_top1.pth'
+--weights 'weights3090/model_20231019_1102_best_top1.pth'

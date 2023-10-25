@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.append(os.getcwd())
 import pandas as pd
 import numpy as np
 import torch
@@ -20,11 +22,12 @@ class SeqDataset_v2(Dataset):
         self.seq_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sq.csv')
         self.sequences = (pd.read_csv(self.seq_filepath, sep=',', header=None)).values
         self.indexes = np.arange(0, len(self.sequences))
+        self.area = query_filename+'_idx'
 
         self.pano_filepath = os.path.join(dataset_path, 'csv', query_filename+'.pickle')
         self.pano: Dict[int, TrainingTuple] = pickle.load(open(self.pano_filepath, 'rb')) 
         self.map_filepath = os.path.join(dataset_path, 'csv', query_filename+ '_set.csv')
-        self.map = (pd.read_csv(self.set_filepath, sep=',', header=None)).values
+        self.map = (pd.read_csv(self.map_filepath, sep=',', header=None)).values
         points_mh = np.load(os.path.join(dataset_path, 'manhattan', 'manhattanU.npy'))
         points_pt = np.load(os.path.join(dataset_path, 'pittsburgh', 'pittsburghU.npy'))
         self.points = {'manhattan': points_mh, 'pittsburgh': points_pt}
@@ -66,7 +69,6 @@ class SeqDataset_v2(Dataset):
             pano_seq.append(img) # C, H, W
 
             tile_pathname = os.path.join(self.dataset_path, 'tiles_'+city+'_2019', 'z18', str(global_idx).zfill(5) + '.png')
-            assert os.path.isfile(tile_pathname), "Image {} not found".format(tile_pathname)
             tile = Image.open(tile_pathname).convert('RGB')
             tile = self.tile_transform(tile) # C, H, W
             if self.use_polar:
@@ -87,9 +89,10 @@ class SeqDataset_v2(Dataset):
                 # Load point cloud and apply transform
                 coords = self.load_pc(pcd_pathname, self.points[city])
                 pcd['cloud'] = coords
-                result = self.transform(result)
+                pcd['cloud_ft'] = coords # useless
+                pcd = self.cloud_transform(pcd)
                 if self.npoints is not None:
-                    pc = result['cloud'].numpy()
+                    pc = pcd['cloud'].numpy()
                     coords = self.farthest_point_sample(pc, self.npoints)
                     pcd['xyz'] = torch.tensor(coords, dtype=torch.float)
                     pcd['cloud'] = torch.tensor(coords, dtype=torch.float)
@@ -99,13 +102,13 @@ class SeqDataset_v2(Dataset):
                     pcd['cloud'] = torch.tensor(coords, dtype=torch.float)
                 cloud_seq.append(pcd['cloud'])
                 xyz_seq.append(pcd['xyz'])
-                center_seq.append(pcd['center'])
+                center_seq.append(torch.tensor(pcd['center']))
             
-        pano_seq = torch.stack(pano_seq, dim=0)
-        tile_seq = torch.stack(tile_seq, dim=0)
-        cloud_seq = torch.stack(cloud_seq, dim=0)
-        xyz_seq = torch.stack(xyz_seq, dim=0)
-        center_seq = torch.stack(center_seq, dim=0)
+        pano_seq = torch.stack(pano_seq, dim=0) # T, C, H, W
+        tile_seq = torch.stack(tile_seq, dim=0) # T, C, H, W
+        cloud_seq = torch.stack(cloud_seq, dim=0) # T, N, C
+        xyz_seq = torch.stack(xyz_seq, dim=0) # T, N, 3
+        center_seq = torch.stack(center_seq, dim=0) # T, 3
         return {'images':pano_seq, 'tiles':tile_seq, 'coords':cloud_seq, 'xyz':xyz_seq,
                 'center':center_seq,'label':torch.tensor(ndx)}
 
@@ -216,7 +219,7 @@ if __name__ == '__main__':
                     cloud_transform=cloud_train_transform)
     
     batch_sampler = None
-    batch_size = 16
+    batch_size = 4
     nw = 0
     device = 'cuda'
     dataloaders = {}

@@ -79,7 +79,7 @@ class ValRGBTransform:
         return e
 
 class TrainTileTransform:
-    def __init__(self, aug_mode, tile_size):
+    def __init__(self, aug_mode, tile_size=224):
         self.aug_mode = aug_mode
         if self.aug_mode == 0:
             t = [transforms.Resize(size=(tile_size,tile_size)),
@@ -101,7 +101,7 @@ class TrainTileTransform:
         return e
 
 class ValTileTransform:
-    def __init__(self, tile_size):
+    def __init__(self, tile_size=224):
         self.aug_mode = 0
         t = [transforms.Resize(size=(tile_size,tile_size)),
              transforms.ToTensor(), 

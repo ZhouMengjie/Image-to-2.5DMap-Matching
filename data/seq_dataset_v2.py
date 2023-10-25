@@ -204,6 +204,31 @@ class TrainingTuple:
         self.positives = positives
         self.non_negatives = non_negatives
 
+
+def make_collate_fn(dataset: SeqDataset_v2):
+    def collate_fn(data_list):
+        result = {}
+        labels = [d['label'] for d in data_list]
+        result['label'] = torch.tensor(labels)
+
+        center = torch.cat([d['center'] for d in data_list])
+        result['center'] = center
+
+        images_batch = torch.cat([d["images"] for d in data_list])
+        result['images'] = images_batch
+
+        tiles_batch = torch.cat([d["tiles"] for d in data_list])
+        result['tiles'] = tiles_batch
+
+        if dataset.use_cloud:
+            coordinates_batch = torch.cat([d["coords"] for d in data_list])
+            xyz_batch = torch.cat([d["xyz"] for d in data_list])
+            result['coords'] = coordinates_batch.permute(0, 2, 1)
+            result['xyz'] = xyz_batch.permute(0, 2, 1)
+
+        return result
+    return collate_fn
+
 if __name__ == '__main__':
     dataset_path = 'datasets'
     query_filename = 'unionsquare5kU'
@@ -217,13 +242,15 @@ if __name__ == '__main__':
     dataset['train'] = SeqDataset_v2(dataset_path, query_filename, use_cloud=True, 
                     image_transform=image_train_transform, tile_transform=tile_train_transform,
                     cloud_transform=cloud_train_transform)
+
+    collate_fn = make_collate_fn(dataset['train'])
     
     batch_sampler = None
     batch_size = 4
     nw = 0
     device = 'cuda'
     dataloaders = {}
-    dataloaders['train'] = DataLoader(dataset['train'], batch_sampler=batch_sampler, batch_size=batch_size,
+    dataloaders['train'] = DataLoader(dataset['train'], batch_sampler=batch_sampler, batch_size=batch_size, collate_fn=collate_fn,
                             num_workers=nw, pin_memory=True, shuffle=True, drop_last=True)
     
     for batch in dataloaders['train']:

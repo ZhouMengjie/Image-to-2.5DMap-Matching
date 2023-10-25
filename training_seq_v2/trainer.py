@@ -7,7 +7,7 @@ import pathlib
 import torch.distributed as dist
 import torch.nn.functional as F
 import tempfile
-from models.get_model import get_model
+from models.seq_model_v2 import SeqModel
 from models.get_encoder import get_encoder
 from training_seq.distributed_utils import cleanup, reduce_value
 from eval.evaluate_seq import get_recall
@@ -34,12 +34,10 @@ def tensors_to_numbers(stats, device, distributed=False):
 
 def do_train(dataloaders, train_sampler, params, use_amp=False):
     # Create model class
-    encoder = get_encoder(params)
-    model = get_model(params)
+    model = SeqModel(params)
 
     # Move and initialize the model to the proper device before configuring the optimizer
     device  = params.device
-    encoder.to(device)
     model.to(device)
 
     if params.log:
@@ -49,24 +47,14 @@ def do_train(dataloaders, train_sampler, params, use_amp=False):
             model_name = model_name.split('.')[0] + '_' + s
         else:
             model_name = 'model_' + s
-        
-        if params.encoder_weights is not None:
-            encoder_name = os.path.split(params.encoder_weights)[1]
-            encoder_name = encoder_name.split('.')[0] + '_' + s
-        else:
-            encoder_name = 'encoder_' + s
 
         weights_path = create_folder('weights3090')
         model_pathname = os.path.join(weights_path, model_name)
-        encoder_pathname = os.path.join(weights_path, encoder_name)
 
         print('Model device: {}'.format(device))
         print('Model name: {}'.format(model_name))
-        print('Encoder name: {}'.format(encoder_name))
         n_params = sum([param.nelement() for param in model.parameters()])
-        e_params = sum([param.nelement() for param in encoder.parameters()])
-
-        print('Number of model parameters: {}'.format(n_params+e_params))
+        print('Number of model parameters: {}'.format(n_params))
 
         # Initialize TensorBoard writer
         log_path = create_folder('tf_logs')
@@ -97,36 +85,10 @@ def do_train(dataloaders, train_sampler, params, use_amp=False):
             model.load_state_dict(torch.load(checkpoint_path, map_location=device))
             print('load initial weights!')
 
-
-    if params.encoder_weights is not None:
-        assert os.path.exists(params.encoder_weights), 'Cannot open network weights: {}'.format(params.encoder_weights)
-        checkpoint = torch.load(params.encoder_weights, map_location=device)  
-        if 'model' in checkpoint:
-            ckp = checkpoint['model']
-        else:
-            ckp = checkpoint
-        state_dict = {}
-        for k, v in ckp.items():
-            new_k = k.replace('module.', '') if 'module' in k else k
-            state_dict[new_k] = v
-        encoder.load_state_dict(state_dict, strict=False)
-        print('load pretrained {} model!'.format(params.encoder_weights))    
-    else:
-        if params.distributed:
-            checkpoint_path = os.path.join(tempfile.gettempdir(), "initial_encoder_weights.pt")
-            # if pre-trained weight don't exist, save the weights from rank 0，then load by other ranks to keep the weight initialization consistent
-            if params.log:
-                torch.save(encoder.state_dict(), checkpoint_path)
-            dist.barrier()
-            # Note: map_location should be set, otherwise the first GPU would occupy more resources
-            encoder.load_state_dict(torch.load(checkpoint_path, map_location=device))
-            print('load initial weights!')
-
     # syncronize the BN
     if params.syncBN:
         # training would be more time-consuming
         model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model).to(device)
-        encoder = torch.nn.SyncBatchNorm.convert_sync_batchnorm(encoder).to(device)
 
     if params.distributed:
         params.lr *= params.world_size
@@ -136,7 +98,6 @@ def do_train(dataloaders, train_sampler, params, use_amp=False):
     # convert to DDP model
     if params.distributed:
         model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[params.gpu],broadcast_buffers=False)
-        encoder = torch.nn.parallel.DistributedDataParallel(encoder, device_ids=[params.gpu],broadcast_buffers=False)
 
     params_l = []
     params_l.append({'params': model.parameters(), 'initial_lr':params.lr, 'lr': params.lr})
@@ -263,17 +224,11 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         count_batches += 1
         batch_stats = {}
         batch = {e: batch[e].to(device) for e in batch}
-        pre_pano = batch['pano']
-        pre_map = batch['map']
 
         optimizer.zero_grad()
         # Compute embeddings of all elements
         with torch.cuda.amp.autocast(enabled=use_amp):
-            if params.share:
-                pano_feat = model(pre_pano)
-                map_feat = model(pre_map)
-            else:
-                pano_feat, map_feat = model(pre_pano, pre_map)
+            pano_feat, map_feat = model(batch)
             loss, temp_stats, _ = loss_fn(pano_feat, map_feat)  
 
         scaler.scale(loss).backward()           
@@ -287,11 +242,7 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         else:
             optimizer.first_step(zero_grad=True)
             with torch.cuda.amp.autocast(enabled=use_amp):   
-                if params.share:
-                    pano_feat = model(pre_pano)
-                    map_feat = model(pre_map)
-                else:
-                    pano_feat, map_feat = model(pre_pano, pre_map)
+                pano_feat, map_feat = model(batch)
                 loss, temp_stats, _ = loss_fn(pano_feat, map_feat) 
             # loss.backward()
             scaler.scale(loss).backward()  
@@ -328,15 +279,7 @@ def validate(model, dataloader, device, params, epoch):
         count_batches += 1
         with torch.no_grad():
             batch = {e: batch[e].to(device) for e in batch}
-            pre_pano = batch['pano']
-            pre_map = batch['map']
-
-            if params.share:
-                pano_feat = model(pre_pano)
-                map_feat = model(pre_map)
-            else:
-                pano_feat, map_feat = model(pre_pano, pre_map)
-
+            pano_feat, map_feat = model(batch)
             pano_embedding = torch.nn.functional.normalize(pano_feat, p=2, dim=1)  # Normalize embeddings
             map_embedding = torch.nn.functional.normalize(map_feat, p=2, dim=1)
             pano_embedding = pano_embedding.detach().cpu().numpy()

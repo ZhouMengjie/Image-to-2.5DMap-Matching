@@ -8,8 +8,7 @@ import torch.distributed as dist
 import torch.nn.functional as F
 import tempfile
 from models.seq_model_v2 import SeqModel
-from models.get_encoder import get_encoder
-from training_seq.distributed_utils import cleanup, reduce_value
+from training_seq_v2.distributed_utils import cleanup, reduce_value
 from eval.evaluate_seq import get_recall
 
 from torch.utils.tensorboard import SummaryWriter

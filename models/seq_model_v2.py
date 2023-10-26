@@ -13,20 +13,20 @@ from models.seq_model import SeqNet_v2
 
 class SeqModel(nn.Module):
     def __init__(self, params):
-        super(SeqModel).__init__()
+        super(SeqModel, self).__init__()
         if params.map_type == 'single':
-            tile_fe_size = params.feat_dim
+            tile_fe_size = params.encoder_dim
             tile_fe = Tile_SAFA(out_channels=tile_fe_size, tile_size=params.tile_size, use_polar=params.use_polar)
-            image_fe_size = params.feat_dim    
+            image_fe_size = params.encoder_dim    
             image_fe = Pano_SAFA(out_channels=image_fe_size, img_size=params.image_size)
             cloud_fe = None
             cloud_fe_size = 0
-            self.encoder = Multimodal(cloud_fe, cloud_fe_size, image_fe, image_fe_size, tile_fe, tile_fe_size, output_dim=image_fe_size, fuse_method='2to3')
+            self.encoder = Multimodal(cloud_fe, cloud_fe_size, image_fe, image_fe_size, tile_fe, tile_fe_size, output_dim=image_fe_size, fuse_method='concat')
         elif params.map_type == 'multi':
-            tile_fe_size, cloud_fe_size, image_fe_size = params.feat_dim, params.feat_dim, params.feat_dim
-            tile_fe = Tile_SAFA(out_channels=params.feat_dim, tile_size=params.tile_size, use_polar=params.use_polar)
-            cloud_fe = DGCNN(out_channel=params.feat_dim, in_channel=3, nneighbor=20)
-            image_fe = Pano_SAFA(out_channels=params.feat_dim, img_size=params.image_size)
+            tile_fe_size, cloud_fe_size, image_fe_size = params.encoder_dim, params.encoder_dim, params.encoder_dim
+            tile_fe = Tile_SAFA(out_channels=tile_fe_size, tile_size=params.tile_size, use_polar=params.use_polar)
+            cloud_fe = DGCNN(out_channel=cloud_fe_size, in_channel=3, nneighbor=20)
+            image_fe = Pano_SAFA(out_channels=image_fe_size, img_size=params.image_size)
             self.encoder = Multimodal(cloud_fe, cloud_fe_size, image_fe, image_fe_size, tile_fe, tile_fe_size, output_dim=image_fe_size, fuse_method='2to3')
         else:
             raise NotImplementedError('Unsupported Map Type: {}'.format(params.map_type))
@@ -42,7 +42,7 @@ class SeqModel(nn.Module):
             for k, v in ckp.items():
                 new_k = k.replace('module.', '') if 'module' in k else k
                 state_dict[new_k] = v
-            encoder.load_state_dict(state_dict, strict=True)
+            self.encoder.load_state_dict(state_dict, strict=True)
             print('load pretrained {} encoder!'.format(params.pretrained)) 
 
         if params.freeze:
@@ -65,11 +65,17 @@ class SeqModel(nn.Module):
         x = self.encoder(batch)
         image_embedding = x['image_embedding']
         map_embedding = x['embedding']
-        if params.share:
+        
+        image_embedding = torch.nn.functional.normalize(image_embedding, p=2, dim=1)  # Normalize embeddings
+        map_embedding = torch.nn.functional.normalize(map_embedding, p=2, dim=1)
+        
+        image_embedding = image_embedding.view(-1, self.seq_len, image_embedding.shape[1])
+        map_embedding = map_embedding.view(-1, self.seq_len, map_embedding.shape[1])
+        if self.share:
             pano_feat = self.seqmodel(image_embedding)
             map_feat = self.seqmodel(map_embedding)
         else:
-            pano_feat, map_feat = model(image_embedding, map_embedding)
+            pano_feat, map_feat = self.seqmodel(image_embedding, map_embedding)
         return pano_feat, map_feat
 
 

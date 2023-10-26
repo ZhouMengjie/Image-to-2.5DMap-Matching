@@ -27,12 +27,30 @@ python -m torch.distributed.launch --use_env \
 --nnodes=${WORLD_SIZE} \
 --node_rank=${RANK} \
 training_seq/train.py --distributed --port 12364 \
---feat_dim 4096 --batch_size 24 --share \
+--feat_dim 4096 --batch_size 6 --share \
 --pre_model_name 'resnetsafa_dgcnn_asam_2to3_up' \
 --margin 0.07 --lr 1e-4 \
 --optimizer SAM --wd 0.03 --epochs 10 \
 --scheduler 'CosineAnnealingLR' \
 --num_layers 1 --num_heads 8 --seq_len 5 \
 --model_type 'transmixer'
+
+# python -m torch.distributed.launch --use_env \
+# --nproc_per_node=${KUBERNETES_CONTAINER_RESOURCE_GPU} \
+# --master_addr=${MASTER_ADDR} \
+# --master_port=${MASTER_PORT} \
+# --nnodes=${WORLD_SIZE} \
+# --node_rank=${RANK} \
+# training_seq_v2/train.py --distributed --port 12364 \
+# --feat_dim 4096 --batch_size 6 --share \
+# --margin 0.07 --lr 1e-4 \
+# --optimizer SAM --wd 0.03 --epochs 10 \
+# --scheduler 'CosineAnnealingLR' \
+# --num_layers 1 --num_heads 8 --seq_len 5 \
+# --model_type 'transmixer' \
+# --val_batch_size 10 --use_cloud \
+# --map_type 'multi' --encoder_dim 512 \
+# # --pretrained 'weights/resnetsafa_dgcnn_asam_2to3_up.pth'
+
 
 

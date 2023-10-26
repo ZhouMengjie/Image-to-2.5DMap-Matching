@@ -14,9 +14,9 @@ from torch.utils.data import DataLoader
 import numpy as np
 import random
 from config.utils import get_datetime
-from data.seq_dataset import SeqDataset_v2, make_collate_fn
-from training_seq.distributed_utils import init_distributed_mode
-from training_seq.trainer import do_train
+from data.seq_dataset_v2 import SeqDataset_v2, make_collate_fn
+from training_seq_v2.distributed_utils import init_distributed_mode
+from training_seq_v2.trainer import do_train
 from data.augmentation_simple import TrainTransform, ValTransform, TrainRGBTransform, ValRGBTransform, TrainTileTransform, ValTileTransform
 
 
@@ -54,7 +54,6 @@ if __name__ == '__main__':
     parser.add_argument('--epochs', type=int, default=60, required=False, help='Total training epochs')
     parser.add_argument('--lr', type=float, default=1e-4, required=False, help='Initial learning rate')
     parser.add_argument('--scheduler', type=str, required=False, help='LR Scheduler')
-    parser.add_argument('--pre_model_name', type=str, required=False, help='Precomputed model name')
     parser.add_argument('--num_layers', type=int, default=1, required=False, help='Number of transformer layers')
     parser.add_argument('--num_heads', type=int, default=8, required=False, help='Number of transformer heads')
     parser.add_argument('--seq_len', type=int, default=5, required=False, help='Sequence length')
@@ -62,19 +61,19 @@ if __name__ == '__main__':
 
     # arguments for seqdataset_v2
     parser.add_argument('--use_cloud', dest='use_cloud', action='store_true')
-    parser.add_argument('--use_polar', dest='use_cloud', action='store_true')
+    parser.add_argument('--use_polar', dest='use_polar', action='store_true')
     parser.add_argument('--freeze', dest='freeze', action='store_true')
     parser.add_argument('--aug_mode', type=int, default=0, required=False, help='Whether use data augmentation')
     parser.add_argument('--tile_size', type=int, default=224, required=False, help='Size of tile')
     parser.add_argument('--image_size', type=int, default=224, required=False, help='Size of pano')
     parser.add_argument('--map_type', type=str, required=False, help='Map type')
     parser.add_argument('--pretrained', type=str, required=False, help='Pretrained encoder weights')
+    parser.add_argument('--encoder_dim', type=int, default=512, required=False, help='Encoder output dimension')
 
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')
     parser.set_defaults(optimizer='SAM')
     parser.set_defaults(scheduler='CosineAnnealingLR')
-    parser.set_defaults(pre_model_name='resnetsafa_dgcnn_asam_2to3_up')
     parser.set_defaults(model_type='transmixer')
     parser.set_defaults(map_type='multi')
 
@@ -108,6 +107,9 @@ if __name__ == '__main__':
     if params.use_cloud:
         cloud_train_transform = TrainTransform(params.aug_mode)
         cloud_val_transform = ValTransform()
+    else:
+        cloud_train_transform = None
+        cloud_val_transform = None
 
     image_train_transform = TrainRGBTransform(params.aug_mode)
     image_val_transform = ValRGBTransform()

@@ -58,6 +58,17 @@ class SeqModel(nn.Module):
         elif params.model_type == 'seqnet' and not params.share:
             self.seqmodel = SeqNet_v2(params.feat_dim, seqL=params.seq_len)
 
+        # checkpoint = torch.load('weights3090/model_20231017_1134_best_top1.pth', map_location=params.device)  
+        # if 'model' in checkpoint:
+        #     ckp = checkpoint['model']
+        # else:
+        #     ckp = checkpoint
+        # state_dict = {}
+        # for k, v in ckp.items():
+        #     new_k = k.replace('module.', '') if 'module' in k else k
+        #     state_dict[new_k] = v
+        # self.seqmodel.load_state_dict(state_dict, strict=True)
+
         self.seq_len = params.seq_len
         self.share = params.share
 

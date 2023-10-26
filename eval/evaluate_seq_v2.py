@@ -49,7 +49,7 @@ def evaluate(model, device, params, exp_name, pca_dim):
 
     for location_name in params.eval_files:
         # Extract location name from query and database files
-        datasets[location_name] = SeqDataset_v2(params.dataset_folder, params.val_file, 
+        datasets[location_name] = SeqDataset_v2(params.dataset_folder, location_name, 
                                 tile_size=params.tile_size, image_size=params.image_size,
                                 use_cloud=params.use_cloud, use_polar=params.use_polar,
                                 image_transform=image_val_transform, tile_transform=tile_val_transform,
@@ -67,17 +67,10 @@ def evaluate(model, device, params, exp_name, pca_dim):
         for batch in dataloaders[location_name]:
             with torch.no_grad():
                 batch = {e: batch[e].to(device) for e in batch}
-                pre_pano = batch['pano']
-                pre_map = batch['map']
-
                 torch.cuda.synchronize()
                 torch.cuda.reset_max_memory_allocated()
                 start = time.time()
-                if params.share:
-                    pano_feat = model(pre_pano)
-                    map_feat = model(pre_map)
-                else:
-                    pano_feat, map_feat = model(pre_pano, pre_map)
+                pano_feat, map_feat = model(batch)
                 torch.cuda.synchronize()
                 end = time.time()
                 memory = torch.cuda.max_memory_allocated(device=device)
@@ -213,7 +206,7 @@ if __name__ == "__main__":
     parser.add_argument('--exp_name', type=str, required=False, help='Experiment name')  
     parser.add_argument('--pca_dim', type=int, default=80, required=False, help='PCA dimension')  
     parser.add_argument('--model_type', type=str, required=False, help='Model type')
-    parser.add_argument('--share', dest='share', action='store_false')
+    parser.add_argument('--share', dest='share', action='store_true')
 
     # arguments for seqdataset_v2
     parser.add_argument('--use_cloud', dest='use_cloud', action='store_true')
@@ -234,12 +227,12 @@ if __name__ == "__main__":
     seed_all(params.seed)
     params.eval_files = [e for e in params.eval_files.split(',')]
 
-    # savedStdout = sys.stdout
-    # s = get_datetime()
-    # if not os.path.exists('test_logs'):
-    #     os.mkdir('test_logs')
-    # print_log = open(os.path.join('test_logs',s+'.txt'),'w')
-    # sys.stdout = print_log
+    savedStdout = sys.stdout
+    s = get_datetime()
+    if not os.path.exists('test_logs'):
+        os.mkdir('test_logs')
+    print_log = open(os.path.join('test_logs',s+'.txt'),'w')
+    sys.stdout = print_log
 
     if params.weights is None:
         w = 'RANDOM WEIGHTS'
@@ -281,6 +274,6 @@ if __name__ == "__main__":
     print_eval_stats(stats)
     
     # Append key experimental metrics to experiment summary file
-    prefix = "{}, {}".format(params.pre_model_name, w)
+    prefix = "{}, {}".format(params.pretrained, w)
     export_eval_stats("experiment_results.txt", prefix, stats)
 

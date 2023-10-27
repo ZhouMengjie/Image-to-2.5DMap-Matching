@@ -103,14 +103,19 @@ class SeqDataset_v2(Dataset):
                 cloud_seq.append(pcd['cloud'])
                 xyz_seq.append(pcd['xyz'])
                 center_seq.append(torch.tensor(pcd['center']))
-            
-        pano_seq = torch.stack(pano_seq, dim=0) # T, C, H, W
-        tile_seq = torch.stack(tile_seq, dim=0) # T, C, H, W
-        cloud_seq = torch.stack(cloud_seq, dim=0) # T, N, C
-        xyz_seq = torch.stack(xyz_seq, dim=0) # T, N, 3
-        center_seq = torch.stack(center_seq, dim=0) # T, 3
-        return {'images':pano_seq, 'tiles':tile_seq, 'coords':cloud_seq, 'xyz':xyz_seq,
-                'center':center_seq,'label':torch.tensor(ndx)}
+
+        if self.use_cloud:    
+            pano_seq = torch.stack(pano_seq, dim=0) # T, C, H, W
+            tile_seq = torch.stack(tile_seq, dim=0) # T, C, H, W
+            cloud_seq = torch.stack(cloud_seq, dim=0) # T, N, C
+            xyz_seq = torch.stack(xyz_seq, dim=0) # T, N, 3
+            center_seq = torch.stack(center_seq, dim=0) # T, 3
+            return {'images':pano_seq, 'tiles':tile_seq, 'coords':cloud_seq, 'xyz':xyz_seq,
+                    'center':center_seq,'label':torch.tensor(ndx)}
+        else:
+            pano_seq = torch.stack(pano_seq, dim=0) # T, C, H, W
+            tile_seq = torch.stack(tile_seq, dim=0) # T, C, H, W
+            return {'images':pano_seq, 'tiles':tile_seq, 'label':torch.tensor(ndx)}
 
     def load_pc(self, filename, points):
         # Load point cloud, does not apply any transform
@@ -211,9 +216,6 @@ def make_collate_fn(dataset: SeqDataset_v2):
         labels = [d['label'] for d in data_list]
         result['label'] = torch.tensor(labels)
 
-        center = torch.cat([d['center'] for d in data_list])
-        result['center'] = center
-
         images_batch = torch.cat([d["images"] for d in data_list])
         result['images'] = images_batch
 
@@ -221,6 +223,8 @@ def make_collate_fn(dataset: SeqDataset_v2):
         result['tiles'] = tiles_batch
 
         if dataset.use_cloud:
+            center = torch.cat([d['center'] for d in data_list])
+            result['center'] = center
             coordinates_batch = torch.cat([d["coords"] for d in data_list])
             xyz_batch = torch.cat([d["xyz"] for d in data_list])
             result['coords'] = coordinates_batch.permute(0, 2, 1)

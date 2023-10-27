@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 import random
 from config.utils import get_datetime
-from data.seq_dataset_v2 import SeqDataset_v2, make_collate_fn
+from data.seq_dataset_v2 import SeqDataset_v2
 from training_seq_v2.distributed_utils import init_distributed_mode
 from training_seq_v2.trainer import do_train
 from data.augmentation_simple import TrainTransform, ValTransform, TrainRGBTransform, ValRGBTransform, TrainTileTransform, ValTileTransform
@@ -54,28 +54,20 @@ if __name__ == '__main__':
     parser.add_argument('--epochs', type=int, default=60, required=False, help='Total training epochs')
     parser.add_argument('--lr', type=float, default=1e-4, required=False, help='Initial learning rate')
     parser.add_argument('--scheduler', type=str, required=False, help='LR Scheduler')
-    parser.add_argument('--num_layers', type=int, default=1, required=False, help='Number of transformer layers')
-    parser.add_argument('--num_heads', type=int, default=8, required=False, help='Number of transformer heads')
     parser.add_argument('--seq_len', type=int, default=5, required=False, help='Sequence length')
-    parser.add_argument('--model_type', type=str, required=False, help='Model type')
 
     # arguments for seqdataset_v2
-    parser.add_argument('--use_cloud', dest='use_cloud', action='store_true') # always false
+    parser.add_argument('--use_cloud', dest='use_cloud', action='store_true') # always False
     parser.add_argument('--use_polar', dest='use_polar', action='store_true')
     parser.add_argument('--freeze', dest='freeze', action='store_true')
     parser.add_argument('--aug_mode', type=int, default=0, required=False, help='Whether use data augmentation')
     parser.add_argument('--tile_size', type=int, default=224, required=False, help='Size of tile')
     parser.add_argument('--image_size', type=int, default=224, required=False, help='Size of pano')
-    parser.add_argument('--map_type', type=str, required=False, help='Map type')
-    parser.add_argument('--pretrained', type=str, required=False, help='Pretrained encoder weights')
-    parser.add_argument('--encoder_dim', type=int, default=512, required=False, help='Encoder output dimension')
 
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')
     parser.set_defaults(optimizer='SAM')
     parser.set_defaults(scheduler='CosineAnnealingLR')
-    parser.set_defaults(model_type='transmixer')
-    parser.set_defaults(map_type='multi')
 
     params = parser.parse_args()
     seed_all(params.seed)
@@ -104,7 +96,7 @@ if __name__ == '__main__':
         print('')
 
     # make dataloaders
-    if params.use_cloud:
+    if params.use_cloud: # always False
         cloud_train_transform = TrainTransform(params.aug_mode)
         cloud_val_transform = ValTransform()
     else:
@@ -137,23 +129,19 @@ if __name__ == '__main__':
     if params.distributed:
         train_sampler = torch.utils.data.distributed.DistributedSampler(datasets['train'], num_replicas=params.world_size, rank=params.rank, shuffle=True)
         train_batch_sampler = torch.utils.data.BatchSampler(train_sampler, params.batch_size, drop_last=True)
-        train_collate_fn = make_collate_fn(datasets['train'])
-        dataloaders['train'] = DataLoader(datasets['train'], batch_sampler=train_batch_sampler, num_workers=nw, pin_memory=True, collate_fn=train_collate_fn)
+        dataloaders['train'] = DataLoader(datasets['train'], batch_sampler=train_batch_sampler, num_workers=nw, pin_memory=True)
     else:
         train_sampler = None
         train_batch_sampler = None
-        train_collate_fn = make_collate_fn(datasets['train'])
-        dataloaders['train'] = DataLoader(datasets['train'], batch_sampler=train_batch_sampler, batch_size=params.batch_size, num_workers=nw, pin_memory=True, shuffle=True, drop_last=True, collate_fn=train_collate_fn)
+        dataloaders['train'] = DataLoader(datasets['train'], batch_sampler=train_batch_sampler, batch_size=params.batch_size, num_workers=nw, pin_memory=True, shuffle=True, drop_last=True)
 
     if params.val_distributed:
         val_sampler = torch.utils.data.distributed.DistributedSampler(datasets['val'], num_replicas=params.world_size, rank=params.rank, shuffle=False)
         val_batch_sampler = torch.utils.data.BatchSampler(val_sampler, params.val_batch_size, drop_last=False)
-        val_collate_fn = make_collate_fn(datasets['val'])
-        dataloaders['val'] = DataLoader(datasets['val'], sampler=val_batch_sampler, num_workers=nw, pin_memory=True, collate_fn=val_collate_fn)           
+        dataloaders['val'] = DataLoader(datasets['val'], sampler=val_batch_sampler, num_workers=nw, pin_memory=True)           
     else:
         val_batch_sampler = None
-        val_collate_fn = make_collate_fn(datasets['val'])
-        dataloaders['val'] = DataLoader(datasets['val'], sampler=val_batch_sampler, batch_size=params.val_batch_size, num_workers=nw, pin_memory=True, shuffle=False, drop_last=False, collate_fn=val_collate_fn)
+        dataloaders['val'] = DataLoader(datasets['val'], sampler=val_batch_sampler, batch_size=params.val_batch_size, num_workers=nw, pin_memory=True, shuffle=False, drop_last=False)
 
     do_train(dataloaders, train_sampler, params, use_amp=params.use_amp)
 

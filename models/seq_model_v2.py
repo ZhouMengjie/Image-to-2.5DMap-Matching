@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from models.dgcnn_fuse import DGCNN
 from models.pano_safa import Pano_SAFA
-from models.tile_safa_fuse import Tile_SAFA
+from models.tile_safa import Tile_SAFA
 from models.multimodal import Multimodal
 from models.seq_model import TransMixer
 from models.seq_model import TransMixer_v2
@@ -58,7 +58,8 @@ class SeqModel(nn.Module):
         elif params.model_type == 'seqnet' and not params.share:
             self.seqmodel = SeqNet_v2(params.feat_dim, seqL=params.seq_len)
 
-        # checkpoint = torch.load('weights3090/model_20231017_1134_best_top1.pth', map_location=params.device)  
+        # for test only
+        # checkpoint = torch.load('weights3090/model_20231026_2250_best_top1.pth', map_location=params.device)  
         # if 'model' in checkpoint:
         #     ckp = checkpoint['model']
         # else:

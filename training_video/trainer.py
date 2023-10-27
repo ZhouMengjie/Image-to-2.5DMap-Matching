@@ -7,7 +7,7 @@ import pathlib
 import torch.distributed as dist
 import torch.nn.functional as F
 import tempfile
-from models.seq_model_v2 import SeqModel
+from models.video_model import VideoModel
 from training_seq_v2.distributed_utils import cleanup, reduce_value
 from eval.evaluate_seq import get_recall
 
@@ -33,7 +33,7 @@ def tensors_to_numbers(stats, device, distributed=False):
 
 def do_train(dataloaders, train_sampler, params, use_amp=False):
     # Create model class
-    model = SeqModel(params)
+    model = VideoModel(params)
 
     # Move and initialize the model to the proper device before configuring the optimizer
     device  = params.device
@@ -227,7 +227,7 @@ def train_one_epoch(model, dataloader, device, optimizer, loss_fn, params, epoch
         optimizer.zero_grad()
         # Compute embeddings of all elements
         with torch.cuda.amp.autocast(enabled=use_amp):
-            pano_feat, map_feat = model(batch)
+            pano_feat, map_feat = model(batch) # batch: B, T, C, H, W
             loss, temp_stats, _ = loss_fn(pano_feat, map_feat)  
 
         scaler.scale(loss).backward()           

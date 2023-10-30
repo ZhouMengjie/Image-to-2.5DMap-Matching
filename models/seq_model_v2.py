@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from models.dgcnn_fuse import DGCNN
 from models.pano_safa import Pano_SAFA
-from models.tile_safa import Tile_SAFA
+from models.tile_safa_fuse import Tile_SAFA
 from models.multimodal import Multimodal
 from models.seq_model import TransMixer
 from models.seq_model import TransMixer_v2

@@ -15,8 +15,8 @@ import numpy as np
 import random
 from config.utils import get_datetime
 from data.seq_dataset_v2 import SeqDataset_v2
-from training_seq_v2.distributed_utils import init_distributed_mode
-from training_seq_v2.trainer import do_train
+from training_video.distributed_utils import init_distributed_mode
+from training_video.trainer import do_train
 from data.augmentation_simple import TrainTransform, ValTransform, TrainRGBTransform, ValRGBTransform, TrainTileTransform, ValTileTransform
 
 
@@ -34,7 +34,7 @@ def seed_all(random_seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train Minkowski Net embeddings using BatchHard negative mining')
     parser.add_argument('--dataset_folder', type=str, default='datasets', required=False, help='Dataset folder')
-    parser.add_argument('--batch_size', type=int, default=32, required=False, help='Training batch size')
+    parser.add_argument('--batch_size', type=int, default=24, required=False, help='Training batch size')
     parser.add_argument('--val_batch_size', type=int, default=24, required=False, help='Testing batch size')
     parser.add_argument('--weights', type=str, required=False, help='Trained model weights')
     parser.add_argument('--epoch', type=int, default=1, required=False, help='Initial training epoch')    
@@ -59,7 +59,6 @@ if __name__ == '__main__':
     # arguments for seqdataset_v2
     parser.add_argument('--use_cloud', dest='use_cloud', action='store_true') # always False
     parser.add_argument('--use_polar', dest='use_polar', action='store_true')
-    parser.add_argument('--freeze', dest='freeze', action='store_true')
     parser.add_argument('--aug_mode', type=int, default=0, required=False, help='Whether use data augmentation')
     parser.add_argument('--tile_size', type=int, default=224, required=False, help='Size of tile')
     parser.add_argument('--image_size', type=int, default=224, required=False, help='Size of pano')

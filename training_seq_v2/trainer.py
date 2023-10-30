@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import tempfile
 from models.seq_model_v2 import SeqModel
 from training_seq_v2.distributed_utils import cleanup, reduce_value
-from eval.evaluate_seq import get_recall
+from eval.evaluate_seq import get_recall  # the get_recall() is the same for both evaluate_seq and evaluate_seq_v2
 
 from torch.utils.tensorboard import SummaryWriter
 

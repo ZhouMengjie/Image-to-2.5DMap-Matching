@@ -88,3 +88,5 @@ config_train.txt, resnetsafa_dgcnn_asam_2to3_up.pth, 96.08, 67.06, 93.26, 60.82,
 config_train.txt, resnetsafa_dgcnn_asam_2to3_up.pth, 100.00, 83.88, 100.00, 83.88
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231017_1134_best_top1.pth, 97.40, 81.95, 95.59, 79.71, 99.93, 94.35, 97.64, 85.33
 weights/resnetsafa_asam_simple.pth, weights3090/model_20231027_1150_best_top1.pth, 95.92, 77.74, 96.19, 76.01, 99.61, 89.63, 97.24, 81.13
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231031_1354_best_top1.pth, 97.42, 81.72, 95.61, 79.84, 99.93, 94.58, 97.65, 85.38
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231031_1358_best_top1.pth, 96.65, 80.58, 95.30, 79.01, 99.83, 93.61, 97.26, 84.40

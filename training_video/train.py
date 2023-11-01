@@ -44,7 +44,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_distributed', dest='val_distributed', action='store_true')
     parser.add_argument('--syncBN', dest='syncBN', action='store_true')
     parser.add_argument('--use_amp', dest='use_amp', action='store_true')
-    parser.add_argument('--share', dest='share', action='store_true')
+    parser.add_argument('--share', dest='share', action='store_false')
     parser.add_argument('--seed', type=int, default=1, required=False, help='Seed')
     parser.add_argument('--port', type=str, default='12363', required=False, help='Port')  
     parser.add_argument('--feat_dim',type=int, default=4096, required=False, help='Feature dimension')
@@ -71,12 +71,12 @@ if __name__ == '__main__':
     params = parser.parse_args()
     seed_all(params.seed)
     
-    savedStdout = sys.stdout
-    s = get_datetime()
-    if not os.path.exists('arun_log'):
-        os.mkdir('arun_log')
-    print_log = open(os.path.join('arun_log',s+'.txt'),'w')
-    sys.stdout = print_log
+    # savedStdout = sys.stdout
+    # s = get_datetime()
+    # if not os.path.exists('arun_log'):
+    #     os.mkdir('arun_log')
+    # print_log = open(os.path.join('arun_log',s+'.txt'),'w')
+    # sys.stdout = print_log
 
     if params.distributed:
         init_distributed_mode(params)

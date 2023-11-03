@@ -2,20 +2,20 @@ import os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from layers.video_resnet import r3d_18
+from layers.video_resnet import r3d_18, mc3_18, r2plus1d_18
 
 class VideoModel(nn.Module):
     def __init__(self, params):
         super(VideoModel, self).__init__()
         self.share = params.share
-        model_file = 'r3d_18-b3b3357e.pth'
+        model_file = 'r2plus1d_18-91a641e6.pth'
         checkpoint = torch.load(model_file, map_location=lambda storage, loc: storage)
         if params.share:
-            self.v_encoder = r3d_18()
+            self.v_encoder = r2plus1d_18()
             self.v_encoder.load_state_dict(checkpoint, strict=False)
         else:
-            self.v_encoder1 = r3d_18()
-            self.v_encoder2 = r3d_18()
+            self.v_encoder1 = r2plus1d_18()
+            self.v_encoder2 = r2plus1d_18()
             self.v_encoder1.load_state_dict(checkpoint, strict=False)
             self.v_encoder2.load_state_dict(checkpoint, strict=False)
         

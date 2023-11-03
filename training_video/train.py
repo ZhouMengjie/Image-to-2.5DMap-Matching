@@ -34,7 +34,7 @@ def seed_all(random_seed):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train Minkowski Net embeddings using BatchHard negative mining')
     parser.add_argument('--dataset_folder', type=str, default='datasets', required=False, help='Dataset folder')
-    parser.add_argument('--batch_size', type=int, default=24, required=False, help='Training batch size')
+    parser.add_argument('--batch_size', type=int, default=6, required=False, help='Training batch size')
     parser.add_argument('--val_batch_size', type=int, default=24, required=False, help='Testing batch size')
     parser.add_argument('--weights', type=str, required=False, help='Trained model weights')
     parser.add_argument('--epoch', type=int, default=1, required=False, help='Initial training epoch')    
@@ -44,10 +44,10 @@ if __name__ == '__main__':
     parser.add_argument('--val_distributed', dest='val_distributed', action='store_true')
     parser.add_argument('--syncBN', dest='syncBN', action='store_true')
     parser.add_argument('--use_amp', dest='use_amp', action='store_true')
-    parser.add_argument('--share', dest='share', action='store_false')
+    parser.add_argument('--share', dest='share', action='store_true')
     parser.add_argument('--seed', type=int, default=1, required=False, help='Seed')
     parser.add_argument('--port', type=str, default='12363', required=False, help='Port')  
-    parser.add_argument('--feat_dim',type=int, default=4096, required=False, help='Feature dimension')
+    parser.add_argument('--feat_dim',type=int, default=512, required=False, help='Feature dimension')
     parser.add_argument('--margin', type=float, default=0.07, required=False, help='Loss margin')
     parser.add_argument('--optimizer', type=str, required=False, help='Optimizer')
     parser.add_argument('--wd', type=float, default=0.03, required=False, help='Weight decay')
@@ -71,12 +71,12 @@ if __name__ == '__main__':
     params = parser.parse_args()
     seed_all(params.seed)
     
-    # savedStdout = sys.stdout
-    # s = get_datetime()
-    # if not os.path.exists('arun_log'):
-    #     os.mkdir('arun_log')
-    # print_log = open(os.path.join('arun_log',s+'.txt'),'w')
-    # sys.stdout = print_log
+    savedStdout = sys.stdout
+    s = get_datetime()
+    if not os.path.exists('arun_log'):
+        os.mkdir('arun_log')
+    print_log = open(os.path.join('arun_log',s+'.txt'),'w')
+    sys.stdout = print_log
 
     if params.distributed:
         init_distributed_mode(params)

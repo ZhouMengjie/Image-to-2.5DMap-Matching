@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import Dataset, DataLoader
 
 class SeqDataset(Dataset):
-    def __init__(self, dataset_path: str, query_filename: str, model_name: str):
+    def __init__(self, dataset_path: str, query_filename: str, model_name: str, seq_len=5):
         self.dataset_path = dataset_path
         self.seq_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sq.csv')
         self.sequences = (pd.read_csv(self.seq_filepath, sep=',', header=None)).values
@@ -17,6 +17,8 @@ class SeqDataset(Dataset):
         self.map_descriptors = np.load(self.map_filepath)
         print('{} queries in the dataset'.format(len(self)))
 
+        self.seq_len = seq_len
+
     def __len__(self):
         return len(self.sequences)
 
@@ -25,11 +27,19 @@ class SeqDataset(Dataset):
         pano_seq = []
         map_seq = []
         seq_indices = self.sequences[ndx]
+        nloc = 0
         for idx in seq_indices:
             pano_seq.append(torch.tensor(self.pano_descriptors[idx], dtype=torch.float))
             map_seq.append(torch.tensor(self.map_descriptors[idx], dtype=torch.float))
+            nloc += 1  
         pano_seq = torch.stack(pano_seq, dim=0)
-        map_seq = torch.stack(map_seq, dim=0)
+        map_seq = torch.stack(map_seq, dim=0)               
+                
+        if nloc < self.seq_len:
+            paddings = self.seq_len - nloc
+            pano_seq = torch.nn.functional.pad(pano_seq, (0, 0, 0, paddings))
+            map_seq = torch.nn.functional.pad(map_seq, (0, 0, 0, paddings))
+
         return {'pano':pano_seq, 'map':map_seq, 'label':torch.tensor(ndx)}
 
 if __name__ == '__main__':
@@ -37,7 +47,7 @@ if __name__ == '__main__':
     query_filename = 'unionsquare5kU'
     model_name = 'resnetsafa_asam_simple'
     dataset = {}
-    dataset['train'] = SeqDataset(dataset_path, query_filename, model_name)
+    dataset['train'] = SeqDataset(dataset_path, query_filename, model_name, 10)
     batch_sampler = None
     batch_size = 16
     nw = 0

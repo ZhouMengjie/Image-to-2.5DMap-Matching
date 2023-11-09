@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import tempfile
 from models.video_model import VideoModel
 from training_video.distributed_utils import cleanup, reduce_value
-from eval.evaluate_seq import get_recall
+from eval.evaluate_video import get_recall
 
 from torch.utils.tensorboard import SummaryWriter
 

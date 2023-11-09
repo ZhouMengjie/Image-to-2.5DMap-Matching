@@ -191,7 +191,7 @@ if __name__ == "__main__":
     parser.add_argument('--seed', type=int, default=1, required=False, help='Seed')
     parser.add_argument('--feat_dim',type=int, default=4096, required=False, help='Feature dimension')
     parser.add_argument('--pre_model_name', type=str, required=False, help='Precomputed model name')
-    parser.add_argument('--num_layers', type=int, default=6, required=False, help='Number of transformer layers')
+    parser.add_argument('--num_layers', type=int, default=1, required=False, help='Number of transformer layers')
     parser.add_argument('--num_heads', type=int, default=8, required=False, help='Number of transformer heads')
     parser.add_argument('--seq_len', type=int, default=5, required=False, help='Sequence length')      
     parser.add_argument('--device', type=str, required=False, help='Device')  

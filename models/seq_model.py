@@ -4,7 +4,6 @@ import torch.nn.init as init
 import torch.nn.functional as F
 import math
 import numpy as np
-import hiddenlayer as h
 from timm.models.layers import trunc_normal_
 from torch.utils.tensorboard import SummaryWriter
 
@@ -52,12 +51,18 @@ class TransMixer(nn.Module):
             init.constant_(self.embedding.bias, 0)
 
         self.positionalEncoding = PositionalEncoding(d_model=hidden_dim, max_len=max_length)
+
+        # self.conv = nn.Conv1d(hidden_dim, hidden_dim, kernel_size=max_length)
     
     def forward(self, x):
         x = self.embedding(x)
         x = self.positionalEncoding(x)
         x = self.Transformer(x)
         x = x.mean(dim=1)
+
+        # x = x.permute(0,2,1)
+        # x = self.conv(x)
+        # x = torch.mean(x,-1)       
         return x
 
 class TransMixer_v2(nn.Module):
@@ -196,7 +201,7 @@ class Baseline(nn.Module):
 
   
 if __name__ == "__main__":
-    model = TransMixer_v2(4096,512).to('cuda')
+    model = TransMixer(4096,512).to('cuda')
     # model = SeqNet(4096).to('cuda')
     # model = Delta(4096).to('cuda')
     print(model)

@@ -199,6 +199,8 @@ if __name__ == "__main__":
     parser.add_argument('--pca_dim', type=int, default=80, required=False, help='PCA dimension')  
     parser.add_argument('--model_type', type=str, required=False, help='Model type')
     parser.add_argument('--share', dest='share', action='store_true')
+    parser.add_argument('--w', type=int, default=5, required=False, help='Conv kernel size')
+    parser.add_argument('--pool', type=str, default='avg_pool', required=False, help='Pooling strategy')
 
     parser.set_defaults(eval_files='hudsonriver5kU,unionsquare5kU,wallstreet5kU')
     parser.set_defaults(pre_model_name='resnetsafa_dgcnn_asam_2to3_up')

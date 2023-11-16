@@ -19,8 +19,9 @@ python eval/evaluate_seq.py \
 --eval_files 'hudsonriver5kU,wallstreet5kU,unionsquare5kU' \
 --exp_name 'none' \
 --num_layers 1 --num_heads 8 --seq_len 5 \
---pca_dim 80 --model_type 'seqnet' \
---weights 'weights3090/model_20231109_1739_best_top1.pth'
+--pca_dim 80 --model_type 'seqnet' --w 5 \
+--pool 'avg_pool' \
+--weights 'weights3090/model_20231109_2216_best_top1.pth'
 
 # CUDA_VISIBLE_DEVICES=0 \
 # python eval/evaluate_seq_v2.py \

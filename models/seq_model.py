@@ -31,7 +31,7 @@ class PositionalEncoding(nn.Module):
         return self.dropout(x)
 
 class TransMixer(nn.Module):
-    def __init__(self, transDimension, hidden_dim=512, nHead=8, numLayers=1, max_length=5):
+    def __init__(self, transDimension, hidden_dim=512, nHead=8, numLayers=1, max_length=5, pool='avg_pool'):
         '''
         Transformer for mixing street view features
         transDimension: transformer embedded dimension
@@ -50,19 +50,34 @@ class TransMixer(nn.Module):
         if self.embedding.bias is not None:
             init.constant_(self.embedding.bias, 0)
 
-        self.positionalEncoding = PositionalEncoding(d_model=hidden_dim, max_len=max_length)
+        self.seq_len = max_length
 
-        # self.conv = nn.Conv1d(hidden_dim, hidden_dim, kernel_size=max_length)
+        self.pool = pool
+        if self.pool == 'seq_pool':
+            self.attention_pool = nn.Linear(hidden_dim, 1)
+        elif self.pool == 'no_pool':
+            self.seq_len += 1
+            self.class_emb = nn.Parameter(torch.zeros(1, 1, hidden_dim),
+                                       requires_grad=True)
+
+        self.positionalEncoding = PositionalEncoding(d_model=hidden_dim, max_len=self.seq_len)
     
     def forward(self, x):
         x = self.embedding(x)
+
+        if self.pool == 'no_pool':
+            cls_token = self.class_emb.expand(x.shape[0], -1, -1)
+            x = torch.cat((cls_token, x), dim=1)
+
         x = self.positionalEncoding(x)
         x = self.Transformer(x)
-        x = x.mean(dim=1)
 
-        # x = x.permute(0,2,1)
-        # x = self.conv(x)
-        # x = torch.mean(x,-1)       
+        if self.pool == 'avg_pool':
+            x = x.mean(dim=1)  
+        elif self.pool == 'seq_pool':
+            x = torch.matmul(F.softmax(self.attention_pool(x), dim=1).transpose(-1, -2), x).squeeze(-2)
+        elif self.pool == 'no_pool':
+            x = x[:, 0]
         return x
 
 class TransMixer_v2(nn.Module):
@@ -106,26 +121,20 @@ class TransMixer_v2(nn.Module):
         return x, y
 
 
-class Smooth(nn.Module):
-    def __init__(self):
-        super(Smooth, self).__init__()
-        self.pool = nn.AdaptiveAvgPool2d((1,None))
-    
-    def forward(self, x):
-        x = self.pool(x)
-        x = x.view(x.size(0), -1)
-        return x
-
-
 class SeqNet(nn.Module):
-    def __init__(self, inDims, outDims=512, seqL=5, w=3):
+    def __init__(self, inDims, outDims=512, seqL=5, w=3, pool='avg_pool'):
         super(SeqNet, self).__init__()
         self.inDims = inDims
         self.outDims = outDims
         self.w = w
-        self.conv = nn.Conv1d(outDims, outDims, kernel_size=self.w)
+        self.p = (w-1) // 2
+        self.conv = nn.Conv1d(outDims, outDims, kernel_size=self.w, padding=self.p)
         self.embedding = nn.Linear(inDims, outDims)
         self.initialize_weights()
+
+        self.pool = pool
+        if self.pool == 'seq_pool':
+            self.attention_pool = nn.Linear(outDims, 1)
 
     def initialize_weights(self):
         for m in self.modules():
@@ -141,7 +150,11 @@ class SeqNet(nn.Module):
         x = self.embedding(x)
         x = x.permute(0,2,1) # from [B,T,C] to [B,C,T]
         x = self.conv(x)
-        x = torch.mean(x,-1)
+        if self.pool == 'seq_pool':
+            x = x.permute(0,2,1)
+            x = torch.matmul(F.softmax(self.attention_pool(x), dim=1).transpose(-1, -2), x).squeeze(-2)
+        else:
+            x = torch.mean(x,-1)
         return x
 
 
@@ -151,10 +164,11 @@ class SeqNet_v2(nn.Module):
         self.inDims = inDims
         self.outDims = outDims
         self.w = w
+        self.p = (w-1) // 2
         self.embedding1 = nn.Linear(inDims, outDims)
         self.embedding2 = nn.Linear(inDims, outDims)
-        self.conv1 = nn.Conv1d(outDims, outDims, kernel_size=self.w)
-        self.conv2 = nn.Conv1d(outDims, outDims, kernel_size=self.w)
+        self.conv1 = nn.Conv1d(outDims, outDims, kernel_size=self.w, padding=self.p)
+        self.conv2 = nn.Conv1d(outDims, outDims, kernel_size=self.w, padding=self.p)
         self.initialize_weights()
 
     def initialize_weights(self):
@@ -180,6 +194,51 @@ class SeqNet_v2(nn.Module):
         return x, y
 
 
+class Smooth(nn.Module):
+    def __init__(self):
+        super(Smooth, self).__init__()
+        self.pool = nn.AdaptiveAvgPool2d((1,None))
+    
+    def forward(self, x):
+        x = self.pool(x)
+        x = x.view(x.size(0), -1)
+        return x
+
+class SeqPool(nn.Module):
+    def __init__(self, inDims, outDims=512):
+        super(SeqPool, self).__init__()
+        self.inDims = inDims
+        self.outDims = outDims
+        self.embedding = nn.Linear(inDims, outDims)
+        self.initialize_weights()
+        self.attention_pool = nn.Linear(outDims, 1)
+
+    def initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, (nn.Conv1d, nn.Linear)):
+                init.kaiming_normal_(m.weight)
+                if m.bias is not None:
+                    init.constant_(m.bias, 0)
+            elif isinstance(m, nn.BatchNorm1d):
+                init.constant_(m.weight, 1)
+                init.constant_(m.bias, 0)
+    
+    def forward(self, x):
+        x = self.embedding(x) # [B, T, C]
+        x = torch.matmul(F.softmax(self.attention_pool(x), dim=1).transpose(-1, -2), x).squeeze(-2)
+        return x
+
+
+class SeqPool_v2(nn.Module):
+    def __init__(self, inDims):
+        super(SeqPool_v2, self).__init__()
+        self.attention_pool = nn.Linear(inDims, 1)
+   
+    def forward(self, x):
+        x = torch.matmul(F.softmax(self.attention_pool(x), dim=1).transpose(-1, -2), x).squeeze(-2)
+        return x
+
+
 class Delta(nn.Module):
     def __init__(self, inDims, seqL=5):
         super(Delta, self).__init__()
@@ -201,8 +260,9 @@ class Baseline(nn.Module):
 
   
 if __name__ == "__main__":
-    model = TransMixer(4096,512).to('cuda')
-    # model = SeqNet(4096).to('cuda')
+    # model = TransMixer(4096,512, pool='no_pool').to('cuda')
+    # model = SeqNet(4096,pool='seq_pool').to('cuda')
+    model = SeqPool_v2(4096).to('cuda')
     # model = Delta(4096).to('cuda')
     print(model)
     x = torch.rand((16, 5, 4096)).to('cuda')

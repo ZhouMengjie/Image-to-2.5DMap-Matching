@@ -19,6 +19,10 @@ class SeqDataset(Dataset):
 
         self.seq_len = seq_len
 
+        # If required, randomly shuffle for evaluation
+        # self.shuffle_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sqsf.csv')
+        # self.shuffle_sequences = (pd.read_csv(self.shuffle_filepath, sep=',', header=None)).values
+
     def __len__(self):
         return len(self.sequences)
 
@@ -32,6 +36,13 @@ class SeqDataset(Dataset):
             pano_seq.append(torch.tensor(self.pano_descriptors[idx], dtype=torch.float))
             map_seq.append(torch.tensor(self.map_descriptors[idx], dtype=torch.float))
             nloc += 1  
+        
+        # If required, randomly shuffle for evaluation
+        # sf_indices = self.shuffle_sequences[ndx]
+        # pano_seq = []
+        # for idx in sf_indices: # shuffle pano sequence input
+        #     pano_seq.append(torch.tensor(self.pano_descriptors[idx], dtype=torch.float))
+
         pano_seq = torch.stack(pano_seq, dim=0)
         map_seq = torch.stack(map_seq, dim=0)               
                 
@@ -47,7 +58,7 @@ if __name__ == '__main__':
     query_filename = 'unionsquare5kU'
     model_name = 'resnetsafa_asam_simple'
     dataset = {}
-    dataset['train'] = SeqDataset(dataset_path, query_filename, model_name, 10)
+    dataset['train'] = SeqDataset(dataset_path, query_filename, model_name, 5)
     batch_sampler = None
     batch_size = 16
     nw = 0

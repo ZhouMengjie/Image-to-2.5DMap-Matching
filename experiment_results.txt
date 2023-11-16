@@ -130,3 +130,40 @@ weights3090/model_20231101_2045_best_top1.pth, 96.64, 38.41, 96.64, 38.41
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231108_1955_best_top1.pth, 98.06, 88.38, 97.33, 88.95, 100.00, 97.77, 98.47, 91.70
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231108_1955_best_top1.pth, 97.04, 78.90, 94.42, 78.06, 99.80, 90.91, 97.09, 82.62
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_1739_best_top1.pth, 97.38, 82.34, 95.13, 80.27, 99.87, 94.20, 97.46, 85.61
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2032_best_top1.pth, 96.97, 81.57, 95.36, 80.03, 99.87, 94.06, 97.40, 85.22
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2109_best_top1.pth, 96.54, 74.87, 94.62, 70.97, 99.91, 88.78, 97.02, 78.21
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2111_best_top1.pth, 97.29, 81.70, 95.53, 79.20, 99.91, 94.11, 97.57, 85.00
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2130_best_top1.pth, 97.19, 82.34, 95.76, 80.27, 99.94, 94.32, 97.63, 85.64
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2134_best_top1.pth, 97.32, 77.51, 94.89, 73.54, 99.85, 91.06, 97.36, 80.70
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 97.21, 79.66, 95.32, 77.12, 99.87, 92.87, 97.47, 83.22
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_1313_best_top1.pth, 97.77, 78.70, 96.39, 73.25, 100.00, 92.72, 98.05, 81.55
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_1314_best_top1.pth, 97.89, 82.03, 96.56, 78.46, 100.00, 94.79, 98.15, 85.09
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_1317_best_top1.pth, 97.84, 84.26, 96.81, 81.30, 100.00, 95.92, 98.21, 87.16
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_1326_best_top1.pth, 96.71, 76.91, 95.17, 73.63, 99.81, 90.04, 97.23, 80.19
+resnetsafa_asam_simple, weights3090/model_20231110_1331_best_top1.pth, 95.43, 72.48, 94.74, 68.03, 99.76, 83.84, 96.64, 74.78
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_2350_best_top1.pth, 97.03, 79.83, 95.59, 76.59, 99.91, 92.48, 97.51, 82.97
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_2350_best_top1.pth, 97.03, 79.83, 95.59, 76.59, 99.91, 92.48, 97.51, 82.97
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_2353_best_top1.pth, 97.21, 82.32, 95.61, 79.95, 99.87, 94.32, 97.56, 85.53
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231111_2248_best_top1.pth, 97.55, 82.45, 95.61, 80.33, 99.87, 94.52, 97.67, 85.77
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231113_1125_best_top1.pth, 97.04, 69.64, 94.59, 62.22, 99.89, 83.24, 97.17, 71.70
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231113_1125_best_top1.pth, 97.04, 69.64, 94.59, 62.22, 99.89, 83.24, 97.17, 71.70
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 95.77, 76.09, 94.25, 71.05, 99.65, 89.34, 96.56, 78.82
+resnetsafa_dgcnn_asam_2to3_up_16, RANDOM WEIGHTS, 95.27, 72.37, 93.79, 70.37, 99.76, 87.84, 96.27, 76.86
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231111_2248_best_top1.pth, 97.55, 82.45, 95.61, 80.33, 99.87, 94.52, 97.67, 85.77
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231110_2353_best_top1.pth, 97.21, 82.32, 95.61, 79.95, 99.87, 94.32, 97.56, 85.53
+resnetsafa_asam_simple, weights3090/model_20231113_1302_best_top1.pth, 94.22, 58.99, 93.34, 51.36, 98.96, 66.52, 95.51, 58.96
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231113_1307_best_top1.pth, 97.71, 60.42, 96.32, 53.11, 100.00, 77.53, 98.01, 63.69
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231113_1128_best_top1.pth, 96.31, 63.65, 94.95, 56.45, 99.74, 79.23, 97.00, 66.44
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231113_1511_best_top1.pth, 97.32, 82.13, 95.53, 79.91, 99.93, 94.33, 97.59, 85.46
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.31, 63.46, 94.96, 55.55, 99.74, 79.08, 97.01, 66.03
+resnetsafa_dgcnn_asam_2to3_up_16, RANDOM WEIGHTS, 82.15, 20.92, 75.76, 19.31, 80.52, 22.85, 79.48, 21.03
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 39.85, 13.73, 35.99, 12.60, 34.27, 14.87, 36.70, 13.73
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231113_1125_best_top1.pth, 97.04, 69.64, 94.59, 62.22, 99.89, 83.24, 97.17, 71.70
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 86.04, 28.36, 81.76, 28.23, 84.50, 30.99, 84.10, 29.20
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231031_1354_best_top1.pth, 74.37, 19.31, 69.77, 19.71, 69.78, 21.22, 71.31, 20.08
+resnetsafa_dgcnn_asam_2to3_up, RANDOM WEIGHTS, 96.31, 63.46, 94.96, 55.55, 99.74, 79.08, 97.01, 66.03
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231113_1750_best_top1.pth, 97.01, 80.51, 95.64, 77.67, 99.89, 93.19, 97.51, 83.79
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231031_1354_best_top1.pth, 97.42, 81.72, 95.61, 79.84, 99.93, 94.58, 97.65, 85.38
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 97.21, 79.66, 95.32, 77.12, 99.87, 92.87, 97.47, 83.22
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 86.04, 28.36, 81.76, 28.23, 84.50, 30.99, 84.10, 29.20
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 97.21, 79.66, 95.32, 77.12, 99.87, 92.87, 97.47, 83.22

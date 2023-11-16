@@ -1,0 +1,26 @@
+Weights: weights3090/model_20231113_1151_best_top1.pth
+
+Parameters:
+dataset_folder: datasets
+batch_size: 32
+val_batch_size: 24
+weights: weights3090/model_20231113_1151_best_top1.pth
+epoch: 1
+eval_files: ['hudsonriver5kU', 'wallstreet5kU', 'unionsquare5kU']
+seed: 1
+feat_dim: 4096
+pre_model_name: resnetsafa_dgcnn_asam_2to3_up
+num_layers: 1
+num_heads: 16
+seq_len: 5
+device: cuda
+exp_name: none
+pca_dim: 80
+model_type: transmixer
+share: True
+w: 5
+pool: seq_pool
+
+Device: cuda
+PCA dim:80
+Model size:  21.03955078125 MB

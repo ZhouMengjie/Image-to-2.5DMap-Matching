@@ -26,7 +26,7 @@ def build_sequences(seqences, data):
 
 if __name__ == '__main__':
     # Read the CSV file
-    area = 'wallstreet5kU'
+    area = 'hudsonriver5kU'
     csv_file = os.path.join('datasets','csv',area+'_nb.csv')
     data = []
     with open(csv_file, 'r') as file:
@@ -35,7 +35,7 @@ if __name__ == '__main__':
             data.append(row)
 
     # Generate sequences to the CSV data
-    max_seq_length = 10
+    max_seq_length = 5
     sequences = np.arange(len(data))
     sequences = sequences.reshape((len(data), 1))
     i = 1
@@ -43,8 +43,14 @@ if __name__ == '__main__':
         sequences = build_sequences(sequences, data)
         i += 1 
 
+    # If required, randomly shuffle each sequence
+    # Set a seed for reproducibility
+    np.random.seed(0)
+    # Shuffle each row independently
+    np.apply_along_axis(np.random.shuffle, axis=1, arr=sequences)
+
     # Write the updated data back to a new CSV file
-    output_file = os.path.join('datasets','csv',area+'_sq10.csv')
+    output_file = os.path.join('datasets','csv',area+'_sqsf.csv')
     with open(output_file, 'w', newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerows(sequences)

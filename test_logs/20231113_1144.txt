@@ -1,0 +1,25 @@
+Weights: RANDOM WEIGHTS
+
+Parameters:
+dataset_folder: datasets
+batch_size: 32
+val_batch_size: 24
+weights: None
+epoch: 1
+eval_files: ['hudsonriver5kU', 'wallstreet5kU', 'unionsquare5kU']
+seed: 1
+feat_dim: 4096
+pre_model_name: resnetsafa_dgcnn_asam_2to3_up
+num_layers: 1
+num_heads: 16
+seq_len: 5
+device: cuda
+exp_name: none
+pca_dim: 80
+model_type: smooth
+share: True
+w: 5
+pool: seq_pool
+
+Device: cuda
+PCA dim:80

@@ -10,9 +10,9 @@ plt.rcParams["axes.labelweight"] = "bold"
 plt.rcParams.update({"font.size":22})
 
 if __name__ == "__main__":
-    location_name = 'unionsquare5kU' # change area here
+    location_name = 'hudsonriver5kU' # change area here
     model_name1 = 'resnet_asam' # change model here
-    model_name2 = 'resnetsafa_dgcnn_asam_2to3_up'
+    model_name2 = 'resnetsafa_polar_asam_simple'
 
     recall_es = np.load(os.path.join('results', location_name+'_'+model_name1+'_'+'none'+'.npy'))
     recall_ours = np.load(os.path.join('results', location_name+'_'+model_name2+'_'+'none'+'.npy'))
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     plt.ylim(40,101)
     plt.legend(loc=4)
     plt.grid(linestyle='dashed', linewidth=0.5)
-    plt.savefig(os.path.join('results',location_name+'_method.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join('results','chapter04',location_name+'_method.pdf'),bbox_inches='tight')
     plt.show()
 
 

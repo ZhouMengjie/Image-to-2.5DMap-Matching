@@ -167,3 +167,28 @@ resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231031_1354_best_top1.pth, 97
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 97.21, 79.66, 95.32, 77.12, 99.87, 92.87, 97.47, 83.22
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 86.04, 28.36, 81.76, 28.23, 84.50, 30.99, 84.10, 29.20
 resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231109_2216_best_top1.pth, 97.21, 79.66, 95.32, 77.12, 99.87, 92.87, 97.47, 83.22
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.92, 64.84, 99.26, 76.42, 93.02, 58.08, 96.07, 66.45
+config_train.txt, resnet_asam.pth, 91.90, 48.62, 89.52, 42.42, 96.96, 56.06, 92.79, 49.03
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.92, 64.84, 93.02, 57.96, 99.26, 76.38, 96.07, 66.39
+config_train.txt, resnetsafa_polar_adam_1e4.pth, 92.06, 51.76, 90.42, 46.18, 97.60, 60.20, 93.36, 52.71
+config_train.txt, resnet_polar_asam.pth, 93.22, 52.46, 89.98, 45.54, 98.20, 61.76, 93.80, 53.25
+config_train.txt, resnetsafa_asam_simple.pth, 94.38, 56.86, 90.94, 49.00, 98.54, 65.04, 94.62, 56.97
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.90, 62.90, 92.46, 55.64, 99.22, 74.94, 95.86, 64.49
+config_train.txt, resnetsafa_polar_asam_simple.pth, 93.72, 55.40, 90.40, 47.20, 98.92, 67.34, 94.35, 56.65
+config_train.txt, resnetsafa_polar_asam_simple.pth, 88.98, 38.50, 84.12, 30.68, 96.24, 47.38, 89.78, 38.85
+config_train.txt, resnet_asam.pth, 87.74, 34.20, 83.20, 28.40, 94.54, 42.16, 88.49, 34.92
+config_train.txt, resnet_asam.pth, 92.08, 47.08, 89.10, 41.36, 96.76, 55.14, 92.65, 47.86
+config_train.txt, resnet_asam.pth, 91.84, 48.62, 89.48, 42.38, 96.94, 56.00, 92.75, 49.00
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.74, 65.14, 92.98, 58.40, 99.26, 76.36, 95.99, 66.63
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.92, 64.84, 93.02, 57.96, 99.26, 76.38, 96.07, 66.39
+config_train.txt, resnetsafa_polar_asam_simple.pth, 99.26, 76.38, 99.26, 76.38
+config_train.txt, resnetsafa_polar_asam_simple.pth, 99.26, 76.38, 99.26, 76.38
+config_train.txt, resnetsafa_polar_asam_simple.pth, 99.26, 76.36, 99.26, 76.36
+config_train.txt, resnetsafa_polar_asam_simple.pth, 99.22, 74.90, 99.22, 74.90
+config_train.txt, resnetsafa_polar_asam_simple.pth, 98.90, 67.50, 98.90, 67.50
+config_train.txt, resnetsafa_polar_asam_simple.pth, 96.22, 47.40, 96.22, 47.40
+config_train.txt, resnetsafa_polar_asam_simple.pth, 88.98, 38.50, 84.12, 30.68, 96.24, 47.38, 89.78, 38.85
+config_train.txt, resnetsafa_polar_asam_simple.pth, 93.72, 55.40, 90.40, 47.20, 98.92, 67.34, 94.35, 56.65
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.90, 62.90, 92.46, 55.64, 99.22, 74.94, 95.86, 64.49
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.92, 64.84, 93.02, 57.96, 99.26, 76.38, 96.07, 66.39
+config_train.txt, resnetsafa_polar_asam_simple.pth, 95.74, 65.14, 92.98, 58.40, 99.26, 76.36, 95.99, 66.63

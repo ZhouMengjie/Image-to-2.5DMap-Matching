@@ -78,9 +78,13 @@ class Pano_SAFA(torch.nn.Module):
     def forward(self, batch):
         x = batch['images']
         feature = self.resnet(x)
+        # image_feature_map = feature.cpu().numpy()
+        # np.save(os.path.join('results','feature_maps', ('pano_polar.npy')), image_feature_map)
         B, C, _, _ = feature.shape
         f = feature.view(B, C, -1)
         w = self.safa(f) 
+        # position_map = w.cpu().numpy()
+        # np.save(os.path.join('results','feature_maps', ('pano_position_map.npy')), position_map)
         x = torch.matmul(f, w).view(B, -1)
         return x, feature    
 

@@ -115,7 +115,13 @@ def evaluate(model, device, params, exp_name, pca_dim):
         # model_name = model_name.split('.')[0]
         # sio.savemat(os.path.join('results', location_name+'_'+model_name+'.mat'), pred)
 
-        recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)   
+        start_time = time.time()
+        recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)  
+        end_time = time.time()
+        run_time = (end_time-start_time) / 5000 * 1000
+        print('average retrieving time is {}'.format(run_time))
+        
+        # recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings, location_name)    
         ave_recall = recall
         average_similarity = np.mean(similarity)
         ave_one_percent_recall = one_percent_recall
@@ -240,13 +246,14 @@ if __name__ == "__main__":
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')
     parser.set_defaults(eval_files='hudsonriver5kU,unionsquare5kU,wallstreet5kU')
-    parser.set_defaults(model3d='dgcnn')
+    parser.set_defaults(model3d='none')
     parser.set_defaults(model2d_tile='resnet_safa')
     parser.set_defaults(model2d_pano='resnet_safa')
     parser.set_defaults(loss='MultiInfoNCELoss')
-    parser.set_defaults(fuse='2to3')
+    parser.set_defaults(fuse='concat')
     parser.set_defaults(optimizer='SAM')
-    parser.set_defaults(device='cuda')    
+    parser.set_defaults(device='cuda')   
+    # parser.set_defaults(weights='weights/resnetsafa_polar_asam_simple.pth') 
 
     args = parser.parse_args()
     seed_all(args.seed)

@@ -4,7 +4,7 @@
 """
 from models.multimodal import Multimodal
 from config.utils import Params
-from models.pointnet_v2 import PointNet
+from models.pointnet_fuse import PointNet
 from models.pointnetssg_v2 import PointNetSSG
 from models.dgcnn_fuse import DGCNN
 from models.pt2_v2 import PT2
@@ -13,7 +13,7 @@ from models.tile import Tile
 from models.pano import Pano
 from models.transgeo import TransGeo
 from models.pano_safa import Pano_SAFA
-from models.tile_safa import Tile_SAFA
+from models.tile_safa_fuse import Tile_SAFA
 from models.transhybrid import TransHybrid
 
 def model_factory(params: Params):

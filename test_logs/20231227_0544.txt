@@ -1,0 +1,55 @@
+Config path: config/config_train.txt
+Weights: weights/resnetsafa_dgcnn_asam_2to3_up.pth
+
+Parameters:
+params_path: config/config_train.txt
+distributed: False
+val_distributed: False
+syncBN: False
+freeze: False
+port: 12363
+load_weights: weights/resnetsafa_dgcnn_asam_2to3_up.pth
+epoch: 1
+pc_normalize: True
+npoints: 1024
+nneighbor: 20
+fuse: 2to3
+fc: None
+dataset_folder: datasets
+use_cloud: True
+use_rgb: True
+use_tile: True
+use_snap: False
+use_polar: False
+use_feat: False
+img_size: 224
+tile_size: 224
+feat_size: 1
+feat_dim: 512
+batch_size: 32
+val_batch_size: 24
+lr: 4e-05
+optimizer: SAM
+scheduler: None
+epochs: 60
+weight_decay: 0.0001
+normalize_embeddings: True
+loss: MultiInfoNCELoss
+weights: [1.0, 1.0, 1.0]
+margin: 0.1
+aug_mode: 1
+train_file: trainstreetlearnU_cmu5kU
+use_val: True
+val_file: hudsonriver5kU
+eval_files: ['hudsonriver5kU', 'wallstreet5kU', 'unionsquare5kU']
+Model parameters:
+img_size: 224
+tile_size: 224
+model3d: pointnet
+model2d_tile: resnet_safa
+model2d_pano: resnet_safa
+
+
+Device: cuda
+PCA dim:16
+Model size:  159.1435546875 MB

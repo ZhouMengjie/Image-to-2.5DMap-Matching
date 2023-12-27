@@ -192,3 +192,26 @@ config_train.txt, resnetsafa_polar_asam_simple.pth, 93.72, 55.40, 90.40, 47.20, 
 config_train.txt, resnetsafa_polar_asam_simple.pth, 95.90, 62.90, 92.46, 55.64, 99.22, 74.94, 95.86, 64.49
 config_train.txt, resnetsafa_polar_asam_simple.pth, 95.92, 64.84, 93.02, 57.96, 99.26, 76.38, 96.07, 66.39
 config_train.txt, resnetsafa_polar_asam_simple.pth, 95.74, 65.14, 92.98, 58.40, 99.26, 76.36, 95.99, 66.63
+config_train.txt, resnetsafa_dgcnn_asam_2to3_up.pth, 95.98, 67.10, 93.24, 60.88, 99.64, 82.96, 96.29, 70.31
+resnetsafa_asam_simple, weights3090/model_20231110_1331_best_top1.pth, 95.43, 72.48, 94.74, 68.03, 99.76, 83.84, 96.64, 74.78
+resnetsafa_asam_simple, weights3090/model_20231110_1331_best_top1.pth, 95.43, 72.48, 94.74, 68.03, 99.76, 83.84, 96.64, 74.78
+resnetsafa_asam_simple, weights3090/model_20231110_1331_best_top1.pth, 95.43, 72.48, 94.74, 68.03, 99.76, 83.84, 96.64, 74.78
+resnetsafa_asam_simple, weights3090/model_20231226_0044_best_top1.pth, 73.51, 25.24, 68.13, 20.75, 80.32, 30.25, 73.98, 25.41
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231226_0044_best_top1.pth, 96.01, 76.71, 94.06, 73.46, 99.85, 89.45, 96.64, 79.87
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231226_0038_best_top1.pth, 96.61, 80.26, 95.45, 78.18, 99.93, 93.59, 97.33, 84.01
+resnetsafa_dgcnn_asam_2to3_up, weights3090/model_20231226_0035_best_top1.pth, 97.14, 81.98, 95.66, 79.57, 99.96, 94.41, 97.59, 85.32
+resnetsafa_asam_simple, weights3090/model_20231226_0032_best_top1.pth, 95.08, 70.40, 94.59, 67.31, 99.63, 81.97, 96.43, 73.23
+resnetsafa_dgcnn_asam_3to2_up, weights3090/model_20231226_2004_best_top1.pth, 96.52, 80.75, 95.19, 76.42, 99.94, 92.89, 97.22, 83.35
+resnetsafa_pointnet_asam_2to3_up, weights3090/model_20231226_2002_best_top1.pth, 97.68, 80.41, 95.57, 79.23, 99.85, 92.91, 97.70, 84.18
+resnetsafa_dgcnn_asam_concat_simple, weights3090/model_20231226_2010_best_top1.pth, 97.44, 81.72, 95.30, 78.06, 99.93, 92.06, 97.56, 83.95
+resnetsafa_dgcnn_asam_add_simple, weights3090/model_20231226_2038_best_top1.pth, 97.25, 81.35, 95.42, 77.10, 100.00, 92.91, 97.56, 83.79
+resnetsafa_pt2_asam_add_simple, weights3090/model_20231226_2229_best_top1.pth, 97.10, 81.68, 95.23, 78.88, 99.98, 93.13, 97.44, 84.56
+resnetsafa_pointnetssg_asam_add_simple, weights3090/model_20231226_2306_best_top1.pth, 96.52, 81.03, 95.66, 79.63, 99.98, 92.95, 97.39, 84.54
+resnetsafa_polar_asam_simple, weights3090/model_20231226_2350_best_top1.pth, 97.36, 80.47, 95.78, 79.06, 99.93, 94.24, 97.69, 84.59
+resnetsafa_polar_asam_simple_16, RANDOM WEIGHTS, 94.91, 69.99, 93.40, 64.09, 99.67, 84.85, 95.99, 72.98
+resnetsafa_pointnetssg_asam_add_simple_16, RANDOM WEIGHTS, 94.01, 69.92, 92.96, 68.05, 99.69, 84.54, 95.55, 74.17
+resnetsafa_pt2_asam_add_simple_16, RANDOM WEIGHTS, 95.02, 70.81, 93.44, 68.92, 99.85, 84.84, 96.10, 74.86
+resnetsafa_dgcnn_asam_add_simple_16, RANDOM WEIGHTS, 95.53, 71.26, 92.32, 66.35, 99.83, 85.32, 95.90, 74.31
+resnetsafa_dgcnn_asam_concat_simple_16, RANDOM WEIGHTS, 95.19, 70.74, 91.83, 67.03, 99.69, 82.86, 95.57, 73.54
+resnetsafa_dgcnn_asam_3to2_up_16, RANDOM WEIGHTS, 94.59, 71.30, 93.64, 67.43, 99.65, 87.11, 95.96, 75.28
+resnetsafa_pointnet_asam_2to3_up_16, RANDOM WEIGHTS, 94.67, 71.86, 94.17, 69.69, 99.33, 84.26, 96.06, 75.27

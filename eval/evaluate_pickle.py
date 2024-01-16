@@ -116,12 +116,12 @@ def evaluate(model, device, params, exp_name, pca_dim):
         # sio.savemat(os.path.join('results', location_name+'_'+model_name+'.mat'), pred)
 
         start_time = time.time()
-        recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings)  
+        recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings) 
+        # recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings, location_name)     
         end_time = time.time()
         run_time = (end_time-start_time) / 5000 * 1000
         print('average retrieving time is {}'.format(run_time))
         
-        # recall, similarity, one_percent_recall = get_recall(pca_database_embeddings, pca_query_embeddings, location_name)    
         ave_recall = recall
         average_similarity = np.mean(similarity)
         ave_one_percent_recall = one_percent_recall

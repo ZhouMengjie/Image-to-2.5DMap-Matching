@@ -4,6 +4,7 @@ import torch.nn.init as init
 import torch.nn.functional as F
 import math
 import numpy as np
+import random
 from timm.models.layers import trunc_normal_
 from torch.utils.tensorboard import SummaryWriter
 
@@ -71,6 +72,93 @@ class TransMixer(nn.Module):
 
         x = self.positionalEncoding(x)
         x = self.Transformer(x)
+
+        if self.pool == 'avg_pool':
+            x = x.mean(dim=1)  
+        elif self.pool == 'seq_pool':
+            x = torch.matmul(F.softmax(self.attention_pool(x), dim=1).transpose(-1, -2), x).squeeze(-2)
+        elif self.pool == 'no_pool':
+            x = x[:, 0]
+        return x
+
+class TransMixerMask(nn.Module):
+    def __init__(self, transDimension, hidden_dim=512, nHead=8, numLayers=1, max_length=5, pool='avg_pool', max_masked=4, special_mask=False):
+        '''
+        Transformer for mixing street view features
+        transDimension: transformer embedded dimension
+        nHead: number of heads
+        numLayers: number of encoded layers
+        Return => features of the same shape as input
+        '''
+        super(TransMixerMask, self).__init__()
+        encoderLayer = nn.TransformerEncoderLayer(d_model=hidden_dim,\
+            nhead=nHead, batch_first=True, dropout=0.1, norm_first = True, activation='relu')
+        
+        self.Transformer = nn.TransformerEncoder(encoderLayer, num_layers=numLayers)
+
+        self.embedding = nn.Linear(transDimension, hidden_dim)
+        init.kaiming_normal_(self.embedding.weight)
+        if self.embedding.bias is not None:
+            init.constant_(self.embedding.bias, 0)
+
+        self.seq_len = max_length
+
+        self.pool = pool
+        if self.pool == 'seq_pool':
+            self.attention_pool = nn.Linear(hidden_dim, 1)
+        elif self.pool == 'no_pool':
+            self.seq_len += 1
+            self.class_emb = nn.Parameter(torch.zeros(1, 1, hidden_dim),
+                                       requires_grad=True)
+
+        self.positionalEncoding = PositionalEncoding(d_model=hidden_dim, max_len=self.seq_len)
+
+        # self.training = training
+        self.max_masked = max_masked
+        self.masked_range = [0,max_length-1]
+        self.special_mask = special_mask
+    
+    def forward(self, x):
+        def get_mask(x, training, max_masked = 9, rand_range=[0,9], special_mask = False):
+            device = x.get_device()
+            mask = torch.zeros((x.shape[0], x.shape[1]))
+            mask = mask.to(device)
+            if not training:
+                if not special_mask:
+                    return mask
+                elif max_masked == 3:
+                    for i in [7,8,9]:
+                        mask[:,i] = 1.0
+                elif max_masked == 5:
+                    for i in [5,6,7,8,9]:
+                        mask[:,i] = 1.0
+                elif max_masked == 7:
+                    for i in [3,4,5,6,7,8,9]:
+                        mask[:,i] = 1.0
+                else:
+                    raise RuntimeError("no such mask")
+                return mask
+            numMasked = random.randint(0, max_masked)
+            if numMasked == 0:
+                return mask
+            else:
+                masked_pos = np.random.choice(np.arange(rand_range[0], rand_range[1]+1), numMasked)
+                for p in masked_pos:
+                    mask[:, p] = 1.0
+            return mask
+
+        x = self.embedding(x)
+
+        if self.pool == 'no_pool':
+            cls_token = self.class_emb.expand(x.shape[0], -1, -1)
+            x = torch.cat((cls_token, x), dim=1)
+
+        x = self.positionalEncoding(x)
+
+        mask = get_mask(x, self.training, max_masked=self.max_masked, rand_range=self.masked_range, special_mask=self.special_mask)
+        x = self.Transformer(x, src_key_padding_mask = mask)
+        x = x[:, mask[0] != 1.0]
+        x = x.reshape(x.shape[0], -1, x.shape[2])
 
         if self.pool == 'avg_pool':
             x = x.mean(dim=1)  

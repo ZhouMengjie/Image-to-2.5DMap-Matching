@@ -11,9 +11,9 @@ class SeqDataset(Dataset):
         self.sequences = (pd.read_csv(self.seq_filepath, sep=',', header=None)).values
         self.indexes = np.arange(0, len(self.sequences))
 
-        self.pano_filepath = os.path.join('datasets', 'features', 'pano2', query_filename+'_'+model_name+'.npy')
+        self.pano_filepath = os.path.join('datasets', 'features', 'pano', query_filename+'_'+model_name+'.npy')
         self.pano_descriptors = np.load(self.pano_filepath)
-        self.map_filepath = os.path.join('datasets', 'features', 'map2', query_filename+'_'+model_name+'.npy')
+        self.map_filepath = os.path.join('datasets', 'features', 'map', query_filename+'_'+model_name+'.npy')
         self.map_descriptors = np.load(self.map_filepath)
         print('{} queries in the dataset'.format(len(self)))
 

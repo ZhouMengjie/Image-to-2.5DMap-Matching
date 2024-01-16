@@ -10,6 +10,7 @@ from models.seq_model import Smooth
 from models.seq_model import Baseline
 from models.seq_model import SeqPool
 from models.seq_model import SeqPool_v2
+from models.seq_model import TransMixerMask
 
 
 def get_model(params):
@@ -31,6 +32,8 @@ def get_model(params):
         model = SeqPool(params.feat_dim)
     elif params.model_type == 'seqpool_v2':
         model = SeqPool_v2(params.feat_dim)
+    elif params.model_type == 'transmixer_mask':
+        model = TransMixerMask(params.feat_dim, nHead=params.num_heads, numLayers=params.num_layers, max_length=params.seq_len, pool=params.pool, max_masked=params.max_masked, special_mask=params.special_mask)
     else:
         raise NotImplementedError('Unsupported Model Type: {}'.format(params.model_type))
     return model

@@ -8,7 +8,7 @@ from PIL import Image
 
 if __name__ == '__main__':
     dataset_path = 'datasets'
-    query_filename = 'unionsquare5kU'
+    query_filename = 'trainstreetlearnU_cmu5kU'
     # sequences
     seq_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sq.csv')
     sequences = (pd.read_csv(seq_filepath, sep=',', header=None)).values
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     # Random choose a sequence to visualize
     # ndx = random.randint(1, len(sequences))
-    ndx = 17
+    ndx = 3
 
     # Define the folder where to save the images
     output_folder = os.path.join('sequence_images',query_filename, str(ndx))
@@ -34,11 +34,11 @@ if __name__ == '__main__':
 
     seq_indices = sequences[ndx]
     
-    print(seq_indices)
-    sf_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sqsf.csv')
-    shuffle_sequences = (pd.read_csv(sf_filepath, sep=',', header=None)).values
-    sf_indices = shuffle_sequences[ndx]
-    print(sf_indices)
+    # print(seq_indices)
+    # sf_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sqsf.csv')
+    # shuffle_sequences = (pd.read_csv(sf_filepath, sep=',', header=None)).values
+    # sf_indices = shuffle_sequences[ndx]
+    # print(sf_indices)
 
     # videowrite_pano = cv2.VideoWriter(os.path.join(video_folder,str(ndx)+'pano.avi'),fourcc,1,(1664,832))
     # videowrite_map = cv2.VideoWriter(os.path.join(video_folder,str(ndx)+'map.avi'),fourcc,1,(256,256))

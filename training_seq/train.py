@@ -60,6 +60,8 @@ if __name__ == '__main__':
     parser.add_argument('--model_type', type=str, required=False, help='Model type')
     parser.add_argument('--w', type=int, default=5, required=False, help='Conv kernel size')
     parser.add_argument('--pool', type=str, default='avg_pool', required=False, help='Pooling strategy')
+    parser.add_argument('--max_masked', type=int, default=9, required=False, help='Max number of masked positions')
+    parser.add_argument('--special_mask', dest='special_mask', action='store_true')
 
     parser.set_defaults(train_file='trainstreetlearnU_cmu5kU')
     parser.set_defaults(val_file='hudsonriver5kU')

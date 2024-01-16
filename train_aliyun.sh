@@ -28,12 +28,12 @@ python -m torch.distributed.launch --use_env \
 --node_rank=${RANK} \
 training_seq/train.py --distributed --port 12364 \
 --feat_dim 4096 --batch_size 24 --share \
---pre_model_name 'resnetsafa_polar_asam_simple' \
+--pre_model_name 'resnetsafa_dgcnn_asam_2to3_up' \
 --margin 0.07 --lr 1e-4 \
 --optimizer SAM --wd 0.03 --epochs 60 \
 --scheduler 'CosineAnnealingLR' \
---num_layers 1 --num_heads 8 --seq_len 5 \
---model_type 'transmixer' --pool 'avg_pool'
+--num_layers 1 --num_heads 8 --seq_len 10 \
+--model_type 'seqnet' --pool 'avg_pool' --w 9
 
 # python -m torch.distributed.launch --use_env \
 # --nproc_per_node=${KUBERNETES_CONTAINER_RESOURCE_GPU} \

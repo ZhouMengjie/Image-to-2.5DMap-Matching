@@ -103,11 +103,9 @@ def evaluate(model, device, params, exp_name, pca_dim):
                 'average_similarity': average_similarity} 
         
         # obtain recall to plot figures
-        # res = {}
-        # res['recall'] = recall
-        # model_name = os.path.split(params.weights)[1]
-        # model_name = model_name.split('.')[0]
-        # np.save(os.path.join('results', location_name+'_'+model_name+'_'+exp_name+'.npy'), recall)
+        res = {}
+        res['recall'] = recall
+        np.save(os.path.join('results', location_name+'_'+params.pre_model_name+'_'+exp_name+'.npy'), recall)
 
     return stats
 
@@ -201,6 +199,8 @@ if __name__ == "__main__":
     parser.add_argument('--share', dest='share', action='store_true')
     parser.add_argument('--w', type=int, default=5, required=False, help='Conv kernel size')
     parser.add_argument('--pool', type=str, default='avg_pool', required=False, help='Pooling strategy')
+    parser.add_argument('--max_masked', type=int, default=9, required=False, help='Max number of masked positions')
+    parser.add_argument('--special_mask', dest='special_mask', action='store_true')
 
     parser.set_defaults(eval_files='hudsonriver5kU,unionsquare5kU,wallstreet5kU')
     parser.set_defaults(pre_model_name='resnetsafa_dgcnn_asam_2to3_up')

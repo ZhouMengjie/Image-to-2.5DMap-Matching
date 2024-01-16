@@ -28,13 +28,13 @@
 CUDA_VISIBLE_DEVICES=0 \
 python eval/evaluate_seq.py \
 --feat_dim 4096 --share \
---pre_model_name 'resnetsafa_pointnet_asam_2to3_up_16' \
+--pre_model_name 'resnetsafa_asam_simple_16' \
 --eval_files 'hudsonriver5kU,wallstreet5kU,unionsquare5kU' \
 --exp_name 'none' \
 --num_layers 1 --num_heads 8 --seq_len 5 \
 --pca_dim 80 --model_type 'baseline' \
 --pool 'avg_pool' \
-# --weights 'weights3090/model_20231226_2350_best_top1.pth'
+# --weights 'weights3090/model_20231026_2215_best_top1.pth'
 
 # CUDA_VISIBLE_DEVICES=0 \
 # python eval/evaluate_seq_v2.py \

@@ -5,7 +5,7 @@ sys.path.append(os.getcwd())
 import csv
 import numpy as np
 
-def build_sequences(seqences, data):
+def build_sequences(sequences, data):
     seq_num = len(sequences)
     new_sequences = []
     for i in range(seq_num):
@@ -45,12 +45,12 @@ if __name__ == '__main__':
 
     # If required, randomly shuffle each sequence
     # Set a seed for reproducibility
-    np.random.seed(0)
+    # np.random.seed(0)
     # Shuffle each row independently
-    np.apply_along_axis(np.random.shuffle, axis=1, arr=sequences)
+    # np.apply_along_axis(np.random.shuffle, axis=1, arr=sequences)
 
     # Write the updated data back to a new CSV file
-    output_file = os.path.join('datasets','csv',area+'_sqsf.csv')
+    output_file = os.path.join('datasets','csv',area+'_sq.csv')
     with open(output_file, 'w', newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerows(sequences)

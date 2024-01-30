@@ -172,3 +172,9 @@ cython_debug/
 /weights3090/*
 /sequence_images/*
 /sequence_videos/*
+/results/chapter04/*
+/results/chapter05/*
+/results/exps/*
+/results/chapter06/*
+results/exps/hudsonriver5k_2d.mat
+results/exps/hudsonriver5k_2d.mat

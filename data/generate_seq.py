@@ -16,10 +16,14 @@ def build_sequences(sequences, data):
         if not neighbors:
             continue
         
+        # for j in range(len(neighbors)):
+        #     k = np.where(sequences[i, :] == neighbors[j])[0] # exclude loops or reversal traverse
+        #     if len(k) == 0:
+        #         new_sequences.append(list(np.concatenate([sequences[i, :],[neighbors[j]]])))
+
         for j in range(len(neighbors)):
-            k = np.where(sequences[i, :] == neighbors[j])[0]
-            if len(k) == 0:
-                new_sequences.append(list(np.concatenate([sequences[i, :],[neighbors[j]]])))
+            new_sequences.append(list(np.concatenate([sequences[i, :],[neighbors[j]]])))
+         
     new_sequences = np.array(new_sequences)
     return new_sequences
 
@@ -35,7 +39,7 @@ if __name__ == '__main__':
             data.append(row)
 
     # Generate sequences to the CSV data
-    max_seq_length = 5
+    max_seq_length = 10
     sequences = np.arange(len(data))
     sequences = sequences.reshape((len(data), 1))
     i = 1
@@ -50,10 +54,10 @@ if __name__ == '__main__':
     # np.apply_along_axis(np.random.shuffle, axis=1, arr=sequences)
 
     # Write the updated data back to a new CSV file
-    output_file = os.path.join('datasets','csv',area+'_sq.csv')
+    output_file = os.path.join('datasets','csv',area+'_sq10_all.csv')
     with open(output_file, 'w', newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerows(sequences)
 
-    print("Sequences have been added to the CSV file (_sq.csv).")
+    print("Sequences have been added to the CSV file (_sq10_all.csv).")
 

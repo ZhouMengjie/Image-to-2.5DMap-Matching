@@ -178,3 +178,4 @@ cython_debug/
 /results/chapter06/*
 results/exps/hudsonriver5k_2d.mat
 results/exps/hudsonriver5k_2d.mat
+*.html

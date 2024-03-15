@@ -1,8 +1,8 @@
 # Image-based Geolocalization by Ground-to-2.5D Map Matching
-This repository is an official implementation of our latest work: 
+This repository is an official implementation of our latest work: (to be published, arxiv version)
 - [Image-based Geolocalization by Ground-to-2.5D Map Matching](https://arxiv.org/abs/2308.05993 "Image-based Geolocalization by Ground-to-2.5D Map Matching")
 
-The main task of our work involves querying a ground-view image in relation to a large-scale and highly detailed georeferenced map, which consists of 2.5D structural map models and 2D aerial-view map images. An illustration of the task is shown below. Besides, an animation can be viewed in video.mp4.
+The main task of our work involves querying a ground-view image in relation to a large-scale and highly detailed georeferenced map, which consists of 2D map tiles and 2.5D map models. An illustration of the task is shown below. Besides, an animation can be viewed in video.mp4.
 ![introduction](https://github.com/ZhouMengjie/Image-to-2.5DMap-Matching/assets/43503334/cceba36e-b519-4769-8966-9020178128d2)
 
 

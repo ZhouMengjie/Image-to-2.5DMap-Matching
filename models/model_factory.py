@@ -13,7 +13,7 @@ from models.tile import Tile
 from models.pano import Pano
 from models.transgeo import TransGeo
 from models.pano_safa import Pano_SAFA
-from models.tile_safa_fuse import Tile_SAFA
+from models.tile_safa import Tile_SAFA
 from models.transhybrid import TransHybrid
 
 def model_factory(params: Params):

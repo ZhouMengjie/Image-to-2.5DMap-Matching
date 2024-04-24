@@ -32,8 +32,8 @@ training_seq/train.py --distributed --port 12364 \
 --margin 0.07 --lr 1e-4 \
 --optimizer SAM --wd 0.03 --epochs 60 \
 --scheduler 'CosineAnnealingLR' \
---num_layers 1 --num_heads 8 --seq_len 10 \
---model_type 'seqnet' --pool 'avg_pool' --w 9
+--num_layers 1 --num_heads 8 --seq_len 5 \
+--model_type 'transmixer_mask' --pool 'avg_pool' --max_masked 4
 
 # python -m torch.distributed.launch --use_env \
 # --nproc_per_node=${KUBERNETES_CONTAINER_RESOURCE_GPU} \

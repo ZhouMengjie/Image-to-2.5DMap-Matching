@@ -8,7 +8,7 @@ from PIL import Image
 
 if __name__ == '__main__':
     dataset_path = 'datasets'
-    query_filename = 'trainstreetlearnU_cmu5kU'
+    query_filename = 'unionsquare5kU'
     # sequences
     seq_filepath = os.path.join(dataset_path, 'csv', query_filename+'_sq.csv')
     sequences = (pd.read_csv(seq_filepath, sep=',', header=None)).values
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     # Random choose a sequence to visualize
     # ndx = random.randint(1, len(sequences))
-    ndx = 3
+    ndx = 139
 
     # Define the folder where to save the images
     output_folder = os.path.join('sequence_images',query_filename, str(ndx))

@@ -39,7 +39,7 @@ log: True
 Using 8 dataloader workers every process
 Model device: cuda:0
 Model name: model_20231109_2109
-Number of model parameters: 5252608
+Number of model parameters: 
 load initial weights!
 Epoch[1-1]	loss: 0.1083	total loss: 0.1083
 Epoch[1-2]	loss: 0.0311	total loss: 0.0311

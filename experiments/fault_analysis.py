@@ -19,17 +19,17 @@ if __name__ == '__main__':
     model_type = 'transmixer'
     transmixer, transmixer_success = load_and_process_data(pre_model_name, model_type, location_name)
 
-    model_type = 'seqnet'
-    seqnet, seqnet_success = load_and_process_data(pre_model_name, model_type, location_name)
+    # model_type = 'seqnet'
+    # seqnet, seqnet_success = load_and_process_data(pre_model_name, model_type, location_name)
 
     all = np.arange(baseline.shape[0])
-    success = set(all) - set(baseline_success) - set(transmixer_success) - set(seqnet_success)
-    success = list(success)
+    success = set(all) - set(baseline_success) - set(transmixer_success)
+    # success = set(transmixer_success) - set(baseline_success)
 
-    ndx = random.choice(success)
+    ndx = random.choice(list(success))
     print('Ground Truth:', ndx)
     print('Transmixer:', transmixer[ndx][0])
-    print('SeqNet:', seqnet[ndx][0])
+    # print('SeqNet:', seqnet[ndx][0])
     print('Baseline:', baseline[ndx][0])
     
 

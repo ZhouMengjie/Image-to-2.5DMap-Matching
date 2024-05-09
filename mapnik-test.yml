@@ -1,0 +1,4 @@
+name: mapnik-test
+channels:
+  - defaults
+prefix: /home/pai/envs/mapnik-test

@@ -163,6 +163,7 @@ cython_debug/
 *.pyth
 *.pth.tar
 *.npy
+*.tar.gz
 /datasets/manhattan
 /datasets/pittsburgh
 /datasets/*_2019

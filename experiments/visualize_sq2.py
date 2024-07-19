@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     # Random choose a sequence to visualize
     # ndx = random.randint(1, len(sequences))
-    ndx = 4135
+    ndx = 1168
 
     # Define the folder where to save the images
     output_folder = os.path.join('sequence_images',query_filename, str(ndx))

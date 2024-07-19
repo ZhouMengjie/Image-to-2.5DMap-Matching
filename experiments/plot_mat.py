@@ -11,12 +11,12 @@ import scipy.io as sio
 plt.rc('font',family='Times New Roman') 
 plt.rcParams["font.weight"] = "bold"
 plt.rcParams["axes.labelweight"] = "bold"
-plt.rcParams.update({"font.size":22})
+plt.rcParams.update({"font.size":18})
 
 if __name__ == "__main__":
-    hr_dgcnn = sio.loadmat(os.path.join('results','exps','hudsonriver5k_dgcnn2to3.mat'))['acc'][0,:]*100
-    ws_dgcnn = sio.loadmat(os.path.join('results','exps','wallstreet5k_dgcnn2to3.mat'))['acc'][0,:]*100
-    us_dgcnn = sio.loadmat(os.path.join('results','exps','unionsquare5k_dgcnn2to3.mat'))['acc'][0,:]*100
+    hr_dgcnn = sio.loadmat(os.path.join('results','exps','hudsonriver5k_2dsafa.mat'))['acc'][0,:]*100
+    ws_dgcnn = sio.loadmat(os.path.join('results','exps','wallstreet5k_2dsafa.mat'))['acc'][0,:]*100
+    us_dgcnn = sio.loadmat(os.path.join('results','exps','unionsquare5k_2dsafa.mat'))['acc'][0,:]*100
 
     hr_2d = sio.loadmat(os.path.join('results','exps','hudsonriver5k_2d.mat'))['acc'][0,:]*100
     ws_2d = sio.loadmat(os.path.join('results','exps','wallstreet5k_2d.mat'))['acc'][0,:]*100
@@ -41,12 +41,12 @@ if __name__ == "__main__":
     plt.xlabel('Route length')
     plt.xticks(np.arange(0, 41, step=5))
     plt.xlim(5,41)
-    plt.ylabel('Top-1 localization%')
+    plt.ylabel('Top-1 recall%')
     plt.yticks(np.arange(0, 101, step=10))
     plt.ylim(60,101)
     plt.legend(loc=4,fontsize=18)
     plt.grid(linestyle='dashed', linewidth=0.5)
-    plt.savefig(os.path.join('results','chapter05','mes.pdf'),bbox_inches='tight')
+#     plt.savefig(os.path.join('results','chapter05','mes.pdf'),bbox_inches='tight')
     plt.show()
 
 
@@ -94,16 +94,16 @@ if __name__ == "__main__":
     x = [1,2,3,4] 
     w = 0.25
     plt.bar(x, y1, width=w,color='red',label='ES')
-    plt.bar([i + w for i in x], y2, width=w, color='blue', label='Enhanced')
+    plt.bar([i + w for i in x], y2, width=w, color='blue', label='SAFA')
     plt.bar([i + 2*w for i in x], y3, width=w, color='green', label='Ours')
     plt.xticks([i + w for i in x], x_label)
     plt.xlabel('Route length')
-    plt.ylabel('Top-1 localization%')
+    plt.ylabel('Top-1 recall%')
     plt.yticks(np.arange(0, 110, step=10))
     plt.ylim(60,101)
     plt.legend(loc=2,fontsize=15)
     plt.grid(linestyle='dashed', linewidth=0.5)
-    plt.savefig(os.path.join('results','chapter05','bar.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join('results','chapter05','bar2.pdf'),bbox_inches='tight')
     plt.show()
 
 

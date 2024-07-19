@@ -16,6 +16,10 @@ if __name__ == "__main__":
     # y2 = [56.06,61.76,65.04,76.38] 
     # x_label=['ES','ES-Pol','SAFA','SAFA-Pol'] # compare aggregation and polar transform
 
+    # y1 = [42.42,49.00,57.98]
+    # y2 = [56.06,65.04,76.38] 
+    # x_label=['ES','SAFA','Ours'] # compare aggregation and polar transform
+
     # y1 = [34.78, 46.18, 49.00, 57.98]
     # y2 = [46.58, 60.18, 65.04, 76.38] 
     # x_label=['SAFA*','SAFA-Pol*','SAFA','SAFA-Pol'] # compare optimizer
@@ -24,9 +28,9 @@ if __name__ == "__main__":
     # y2 = [43.88, 56.06, 60.20, 76.38] 
     # x_label=['ES*','ES','Ours*','Ours'] # compare optimizer
     
-    y1 = [50.58,50.58,52.88,60.66]
-    y2 = [80.58,80.58,80.66,82.96] 
-    x_label=['4','4,19','4,13,19','All'] # compare semantic type
+    # y1 = [50.58,50.58,52.88,60.66]
+    # y2 = [80.58,80.58,80.66,82.96] 
+    # x_label=['4','4,19','4,13,19','All'] # compare semantic type
     
 
     plt.bar(x, y1, width=w,color='red',label='Wall Street')
@@ -36,12 +40,12 @@ if __name__ == "__main__":
     for x2,y2 in enumerate(y2):
         plt.text(x2+1+w,y2+1,y2,ha='center',fontsize=12)
     plt.xticks([i + w/2 for i in x], x_label)
-    plt.xlabel('Semantic Category')
-    plt.ylabel('Top-k% recall')
+    plt.xlabel('Method')
+    plt.ylabel('Top-1 recall%')
     plt.yticks(np.arange(0, 110, step=20))
     plt.legend(loc=2, ncol=2, fontsize=15)
     plt.grid(linestyle='dashed', linewidth=0.5)
-    plt.savefig(os.path.join('results','chapter05','type.pdf'),bbox_inches='tight') # change output file name here
+    plt.savefig(os.path.join('results','chapter05','optimizer.pdf'),bbox_inches='tight') # change output file name here
     plt.show()
 
 

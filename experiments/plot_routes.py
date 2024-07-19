@@ -19,7 +19,7 @@ def generate_random_color(existing_colors):
 
 if __name__ == '__main__':
     data_path = os.path.join(os.getcwd(), 'datasets')
-    area = 'hudsonriver5k'
+    area = 'wallstreet5k'
     data = pd.read_csv(os.path.join(data_path, 'csv', area+'U.csv'), sep=',', header=None)
     info = data.values
     mean_lat = data.iloc[:, 1].mean()
@@ -28,13 +28,14 @@ if __name__ == '__main__':
     mymap = folium.Map(location=map_center, zoom_start=13)
 
     route_colors = []
-    for _ in range(500):
+    for _ in range(50):
         color = generate_random_color(route_colors)
         route_colors.append(color)
 
     mat_data = sio.loadmat(os.path.join(data_path, area+'_routes_500.mat'))
     routes = mat_data['test_route']
     routes = routes.tolist()
+    routes = random.sample(routes, 50)
     # Iterate over each route
     for route, color in zip(routes, route_colors):
         # Create a list to store the coordinates of this route
@@ -50,5 +51,5 @@ if __name__ == '__main__':
         folium.PolyLine(locations=route_coordinates, color=color, weight=5).add_to(mymap)
 
     # # Save the map to an HTML file
-    mymap.save(area+'.html')    
+    mymap.save(area+'50_rd.html')    
 

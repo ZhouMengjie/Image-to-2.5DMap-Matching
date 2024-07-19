@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy
 plt.rc('font',family='Times New Roman') 
 
+
 def visualize_pcd(coords, colors, type='pcd'):
     if type != 'pcd':
         pcd = o3d.geometry.PointCloud()
@@ -80,8 +81,8 @@ if __name__ == "__main__":
     city = 'manhattan'
     data_path = os.path.join(os.getcwd(), 'datasets', city)
     print('Displaying the completed point cloud ...')
-    pcd = o3d.io.read_point_cloud(os.path.join(data_path, (city + 'U.pcd')))
-    visualize_pcd(pcd, None, type='pcd')
+    # pcd = o3d.io.read_point_cloud(os.path.join(data_path, (city + 'U.pcd')))
+    # visualize_pcd(pcd, None, type='pcd')
 
     print('Displaying the semantic classes distribution ...')
     data = pd.read_csv(os.path.join(data_path, (city + 'U.csv')),sep=',', header=None)

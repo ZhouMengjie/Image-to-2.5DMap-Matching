@@ -40,10 +40,9 @@ def get_recall(database_vectors, query_vectors, locations, sequences):
                 if j <= 10:
                     error_success += dist[pred_node]
                 break  
-    print(error_all/float(num_evaluated))
-    print(error_success/np.cumsum(recall)[10])
+    error = error_all/float(num_evaluated)
     recall = (np.cumsum(recall)/float(num_evaluated))*100
-    return recall
+    return recall, error
 
 
 if __name__ == "__main__":
@@ -56,19 +55,19 @@ if __name__ == "__main__":
     locations = np.concatenate((x,y),-1)
 
     # baseline
-    model_name = 'resnetsafa_dgcnn_asam_2to3_up_16'
+    model_name = 'resnetsafa_asam_simple_16'
     embeddings = sio.loadmat(os.path.join('features_128D', location_name+'_'+model_name+'_baseline.mat'))
     database_embeddings = embeddings['ref']
     query_embeddings = embeddings['qry'] 
-    recall_es = get_recall(database_embeddings, query_embeddings, locations, sequences) 
+    recall_es, error_es = get_recall(database_embeddings, query_embeddings, locations, sequences) 
     np.save(os.path.join('dist_results', location_name+'_'+model_name+'_baseline.npy'), recall_es)  
 
     # ours
-    model_name = 'resnetsafa_dgcnn_asam_2to3_up'
+    model_name = 'resnetsafa_asam_simple'
     embeddings = sio.loadmat(os.path.join('features_128D', location_name+'_'+model_name+'_transmixer.mat'))
     database_embeddings = embeddings['ref']
     query_embeddings = embeddings['qry']
-    recall_ours = get_recall(database_embeddings, query_embeddings, locations, sequences)  
+    recall_ours, error_ours = get_recall(database_embeddings, query_embeddings, locations, sequences)  
     np.save(os.path.join('dist_results', location_name+'_'+model_name+'_transmixer.npy'), recall_ours)
 
     # plot
@@ -83,9 +82,9 @@ if __name__ == "__main__":
     # display
     plt.figure()
     plt.plot(x,recall_es,color='red',linewidth=2,marker='*',markersize=5,markevery=markevery,
-            linestyle='dashed',label='Baseline - {:.2f}%'.format(recall_es[10]))
+            linestyle='dashed',label='Baseline - {:.2f} m'.format(error_es))
     plt.plot(x,recall_ours,color='blue',linewidth=2,marker='o',markersize=5,markevery=markevery,
-            linestyle='solid',label='Ours - {:.2f}%'.format(recall_ours[10]))
+            linestyle='solid',label='Ours - {:.2f} m'.format(error_ours))
     plt.xlabel('distance threshold (m)')
     plt.xticks(np.arange(0, 51, step=10))
     plt.xlim(0,50)
@@ -94,7 +93,7 @@ if __name__ == "__main__":
     plt.ylim(40,101)
     plt.legend(loc=4,fontsize='small')
     plt.grid(linestyle='dashed', linewidth=0.5)
-    plt.savefig(os.path.join('dist_results','ch7',location_name+'_multi_dist.pdf'),bbox_inches='tight')
+    plt.savefig(os.path.join('dist_results','ch7',location_name+'_single_dist.pdf'),bbox_inches='tight')
     plt.show()
 
 

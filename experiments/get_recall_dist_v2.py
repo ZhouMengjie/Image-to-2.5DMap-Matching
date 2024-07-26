@@ -30,10 +30,10 @@ def get_recall(database_vectors, query_vectors, locations):
         dist += loc2
         dist +=  np.sum(locations[i] ** 2, -1)
         dist = np.sqrt(dist)
-        min_dist = min(dist[idx] for idx in indices[0])
-        error += min_dist
+        # min_dist = min(dist[idx] for idx in indices[0])
+        error += dist[indices[0][0]]
         for j in range(len(thresholds)):
-            if min_dist <= thresholds[j]:
+            if dist[indices[0][0]] <= thresholds[j]:
                 recall[j] += 1  
                 break  
 
@@ -94,17 +94,17 @@ if __name__ == "__main__":
     # display
     plt.figure()
     plt.plot(x,recall_hr,color='#1f77b4',linewidth=3,
-        linestyle='solid',label='HR ({:.2f}%)'.format(error_hr))
+        linestyle='solid',label='HR ({:.2f} m)'.format(error_hr))
     plt.plot(x,recall_us,color='#d62728',linewidth=3,
-            linestyle='solid',label='US ({:.2f}%)'.format(recall_us[10]*100))
+            linestyle='solid',label='US ({:.2f} m)'.format(error_us))
     plt.plot(x,recall_ws,color='#ff7f0e',linewidth=3,
-            linestyle='solid',label='WS ({:.2f}%)'.format(recall_ws[10]*100))
+            linestyle='solid',label='WS ({:.2f} m)'.format(error_ws))
     plt.xlabel('distance threshold (m)')
     plt.xticks(np.arange(0, 51, step=10))
     plt.xlim(0,50)
     plt.ylabel('Accuracy')
     plt.yticks(np.arange(0, 1.1, step=0.1))
-    plt.ylim(0.7,1.0)
+    plt.ylim(0.0,0.4)
     plt.legend(loc=4,fontsize='small')
     plt.grid(linestyle='dashed', linewidth=0.5)
     plt.savefig(os.path.join('dist_results',ds_type+'_dist.pdf'),bbox_inches='tight')

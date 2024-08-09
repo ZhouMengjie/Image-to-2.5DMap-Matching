@@ -85,7 +85,7 @@ We provide no warranty of any kind, and accept no liability for damages of any k
 
 
 ## Citation
-If you have any questions, please feel free to leave a message or contact me via "mengjie.zhou@bristol.ac.uk". If you use this code, please cite:
+If you have any questions, please feel free to leave a message or contact me via "mengjie.zhou@bristol.ac.uk" or "mengjiezhou2018@outlook.com". If you use this code, please cite:
 ```latex
 @article{zhou2023image,
   title={Image-based Geolocalization by Ground-to-2.5D Map Matching},
